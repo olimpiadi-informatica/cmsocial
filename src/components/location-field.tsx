@@ -1,7 +1,8 @@
 import { SelectField } from "@olinfo/react-components";
-import type { Location } from "@olinfo/training-api";
 import { sortBy } from "lodash-es";
 import useSWR from "swr";
+
+import type { Location } from "~/lib/location";
 
 type Props = {
   label: string;
@@ -13,9 +14,9 @@ type Props = {
 };
 
 export function LocationField({ label, field, placeholder, id, fetcher, optional }: Props) {
-  const { data } = useSWR<Location[], Error, [string, string] | undefined>(
+  const { data, isLoading } = useSWR<Location[], Error, [string, string] | undefined>(
     id ? [`locations/${field}`, id] : undefined,
-    ([, id]) => fetcher(id),
+    ([, id]) => fetcher(id.trim()),
     {
       revalidateIfStale: false,
       revalidateOnFocus: false,
@@ -32,7 +33,7 @@ export function LocationField({ label, field, placeholder, id, fetcher, optional
       field={field}
       placeholder={placeholder}
       options={options}
-      disabled={!id}
+      disabled={!id || isLoading}
       optional={optional}
     />
   );

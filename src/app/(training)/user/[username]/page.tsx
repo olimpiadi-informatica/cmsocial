@@ -11,6 +11,7 @@ import { orderBy } from "lodash-es";
 
 import { H1 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";
+import { getSchool } from "~/lib/location";
 
 type Props = {
   params: { username: string };
@@ -56,6 +57,8 @@ export default async function Page({ params: { username } }: Props) {
   const [_i18n, user, me] = await Promise.all([loadLocale(), getUser(username), getMe()]);
   if (!user) notFound();
 
+  const school = await getSchool(user.institute);
+
   const { _ } = useLingui();
 
   return (
@@ -79,11 +82,7 @@ export default async function Page({ params: { username } }: Props) {
           <div>
             {user.first_name} {user.last_name}
           </div>
-          {user.institute && (
-            <div className="text-sm text-base-content/80">
-              {user.institute.name}, {user.institute.city}, {user.institute.region}
-            </div>
-          )}
+          {school && <div className="text-sm text-base-content/80">{school}</div>}
           <div className="text-xl font-bold">
             <Trans>{user.score} punti</Trans>
           </div>

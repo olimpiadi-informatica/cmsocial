@@ -3,10 +3,10 @@
 import { Trans, msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Form, SubmitButton } from "@olinfo/react-components";
-import { getCities, getInstitutes, getProvinces, getRegions } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";
 import { LocationField } from "~/components/location-field";
+import { getCities, getProvinces, getRegions, getSchools } from "~/lib/location";
 
 import { changeSchool } from "./actions";
 
@@ -39,7 +39,7 @@ export default function Page({ params: { username } }: Props) {
         label={_(msg`Regione`)}
         field="region"
         placeholder={_(msg`Scegli la regione`)}
-        id="🇮"
+        id="Italy"
         fetcher={getRegions}
       />
       {({ region }) => (
@@ -66,7 +66,7 @@ export default function Page({ params: { username } }: Props) {
           field="institute"
           placeholder={_(msg`Scegli la scuola`)}
           id={city}
-          fetcher={getInstitutes}
+          fetcher={getSchools}
         />
       )}
       <SubmitButton>

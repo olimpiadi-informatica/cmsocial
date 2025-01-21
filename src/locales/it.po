@@ -951,6 +951,10 @@ msgstr "Scegli la scuola"
 msgid "Scolastiche"
 msgstr "Scolastiche"
 
+#: src/app/(training)/user/[username]/edit/tabs.tsx
+msgid "Scuola"
+msgstr "Scuola"
+
 #: src/app/(training)/user/[username]/edit/school/actions.ts
 msgid "Scuola cambiata con successo"
 msgstr "Scuola cambiata con successo"
