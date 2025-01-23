@@ -1,49 +1,33 @@
 "use client";
 
-import { notFound } from "next/navigation";
-import { Fragment, type ReactNode, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Fragment, type ReactNode, useEffect } from "react";
 
 import { Trans } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
-import {
-  type SubmissionDetails,
-  type Subtask,
-  type Task,
-  getSubmission,
-  isEvaluating,
-} from "@olinfo/training-api";
 import clsx from "clsx";
 import { Check, X } from "lucide-react";
-import useSWR from "swr";
 
 import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
+import type { SubmissionResult } from "~/lib/api/submission";
 
 type Props = {
-  task: Task;
-  submission: SubmissionDetails;
+  submission: SubmissionResult;
   children: ReactNode;
 };
 
-export function PageClient({ task, submission: fallbackSubmission, children }: Props) {
+export function PageClient({ submission, children }: Props) {
   const { i18n } = useLingui();
-
-  const [refreshInterval, setRefreshInterval] = useState<number>();
-  const { data: submission } = useSWR(
-    ["api/submission", fallbackSubmission.id],
-    ([, id]) => getSubmission(id),
-    { fallbackData: fallbackSubmission, refreshInterval },
-  );
-  if (!submission) notFound();
+  const router = useRouter();
 
   useEffect(() => {
-    if (submission && isEvaluating(submission)) {
-      setRefreshInterval(1000);
-    } else {
-      setRefreshInterval(undefined);
+    if (isEvaluating(submission)) {
+      const id = setInterval(() => router.refresh(), 1000);
+      return () => clearInterval(id);
     }
-  }, [submission]);
+  }, [submission, router]);
 
   return (
     <div>
@@ -74,10 +58,10 @@ export function PageClient({ task, submission: fallbackSubmission, children }: P
         </li>
       </ul>
       <div className="grid w-full auto-cols-auto overflow-x-auto max-md:w-screen max-md:-translate-x-4 max-md:px-4">
-        {submission.score_details?.map((subtask, i) => (
+        {submission.scoreDetails?.map((subtask, i) => (
           <Fragment key={i}>
             <H3 className="col-span-5 m-2 mt-6 flex justify-between">
-              {subtask.idx === undefined ? (
+              {subtask.idx == null ? (
                 <div>
                   <Trans>Testcases</Trans>
                 </div>
@@ -95,13 +79,13 @@ export function PageClient({ task, submission: fallbackSubmission, children }: P
                 </div>
               )}
               <div>
-                {Math.round(subtask.score * 100) / 100} / {subtask.max_score}
+                {Math.round(subtask.score * 100) / 100} / {subtask.maxScore}
               </div>
             </H3>
             <SubtaskTable
               subtask={subtask}
-              timeLimit={task.time_limit}
-              memoryLimit={task.memory_limit}
+              timeLimit={submission.timeLimit}
+              memoryLimit={submission.memoryLimit}
             />
           </Fragment>
         ))}
@@ -114,7 +98,7 @@ export function PageClient({ task, submission: fallbackSubmission, children }: P
           <span className="font-bold">
             <Trans>Esito della compilazione:</Trans>
           </span>{" "}
-          {submission.compilation_outcome || (
+          {submission.compilationOutcome || (
             <span className="inline-flex gap-2 align-text-top">
               <span className="loading loading-spinner loading-xs" />{" "}
               <Trans>Compilazione in corso</Trans>
@@ -125,29 +109,29 @@ export function PageClient({ task, submission: fallbackSubmission, children }: P
           <span className="font-bold">
             <Trans>Tempo di compilazione:</Trans>
           </span>{" "}
-          <Resource value={submission.compilation_time} unit="sec" precision={3} />
+          <Resource value={submission.compilationTime} unit="sec" precision={3} />
         </li>
         <li>
           <span className="font-bold">
             <Trans>Memoria utilizzata:</Trans>
           </span>{" "}
           <Resource
-            value={submission.compilation_memory}
+            value={
+              submission.compilationMemory != null ? submission.compilationMemory >> 20n : null
+            }
             unit="MB"
-            multiplier={1 / (1 << 20)}
-            precision={1}
           />
         </li>
-        {submission.compilation_stdout && (
+        {submission.compilationStdout && (
           <li>
             <div className="mb-1 font-bold">Standard output:</div>
-            <CompilationOutput>{submission.compilation_stdout}</CompilationOutput>
+            <CompilationOutput>{submission.compilationStdout}</CompilationOutput>
           </li>
         )}
-        {submission.compilation_stderr && (
+        {submission.compilationStderr && (
           <li>
             <div className="mb-1 font-bold">Standard error:</div>
-            <CompilationOutput>{submission.compilation_stderr}</CompilationOutput>
+            <CompilationOutput>{submission.compilationStderr}</CompilationOutput>
           </li>
         )}
       </ul>
@@ -165,9 +149,9 @@ function CompilationOutput({ children }: { children: ReactNode }) {
 }
 
 type SubtaskProps = {
-  subtask: Subtask;
-  timeLimit?: number | null;
-  memoryLimit?: number | null;
+  subtask: NonNullable<SubmissionResult["scoreDetails"]>[number];
+  timeLimit: number | null;
+  memoryLimit: bigint | null;
 };
 
 function SubtaskTable({ subtask, timeLimit, memoryLimit }: SubtaskProps) {
@@ -210,11 +194,9 @@ function SubtaskTable({ subtask, timeLimit, memoryLimit }: SubtaskProps) {
           </div>
           <div>
             <Resource
-              value={tc.memory}
+              value={tc.memory != null ? BigInt(tc.memory) >> 20n : null}
               limit={memoryLimit}
               unit="MB"
-              multiplier={1 / (1 << 20)}
-              precision={1}
             />
           </div>
         </Fragment>
@@ -248,22 +230,27 @@ function description(text: string) {
   }
 }
 
-type ResourceProps = {
-  value: number | null;
-  limit?: number | null;
+export function isEvaluating(submission: SubmissionResult) {
+  if (submission.compilationOutcome === null) return true;
+  if (submission.compilationOutcome === "fail") return false;
+  return submission.evaluationOutcome === null;
+}
+
+type ResourceProps<T extends bigint | number> = {
+  value: T | null;
+  limit?: T | null;
   unit: string;
-  multiplier?: number;
-  precision?: number;
+  precision?: T extends number ? number : never;
 };
 
-function Resource({ value, limit, unit, multiplier, precision }: ResourceProps) {
-  if (value === null) return "N/A";
+function Resource<T extends bigint | number>({ value, limit, unit, precision }: ResourceProps<T>) {
+  if (value == null) return "N/A";
 
   const ratio = limit ? value / limit : 0;
 
   return (
     <span className={clsx(ratio > 0.98 ? "text-error" : ratio > 0.75 && "text-warning")}>
-      {(value * (multiplier ?? 1)).toFixed(precision)} {unit}
+      {Number(value).toFixed(precision)} {unit}
     </span>
   );
 }

@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { type TaskListOptions, getTaskList } from "@olinfo/training-api";
+import { compact } from "lodash-es";
+
+import { type TaskListOptions, getTaskCount, getTaskList } from "~/lib/api/tasks";
+import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
@@ -15,7 +18,11 @@ type Params = {
   params: {
     page: string;
   };
-  searchParams: TaskListOptions;
+  searchParams: {
+    search?: string;
+    tag?: string | string[];
+    order?: "hardest" | "easiest";
+  };
 };
 
 export default async function Page({ params, searchParams }: Params) {
@@ -24,10 +31,21 @@ export default async function Page({ params, searchParams }: Params) {
 
   if (!Number.isInteger(page) || page < 1) notFound();
 
-  const taskList = await getTaskList(page, pageSize, searchParams);
+  const user = getSessionUser();
 
-  const pageCount = Math.max(Math.ceil(taskList.num / pageSize), 1);
+  const options: TaskListOptions = {
+    search: searchParams.search,
+    tags: compact(Array.isArray(searchParams.tag) ? searchParams.tag : [searchParams.tag]),
+    order: searchParams.order,
+  };
+
+  const [taskList, taskCount] = await Promise.all([
+    getTaskList(options, user?.id, page, pageSize),
+    getTaskCount(options),
+  ]);
+
+  const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);
   if (page > pageCount) notFound();
 
-  return <PageClient taskList={taskList} />;
+  return <PageClient taskList={taskList} taskCount={taskCount} />;
 }

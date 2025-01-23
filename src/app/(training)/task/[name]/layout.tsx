@@ -3,7 +3,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/macro";
-import { getTask } from "@olinfo/training-api";
+
+import { getTask } from "~/lib/api/task";
 
 import { TaskTabs } from "./tabs";
 
@@ -32,16 +33,16 @@ export default async function Layout({ params: { name }, children }: Props) {
         <h1 className="text-center text-3xl font-bold">{task.title}</h1>
         <div className="flex flex-col items-center justify-center gap-x-2 sm:flex-row">
           <div>
-            <Trans>Limite di tempo:</Trans> {task.time_limit ? `${task.time_limit} sec` : "N/A"}
+            <Trans>Limite di tempo:</Trans> {task.timeLimit ? `${task.timeLimit} sec` : "N/A"}
           </div>
           <div className="max-sm:hidden">/</div>
           <div>
             <Trans>Limite di memoria:</Trans>{" "}
-            {task.memory_limit ? `${task.memory_limit / (1 << 20)} MB` : "N/A"}
+            {task.memoryLimit ? `${task.memoryLimit >> 20n} MB` : "N/A"}
           </div>
         </div>
         <div className="text-center">
-          <Trans>Punteggio massimo:</Trans> {Math.round(task.score_multiplier * 100)}
+          <Trans>Punteggio massimo:</Trans> {Math.round(task.scoreMultiplier * 100)}
         </div>
       </div>
       <TaskTabs />

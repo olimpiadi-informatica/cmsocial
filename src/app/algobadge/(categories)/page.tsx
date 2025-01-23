@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { getScores as getTerryScores } from "@olinfo/terry-api";
-import { getMe, getUser } from "@olinfo/training-api";
-
 import { Fireworks } from "~/components/fireworks";
 import { Badge, type CategoryId, algobadge, getUserBadges } from "~/lib/algobadge";
+import { getAlgobadgeScores } from "~/lib/api/algobadge";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 import { resources } from "./_resources";
 import { Home } from "./_resources/home";
@@ -16,8 +15,8 @@ import { Tree } from "./tree";
 
 type Props = {
   searchParams: {
-    category: string;
-    impersonate: string;
+    category?: string;
+    impersonate?: string;
     unlock?: string;
   };
 };
@@ -43,14 +42,10 @@ export default async function Page({ searchParams }: Props) {
   if (category && !(category in resources)) notFound();
   const Resources = resources[category];
 
-  const username = searchParams.impersonate ?? (await getMe())?.username;
+  const username = searchParams.impersonate ?? getSessionUser()?.username;
 
-  const [trainingScores, terryScores] = await Promise.all([
-    username ? getUser(username) : undefined,
-    username ? getTerryScores(username) : undefined,
-  ]);
-
-  const { badges, totalBadge } = getUserBadges(trainingScores, terryScores, !!searchParams.unlock);
+  const scores = await getAlgobadgeScores(username);
+  const { badges, totalBadge } = getUserBadges(scores, !!searchParams.unlock);
 
   return (
     <>

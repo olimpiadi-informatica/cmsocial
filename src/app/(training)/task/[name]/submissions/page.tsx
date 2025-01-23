@@ -1,11 +1,11 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/macro";
-import { getMe, getTaskSubmissions } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";
+import { getTaskSubmissions } from "~/lib/api/submissions";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
@@ -15,7 +15,7 @@ type Props = {
 
 export default async function Page({ params: { name: taskName } }: Props) {
   await loadLocale();
-  const user = await getMe();
+  const user = getSessionUser();
 
   if (!user) {
     return (
@@ -37,8 +37,6 @@ export default async function Page({ params: { name: taskName } }: Props) {
     );
   }
 
-  const submissions = await getTaskSubmissions(taskName);
-  if (!submissions) notFound();
-
+  const submissions = await getTaskSubmissions(taskName, user.id);
   return <PageClient taskName={taskName} submissions={submissions} />;
 }

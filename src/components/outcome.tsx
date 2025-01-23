@@ -1,23 +1,24 @@
 import { Trans } from "@lingui/macro";
-import type { Submission as TrainingSubmission } from "@olinfo/training-api";
 import clsx from "clsx";
 
-export function Outcome({ submission }: { submission: TrainingSubmission }) {
-  if (submission.compilation_outcome === null) {
+import type { Submission } from "~/lib/api/submissions";
+
+export function Outcome({ submission }: { submission: Submission }) {
+  if (submission.compilationOutcome === null) {
     return (
       <span className="inline-flex gap-2 align-bottom">
         <span className="loading loading-spinner loading-xs" /> <Trans>Compilazione in corso</Trans>
       </span>
     );
   }
-  if (submission.compilation_outcome === "fail") {
+  if (submission.compilationOutcome === "fail") {
     return (
       <span className="inline-block rounded-lg bg-error px-2 text-sm text-error-content">
         <Trans>Compilazione fallita</Trans>
       </span>
     );
   }
-  if (submission.evaluation_outcome === null) {
+  if (submission.evaluationOutcome === null) {
     return (
       <span className="inline-flex gap-2 align-bottom">
         <span className="loading loading-spinner loading-xs" /> <Trans>Esecuzione in corso</Trans>

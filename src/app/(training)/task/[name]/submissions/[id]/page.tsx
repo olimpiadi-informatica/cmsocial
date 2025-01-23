@@ -1,7 +1,8 @@
-import { getSubmission, getTask } from "@olinfo/training-api";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 
+import { getSubmission } from "~/lib/api/submission";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 import { SubmissionFiles } from "./files";
 import { PageClient } from "./page-client";
@@ -14,16 +15,17 @@ type Props = {
 };
 
 export default async function Page({ params: { id, name } }: Props) {
-  const [_i18n, task, submission] = await Promise.all([
-    loadLocale(),
-    getTask(name),
-    getSubmission(+id),
-  ]);
-  if (!task || !submission || submission.task_id !== task.id) notFound();
+  const user = getSessionUser();
+  if (!user) {
+    redirect(`/login?redirect=${encodeURIComponent(`/task/${name}/submissions/${id}`)}`);
+  }
+
+  const [_i18n, submission] = await Promise.all([loadLocale(), getSubmission(+id, name, user.id)]);
+  if (!submission) notFound();
 
   return (
-    <PageClient task={task} submission={submission}>
-      <SubmissionFiles submission={submission} />
+    <PageClient submission={submission}>
+      <SubmissionFiles id={submission.id} language={submission.language} />
     </PageClient>
   );
 }

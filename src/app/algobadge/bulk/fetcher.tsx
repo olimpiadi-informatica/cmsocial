@@ -1,11 +1,10 @@
+import { compact } from "lodash-es";
 import { useEffect, useId, useSyncExternalStore } from "react";
 
-import { getScores as getTerryScores } from "@olinfo/terry-api";
-import { getUser } from "@olinfo/training-api";
-import { compact } from "lodash-es";
-
 import { getUserBadges } from "~/lib/algobadge";
+import type { AlgobadgeScores } from "~/lib/api/algobadge";
 
+import { getAlgobadgeScores } from "./actions";
 import { BadgeExtra, type UserBadge } from "./common";
 
 const pending: string[] = [];
@@ -20,13 +19,13 @@ function fetchNext() {
     if (!username) return;
 
     fetching++;
-    Promise.all([getUser(username), getTerryScores(username)]).then(([user, terry]) => {
-      const { badges, totalBadge } = getUserBadges(user, terry, true);
+    getAlgobadgeScores(username).then((scores?: AlgobadgeScores) => {
+      const { badges, totalBadge } = getUserBadges(scores, true);
       updateUser(username, {
         username,
-        user,
+        name: scores?.name,
         badges,
-        totalBadge: user ? totalBadge : BadgeExtra.Invalid,
+        totalBadge: scores ? totalBadge : BadgeExtra.Invalid,
       });
 
       fetching--;
@@ -53,10 +52,10 @@ export function useBadges(usernames: string[]) {
     for (const username of usernames) {
       if (userBadges.has(username)) continue;
 
-      const { badges } = getUserBadges(undefined, undefined, true);
+      const { badges } = getUserBadges(undefined, true);
       updateUser(username, {
         username,
-        user: undefined,
+        name: undefined,
         badges,
         totalBadge: BadgeExtra.Loading,
       });

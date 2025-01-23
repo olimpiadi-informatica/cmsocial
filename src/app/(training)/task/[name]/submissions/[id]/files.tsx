@@ -1,30 +1,34 @@
 import { Trans } from "@lingui/macro";
 import { Menu } from "@olinfo/react-components";
-import { type SubmissionDetails, fileUrl } from "@olinfo/training-api";
-import { sortBy } from "lodash-es";
 import { Download } from "lucide-react";
 
 import { H3 } from "~/components/header";
 import { SourceCode } from "~/components/source-code";
+import { getSubmissionFiles } from "~/lib/api/submission";
+import { Language, languageByName } from "~/lib/language";
 
-export function SubmissionFiles({ submission }: { submission: SubmissionDetails }) {
-  if (submission.files.length === 1)
+export async function SubmissionFiles({ id, language }: { id: number; language: string | null }) {
+  const lang = languageByName(language) ?? Language.Plain;
+  const files = await getSubmissionFiles(id, lang);
+
+  if (files.length === 1) {
     return (
       <>
         <H3 className="mb-2 mt-6">
           <Trans>Codice sorgente</Trans>
         </H3>
-        <SourceCode url={fileUrl(submission.files[0])} />
+        <SourceCode url={files[0].url} lang={lang} />
       </>
     );
+  }
 
   return (
     <>
       <H3 className="mb-2 mt-6">File</H3>
       <Menu>
-        {sortBy(submission.files, "name").map((file) => (
+        {files.map((file) => (
           <li key={file.name}>
-            <a href={fileUrl(file)} className="grid-cols-[1fr_auto]" download>
+            <a href={file.url} className="grid-cols-[1fr_auto]" download>
               {file.name} <Download size={18} />
             </a>
           </li>

@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { Trans } from "@lingui/macro";
 import { getUser } from "@olinfo/terry-api";
 
-import { getMe } from "@olinfo/training-api";
 import { ForumPosts } from "~/components/forum-posts";
 import { H2 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 type Props = {
   params: { name: string };
@@ -15,7 +15,7 @@ type Props = {
 export default async function Page({ params: { name: taskName } }: Props) {
   await loadLocale();
 
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) return null;
 
   const user = await getUser(trainingUser.username);

@@ -3,10 +3,10 @@ import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/macro";
-import { getMe } from "@olinfo/training-api";
 
 import { H1 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 import { UserEditTabs } from "./tabs";
 
@@ -21,7 +21,7 @@ type Props = {
 
 export default async function Layout({ params: { username }, children }: Props) {
   await loadLocale();
-  const me = await getMe();
+  const me = getSessionUser();
 
   if (!me) {
     redirect(`/login?redirect=${encodeURIComponent(`/user/${username}/edit`)}`);

@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 
 import { getUser } from "@olinfo/terry-api";
-import { getMe } from "@olinfo/training-api";
+
+import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
@@ -10,7 +11,7 @@ type Props = {
 };
 
 export default async function Page({ params: { name: taskName } }: Props) {
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) return null;
 
   const user = await getUser(trainingUser.username);

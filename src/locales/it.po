@@ -47,10 +47,6 @@ msgstr "Accedi per inviare soluzioni"
 msgid "Accedi per vedere le tue sottoposizioni"
 msgstr "Accedi per vedere le tue sottoposizioni"
 
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Ad hoc"
-msgstr "Ad hoc"
-
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Admin"
 msgstr "Admin"
@@ -291,10 +287,6 @@ msgstr "Dimensione nodi"
 msgid "Discussioni del forum"
 msgstr "Discussioni del forum"
 
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Divide & Conquer"
-msgstr "Divide & Conquer"
-
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Editor di grafi"
@@ -425,10 +417,6 @@ msgstr "Gare a squadre <0>(OIS)</0>"
 msgid "Gare ufficiali"
 msgstr "Gare ufficiali"
 
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Geometria"
-msgstr "Geometria"
-
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Giochi di Fibonacci"
@@ -442,7 +430,6 @@ msgstr "Giochi di Fibonacci - Scuole primarie"
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Giochi di Fibonacci - Scuole secondarie"
 
-#: src/app/(training)/tasks/techniques/page.tsx
 #: src/lib/algobadge.ts
 msgid "Grafi"
 msgstr "Grafi"
@@ -451,10 +438,6 @@ msgstr "Grafi"
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Grafo"
 msgstr "Grafo"
-
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Greedy"
-msgstr "Greedy"
 
 #: src/lib/algobadge.ts
 msgid "Greedy, sorting e searching"
@@ -483,10 +466,6 @@ msgstr "Il task ha già questo tag"
 #: src/app/(training)/(home)/page.tsx
 msgid "Impara gradualmente"
 msgstr "Impara gradualmente"
-
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Implementazione"
-msgstr "Implementazione"
 
 #: src/lib/algobadge.ts
 msgid "Induzione e ricorsione"
@@ -582,7 +561,6 @@ msgstr "Logo Olimpiadi Italiane di Informatica"
 msgid "Lunghezza archi"
 msgstr "Lunghezza archi"
 
-#: src/app/(training)/tasks/techniques/page.tsx
 #: src/lib/algobadge.ts
 msgid "Matematica"
 msgstr "Matematica"
@@ -743,10 +721,6 @@ msgstr "Ospite"
 msgid "Ottieni input"
 msgstr "Ottieni input"
 
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Ottimizzazioni estreme"
-msgstr "Ottimizzazioni estreme"
-
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
@@ -840,7 +814,6 @@ msgstr "Profilo"
 msgid "Profilo di {username}"
 msgstr "Profilo di {username}"
 
-#: src/app/(training)/tasks/techniques/page.tsx
 #: src/lib/algobadge.ts
 msgid "Programmazione dinamica"
 msgstr "Programmazione dinamica"
@@ -882,10 +855,6 @@ msgstr "Regione"
 #: src/app/(training)/(login)/tabs.tsx
 msgid "Registrati"
 msgstr "Registrati"
-
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Ricerca binaria"
-msgstr "Ricerca binaria"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
@@ -1050,11 +1019,6 @@ msgstr "Statistiche generali"
 msgid "Stato server"
 msgstr "Stato server"
 
-#: src/app/(training)/tasks/techniques/page.tsx
-msgid "Stringhe"
-msgstr "Stringhe"
-
-#: src/app/(training)/tasks/techniques/page.tsx
 #: src/lib/algobadge.ts
 msgid "Strutture dati"
 msgstr "Strutture dati"
@@ -1118,8 +1082,8 @@ msgid "Testo"
 msgstr "Testo"
 
 #: src/app/(training)/task/[name]/statement.tsx
-msgid "Testo di {title}"
-msgstr "Testo di {title}"
+msgid "Testo del problema"
+msgstr "Testo del problema"
 
 #: src/lib/language.ts
 msgid "Testo semplice"

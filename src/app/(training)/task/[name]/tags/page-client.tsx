@@ -15,23 +15,21 @@ import {
   SubmitButton,
   useNotifications,
 } from "@olinfo/react-components";
-import type { Tag, Task } from "@olinfo/training-api";
-import { sortBy } from "lodash-es";
 import { Eye, SquarePlus, Trash2 } from "lucide-react";
 
 import { H2 } from "~/components/header";
+import type { Tag, TaskTag } from "~/lib/api/tags";
 
 import { addTag, removeTag } from "./actions";
 
 type Props = {
-  task: Task;
-  tags: string[];
-  eventTags: string[];
+  taskTags: TaskTag[];
+  tags: Tag[];
   isLogged: boolean;
   tagPlaceholders: string[];
 };
 
-export function PageClient({ task, tags, eventTags, isLogged, tagPlaceholders }: Props) {
+export function PageClient({ taskTags, tags, isLogged, tagPlaceholders }: Props) {
   const { _ } = useLingui();
   const router = useRouter();
 
@@ -39,7 +37,6 @@ export function PageClient({ task, tags, eventTags, isLogged, tagPlaceholders }:
 
   const path = usePathname();
   const isTagsPage = usePathname().endsWith("/tags");
-  const taskTags = sortBy(task.tags, [(t) => !eventTags.includes(t.name), "name"]);
 
   const openModal = async () => {
     if (!isLogged) {
@@ -57,7 +54,7 @@ export function PageClient({ task, tags, eventTags, isLogged, tagPlaceholders }:
       <Menu fallback={_(msg`Nessun tag`)}>
         {taskTags.map((tag, i) => (
           <li key={tag.name}>
-            {tag.can_delete || eventTags.includes(tag.name) ? (
+            {tag.canDelete || tag.isEvent ? (
               <BaseTag tag={tag} />
             ) : (
               <HiddenTag tag={tag} placeholder={tagPlaceholders[i % tagPlaceholders.length]} />
@@ -70,14 +67,14 @@ export function PageClient({ task, tags, eventTags, isLogged, tagPlaceholders }:
           <Button className="btn-primary" onClick={openModal}>
             <SquarePlus size={22} /> <Trans>Aggiungi tag</Trans>
           </Button>
-          <AddTagModal ref={modalRef} taskName={task.name} tags={tags} />
+          <AddTagModal ref={modalRef} tags={tags} />
         </div>
       )}
     </div>
   );
 }
 
-function BaseTag({ tag }: { tag: Tag }) {
+function BaseTag({ tag }: { tag: TaskTag }) {
   const { name: taskName } = useParams();
   const { notifySuccess } = useNotifications();
   const { _ } = useLingui();
@@ -90,9 +87,9 @@ function BaseTag({ tag }: { tag: Tag }) {
   };
 
   return (
-    <Link href={`/tasks/1?tag=${tag.name}`} className="font-mono">
-      {tag.name}
-      {tag.can_delete && (
+    <Link href={`/tasks/1?tag=${tag.name}`}>
+      {tag.description}
+      {tag.canDelete && (
         <button className="btn btn-ghost btn-xs justify-self-end" onClick={remove} type="button">
           <Trash2 size={18} />
         </button>
@@ -101,7 +98,7 @@ function BaseTag({ tag }: { tag: Tag }) {
   );
 }
 
-function HiddenTag({ tag, placeholder }: { tag: Tag; placeholder: string }) {
+function HiddenTag({ tag, placeholder }: { tag: TaskTag; placeholder: string }) {
   const { _ } = useLingui();
 
   const [shown, setShown] = useState(false);
@@ -109,11 +106,7 @@ function HiddenTag({ tag, placeholder }: { tag: Tag; placeholder: string }) {
   if (shown) return <BaseTag tag={tag} />;
 
   return (
-    <button
-      className="font-mono"
-      onClick={() => setShown(true)}
-      aria-label={_(msg`Mostra tag`)}
-      type="button">
+    <button onClick={() => setShown(true)} aria-label={_(msg`Mostra tag`)} type="button">
       <div className="blur-sm" aria-hidden={true}>
         {placeholder}
       </div>
@@ -125,16 +118,17 @@ function HiddenTag({ tag, placeholder }: { tag: Tag; placeholder: string }) {
 }
 
 const AddTagModal = forwardRef(function AddTagModal(
-  { taskName, tags }: { taskName: string; tags: string[] },
+  { tags }: { tags: Tag[] },
   ref: Ref<HTMLDialogElement> | null,
 ) {
+  const { name: taskName } = useParams();
   const { notifySuccess } = useNotifications();
   const { _ } = useLingui();
 
-  const options = Object.fromEntries(sortBy(tags).map((tag) => [tag, tag]));
+  const options = Object.fromEntries(tags.map((tag) => [tag.name, tag.description]));
 
   const submit = async (data: { tag: string }) => {
-    const err = await addTag(taskName, data.tag);
+    const err = await addTag(taskName as string, data.tag);
     if (err) {
       switch (err) {
         case "The task already has this tag":

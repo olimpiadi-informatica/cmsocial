@@ -2,7 +2,7 @@ import { SelectField } from "@olinfo/react-components";
 import { sortBy } from "lodash-es";
 import useSWR from "swr";
 
-import type { Location } from "~/lib/location";
+import type { Location } from "~/lib/api/location";
 
 type Props = {
   label: string;

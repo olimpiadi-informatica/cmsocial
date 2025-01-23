@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { Trans, msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 
-import { type ForumPost, searchForumPosts } from "~/lib/forum";
+import { type ForumPost, searchForumPosts } from "~/lib/api/forum";
 
 type Props = {
   taskName: string;

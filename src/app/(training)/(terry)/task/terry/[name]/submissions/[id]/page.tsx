@@ -3,7 +3,6 @@ import { Fragment, type ReactNode } from "react";
 
 import { Trans } from "@lingui/macro";
 import { type Submission, getSubmission, getUser } from "@olinfo/terry-api";
-import { getMe } from "@olinfo/training-api";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
 
@@ -11,8 +10,9 @@ import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { SourceCode } from "~/components/source-code";
-import { fileLanguageName } from "~/lib/language";
+import { Language, fileLanguage, fileLanguageName } from "~/lib/language";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 type Props = {
   params: { name: string; id: string };
@@ -21,7 +21,7 @@ type Props = {
 export default async function Page({ params: { name: taskName, id } }: Props) {
   const i18n = await loadLocale();
 
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) return null;
 
   const user = await getUser(trainingUser.username);
@@ -30,6 +30,8 @@ export default async function Page({ params: { name: taskName, id } }: Props) {
 
   const submission = await getSubmission(id);
   const alerts = [...submission.feedback.alerts, ...submission.output.validation.alerts];
+
+  const lang = fileLanguage(submission.source.path) ?? Language.Plain;
 
   return (
     <div>
@@ -95,7 +97,10 @@ export default async function Page({ params: { name: taskName, id } }: Props) {
       <H3 className="mb-2 mt-6">
         <Trans>Codice sorgente</Trans>
       </H3>
-      <SourceCode url={`${process.env.NEXT_PUBLIC_TERRY_URL}/files/${submission.source.path}`} />
+      <SourceCode
+        url={`${process.env.NEXT_PUBLIC_TERRY_URL}/files/${submission.source.path}`}
+        lang={lang}
+      />
       <div className="mt-6 flex flex-wrap justify-center gap-2">
         <a href={`/api-terry/files/${submission.input.path}`} className="btn btn-primary" download>
           <FileInput size={22} /> <Trans>Scarica input</Trans>

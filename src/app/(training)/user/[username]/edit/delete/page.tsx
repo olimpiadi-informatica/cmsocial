@@ -1,20 +1,18 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import { Trans } from "@lingui/macro";
-import { getMeSync } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 export default async function Page() {
   await loadLocale();
 
-  const token = cookies().get("training_token")?.value;
-  if (!token) {
+  const user = getSessionUser();
+  if (!user) {
     redirect(`/login?redirect=${encodeURIComponent("/user/me/edit/delete")}`);
   }
-  const user = getMeSync(token);
 
   const to = "info@olimpiadi-informatica.it";
   const subject = "Richiesta di cancellazione dell'account di training";

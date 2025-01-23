@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/macro";
-import { getTask } from "@olinfo/training-api";
 
 import { ForumPosts } from "~/components/forum-posts";
 import { H2 } from "~/components/header";
+import { getTask } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
 type Props = {

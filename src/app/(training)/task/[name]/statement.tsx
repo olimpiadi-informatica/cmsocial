@@ -8,7 +8,7 @@ import { supportsPDFs } from "pdfobject";
 
 const MobileStatement = lazy(() => import("./mobile-statement"));
 
-export function Statement({ url, title }: { url: string; title: string }) {
+export function Statement({ url }: { url: string }) {
   const { _ } = useLingui();
 
   const [isMobile, setMobile] = useState<boolean>();
@@ -27,7 +27,7 @@ export function Statement({ url, title }: { url: string; title: string }) {
   }
 
   return (
-    <object title={_(msg`Testo di ${title}`)} data={`${url}#navpanes=0`} className="size-full" />
+    <object title={_(msg`Testo del problema`)} data={`${url}#navpanes=0`} className="size-full" />
   );
 }
 

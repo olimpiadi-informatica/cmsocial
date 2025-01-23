@@ -3,7 +3,8 @@ import { notFound, redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { getUser } from "@olinfo/terry-api";
-import { getMe } from "@olinfo/training-api";
+
+import { getSessionUser } from "~/lib/user";
 
 import { TaskTabs } from "./tabs";
 
@@ -13,7 +14,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { name } }: Props): Promise<Metadata> {
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) return {};
 
   const user = await getUser(trainingUser.username);
@@ -27,7 +28,7 @@ export async function generateMetadata({ params: { name } }: Props): Promise<Met
 }
 
 export default async function Layout({ params: { name: taskName }, children }: Props) {
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) {
     redirect(`/login?redirect=${encodeURIComponent(`/task/terry/${taskName}`)}`);
   }

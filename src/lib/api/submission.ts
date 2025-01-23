@@ -1,0 +1,143 @@
+import { cache } from "react";
+
+import { and, eq } from "drizzle-orm";
+
+import { type File, getFile } from "~/lib/api/file";
+import { db } from "~/lib/db";
+import {
+  type RawSubmissionResultSubtask,
+  type RawSubmissionResultTestcase,
+  datasets,
+  files,
+  participations,
+  submissionResults,
+  submissions,
+  tasks,
+} from "~/lib/db/schema-cms";
+import { type Language, languageExtension } from "~/lib/language";
+
+export type SubmissionResultTestcase = {
+  idx: string;
+  memory: number | null;
+  outcome: "Correct" | "Partially correct" | "Not correct";
+  text: string;
+  time: number | null;
+};
+
+export type SubmissionResultSubtask = {
+  idx?: number;
+  score: number;
+  maxScore: number;
+  testcases: SubmissionResultTestcase[];
+};
+
+export type SubmissionResult = {
+  id: number;
+  timestamp: Date;
+  language: string | null;
+  timeLimit: number | null;
+  memoryLimit: bigint | null;
+  compilationOutcome: "ok" | "fail" | null;
+  evaluationOutcome: "ok" | null;
+  compilationMemory: bigint | null;
+  compilationTime: number | null;
+  compilationStdout: string | null;
+  compilationStderr: string | null;
+  score: number | null;
+  scoreDetails: SubmissionResultSubtask[] | null;
+};
+
+export const getSubmission = cache(
+  async (id: number, taskName: string, userId: number): Promise<SubmissionResult | undefined> => {
+    const [submission] = await db
+      .select({
+        id: submissions.id,
+        timestamp: submissions.timestamp,
+        language: submissions.language,
+        timeLimit: datasets.timeLimit,
+        memoryLimit: datasets.memoryLimit,
+        compilationOutcome: submissionResults.compilationOutcome,
+        evaluationOutcome: submissionResults.evaluationOutcome,
+        compilationMemory: submissionResults.compilationMemory,
+        compilationTime: submissionResults.compilationTime,
+        compilationStdout: submissionResults.compilationStdout,
+        compilationStderr: submissionResults.compilationStderr,
+        score: submissionResults.score,
+        scoreDetails: submissionResults.scoreDetails,
+      })
+      .from(submissions)
+      .innerJoin(tasks, eq(tasks.id, submissions.taskId))
+      .innerJoin(datasets, eq(datasets.id, tasks.activeDatasetId))
+      .innerJoin(participations, eq(participations.id, submissions.participationId))
+      .leftJoin(
+        submissionResults,
+        and(
+          eq(submissionResults.submissionId, submissions.id),
+          eq(submissionResults.datasetId, tasks.activeDatasetId),
+        ),
+      )
+      .where(
+        and(eq(submissions.id, id), eq(tasks.name, taskName), eq(participations.userId, userId)),
+      );
+    if (!submission) return;
+
+    return {
+      ...submission,
+      scoreDetails: mapScoreDetails(submission.scoreDetails, submission.score ?? 0),
+    };
+  },
+);
+
+function mapScoreDetails(
+  details: (typeof submissionResults.$inferSelect)["scoreDetails"],
+  score: number,
+): SubmissionResultSubtask[] | null {
+  if (!details || details.length === 0) return null;
+
+  if ("outcome" in details[0]) {
+    return [
+      {
+        score: score,
+        maxScore: 100,
+        testcases: mapScoreDetailsTestcase(details as RawSubmissionResultTestcase[]),
+      },
+    ];
+  }
+
+  return (details as RawSubmissionResultSubtask[]).map(
+    ({ testcases, score, score_fraction, max_score, ...subtask }) => ({
+      ...subtask,
+      score: score ?? score_fraction * max_score,
+      maxScore: max_score,
+      testcases: mapScoreDetailsTestcase(testcases),
+    }),
+  );
+}
+
+function mapScoreDetailsTestcase(
+  testcases: RawSubmissionResultTestcase[],
+): SubmissionResultTestcase[] {
+  return testcases.map((testcase) => {
+    let i = 1;
+    return {
+      idx: testcase.idx,
+      memory: testcase.memory,
+      outcome: testcase.outcome,
+      text: testcase.text[0].replaceAll(/%./g, () => String(testcase.text[i++])),
+      time: testcase.time,
+    };
+  });
+}
+
+export const getSubmissionFiles = cache((id: number, language: Language): Promise<File[]> => {
+  return db
+    .select({
+      name: files.filename,
+      url: getFile(files.filename, files.digest).mapWith((url: string) =>
+        url.replace("%l", languageExtension(language)),
+      ),
+    })
+    .from(files)
+    .where(eq(files.submissionId, id))
+    .orderBy(files.filename);
+});

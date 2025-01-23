@@ -1,8 +1,8 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/macro";
-import type { Scores as TerryScores } from "@olinfo/terry-api";
-import type { User } from "@olinfo/training-api";
 import { map, mapValues } from "lodash-es";
+
+import type { AlgobadgeScores } from "~/lib/api/algobadge";
 
 export enum CategoryId {
   DP = "dp",
@@ -214,13 +214,10 @@ function computeBadge(score: number, maxScore: number, hasHonorable?: boolean): 
 }
 
 function computeCategoryBadges(
-  trainingUser: User | undefined,
-  terryScores: TerryScores | undefined,
+  scores: AlgobadgeScores | undefined,
   unlockEverything: boolean,
 ): Record<CategoryId, CategoryBadge> {
-  const categoryBadges = mapValues(algobadge, (node) =>
-    computeCategoryBadge(node, trainingUser, terryScores),
-  );
+  const categoryBadges = mapValues(algobadge, (node) => computeCategoryBadge(node, scores));
 
   const visited = new Set<CategoryId>();
   const dfs = (nodeId: CategoryId) => {
@@ -258,23 +255,24 @@ function computeCategoryBadges(
 
 function computeCategoryBadge(
   category: Category,
-  trainingUser: User | undefined,
-  terryScores: TerryScores | undefined,
+  scores: AlgobadgeScores | undefined,
 ): CategoryBadge {
   let score = 0;
   let maxScore = 0;
   const tasks: Record<string, number> = {};
 
   for (const task of category.tasks) {
-    const taskMaxScore = task.maxScore ?? 100;
-    if (task.terry) {
-      const terryTask = terryScores?.find((t) => t.name === task.name);
-      tasks[task.name] = terryTask ? (terryTask.score / terryTask.max_score) * taskMaxScore : 0;
-    } else {
-      tasks[task.name] = trainingUser?.scores?.find((t) => t.name === task.name)?.score ?? 0;
-    }
-    score += tasks[task.name];
-    maxScore += taskMaxScore;
+    const taskScore = scores?.scores.find(
+      (t) => t.taskName === task.name && t.terry === (task.terry ?? false),
+    );
+    const overrideMaxScore = task.maxScore ?? 100;
+    const scaledScore = taskScore?.score
+      ? (taskScore.score / taskScore.maxScore) * overrideMaxScore
+      : 0;
+
+    tasks[task.name] = scaledScore;
+    score += scaledScore;
+    maxScore += overrideMaxScore;
   }
 
   return {
@@ -316,12 +314,8 @@ export const badgeColor: Record<Badge, string> = {
   [Badge.Diamond]: "text-cyan-500",
 };
 
-export function getUserBadges(
-  user: User | undefined,
-  terryScores: TerryScores | undefined,
-  unlock?: boolean,
-) {
-  const badges = computeCategoryBadges(user, terryScores, unlock ?? false);
+export function getUserBadges(scores: AlgobadgeScores | undefined, unlock?: boolean) {
+  const badges = computeCategoryBadges(scores, unlock ?? false);
   let totalBadge = Math.max(Math.min(...map(badges, "badge")), Badge.Honorable) as Badge;
   for (const [id, category] of Object.entries(algobadge)) {
     if (category.hasHonorable && badges[id as CategoryId].badge === Badge.None) {

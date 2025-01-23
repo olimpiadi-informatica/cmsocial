@@ -1,9 +1,10 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 import { getUser } from "@olinfo/terry-api";
-import { getMe } from "@olinfo/training-api";
 
-import type { Metadata } from "next";
+import { getSessionUser } from "~/lib/user";
+
 import { PageClient } from "./page-client";
 
 export const metadata: Metadata = {
@@ -17,7 +18,7 @@ type Props = {
 };
 
 export default async function Page({ params: { page } }: Props) {
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) {
     redirect(`/login?redirect=${encodeURIComponent(`/tasks/terry/${page}`)}`);
   }

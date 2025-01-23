@@ -4,13 +4,13 @@ import { notFound } from "next/navigation";
 import { Trans } from "@lingui/macro";
 import { Menu } from "@olinfo/react-components";
 import { getSubmissions, getUser } from "@olinfo/terry-api";
-import { getMe } from "@olinfo/training-api";
 
 import { DateTime } from "~/components/datetime";
 import { H2 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { fileLanguageName } from "~/lib/language";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 type Props = {
   params: { name: string };
@@ -19,7 +19,7 @@ type Props = {
 export default async function Page({ params: { name: taskName } }: Props) {
   const i18n = await loadLocale();
 
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) return null;
 
   const user = await getUser(trainingUser.username);

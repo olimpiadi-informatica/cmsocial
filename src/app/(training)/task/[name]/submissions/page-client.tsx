@@ -1,19 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { useEffect, useState } from "react";
 
 import { Trans } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Menu } from "@olinfo/react-components";
-import { type Submission, getTaskSubmissions, isEvaluating } from "@olinfo/training-api";
 import useSWR from "swr";
 
 import { DateTime } from "~/components/datetime";
 import { H2 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
-import { fileLanguageName } from "~/lib/language";
+import type { Submission } from "~/lib/api/submissions";
+
+import { getSubmissions } from "./actions";
 
 type Props = {
   taskName: string;
@@ -27,10 +27,9 @@ export function PageClient({ taskName, submissions: fallbackSubmissions }: Props
 
   const { data: submissions } = useSWR(
     ["api/submissions", taskName],
-    ([, ...params]) => getTaskSubmissions(...params),
+    ([, taskName]) => getSubmissions(taskName),
     { fallbackData: fallbackSubmissions, refreshInterval },
   );
-  if (!submissions) notFound();
 
   useEffect(() => {
     if (submissions.some(isEvaluating)) {
@@ -67,7 +66,7 @@ export function PageClient({ taskName, submissions: fallbackSubmissions }: Props
                 href={`/task/${taskName}/submissions/${sub.id}`}
                 className="col-span-4 grid grid-cols-subgrid text-nowrap">
                 <div className="w-20 font-mono">{sub.id}</div>
-                <div>{fileLanguageName(sub.files[0].name)}</div>
+                <div>{sub.language}</div>
                 <div>
                   <DateTime date={sub.timestamp} locale={i18n.locale} />
                 </div>
@@ -86,4 +85,10 @@ export function PageClient({ taskName, submissions: fallbackSubmissions }: Props
       </div>
     </div>
   );
+}
+
+export function isEvaluating(submission: Submission) {
+  if (submission.compilationOutcome === null) return true;
+  if (submission.compilationOutcome === "fail") return false;
+  return submission.evaluationOutcome === null;
 }

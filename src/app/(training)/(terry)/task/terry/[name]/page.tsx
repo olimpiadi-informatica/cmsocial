@@ -3,10 +3,11 @@ import { notFound } from "next/navigation";
 
 import type { CompileOptions } from "@mdx-js/mdx";
 import { getUser } from "@olinfo/terry-api";
-import { getMe } from "@olinfo/training-api";
 import type { MDXComponents } from "mdx/types";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
+
+import { getSessionUser } from "~/lib/user";
 
 import style from "./statement.module.css";
 import Submit from "./submit/page";
@@ -18,7 +19,7 @@ type Props = {
 };
 
 export default async function Page({ params: { name: taskName } }: Props) {
-  const trainingUser = await getMe();
+  const trainingUser = getSessionUser();
   if (!trainingUser) return null;
 
   const user = await getUser(trainingUser.username);

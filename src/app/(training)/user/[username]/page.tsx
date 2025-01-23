@@ -5,13 +5,13 @@ import { notFound } from "next/navigation";
 import { Trans, msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
-import { AccessLevel, getMe, getUser, userPictureUrl } from "@olinfo/training-api";
 import clsx from "clsx";
-import { orderBy } from "lodash-es";
 
 import { H1 } from "~/components/header";
+import { getSchool } from "~/lib/api/location";
+import { AccessLevel, type UserScore, getUser, getUserScores } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";
-import { getSchool } from "~/lib/location";
+import { getSessionUser } from "~/lib/user";
 
 type Props = {
   params: { username: string };
@@ -22,10 +22,10 @@ export async function generateMetadata({ params: { username } }: Props): Promise
   if (!user) return {};
 
   const title = `Training - Profilo di ${username}`;
-  const description = `Lista dei problemi risolti da ${user.first_name} ${user.last_name} (${username}) nella piattaforma di allenamento delle Olimpiadi Italiane di Informatica`;
+  const description = `Lista dei problemi risolti da ${user.firstName} ${user.lastName} (${username}) nella piattaforma di allenamento delle Olimpiadi Italiane di Informatica`;
 
   const image = {
-    url: `${userPictureUrl(user)}&s=1200`,
+    url: `${user.image}&s=1200`,
     height: 1200,
     width: 1200,
   };
@@ -39,8 +39,8 @@ export async function generateMetadata({ params: { username } }: Props): Promise
       images: image,
       url: `https://training.olinfo.it/user/${username}`,
       description,
-      firstName: user.first_name,
-      lastName: user.last_name,
+      firstName: user.firstName,
+      lastName: user.lastName,
       username: user.username,
     },
     twitter: {
@@ -54,10 +54,14 @@ export async function generateMetadata({ params: { username } }: Props): Promise
 }
 
 export default async function Page({ params: { username } }: Props) {
-  const [_i18n, user, me] = await Promise.all([loadLocale(), getUser(username), getMe()]);
+  const me = getSessionUser();
+  const [_i18n, user] = await Promise.all([loadLocale(), getUser(username)]);
   if (!user) notFound();
 
-  const school = await getSchool(user.institute);
+  const [school, scores] = await Promise.all([
+    getSchool(user.institute),
+    getUserScores(user.id, username),
+  ]);
 
   const { _ } = useLingui();
 
@@ -70,17 +74,17 @@ export default async function Page({ params: { username } }: Props) {
         <Avatar
           size={256}
           username={user.username}
-          url={userPictureUrl(user)}
+          url={user.image}
           className="max-sm:mx-auto max-sm:p-4"
         />
         <CardBody
           title={
             <>
-              {user.username} <UserBadge level={user.access_level} />
+              {user.username} <UserBadge level={user.accessLevel} />
             </>
           }>
           <div>
-            {user.first_name} {user.last_name}
+            {user.firstName} {user.lastName}
           </div>
           {school && <div className="text-sm text-base-content/80">{school}</div>}
           <div className="text-xl font-bold">
@@ -98,10 +102,10 @@ export default async function Page({ params: { username } }: Props) {
       <Card>
         <CardBody title={_(msg`Problemi risolti`)}>
           <div className="sm:columns-2 md:columns-3 lg:columns-4">
-            {orderBy(user.scores, ["score", "title"], ["desc", "asc"]).map((task) => (
+            {scores.map((task) => (
               <TaskBadge key={task.name} {...task} />
             ))}
-            {user.scores?.length === 0 && _(msg`Nessun problema risolto`)}
+            {scores.length === 0 && _(msg`Nessun problema risolto`)}
           </div>
         </CardBody>
       </Card>
@@ -158,7 +162,7 @@ function UserBadge({ level }: { level: AccessLevel }) {
   }
 }
 
-function TaskBadge({ name, title, score }: { name: string; title: string; score: number }) {
+function TaskBadge({ name, terry, title, score, maxScore }: UserScore) {
   const colors = [
     "bg-red-400 text-error-content",
     "bg-orange-400 text-warning-content",
@@ -167,13 +171,13 @@ function TaskBadge({ name, title, score }: { name: string; title: string; score:
     "bg-green-400 text-success-content",
   ];
 
-  const scoreFraction = Math.min(Math.max(score / 100, 0), 1);
+  const scoreFraction = Math.min(Math.max(score / maxScore, 0), 1);
   const color = colors[Math.floor(scoreFraction * 4)];
 
   return (
     <div className="my-1 inline-block w-full">
       <Link
-        href={`/task/${name}`}
+        href={terry ? `/task/terry/${name}` : `/task/${name}`}
         className={clsx("inline-block rounded-lg px-2 py-0.5 text-sm", color)}>
         {title} <span className="align-text-bottom text-xs">({Math.round(score)})</span>
       </Link>

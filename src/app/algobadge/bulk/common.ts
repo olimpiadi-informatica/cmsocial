@@ -1,7 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/macro";
 
-import type { User } from "@olinfo/training-api";
 import { Badge, type CategoryBadge, type CategoryId } from "~/lib/algobadge";
 
 export enum BadgeExtra {
@@ -13,7 +12,7 @@ export type ExtendedBadge = Badge | BadgeExtra;
 
 export type UserBadge = {
   username: string;
-  user?: User;
+  name?: string;
   badges: Record<CategoryId, CategoryBadge>;
   totalBadge: ExtendedBadge;
 };

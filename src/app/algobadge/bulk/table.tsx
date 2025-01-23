@@ -46,12 +46,7 @@ function TableRow({ item: user }: { item: UserBadge }) {
         {user.totalBadge === BadgeExtra.Invalid && (
           <span className="text-sm text-error"> (username non valido)</span>
         )}
-        {user.user && (
-          <span className="text-sm text-base-content/80">
-            {" "}
-            ({user.user?.first_name} {user.user?.last_name})
-          </span>
-        )}
+        {user.name && <span className="text-sm text-base-content/80"> ({user.name})</span>}
       </div>
       <div className="mx-auto">
         {user.totalBadge <= Badge.Diamond && (

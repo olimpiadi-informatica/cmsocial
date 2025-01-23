@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { getMe } from "@olinfo/training-api";
+import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
@@ -15,8 +15,8 @@ type Props = {
   };
 };
 
-export default async function Page({ searchParams: { redirect: redirectUrl = "/" } }: Props) {
-  if (await getMe()) {
+export default function Page({ searchParams: { redirect: redirectUrl = "/" } }: Props) {
+  if (getSessionUser()) {
     return redirect(redirectUrl);
   }
 

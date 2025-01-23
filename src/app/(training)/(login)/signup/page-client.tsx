@@ -18,7 +18,7 @@ import ReCaptchaWidget, { type ReCAPTCHA } from "react-google-recaptcha";
 
 import { H2 } from "~/components/header";
 import { LocationField } from "~/components/location-field";
-import { getCities, getProvinces, getRegions, getSchools } from "~/lib/location";
+import { getCities, getProvinces, getRegions, getSchools } from "~/lib/api/location";
 import { useTheme } from "~/lib/theme";
 
 import { signup } from "./actions";

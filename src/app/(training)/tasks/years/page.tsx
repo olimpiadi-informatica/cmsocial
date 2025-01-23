@@ -2,21 +2,17 @@ import Link from "next/link";
 
 import { Trans } from "@lingui/macro";
 import { Menu } from "@olinfo/react-components";
-import { getEventTags } from "@olinfo/training-api";
 
 import { H1 } from "~/components/header";
+import { getYearTags } from "~/lib/api/tags";
 import { loadLocale } from "~/lib/locale";
 
 export default async function Page() {
   await loadLocale();
 
-  const tags = await getEventTags();
+  const tags = await getYearTags();
 
-  const years = tags
-    .map((tag) => tag.match(/^ioi(\d{4})$/))
-    .filter(Boolean)
-    .map((match) => +match![1])
-    .sort((a, b) => b - a);
+  const years = tags.map((tag) => Number(tag.name.slice(3)));
 
   return (
     <>

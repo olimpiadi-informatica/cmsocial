@@ -1,7 +1,7 @@
-import { notFound } from "next/navigation";
-
-import { getEventTags, getMe, getTags, getTask } from "@olinfo/training-api";
 import { range } from "lodash-es";
+
+import { getTags, getTaskTags } from "~/lib/api/tags";
+import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
@@ -10,21 +10,15 @@ type Props = {
 };
 
 export default async function Page({ params: { name } }: Props) {
-  const [user, task, tags, eventTags] = await Promise.all([
-    getMe(),
-    getTask(name),
-    getTags(),
-    getEventTags(),
-  ]);
-  if (!task) notFound();
+  const user = getSessionUser();
+  const [taskTags, tags] = await Promise.all([getTaskTags(name, user?.id), getTags()]);
 
-  const tagPlaceholders = range(10).map(() => Math.round(1e6 ** (Math.random() + 1)).toString());
+  const tagPlaceholders = range(16).map(() => Math.round(1e6 ** (Math.random() + 1)).toString());
 
   return (
     <PageClient
-      task={task}
+      taskTags={taskTags}
       tags={tags}
-      eventTags={eventTags}
       isLogged={!!user}
       tagPlaceholders={tagPlaceholders}
     />

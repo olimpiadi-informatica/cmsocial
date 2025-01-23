@@ -1,7 +1,4 @@
-import { notFound } from "next/navigation";
-
-import { fileUrl, getTask } from "@olinfo/training-api";
-
+import { getTaskStatement } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
 import Attachments from "./attachments/page";
@@ -16,19 +13,13 @@ type Props = {
 export default async function Page({ params }: Props) {
   const i18n = await loadLocale();
 
-  const task = await getTask(params.name);
-  if (!task) notFound();
-
-  const statement = fileUrl({
-    name: "testo.pdf",
-    digest: task.statements[i18n.locale] ?? Object.values(task.statements)[0],
-  });
+  const statement = await getTaskStatement(params.name, i18n.locale);
 
   return (
     <div className="grid grow gap-4 lg:grid-cols-[1fr_18rem]">
       <div className="relative min-h-[75vh] overflow-hidden rounded-lg">
         <div className="absolute inset-0">
-          <Statement url={statement} title={task.title} />
+          <Statement url={statement.url} />
         </div>
       </div>
       <div className="max-lg:hidden">

@@ -10,19 +10,39 @@ export enum Language {
   Java = "java",
   JavaScript = "js",
   Kotlin = "kt",
-  TypeScript = "ts",
   PHP = "php",
   Pascal = "pascal",
-  Python = "py",
-  Scratch = "scratch",
   Plain = "text",
   Pseudocode = "srs",
-  Ruby = "ruby",
-  Rust = "rust",
+  Python = "py",
+  Ruby = "rb",
+  Rust = "rs",
+  Scratch = "sb3",
+  TypeScript = "ts",
   VisualBasic = "vb",
 }
 
-export function languageByExtension(extension?: string): Language | undefined {
+export function languageByName(name: string | null): Language | undefined {
+  switch (name?.match(/^[A-Za-z+]+/)?.[0]) {
+    case "C":
+      return Language.C;
+    case "C++":
+      return Language.Cpp;
+    case "Java":
+      return Language.Java;
+    case "Pascal":
+      return Language.Pascal;
+    case "Python":
+      return Language.Python;
+  }
+}
+
+export function languageExtension(language: Language): string {
+  return language === Language.Pascal ? "pas" : language;
+}
+
+export function fileLanguage(fileName: string) {
+  const extension = fileName.match(/\.(\w+)$/)?.[1];
   switch (extension) {
     case "c":
       return Language.C;
@@ -60,6 +80,8 @@ export function languageByExtension(extension?: string): Language | undefined {
       return Language.Scratch;
     case "srs":
       return Language.Pseudocode;
+    case "txt":
+      return Language.Plain;
     case "rb":
       return Language.Ruby;
     case "rs":
@@ -69,8 +91,9 @@ export function languageByExtension(extension?: string): Language | undefined {
   }
 }
 
-export function languageName(language: Language): string {
-  switch (language) {
+export function fileLanguageName(fileName: string) {
+  const lang = fileLanguage(fileName);
+  switch (lang) {
     case Language.C:
       return "C";
     case Language.Cpp:
@@ -109,14 +132,7 @@ export function languageName(language: Language): string {
       return "Rust";
     case Language.VisualBasic:
       return "VisualBasic";
+    default:
+      return "N/A";
   }
-}
-
-export function fileLanguage(fileName: string) {
-  return languageByExtension(fileName.match(/\.(\w+)$/)?.[1]);
-}
-
-export function fileLanguageName(fileName: string) {
-  const lang = languageByExtension(fileName.match(/\.(\w+)$/)?.[1]);
-  return lang ? languageName(lang) : "N/A";
 }

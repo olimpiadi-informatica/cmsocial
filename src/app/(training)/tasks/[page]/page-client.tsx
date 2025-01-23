@@ -7,31 +7,44 @@ import { useState } from "react";
 import { Trans, msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Menu } from "@olinfo/react-components";
-import { type TaskList, type TaskListOptions, getTaskList } from "@olinfo/training-api";
 import clsx from "clsx";
-import { range, sortBy } from "lodash-es";
+import { range } from "lodash-es";
 import { X } from "lucide-react";
 import useSWR from "swr";
 
 import { H1 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { Pagination } from "~/components/pagination";
+import type { TaskItem, TaskListOptions } from "~/lib/api/tasks";
 
-export function PageClient(props: { taskList: TaskList }) {
+import { getTasks } from "./actions";
+
+type Props = {
+  taskList: TaskItem[];
+  taskCount: number;
+};
+
+export function PageClient(props: Props) {
   const { _ } = useLingui();
 
   // useParams() does not update when using client-side navigation (e.g. window.history.pushState)
   const page = Number(usePathname().match(/^\/tasks\/(\d+)/)?.[1]);
   const pageSize = 20;
-  const options = Object.fromEntries(useSearchParams()) as TaskListOptions;
 
-  const { data: taskList } = useSWR(
-    ["api/tasks", page, pageSize, options],
-    ([, ...params]) => getTaskList(...params),
-    { fallbackData: props.taskList, keepPreviousData: true },
-  );
-  const { tasks, num, tags } = taskList;
-  const pageCount = Math.max(Math.ceil(num / pageSize), 1);
+  const searchParams = useSearchParams();
+  const options: TaskListOptions = {
+    search: searchParams.get("search"),
+    tags: searchParams.getAll("tag"),
+    order: searchParams.get("order") as "hardest" | "easiest",
+  };
+
+  const {
+    data: { taskList, taskCount },
+  } = useSWR(["api/task-list", options, page, pageSize], ([, ...params]) => getTasks(...params), {
+    fallbackData: props,
+    keepPreviousData: true,
+  });
+  const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);
 
   return (
     <div className="flex flex-col gap-4">
@@ -41,20 +54,20 @@ export function PageClient(props: { taskList: TaskList }) {
         </H1>
         <Filter />
       </div>
-      {tags?.length ? (
+      {options.tags?.length ? (
         <div className="flex flex-wrap gap-2">
-          {sortBy(tags).map((tag) => (
-            <Tag key={tag} tag={tag} allTags={tags} />
+          {options.tags.map((tag) => (
+            <Tag key={tag} tag={tag} />
           ))}
         </div>
       ) : null}
       <Menu fallback={_(msg`Nessun problema trovato`)}>
-        {tasks.map((task) => (
+        {taskList.map((task) => (
           <li key={task.id}>
             <Link href={`/task/${task.name}`} className="grid-cols-[auto_1fr_auto]">
-              <Difficulty difficulty={task.score_multiplier} />
+              <Difficulty difficulty={task.scoreMultiplier} />
               {task.title}
-              {task.score !== undefined && <OutcomeScore score={task.score} />}
+              {task.score != null && <OutcomeScore score={task.score} />}
             </Link>
           </li>
         ))}
@@ -64,17 +77,12 @@ export function PageClient(props: { taskList: TaskList }) {
   );
 }
 
-function Tag({ tag, allTags }: { tag: string; allTags: string[] }) {
+function Tag({ tag }: { tag: string }) {
   const searchParams = useSearchParams();
   const { _ } = useLingui();
 
-  const newTags = allTags.filter((t) => t !== tag);
   const newParams = new URLSearchParams(searchParams);
-  if (newTags.length === 0) {
-    newParams.delete("tag");
-  } else {
-    newParams.set("tag", newTags.join(","));
-  }
+  newParams.delete("tag", tag);
 
   return (
     <div className="badge badge-neutral flex h-6 gap-1">

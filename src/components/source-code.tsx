@@ -6,12 +6,10 @@ import { Code } from "@olinfo/react-components";
 import { truncate } from "lodash-es";
 import { Download, FileCode2 } from "lucide-react";
 
-import { Language, fileLanguage } from "~/lib/language";
+import { Language } from "~/lib/language";
 
-export function SourceCode({ url }: { url: string }) {
+export function SourceCode({ url, lang }: { url: string; lang: Language }) {
   const { _ } = useLingui();
-
-  const lang = fileLanguage(url) ?? Language.Plain;
 
   if (lang === Language.Scratch) {
     return (

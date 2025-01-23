@@ -6,7 +6,7 @@ import { Form, SubmitButton } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
 import { LocationField } from "~/components/location-field";
-import { getCities, getProvinces, getRegions, getSchools } from "~/lib/location";
+import { getCities, getProvinces, getRegions, getSchools } from "~/lib/api/location";
 
 import { changeSchool } from "./actions";
 
