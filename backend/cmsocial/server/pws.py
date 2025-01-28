@@ -52,7 +52,6 @@ from cmscommon.archive import Archive
 from cmscommon.datetime import make_datetime, make_timestamp
 from cmsocial.db.lesson import Lesson
 from cmsocial.db.material import Material
-from cmsocial.db.location import City, Institute, Province, Region
 from cmsocial.db.socialcontest import SocialContest
 from cmsocial.db.socialtask import SocialTask, Tag, TaskScore, TaskTag
 from cmsocial.db.socialuser import SocialParticipation, SocialUser
@@ -400,18 +399,6 @@ class APIHandler(object):
         server.quit()
         return sent
 
-    def get_institute_info(self, institute_id):
-        info = dict()
-        if institute_id is not None:
-            institute = local.session.query(Institute)\
-                .filter(Institute.id == institute_id).first()
-            info['id'] = institute.id
-            info['name'] = institute.name
-            info['city'] = institute.city.name
-            info['province'] = institute.city.province.name
-            info['region'] = institute.city.province.region.name
-        return info
-
     def get_user_info(self, user):
         info = dict()
         info['username'] = user.username
@@ -419,8 +406,7 @@ class APIHandler(object):
         info['access_level'] = info['global_access_level']
         info['join_date'] = make_timestamp(user.social_user.registration_time)
         info['mail_hash'] = self.hash(user.email, 'md5')
-        info['institute'] = self.get_institute_info(
-            user.social_user.institute_id)
+        info['institute'] = user.social_user.institute_id
         info['first_name'] = user.first_name
         info['last_name'] = user.last_name
         info['tasks_solved'] = -1
@@ -525,35 +511,6 @@ class APIHandler(object):
             return 'Bad request'
         return err
 
-    def location_handler(self):
-        if local.data['action'] == 'get':
-            institute = local.session.query(Institute)\
-                .filter(Institute.id == local.data['id']).first()
-            if institute is None:
-                return 'Not found'
-            local.resp = self.get_institute_info(institute)
-        elif local.data['action'] == 'listregions':
-            out = local.session.query(Region).all()
-            local.resp['regions'] = [{'id': r.id, 'name': r.name} for r in out]
-        elif local.data['action'] == 'listprovinces':
-            out = local.session.query(Province)\
-                .filter(Province.region_id == local.data['id']).all()
-            local.resp['provinces'] = [{
-                'id': r.id,
-                'name': r.name
-            } for r in out]
-        elif local.data['action'] == 'listcities':
-            out = local.session.query(City)\
-                .filter(City.province_id == local.data['id']).all()
-            local.resp['cities'] = [{'id': r.id, 'name': r.name} for r in out]
-        elif local.data['action'] == 'listinstitutes':
-            out = local.session.query(Institute)\
-                .filter(Institute.city_id == local.data['id']).all()
-            local.resp['institutes'] = [{
-                'id': r.id,
-                'name': r.name
-            } for r in out]
-
     def sso_handler(self):
         if local.user is None:
             return 'Unauthorized'
@@ -639,7 +596,7 @@ class APIHandler(object):
             social_user.user = user
 
             if 'institute' in local.data:
-                social_user.institute_id = int(local.data['institute'])
+                social_user.institute_id = local.data['institute']
 
             try:
                 local.session.add(user)
@@ -766,7 +723,7 @@ class APIHandler(object):
                 return 'Unauthorized'
             if 'institute' in local.data and \
                     local.data['institute'] is not None:
-                local.user.social_user.institute_id = int(local.data['institute'])
+                local.user.social_user.institute_id = local.data['institute']
             if 'email' in local.data and \
                     local.data['email'] != '' and \
                     local.user.email != local.data['email']:
