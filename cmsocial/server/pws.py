@@ -24,7 +24,6 @@ from base64 import b64decode, b64encode
 from datetime import datetime, timedelta
 from email.mime.text import MIMEText
 from shutil import copyfileobj, rmtree
-from validate_email import validate_email
 import DNS
 
 import bcrypt
@@ -347,15 +346,12 @@ class APIHandler(object):
                 return 'This username is not available'
 
     def check_email(self, email):
-        try:
-            if self.EMAIL_REG.match(email) and validate_email(email, check_mx=True):
-                user = local.session.query(User).filter(User.email == email).first()
-                if user is not None:
-                    return 'E-mail already used'
-                return None
-            else:
-                return 'Invalid e-mail'
-        except DNS.Base.TimeoutError:
+        if self.EMAIL_REG.match(email):
+            user = local.session.query(User).filter(User.email == email).first()
+            if user is not None:
+                return 'E-mail already used'
+            return None
+        else:
             return 'Invalid e-mail'
 
     def hash(self, string, algo='sha256'):
