@@ -823,7 +823,7 @@ class APIHandler(object):
                 return 'Unauthorized'
             if 'institute' in local.data and \
                     local.data['institute'] is not None:
-                local.user.institute_id = int(local.data['institute'])
+                local.user.social_user.institute_id = int(local.data['institute'])
             if 'email' in local.data and \
                     local.data['email'] != '' and \
                     local.user.email != local.data['email']:
