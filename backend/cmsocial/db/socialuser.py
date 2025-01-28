@@ -18,7 +18,6 @@ from sqlalchemy.orm import relationship, backref
 from cms.db import Contest, Participation, User
 
 from cmsocial.db.base import Base
-from cmsocial.db.location import Institute
 
 
 class SocialUser(Base):
@@ -76,25 +75,7 @@ class SocialUser(Base):
     # CUSTOM FIELDS:
 
     # Institute
-    institute_id = Column(
-        Integer,
-        ForeignKey(
-            Institute.id,
-            onupdate="CASCADE",
-            ondelete="SET NULL"
-        ),
-        nullable=True,
-        index=True
-    )
-
-    institute = relationship(
-        Institute,
-        backref=backref(
-            "users",
-            cascade="all, delete-orphan",
-            passive_deletes=True
-        )
-    )
+    institute_id = Column(String, nullable=True, index=True)
 
     # List of tasktags (not "approved" yet) created by this user
     # FIXME: the following causes a circular dependency
