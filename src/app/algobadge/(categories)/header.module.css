@@ -1,0 +1,52 @@
+.progressStriped {
+  background-color: var(--progress-color);
+  background-image: repeating-linear-gradient(
+    135deg,
+    var(--progress-color),
+    var(--progress-color) 25%,
+    color-mix(in srgb, var(--progress-color) 85%, theme(colors.base-100)) 25%,
+    color-mix(in srgb, var(--progress-color) 85%, theme(colors.base-100)) 50%,
+    var(--progress-color) 50%,
+    var(--progress-color) 75%,
+    color-mix(in srgb, var(--progress-color) 85%, theme(colors.base-100)) 75%,
+    color-mix(in srgb, var(--progress-color) 85%, theme(colors.base-100)) 100%
+  );
+  background-size: 2rem 2rem;
+  animation: progressStriped 3s linear infinite;
+}
+
+@keyframes progressStriped {
+  100% {
+    background-position-x: 2rem;
+  }
+}
+
+.progressDefault {
+  --progress-color: theme(colors.base-content);
+  @apply progressStriped;
+}
+
+.progressHonorable {
+  --progress-color: theme(colors.green.600);
+  @apply progressStriped;
+}
+
+.progressBronze {
+  --progress-color: theme(colors.amber.600);
+  @apply progressStriped;
+}
+
+.progressSilver {
+  --progress-color: theme(colors.gray.400);
+  @apply progressStriped;
+}
+
+.progressGold {
+  --progress-color: theme(colors.amber.400);
+  @apply progressStriped;
+}
+
+.progressDiamond {
+  --progress-color: theme(colors.cyan.400);
+  @apply progressStriped;
+}

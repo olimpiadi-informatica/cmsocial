@@ -1,0 +1,49 @@
+.outerContainer {
+  @apply w-screen overflow-x-auto px-4 xl:-translate-x-[calc(50vw-640px)];
+}
+
+.innerContainer {
+  /* card-like style */
+  @apply rounded-box border border-base-content/10 bg-base-200 shadow-xl;
+  @apply mx-auto;
+}
+
+/*
+https://virtuoso.dev/customize-structure/
+
+components.Scroller (div)
+  |-viewport (div)
+    |-header(div* headerFooterTag)
+      |-components.Header
+    |-components.List (div)
+      |-components.Item (div+)
+        |-itemContent
+    |-footer(div* headerFooterTag)
+      |-components.Footer
+*/
+
+.scroller > div /* viewport */ {
+  @apply grid !w-min grid-cols-[inherit] gap-x-4 px-4 max-xl:min-w-[calc(100vw-2rem-2px)] xl:min-w-[calc(1278px-2rem)];
+}
+
+.scroller > div > div:first-child /* header */ {
+  @apply px-2 pb-2 pt-4 text-sm font-bold text-base-content/60;
+}
+
+.scroller > div > div {
+  @apply gap-y-2;
+}
+
+.scroller > div > div:first-child, /* header */
+.list,
+.item {
+  @apply col-span-full grid grid-cols-subgrid items-center text-center;
+}
+
+.item {
+  @apply text-nowrap rounded-btn p-2 hover:bg-base-content/10;
+}
+
+.scroller > div > div:last-child /* footer */ {
+  @apply col-span-full h-4;
+}
