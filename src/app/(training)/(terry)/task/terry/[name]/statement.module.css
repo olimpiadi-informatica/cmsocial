@@ -1,0 +1,6 @@
+.statement {
+    @apply prose max-w-full;
+    @apply prose-blockquote:rounded prose-blockquote:bg-warning/10 *:prose-blockquote:p-1 before:*:prose-blockquote:content-none;
+    @apply prose-img:mx-auto prose-img:rounded-box prose-img:bg-white prose-img:p-4;
+    @apply prose-hr:my-4;
+}

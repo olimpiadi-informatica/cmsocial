@@ -1,0 +1,82 @@
+{
+  "name": "training",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "biome check --write",
+    "translate": "lingui extract --clean"
+  },
+  "dependencies": {
+    "@fireworks-js/react": "^2.10",
+    "@icons-pack/react-simple-icons": "^10.0",
+    "@lingui/loader": "^4.11",
+    "@lingui/macro": "^4.11",
+    "@lingui/react": "^4.11",
+    "@mdx-js/loader": "^3.0",
+    "@mdx-js/react": "^3.0",
+    "@next/mdx": "^14.2",
+    "@next/third-parties": "^14.1",
+    "@olinfo/react-components": "^0.9",
+    "@olinfo/tailwind": "^0.1",
+    "@olinfo/terry-api": "^0.2",
+    "@olinfo/training-api": "^0.8",
+    "@shikijs/monaco": "^1.5",
+    "@types/d3-drag": "^3.0",
+    "@types/d3-force": "^3.0",
+    "@types/d3-path": "^3.1",
+    "@types/d3-selection": "^3.0",
+    "@types/lodash-es": "^4.17",
+    "@types/mdx": "^2.0",
+    "@types/node": "^22",
+    "@types/pdfobject": "^2.2",
+    "@types/react": "^18.2",
+    "@types/react-dom": "^18",
+    "@types/react-google-recaptcha": "^2.1",
+    "@types/wicg-file-system-access": "^2023.10.5",
+    "autoprefixer": "^10.0",
+    "clsx": "^2.1",
+    "d3-drag": "^3.0",
+    "d3-force": "^3.0",
+    "d3-path": "^3.1",
+    "d3-selection": "^3.0",
+    "katex": "^0.16",
+    "lodash-es": "^4.17",
+    "lucide-react": ">=0.395, <1",
+    "monaco-editor-core": "^0.52",
+    "next": "^14.1",
+    "next-mdx-remote": "^5.0",
+    "parse-entities": "^4.0",
+    "pdfobject": "^2.3",
+    "postcss": "^8.4",
+    "react": "^18.2",
+    "react-dom": "^18.2",
+    "react-google-recaptcha": "^3.1",
+    "react-pdf": "^9.0",
+    "react-virtuoso": "^4.7",
+    "recharts": "^2.12",
+    "rehype-katex": "^7.0",
+    "remark-math": "^6.0",
+    "shiki": "^1.5",
+    "swr": "^2.2",
+    "tailwindcss": "^3.3",
+    "typescript": "^5.4",
+    "zod": "^3.23"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@lingui/cli": "^4.11",
+    "@lingui/swc-plugin": "=4.0.9"
+  },
+  "resolutions": {
+    "@types/react": "18.3"
+  },
+  "postcss": {
+    "plugins": {
+      "tailwindcss": {},
+      "autoprefixer": {}
+    }
+  }
+}

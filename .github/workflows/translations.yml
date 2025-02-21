@@ -1,0 +1,21 @@
+name: Code quality
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  translations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Extract translations
+        run: yarn translate
+
+      - name: Check for outdated translations
+        run: git diff --exit-code
