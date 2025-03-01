@@ -13,7 +13,7 @@ export function LoginButton() {
     <Link
       href={`/login?redirect=${encodeURIComponent(path)}`}
       className="btn btn-ghost no-animation flex-nowrap">
-      <Trans>Accedi</Trans> <LogIn />
+      <Trans>Accedi / Registrati</Trans> <LogIn />
     </Link>
   );
 }

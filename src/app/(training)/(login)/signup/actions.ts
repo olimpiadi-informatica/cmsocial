@@ -11,8 +11,9 @@ export async function signup(
   password: string,
   firstName: string,
   lastName: string,
-  institute?: string,
-  recaptchaResponse?: string,
+  institute: string | undefined,
+  recaptchaResponse: string | undefined,
+  redirectUrl: string,
 ): Promise<string | undefined> {
   try {
     await signupAPI(email, username, password, firstName, lastName, institute, recaptchaResponse);
@@ -20,5 +21,5 @@ export async function signup(
     return (err as Error).message;
   }
   revalidatePath("/", "layout");
-  redirect("/");
+  redirect(redirectUrl);
 }

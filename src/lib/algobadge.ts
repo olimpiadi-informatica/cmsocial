@@ -26,6 +26,7 @@ export type Category = {
   parent: CategoryId | null;
   position: [number, number];
   tasks: Task[];
+  hasHonorable?: boolean;
 };
 
 export const algobadge: Record<CategoryId, Category> = {
@@ -118,6 +119,7 @@ export const algobadge: Record<CategoryId, Category> = {
         name: "massimo",
       },
     ],
+    hasHonorable: true,
   },
   [CategoryId.Lib]: {
     title: msg`Funzioni di Libreria`,
@@ -136,6 +138,7 @@ export const algobadge: Record<CategoryId, Category> = {
         name: "autogrill",
       },
     ],
+    hasHonorable: true,
   },
   [CategoryId.Math]: {
     title: msg`Matematica`,
@@ -154,6 +157,7 @@ export const algobadge: Record<CategoryId, Category> = {
         name: "abc_rsa",
       },
     ],
+    hasHonorable: true,
   },
   [CategoryId.Rec]: {
     title: msg`Induzione e ricorsione`,
@@ -172,6 +176,7 @@ export const algobadge: Record<CategoryId, Category> = {
         name: "ctf",
       },
     ],
+    hasHonorable: true,
   },
 };
 
@@ -199,12 +204,12 @@ export type CategoryBadge = {
   badge: Badge;
 };
 
-function computeBadge(score: number, maxScore: number): Badge {
+function computeBadge(score: number, maxScore: number, hasHonorable?: boolean): Badge {
   if (score >= maxScore * diamondScore) return Badge.Diamond;
   if (score >= maxScore * goldScore) return Badge.Gold;
   if (score >= maxScore * silverScore) return Badge.Silver;
   if (score >= maxScore * bronzeScore) return Badge.Bronze;
-  if (score >= maxScore * honorableScore) return Badge.Honorable;
+  if (score >= maxScore * honorableScore && hasHonorable) return Badge.Honorable;
   return Badge.None;
 }
 
@@ -277,7 +282,7 @@ function computeCategoryBadge(
     score: Math.round(score * 10) / 10,
     maxScore,
     tasks,
-    badge: computeBadge(score, maxScore),
+    badge: computeBadge(score, maxScore, category.hasHonorable),
   };
 }
 
@@ -317,6 +322,11 @@ export function getUserBadges(
   unlock?: boolean,
 ) {
   const badges = computeCategoryBadges(user, terryScores, unlock ?? false);
-  const totalBadge = badges ? (Math.min(...map(badges, "badge")) as Badge) : Badge.None;
+  let totalBadge = Math.max(Math.min(...map(badges, "badge")), Badge.Honorable) as Badge;
+  for (const [id, category] of Object.entries(algobadge)) {
+    if (category.hasHonorable && badges[id as CategoryId].badge === Badge.None) {
+      totalBadge = Badge.None;
+    }
+  }
   return { badges, totalBadge };
 }

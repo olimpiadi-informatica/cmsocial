@@ -1,4 +1,4 @@
-name: Code quality
+name: Check translations
 
 on:
   push:

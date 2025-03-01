@@ -3,7 +3,7 @@ import Link from "next/link";
 import { msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import clsx from "clsx";
-import { Gem, type LucideIcon, Medal } from "lucide-react";
+import { Gem, LockKeyholeOpen, type LucideIcon, Medal } from "lucide-react";
 
 import {
   Badge,
@@ -75,7 +75,16 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
           </div>
         </div>
         <div className="relative mt-4 h-8 w-full">
-          <Threshold color={badgeStroke[Badge.Honorable]} score={honorableScore} />
+          {category.hasHonorable ? (
+            <Threshold color={badgeStroke[Badge.Honorable]} score={honorableScore} />
+          ) : (
+            <Threshold
+              color="stroke-base-content"
+              score={honorableScore}
+              icon={LockKeyholeOpen}
+              size={32}
+            />
+          )}
           <Threshold color={badgeStroke[Badge.Bronze]} score={bronzeScore} />
           <Threshold color={badgeStroke[Badge.Silver]} score={silverScore} />
           <Threshold color={badgeStroke[Badge.Gold]} score={goldScore} />

@@ -14,7 +14,7 @@ import {
   YAxis,
 } from "recharts";
 
-import { Badge, algobadge } from "~/lib/algobadge";
+import { Badge, type CategoryId, algobadge } from "~/lib/algobadge";
 
 import { type UserBadges, badgeColor, badgeName } from "./common";
 import { TooltipContent } from "./tooltip";
@@ -43,9 +43,11 @@ export function SummaryBadges({ users }: { users: UserBadges }) {
 
     for (const user of Object.values(users)) {
       const count = Object.fromEntries(filteredBadges.map((badge) => [badge, 0]));
-      for (const value of Object.values(user.badges)) {
-        for (const badge of Object.keys(count)) {
-          if (value.badge >= Number(badge) && value.badge <= Badge.Diamond) {
+      for (const [id, category] of Object.entries(algobadge)) {
+        for (const badge of filteredBadges) {
+          if (badge === Badge.Honorable && !category.hasHonorable) continue;
+          const userBadge = user.badges[id as CategoryId].badge;
+          if (userBadge >= badge && userBadge <= Badge.Diamond) {
             count[badge] += 1;
           }
         }
