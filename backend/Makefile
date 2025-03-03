@@ -1,7 +1,7 @@
-COMMITID=$(shell git rev-parse HEAD)
+BUILD_ID=$(shell date +"%d-%m-%y")
 
 ROOT=cmsocial-web-build
-DEST=$(ROOT)/$(COMMITID)
+DEST=$(ROOT)/$(BUILD_ID)
 MAKEROOT=$(shell pwd)
 SHELL := /bin/bash
 
@@ -90,7 +90,7 @@ $(DEST)/%.html: cmsocial-web/%.html | $(DEST)
 
 $(ROOT)/index.html: cmsocial-web/index.html node_modules | $(DEST)
 	node_modules/.bin/cdnify $(CDNFLAGS) $< | $(STRIPDEBUG) > $@
-	sed "s/COMMIT_ID_HERE/$(COMMITID)/" -i $@
+	sed "s/COMMIT_ID_HERE/$(BUILD_ID)/" -i $@
 	rm $(DEST)/index.html
 
 $(DEST)/styles/main.css: $(CSS)
@@ -100,7 +100,7 @@ tmp/%.css: cmsocial-web/%.less node_modules | tmp
 	node_modules/.bin/lessc $< $@
 
 $(DEST)/scripts/app.js: $(TMPJS) | node_modules
-	${BABEL} $^ | sed "s/COMMIT_ID_HERE/$(COMMITID)/" | ${UGLIFY} > $@
+	${BABEL} $^ | sed "s/COMMIT_ID_HERE/$(BUILD_ID)/" | ${UGLIFY} > $@
 
 tmp/%.js: cmsocial-web/%.js | tmp
 	cat $< | $(STRIPDEBUG) > $@
