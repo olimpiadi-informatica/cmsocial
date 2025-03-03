@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from gevent import monkey
 monkey.patch_all()
 
@@ -24,7 +22,6 @@ from base64 import b64decode, b64encode
 from datetime import datetime, timedelta
 from email.mime.text import MIMEText
 from shutil import copyfileobj, rmtree
-import DNS
 
 import bcrypt
 import gevent
@@ -64,7 +61,7 @@ from cmsocial.db.test import Test, TestScore
 logger = logging.getLogger(__name__)
 local = gevent.local.local()
 
-config = configparser.SafeConfigParser()
+config = configparser.ConfigParser()
 config.read([
     os.environ.get("CMSOCIAL_CONFIG", '/usr/local/etc/cmsocial.ini'),
     './config/cmsocial.ini'
@@ -103,10 +100,6 @@ class APIHandler(object):
                     '/api/<target>',
                     methods=['POST'],
                     endpoint='globaljsondata'),
-                Rule(
-                    '/static/<path:path>',
-                    methods=['GET'],
-                    endpoint='globalstaticfile'),
                 Rule(
                     '/<contest>/api/files/<digest>',
                     methods=['GET', 'POST'],
@@ -162,18 +155,6 @@ class APIHandler(object):
                 return self.dbfile_handler(environ, args)
         except HTTPException as e:
             return e
-
-        # static_file_handler checks for a valid contest
-        if endpoint == 'globalstaticfile':
-            return self.static_file_handler(environ, args['path'])
-        elif endpoint == 'staticfile':
-            return self.static_file_handler(environ, args['path'],
-                                            args['contest'])
-        elif endpoint == 'index':
-            return self.static_file_handler(environ, 'index.html',
-                                            args['contest'])
-        elif endpoint == 'globalindex':
-            return self.static_file_handler(environ, 'index.html')
 
         request = Request(environ)
         if request.mimetype != 'application/json':
@@ -524,44 +505,6 @@ class APIHandler(object):
         response.direct_passthrough = True
         response.cache_control.max_age = 31536000
         response.cache_control.public = True
-        return response
-
-    def static_file_handler(self, environ, filename, contest_name=None):
-        # TODO: implement files that do not depend on the contest
-        if contest_name is None:
-            return NotFound()
-
-        path = os.path.join(
-            pkg_resources.resource_filename('cmsocial-web-build', ''),
-            filename)
-
-        try:
-            response = Response()
-            response.status_code = 200
-            response.mimetype = 'application/octet-stream'
-            mimetype = mimetypes.guess_type(filename)[0]
-            if mimetype is not None:
-                response.mimetype = mimetype
-            response.last_modified = \
-                datetime.utcfromtimestamp(os.path.getmtime(path))\
-                        .replace(microsecond=0)
-            response.response = wrap_file(environ, io.open(path, 'rb'))
-            response.direct_passthrough = True
-        except OSError:
-            response = Response()
-            response.status_code = 404
-            response.data = "404 Not Found"
-
-        if filename == "index.html":
-            # Disable cache, so that the user will notice if the
-            # app.COMMIT_ID.js file has a new name
-
-            response.headers['Last-Modified'] = datetime.now()
-            response.headers[
-                'Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
-            response.headers['Pragma'] = 'no-cache'
-            response.headers['Expires'] = '-1'
-
         return response
 
     # Handlers that require JSON data
