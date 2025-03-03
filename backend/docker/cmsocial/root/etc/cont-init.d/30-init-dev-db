@@ -1,0 +1,44 @@
+#!/usr/bin/with-contenv bash
+
+set -o pipefail
+
+echo "Development DB initialization script:"
+if [ -z "$INITIALIZE_DEV_DB" ]; then
+    echo "We are not in a local development instance, exit."
+    exit 0
+fi
+
+if [ -n "$CMS_DATABASE" ]; then
+    db="$CMS_DATABASE"
+elif [ -n "$CMS_DATABASE_FILE" ]; then
+    db=$(cat "$CMS_DATABASE_FILE")
+else
+    db="postgres://$(grep -E -o 'postgresql(+psycopg2)?[^"]*' /config/cms.conf | cut -d/ -f 3-)"
+fi
+
+function run_query() {
+    psql "$db" -c "$1;" --csv | tail -n +2
+}
+
+# Wait for the database to come up
+for _ in $(seq 1 20); do
+    if ! pg_isready -h postgres ; then
+        echo "Waiting for postgres to come up..."
+        sleep 1
+    else
+        echo "Postgres is up!"
+        break
+    fi
+done
+
+# Check if the database is created
+res=$(run_query "SELECT EXISTS (SELECT FROM information_schema.tables WHERE table_name = 'admins')")
+if [ "$res" != "t" ]; then
+    echo "Creating the database"
+    createdb --host=postgres --username=postgres cmsdb
+    python3 -c "import cmsocial.db; from cms.db import metadata; metadata.create_all()"
+    cmsocialInitDevDB
+    psql --host=postgres --username=postgres cmsdb < /cmsocial/sql_scripts/create_triggers.sql
+else
+    echo "Database is already initialized"
+fi
