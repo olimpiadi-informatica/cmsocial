@@ -16,6 +16,7 @@ setup(
     entry_points={
         "console_scripts": [
             "cmsPracticeWebServer=cmsocial.server.pws:main",
+            "cmsocialInitDevDB=cmsocial.scripts.init_dev_db:main",
             "cmsocialSyncTasks=cmsocial.scripts.synctasks:main",
             "cmsocialSyncUsers=cmsocial.scripts.syncusers:main",
             "cmsocialDuplicateContest=cmsocial.scripts.duplicate_contest:main",
