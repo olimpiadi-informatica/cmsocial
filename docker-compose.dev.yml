@@ -1,0 +1,70 @@
+services:
+  dev_db:
+    image: postgres:16
+    hostname: postgres
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+  dev_cms:
+    build:
+      context: cms
+      dockerfile: docker/core/Dockerfile
+    hostname: cms
+    depends_on:
+      - "dev_db"
+    cgroup: host
+    privileged: true
+    environment:
+      PUID: 1000
+      PGID: 1000
+      TZ: Europe/Rome
+      CMS_PROXY_SERVICE_DISABLED: "true"
+    volumes:
+      - ./dev-config:/config
+
+  dev_backend:
+    build:
+      context: backend
+      dockerfile: docker/cmsocial/Dockerfile
+    hostname: backend
+    environment:
+      INITIALIZE_DEV_DB: "true"
+    depends_on:
+      - "dev_db"
+      - "dev_cms"
+    volumes:
+      - ./dev-config:/config
+
+  dev_frontend:
+    build:
+      context: .
+      dockerfile: tools/Dockerfile.dev
+    hostname: frontend
+    environment:
+      NEXT_PUBLIC_TRAINING_API_URL: http://dev.olinfo.it:8000/api
+      NEXT_PUBLIC_TERRY_URL: http://dev.olinfo.it:8000/api-terry
+    depends_on:
+      - "dev_backend"
+
+  dev_old_frontend:
+    build:
+      context: backend
+      dockerfile: docker/cmsocial-web/Dockerfile
+    hostname: old_frontend
+    depends_on:
+      - "dev_backend"
+
+  dev:
+    image: nginx
+    hostname: dev.olinfo.it
+    depends_on:
+      - "dev_backend"
+      - "dev_frontend"
+      - "dev_old_frontend"
+      - "dev_cms"
+    ports:
+      - 8000:8000
+    environment:
+      NGINX_PORT: 8000
+    volumes:
+      - ./dev-config/nginx:/etc/nginx/conf.d
