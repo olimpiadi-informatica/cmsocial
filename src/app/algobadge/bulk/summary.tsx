@@ -3,23 +3,20 @@ import { useLingui } from "@lingui/react";
 import { Card } from "@olinfo/react-components";
 import { mapValues } from "lodash-es";
 
-import { type UserBadges, badgeName } from "./common";
+import { type UserBadge, badgeName } from "./common";
 import { SummaryBadges } from "./summary-badges";
 import { SummaryCategories } from "./summary-categories";
 import { SummaryTotal } from "./summary-total";
 
-export function Summary({ users }: { users: UserBadges }) {
+export function Summary({ users }: { users: UserBadge[] }) {
   const { _ } = useLingui();
 
   const download = async () => {
-    const userBadges = mapValues(users, (user) =>
-      user
-        ? {
-            total: _(badgeName[user.totalBadge]),
-            ...mapValues(user.badges, ({ badge }) => _(badgeName[badge])),
-          }
-        : null,
-    );
+    const userBadges = users.map((user) => ({
+      username: user.username,
+      total: _(badgeName[user.totalBadge]),
+      ...mapValues(user.badges, ({ badge }) => _(badgeName[badge])),
+    }));
 
     try {
       const handle = await window.showSaveFilePicker({ suggestedName: "algobadge.json" });

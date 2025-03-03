@@ -16,7 +16,7 @@ import {
 
 import { Badge, type CategoryId, algobadge } from "~/lib/algobadge";
 
-import { type UserBadges, badgeColor, badgeName } from "./common";
+import { type UserBadge, badgeColor, badgeName } from "./common";
 import { TooltipContent } from "./tooltip";
 
 type DataEntry = { name: Badge; fill: string; [count: string]: any };
@@ -24,7 +24,7 @@ type Data = DataEntry[];
 
 const filteredBadges = [Badge.Honorable, Badge.Bronze, Badge.Silver, Badge.Gold, Badge.Diamond];
 
-export function SummaryBadges({ users }: { users: UserBadges }) {
+export function SummaryBadges({ users }: { users: UserBadge[] }) {
   const { _ } = useLingui();
 
   const numCategories = Object.keys(algobadge).length;
@@ -41,7 +41,7 @@ export function SummaryBadges({ users }: { users: UserBadges }) {
       ]),
     );
 
-    for (const user of Object.values(users)) {
+    for (const user of users) {
       const count = Object.fromEntries(filteredBadges.map((badge) => [badge, 0]));
       for (const [id, category] of Object.entries(algobadge)) {
         for (const badge of filteredBadges) {

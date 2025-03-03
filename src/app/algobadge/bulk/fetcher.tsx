@@ -1,55 +1,77 @@
-import { type Dispatch, type SetStateAction, useEffect, useMemo } from "react";
+import { useEffect, useId, useSyncExternalStore } from "react";
 
 import { getScores as getTerryScores } from "@olinfo/terry-api";
 import { getUser } from "@olinfo/training-api";
-import useSWR from "swr";
+import { compact } from "lodash-es";
 
 import { getUserBadges } from "~/lib/algobadge";
 
-import { BadgeExtra, type UserBadge, type UserBadges } from "./common";
+import { BadgeExtra, type UserBadge } from "./common";
 
-export function UsersFetcher({
-  usernames,
-  setUsers,
-}: {
-  usernames: string[];
-  setUsers: Dispatch<SetStateAction<UserBadges>>;
-}) {
-  return usernames.map((username) => (
-    <UserFetcher key={username} username={username} setUsers={setUsers} />
-  ));
-}
+const pending: string[] = [];
+let fetching = 0;
+const userBadges = new Map<string, UserBadge>();
+const listeners = new Map<string, () => void>();
+let version = 0;
 
-function UserFetcher({
-  username,
-  setUsers,
-}: {
-  username: string;
-  setUsers: Dispatch<SetStateAction<UserBadges>>;
-}) {
-  const { data, isLoading } = useSWR(
-    ["algobadge", username],
-    ([, username]) => Promise.all([getUser(username), getTerryScores(username)]),
-    { revalidateIfStale: false, revalidateOnFocus: false },
-  );
+function fetchNext() {
+  if (fetching < navigator.hardwareConcurrency) {
+    const username = pending.shift();
+    if (!username) return;
 
-  const user = data?.[0];
-  const terry = data?.[1];
-
-  const { badges, totalBadge } = useMemo(() => getUserBadges(user, terry, true), [user, terry]);
-
-  useEffect(() => {
-    setUsers((prev) => ({
-      ...prev,
-      [username]: {
+    fetching++;
+    Promise.all([getUser(username), getTerryScores(username)]).then(([user, terry]) => {
+      const { badges, totalBadge } = getUserBadges(user, terry, true);
+      updateUser(username, {
         username,
         user,
         badges,
-        totalBadge: isLoading ? BadgeExtra.Loading : user ? totalBadge : BadgeExtra.Invalid,
-      } satisfies UserBadge,
-    }));
-    return () => setUsers(({ [username]: _user, ...users }) => users);
-  }, [badges, totalBadge, isLoading, user, setUsers, username]);
+        totalBadge: user ? totalBadge : BadgeExtra.Invalid,
+      });
 
-  return null;
+      fetching--;
+      fetchNext();
+    });
+  }
+}
+
+function updateUser(username: string, badges: UserBadge) {
+  userBadges.set(username, badges);
+
+  version++;
+  if (fetching === navigator.hardwareConcurrency && version % 32 !== 0) return;
+
+  for (const onChange of listeners.values()) {
+    onChange();
+  }
+}
+
+export function useBadges(usernames: string[]) {
+  const id = useId();
+
+  useEffect(() => {
+    for (const username of usernames) {
+      if (userBadges.has(username)) continue;
+
+      const { badges } = getUserBadges(undefined, undefined, true);
+      updateUser(username, {
+        username,
+        user: undefined,
+        badges,
+        totalBadge: BadgeExtra.Loading,
+      });
+      pending.push(username);
+      fetchNext();
+    }
+  }, [usernames]);
+
+  useSyncExternalStore(
+    (onChange) => {
+      listeners.set(id, onChange);
+      return () => listeners.delete(id);
+    },
+    () => version,
+    () => version,
+  );
+  return compact(Array.from(new Set(usernames), (username) => userBadges.get(username)));
 }

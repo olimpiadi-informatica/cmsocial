@@ -15,13 +15,13 @@ import {
 
 import { Badge, type CategoryId, algobadge } from "~/lib/algobadge";
 
-import { type ExtendedBadge, type UserBadges, badgeColor, badgeName, badgeTypes } from "./common";
+import { type ExtendedBadge, type UserBadge, badgeColor, badgeName, badgeTypes } from "./common";
 import { TooltipContent } from "./tooltip";
 
 type DataEntry = { name: CategoryId } & { [key in ExtendedBadge]?: number };
 type Data = DataEntry[];
 
-export function SummaryCategories({ users }: { users: UserBadges }) {
+export function SummaryCategories({ users }: { users: UserBadge[] }) {
   const { _ } = useLingui();
 
   const data = useMemo((): Data => {
@@ -33,7 +33,7 @@ export function SummaryCategories({ users }: { users: UserBadges }) {
       }),
     );
 
-    for (const user of Object.values(users)) {
+    for (const user of users) {
       if (user.totalBadge <= Badge.Diamond) {
         for (const [name, value] of Object.entries(user.badges)) {
           badges[name as CategoryId][value.badge]! += 1;

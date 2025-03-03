@@ -8,17 +8,16 @@ import { uniq } from "lodash-es";
 
 import { algobadge } from "~/lib/algobadge";
 
-import type { UserBadges } from "./common";
-import { UsersFetcher } from "./fetcher";
+import { useBadges } from "./fetcher";
 import { Summary } from "./summary";
 import { UsersTable } from "./table";
 
 export default function Page() {
   const { _ } = useLingui();
 
-  const [users, setUsers] = useState<UserBadges>({});
   const [usernames, setUsernames] = useState<string>();
   const parsedUsernames = uniq(usernames?.split(/\s+/).filter(Boolean) ?? []);
+  const users = useBadges(parsedUsernames);
 
   useEffect(() => {
     if (usernames === undefined) {
@@ -41,11 +40,10 @@ export default function Page() {
           autoFocus
         />
       </div>
-      <UsersFetcher usernames={parsedUsernames} setUsers={setUsers} />
       <div className="m-4">
         <Summary users={users} />
       </div>
-      <UsersTable users={parsedUsernames.filter((u) => u in users).map((u) => users[u])} />
+      <UsersTable users={users} />
     </div>
   );
 }

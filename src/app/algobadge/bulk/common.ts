@@ -18,8 +18,6 @@ export type UserBadge = {
   totalBadge: ExtendedBadge;
 };
 
-export type UserBadges = Record<string, UserBadge>;
-
 export const badgeTypes: ExtendedBadge[] = [
   Badge.None,
   Badge.Honorable,

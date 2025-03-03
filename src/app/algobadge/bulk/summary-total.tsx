@@ -3,17 +3,17 @@ import { useMemo } from "react";
 import { useLingui } from "@lingui/react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import { type ExtendedBadge, type UserBadges, badgeColor, badgeName, badgeTypes } from "./common";
+import { type ExtendedBadge, type UserBadge, badgeColor, badgeName, badgeTypes } from "./common";
 import { TooltipContent } from "./tooltip";
 
-export function SummaryTotal({ users }: { users: UserBadges }) {
+export function SummaryTotal({ users }: { users: UserBadge[] }) {
   const { _ } = useLingui();
 
   const data = useMemo(() => {
     const badges = Object.fromEntries(
       badgeTypes.map((badge) => [badge, { name: badge, value: 0 }]),
     );
-    for (const user of Object.values(users)) {
+    for (const user of users) {
       badges[user.totalBadge].value += 1;
     }
 
