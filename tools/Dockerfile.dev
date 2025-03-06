@@ -9,5 +9,7 @@ RUN yarn install --frozen-lockfile
 
 COPY ./ ./
 
+LABEL org.opencontainers.image.source=https://github.com/olimpiadi-informatica/cmsocial
+
 CMD ["yarn", "dev"]
 EXPOSE 3000

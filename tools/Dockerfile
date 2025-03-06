@@ -18,4 +18,6 @@ COPY --from=builder /app/.next/standalone ./
 COPY --from=builder /app/.next/static ./.next/static
 COPY ./public ./public
 
+LABEL org.opencontainers.image.source=https://github.com/olimpiadi-informatica/cmsocial
+
 CMD ["node", "server.js"]

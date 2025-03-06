@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-ubuntu:focal as initial
+FROM ghcr.io/linuxserver/baseimage-ubuntu:focal AS initial
 
 # Install build dependencies
 RUN apt update
@@ -43,8 +43,7 @@ COPY docker/cmsocial/root /
 
 # Multi-stage build merging all the layers from the previous step
 FROM ghcr.io/linuxserver/baseimage-ubuntu:focal
-LABEL org.opencontainers.image.source https://github.com/algorithm-ninja/cmsocial
-LABEL maintainer="Edoardo Morassutto <edoardo.morassutto@gmail.com>"
+LABEL org.opencontainers.image.source=https://github.com/algorithm-ninja/cmsocial
 
 COPY --from=initial / /
 WORKDIR /cmsocial
