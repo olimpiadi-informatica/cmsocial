@@ -406,7 +406,7 @@ class APIHandler(object):
         info['access_level'] = info['global_access_level']
         info['join_date'] = make_timestamp(user.social_user.registration_time)
         info['mail_hash'] = self.hash(user.email, 'md5')
-        info['institute'] = user.social_user.institute_id
+        info['institute'] = user.social_user.institute_code
         info['first_name'] = user.first_name
         info['last_name'] = user.last_name
         info['tasks_solved'] = -1
@@ -596,7 +596,7 @@ class APIHandler(object):
             social_user.user = user
 
             if 'institute' in local.data:
-                social_user.institute_id = local.data['institute']
+                social_user.institute_code = local.data['institute']
 
             try:
                 local.session.add(user)
@@ -714,7 +714,7 @@ class APIHandler(object):
                 .order_by(desc(User.id))
             if 'institute' in local.data:
                 query = query\
-                    .filter(SocialUser.institute_id == local.data['institute'])
+                    .filter(SocialUser.institute_code == local.data['institute'])
             participations, local.resp['num'] = self.sliced_query(query)
             local.resp['users'] = list(map(self.get_participation_info,
                                            participations))
@@ -723,7 +723,7 @@ class APIHandler(object):
                 return 'Unauthorized'
             if 'institute' in local.data and \
                     local.data['institute'] is not None:
-                local.user.social_user.institute_id = local.data['institute']
+                local.user.social_user.institute_code = local.data['institute']
             if 'email' in local.data and \
                     local.data['email'] != '' and \
                     local.user.email != local.data['email']:

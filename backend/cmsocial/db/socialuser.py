@@ -75,7 +75,8 @@ class SocialUser(Base):
     # CUSTOM FIELDS:
 
     # Institute
-    institute_id = Column(String, nullable=True, index=True)
+    institute_id = Column(Integer, nullable=True, index=True)
+    institute_code = Column(String, nullable=True, index=True)
 
     # List of tasktags (not "approved" yet) created by this user
     # FIXME: the following causes a circular dependency

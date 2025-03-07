@@ -1,21 +1,10 @@
 BEGIN;
 
 ALTER TABLE
-  social_users DROP COLUMN institute_id;
-
-DROP TABLE institutes;
-
-DROP TABLE cities;
-
-DROP TABLE provinces;
-
-DROP TABLE regions;
-
-ALTER TABLE
   social_users
 ADD
-  COLUMN institute_id VARCHAR;
+  COLUMN institute_code VARCHAR;
 
-CREATE INDEX ON social_users (institute_id);
+CREATE INDEX ON social_users (institute_code);
 
 ROLLBACK;
