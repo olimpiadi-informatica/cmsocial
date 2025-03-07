@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import { BookmarkCheck, Gem, Medal, TriangleAlert } from "lucide-react";
 
-import { Badge, badgeColor, algobadge } from "~/lib/algobadge";
+import { Badge, algobadge, badgeColor } from "~/lib/algobadge";
 
 export function Home({ totalBadge }: { totalBadge: Badge }) {
   const honorable = Object.entries(algobadge)
