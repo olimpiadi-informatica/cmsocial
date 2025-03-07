@@ -193,6 +193,7 @@ export async function getSchool(schoolId: string | undefined | null): Promise<st
         schools(filters: {externalId: {exact: "${schoolId}"}}) {
           edges {
             node {
+              externalId
               name
               type {
                 name
