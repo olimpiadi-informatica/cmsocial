@@ -12,7 +12,7 @@ import {
   NavbarSubmenu,
 } from "@olinfo/react-components";
 import clsx from "clsx";
-import { Gem, Medal } from "lucide-react";
+import { BookmarkCheck, BookmarkX, Gem, Medal } from "lucide-react";
 
 import { LocaleDropdown } from "~/components/navbar/locale-dropdown";
 import { UserDropdown } from "~/components/navbar/user-dropdown";
@@ -26,7 +26,9 @@ export function Navbar({ badge }: { badge: Badge }) {
   return (
     <BaseNavbar color="bg-base-300 text-base-content">
       <NavbarBrand>
-        <Title badge={badge} />
+        <Link href="/algobadge">
+          <Title badge={badge} />
+        </Link>
       </NavbarBrand>
       <NavbarMenu>
         <NavbarMenuItem>
@@ -83,13 +85,27 @@ function Title({ badge }: { badge: Badge }) {
       <span className={clsx("max-xs:text-2xl text-4xl", bronze)}>B</span>A
       <span className={diamond}>D</span>
       GE
-      {badge >= Badge.Honorable && badge < Badge.Diamond && (
+      {badge <= Badge.None && (
+        <BookmarkX
+          size={32}
+          strokeWidth={2.5}
+          className="ml-2 inline-block align-sub max-sm:hidden text-error"
+        />
+      )}
+      {badge === Badge.Honorable && (
+        <BookmarkCheck
+          size={32}
+          strokeWidth={2.5}
+          className={clsx("ml-2 inline-block align-sub max-sm:hidden", honorable)}
+        />
+      )}
+      {badge >= Badge.Bronze && badge < Badge.Diamond && (
         <Medal
           size={32}
           strokeWidth={2.5}
           className={clsx(
             "ml-2 inline-block align-sub last:*:hidden max-sm:hidden",
-            gold ?? silver ?? bronze ?? honorable,
+            gold ?? silver ?? bronze,
           )}
         />
       )}

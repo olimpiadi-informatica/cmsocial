@@ -3,7 +3,14 @@ import Link from "next/link";
 import { msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import clsx from "clsx";
-import { Gem, LockKeyholeOpen, type LucideIcon, Medal } from "lucide-react";
+import {
+  BookmarkCheck,
+  BookmarkX,
+  Gem,
+  LockKeyholeOpen,
+  type LucideIcon,
+  Medal,
+} from "lucide-react";
 
 import {
   Badge,
@@ -75,8 +82,13 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
           </div>
         </div>
         <div className="relative mt-4 h-8 w-full">
+          <Threshold color="stroke-error" score={0} icon={BookmarkX} />
           {category.hasHonorable ? (
-            <Threshold color={badgeStroke[Badge.Honorable]} score={honorableScore} />
+            <Threshold
+              color={badgeStroke[Badge.Honorable]}
+              score={honorableScore}
+              icon={BookmarkCheck}
+            />
           ) : (
             <Threshold
               color="stroke-base-content"
@@ -124,7 +136,11 @@ function Threshold({ color, score, icon, size }: ThresholdProps) {
   const Icon = icon ?? Medal;
   return (
     <Icon
-      className={clsx("absolute -translate-x-full", color, Icon === Medal && "last:*:hidden")}
+      className={clsx(
+        "absolute -translate-x-1/2 first:translate-x-0 last:-translate-x-full",
+        color,
+        Icon === Medal && "last:*:hidden",
+      )}
       size={size ?? 36}
       style={{ left: `${score * 100}%` }}
     />

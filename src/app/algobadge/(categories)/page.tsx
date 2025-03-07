@@ -9,7 +9,7 @@ import { Badge, type CategoryId, algobadge, getUserBadges } from "~/lib/algobadg
 import { loadLocale } from "~/lib/locale";
 
 import { resources } from "./_resources";
-import Home from "./_resources/home.mdx";
+import { Home } from "./_resources/home";
 import { Header } from "./header";
 import { Navbar } from "./navbar";
 import { Tree } from "./tree";
@@ -60,7 +60,7 @@ export default async function Page({ searchParams }: Props) {
         <div className="prose mt-8 max-w-full md:prose-lg">
           {category && <Header category={algobadge[category]} badge={badges[category]} />}
           <div className="[&_svg]:inline-block [&_svg]:align-text-top [&_svg]:me-1">
-            {Resources ? <Resources /> : <Home />}
+            {Resources ? <Resources /> : <Home totalBadge={totalBadge} />}
           </div>
         </div>
         {totalBadge === Badge.Diamond && <Fireworks />}
