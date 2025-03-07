@@ -223,6 +223,7 @@ msgstr "Compilazione fallita"
 msgid "Compilazione in corso"
 msgstr "Compilazione in corso"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Comune"
 msgstr "Comune"
@@ -533,6 +534,7 @@ msgstr "Invia soluzione"
 msgid "Iscriviti"
 msgstr "Iscriviti"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Istituto"
 msgstr "Istituto"
@@ -843,6 +845,7 @@ msgstr "Profilo di {username}"
 msgid "Programmazione dinamica"
 msgstr "Programmazione dinamica"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Provincia"
 msgstr "Provincia"
@@ -871,6 +874,7 @@ msgstr "Questo input scade <0/>."
 msgid "Recupera password"
 msgstr "Recupera password"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Regione"
 msgstr "Regione"
@@ -922,18 +926,22 @@ msgstr "Scarica input"
 msgid "Scarica output"
 msgstr "Scarica output"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli il comune"
 msgstr "Scegli il comune"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli la provincia"
 msgstr "Scegli la provincia"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli la regione"
 msgstr "Scegli la regione"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli la scuola"
 msgstr "Scegli la scuola"
@@ -950,6 +958,10 @@ msgstr "Scuola cambiata con successo"
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scuola di provenienza"
 msgstr "Scuola di provenienza"
+
+#: src/app/(training)/(login)/signup/page-client.tsx
+msgid "Scuola di provenienza (opzionale)"
+msgstr "Scuola di provenienza (opzionale)"
 
 #: src/app/fibonacci/navbar.tsx
 #: src/app/fibonacci/page.tsx
