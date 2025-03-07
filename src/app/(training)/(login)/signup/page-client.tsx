@@ -17,6 +17,8 @@ import type { Contest } from "@olinfo/training-api";
 import ReCaptchaWidget, { type ReCAPTCHA } from "react-google-recaptcha";
 
 import { H2 } from "~/components/header";
+import { LocationField } from "~/components/location-field";
+import { getCities, getProvinces, getRegions, getSchools } from "~/lib/location";
 import { useTheme } from "~/lib/theme";
 
 import { signup } from "./actions";
@@ -46,7 +48,7 @@ export function PageClient({ contest, redirectUrl }: { contest: Contest; redirec
       user.password,
       user.name,
       user.surname,
-      /*user.institute*/ undefined,
+      user.institute.trim(),
       captchaRef.current?.getValue() ?? undefined,
       redirectUrl,
     );
@@ -79,14 +81,14 @@ export function PageClient({ contest, redirectUrl }: { contest: Contest; redirec
       </H2>
       <FirstNameField field="name" />
       <LastNameField field="surname" />
-      {/* <H2 className="mt-8">
+      <H2 className="mt-8">
         <Trans>Scuola di provenienza (opzionale)</Trans>
       </H2>
       <LocationField
         label={_(msg`Regione`)}
         field="region"
         placeholder={_(msg`Scegli la regione`)}
-        id="🇮"
+        id="Italy"
         fetcher={getRegions}
         optional
       />
@@ -116,10 +118,10 @@ export function PageClient({ contest, redirectUrl }: { contest: Contest; redirec
           field="institute"
           placeholder={_(msg`Scegli la scuola`)}
           id={city}
-          fetcher={getInstitutes}
+          fetcher={getSchools}
           optional
         />
-      )} */}
+      )}
       {contest.captcha_enabled && (
         <div className="mx-auto mt-4 h-20">
           {theme && (

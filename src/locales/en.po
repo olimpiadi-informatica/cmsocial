@@ -223,6 +223,7 @@ msgstr "Compilation failed"
 msgid "Compilazione in corso"
 msgstr "Compiling"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Comune"
 msgstr "City"
@@ -533,6 +534,7 @@ msgstr "Submit solution"
 msgid "Iscriviti"
 msgstr "Participate"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Istituto"
 msgstr "School"
@@ -843,6 +845,7 @@ msgstr "{username}'s profile"
 msgid "Programmazione dinamica"
 msgstr "Dynamic programming"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Provincia"
 msgstr "Province"
@@ -871,6 +874,7 @@ msgstr "This input expires <0/>."
 msgid "Recupera password"
 msgstr "Recover password"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Regione"
 msgstr "Region"
@@ -922,18 +926,22 @@ msgstr "Download input"
 msgid "Scarica output"
 msgstr "Download output"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli il comune"
 msgstr "Select your city"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli la provincia"
 msgstr "Select your province"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli la regione"
 msgstr "Select your region"
 
+#: src/app/(training)/(login)/signup/page-client.tsx
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scegli la scuola"
 msgstr "Select your school"
@@ -943,6 +951,10 @@ msgstr "Select your school"
 msgid "Scolastiche"
 msgstr "School selections"
 
+#: src/app/(training)/user/[username]/edit/tabs.tsx
+msgid "Scuola"
+msgstr "School"
+
 #: src/app/(training)/user/[username]/edit/school/actions.ts
 msgid "Scuola cambiata con successo"
 msgstr "School successfully modified"
@@ -950,6 +962,10 @@ msgstr "School successfully modified"
 #: src/app/(training)/user/[username]/edit/school/page.tsx
 msgid "Scuola di provenienza"
 msgstr "School"
+
+#: src/app/(training)/(login)/signup/page-client.tsx
+msgid "Scuola di provenienza (opzionale)"
+msgstr "School (optional)"
 
 #: src/app/fibonacci/navbar.tsx
 #: src/app/fibonacci/page.tsx

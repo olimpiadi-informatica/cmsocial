@@ -20,12 +20,9 @@ export function UserEditTabs() {
       <Tab page="avatar">
         <Trans>Foto</Trans>
       </Tab>
-      {/*
-          TODO: replace user.institute_id with user.social_user.institute_id here
-                https://github.com/algorithm-ninja/cmsocial/blob/master/cmsocial/server/pws.py#L829
-        */}
-      {/* <Tab page="school">Scuola</Tab> */}
-
+      <Tab page="school">
+        <Trans>Scuola</Trans>
+      </Tab>
       <Tab page="delete">
         <Trans>Eliminazione</Trans>
       </Tab>
