@@ -25,7 +25,7 @@ export default function Page({ params: { username } }: Props) {
   const { _ } = useLingui();
 
   const submit = async (data: Institute) => {
-    const err = await changeSchool(username, data.institute);
+    const err = await changeSchool(username, data.institute.trim());
     if (err) throw new Error(err);
     await new Promise(() => {});
   };
