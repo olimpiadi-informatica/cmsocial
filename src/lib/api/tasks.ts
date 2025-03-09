@@ -2,7 +2,7 @@ import { cache } from "react";
 
 import { type SQL, and, asc, count, desc, eq, exists, ilike, inArray, or } from "drizzle-orm";
 
-import { db } from "~/lib/db";
+import { cmsDb } from "~/lib/db";
 import { participations, socialTasks, tags, taskScores, taskTags, tasks } from "~/lib/db/schema";
 
 export type TaskListOptions = {
@@ -20,7 +20,7 @@ function getFilter(options: TaskListOptions) {
   if (options.tags?.length) {
     filter.push(
       exists(
-        db
+        cmsDb
           .select({
             taskId: taskTags.taskId,
             count: count(),
@@ -67,7 +67,7 @@ export const getTaskList = cache(
       throw new Error("pageSize must be less than or equal to 100");
     }
 
-    const taskQuery = db
+    const taskQuery = cmsDb
       .select({
         id: tasks.id,
         name: tasks.name,
@@ -86,7 +86,7 @@ export const getTaskList = cache(
     }
 
     const tasksSq = taskQuery.as("tasks_sq");
-    const scoreSq = db
+    const scoreSq = cmsDb
       .select({
         taskId: taskScores.taskId,
         score: taskScores.score,
@@ -96,7 +96,7 @@ export const getTaskList = cache(
       .where(eq(participations.userId, userId))
       .as("score_sq");
 
-    return db
+    return cmsDb
       .select({
         id: tasksSq.id,
         name: tasksSq.name,
@@ -110,5 +110,5 @@ export const getTaskList = cache(
 );
 
 export const getTaskCount = cache((options: TaskListOptions): Promise<number> => {
-  return db.$count(tasks, getFilter(options));
+  return cmsDb.$count(tasks, getFilter(options));
 });

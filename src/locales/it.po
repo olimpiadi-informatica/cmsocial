@@ -30,6 +30,8 @@ msgid "A:"
 msgstr "A:"
 
 #: src/app/(training)/(login)/tabs.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi"
@@ -39,10 +41,12 @@ msgstr "Accedi"
 msgid "Accedi / Registrati"
 msgstr "Accedi / Registrati"
 
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi per inviare soluzioni"
 msgstr "Accedi per inviare soluzioni"
 
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
 msgid "Accedi per vedere le tue sottoposizioni"
 msgstr "Accedi per vedere le tue sottoposizioni"
@@ -504,6 +508,7 @@ msgid "Invia output"
 msgstr "Invia output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Invia soluzione"
@@ -994,6 +999,7 @@ msgstr "Sottoposizione"
 msgid "Sottoposizione {0}"
 msgstr "Sottoposizione {0}"
 
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx

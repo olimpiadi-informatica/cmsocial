@@ -1,13 +1,12 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/macro";
 import { Menu } from "@olinfo/react-components";
-import { getSubmissions, getUser } from "@olinfo/terry-api";
 
 import { DateTime } from "~/components/datetime";
 import { H2 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
+import { getTerrySubmissions } from "~/lib/api/submissions-terry";
 import { fileLanguageName } from "~/lib/language";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
@@ -19,14 +18,28 @@ type Props = {
 export default async function Page({ params: { name: taskName } }: Props) {
   const i18n = await loadLocale();
 
-  const trainingUser = getSessionUser();
-  if (!trainingUser) return null;
+  const user = getSessionUser();
+  if (!user) {
+    return (
+      <div>
+        <H2 className="mb-2">
+          <Trans>Sottoposizioni</Trans>
+        </H2>
+        <div className="text-center">
+          <div className="my-2">
+            <Trans>Accedi per vedere le tue sottoposizioni</Trans>
+          </div>
+          <Link
+            href={`/login?redirect=${encodeURIComponent(`/task/terry/${taskName}/submissions`)}`}
+            className="btn btn-primary">
+            <Trans>Accedi</Trans>
+          </Link>
+        </div>
+      </div>
+    );
+  }
 
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === taskName);
-  if (!task) notFound();
-
-  const submissions = await getSubmissions(user.token, task.name);
+  const submissions = await getTerrySubmissions(taskName, user.username);
 
   return (
     <div>
@@ -49,20 +62,18 @@ export default async function Page({ params: { name: taskName } }: Props) {
               <Trans>Esito</Trans>
             </div>
           </h3>
-          {submissions.toReversed().map((sub) => (
+          {submissions.map((sub) => (
             <li key={sub.id} className="col-span-4 grid grid-cols-subgrid">
               <Link
-                href={`/task/terry/${task.name}/submissions/${sub.id}`}
+                href={`/task/terry/${taskName}/submissions/${sub.id}`}
                 className="col-span-4 grid grid-cols-subgrid text-nowrap">
-                <div className="mr-1">
-                  {sub.input.attempt}-{sub.id.split("-")[0]}
-                </div>
-                <div>{fileLanguageName(sub.source.path)}</div>
+                <div className="mr-1">{sub.id.split("-")[0]}</div>
+                <div>{fileLanguageName(sub.source)}</div>
                 <div>
                   <DateTime date={sub.date} locale={i18n.locale} />
                 </div>
                 <div className="min-w-40 text-end">
-                  <OutcomeScore score={sub.score} maxScore={task.max_score} />
+                  <OutcomeScore score={sub.score} maxScore={sub.maxScore} />
                 </div>
               </Link>
             </li>

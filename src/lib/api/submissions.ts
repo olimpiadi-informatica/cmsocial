@@ -2,7 +2,7 @@ import { cache } from "react";
 
 import { and, desc, eq } from "drizzle-orm";
 
-import { db } from "~/lib/db";
+import { cmsDb } from "~/lib/db";
 import { participations, submissionResults, submissions, tasks } from "~/lib/db/schema";
 
 export type Submission = {
@@ -16,7 +16,7 @@ export type Submission = {
 
 export const getTaskSubmissions = cache(
   (taskName: string, userId: number): Promise<Submission[]> => {
-    return db
+    return cmsDb
       .select({
         id: submissions.id,
         timestamp: submissions.timestamp,

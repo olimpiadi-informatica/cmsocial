@@ -3,7 +3,7 @@ import { cache } from "react";
 import { and, eq } from "drizzle-orm";
 
 import { type File, getFile } from "~/lib/api/file";
-import { db } from "~/lib/db";
+import { cmsDb } from "~/lib/db";
 import {
   type RawSubmissionResultSubtask,
   type RawSubmissionResultTestcase,
@@ -49,7 +49,7 @@ export type SubmissionResult = {
 
 export const getSubmission = cache(
   async (id: number, taskName: string, userId: number): Promise<SubmissionResult | undefined> => {
-    const [submission] = await db
+    const [submission] = await cmsDb
       .select({
         id: submissions.id,
         timestamp: submissions.timestamp,
@@ -130,7 +130,7 @@ function mapScoreDetailsTestcase(
 }
 
 export const getSubmissionFiles = cache((id: number, language: Language): Promise<File[]> => {
-  return db
+  return cmsDb
     .select({
       name: files.filename,
       url: getFile(files.filename, files.digest).mapWith((url: string) =>

@@ -1,11 +1,10 @@
+import { and, desc, eq, inArray, max, sql } from "drizzle-orm";
 import { cache } from "react";
 
-import { getScores as getTerryScores } from "@olinfo/terry-api";
-import { and, desc, eq, inArray, sql } from "drizzle-orm";
-
 import { algobadge } from "~/lib/algobadge";
-import { db } from "~/lib/db";
+import { cmsDb, terryDb } from "~/lib/db";
 import { participations, submissionResults, submissions, tasks, users } from "~/lib/db/schema";
+import { terrySubmissions, terryTasks } from "~/lib/db/schema-terry";
 
 export type AlgobadgeScore = {
   taskName: string;
@@ -24,6 +23,11 @@ export type AlgobadgeScores = {
 const trainingTaskNames = Object.values(algobadge)
   .flatMap((category) => category.tasks)
   .filter((task) => !task.terry)
+  .map((task) => task.name);
+
+const terryTaskNames = Object.values(algobadge)
+  .flatMap((category) => category.tasks)
+  .filter((task) => task.terry)
   .map((task) => task.name);
 
 function getTrainingScores(userId: number): Promise<AlgobadgeScore[]> {
@@ -49,11 +53,43 @@ function getTrainingScores(userId: number): Promise<AlgobadgeScore[]> {
     .orderBy(submissions.taskId, desc(submissions.timestamp));
 }
 
+function getTerryScores(username: string): Promise<AlgobadgeScore[]> {
+  const lastSubmissionSq = terryDb
+    .select({
+      task: terrySubmissions.task,
+      date: max(terrySubmissions.date).as("last_date"),
+    })
+    .from(terrySubmissions)
+    .where(
+      and(eq(terrySubmissions.token, username), inArray(terrySubmissions.task, terryTaskNames)),
+    )
+    .groupBy(terrySubmissions.task)
+    .as("last_submission_sq");
+
+  return terryDb
+    .select({
+      taskName: terryTasks.name,
+      taskTitle: terryTasks.title,
+      score: terrySubmissions.score,
+      maxScore: terryTasks.maxScore,
+      terry: sql`1`.mapWith(Boolean),
+    })
+    .from(terryTasks)
+    .innerJoin(lastSubmissionSq, eq(lastSubmissionSq.task, terryTasks.name))
+    .innerJoin(
+      terrySubmissions,
+      and(
+        eq(terrySubmissions.task, lastSubmissionSq.task),
+        eq(terrySubmissions.date, lastSubmissionSq.date),
+      ),
+    );
+}
+
 export const getAlgobadgeScores = cache(
   async (username: string | undefined): Promise<AlgobadgeScores | undefined> => {
     if (!username) return;
 
-    const [user] = await db
+    const [user] = await cmsDb
       .select({
         id: users.id,
         username: users.username,
@@ -71,16 +107,7 @@ export const getAlgobadgeScores = cache(
     return {
       username: user.username,
       name: user.name,
-      scores: [
-        ...training,
-        ...terry.map((t) => ({
-          taskName: t.name,
-          taskTitle: t.title,
-          score: t.score,
-          maxScore: t.max_score,
-          terry: true,
-        })),
-      ],
+      scores: [...training, ...terry],
     };
   },
 );

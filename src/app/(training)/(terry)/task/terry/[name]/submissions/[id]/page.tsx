@@ -1,8 +1,7 @@
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
 import { Trans } from "@lingui/macro";
-import { type Submission, getSubmission, getUser } from "@olinfo/terry-api";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
 
@@ -10,6 +9,7 @@ import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { SourceCode } from "~/components/source-code";
+import { type TerrySubmissionDetail, getTerrySubmission } from "~/lib/api/submission-terry";
 import { Language, fileLanguage, fileLanguageName } from "~/lib/language";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
@@ -21,22 +21,20 @@ type Props = {
 export default async function Page({ params: { name: taskName, id } }: Props) {
   const i18n = await loadLocale();
 
-  const trainingUser = getSessionUser();
-  if (!trainingUser) return null;
+  const user = getSessionUser();
+  if (!user) {
+    redirect(`/login?redirect=${encodeURIComponent(`/task/terry/${taskName}/submissions/${id}`)}`);
+  }
 
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === taskName);
-  if (!task) notFound();
+  const submission = await getTerrySubmission(id, user.username);
+  if (!submission) notFound();
 
-  const submission = await getSubmission(id);
-  const alerts = [...submission.feedback.alerts, ...submission.output.validation.alerts];
-
-  const lang = fileLanguage(submission.source.path) ?? Language.Plain;
+  const lang = fileLanguage(submission.source) ?? Language.Plain;
 
   return (
     <div>
       <H2>
-        <Trans>Sottoposizione</Trans> {submission.input.attempt}-{submission.id.split("-")[0]}
+        <Trans>Sottoposizione</Trans> {id.split("-")[0]}
       </H2>
       <H3 className="mb-2 mt-6">
         <Trans>Dettagli</Trans>
@@ -46,13 +44,13 @@ export default async function Page({ params: { name: taskName, id } }: Props) {
           <span className="font-bold">
             <Trans>Esito:</Trans>
           </span>{" "}
-          <OutcomeScore score={submission.score} maxScore={task.max_score} />
+          <OutcomeScore score={submission.score} maxScore={submission.maxScore} />
         </li>
         <li>
           <span className="font-bold">
             <Trans>Linguaggio:</Trans>
           </span>{" "}
-          {fileLanguageName(submission.source.path)}
+          {fileLanguageName(submission.source)}
         </li>
         <li>
           <span className="font-bold">
@@ -60,11 +58,11 @@ export default async function Page({ params: { name: taskName, id } }: Props) {
           </span>{" "}
           <DateTime date={submission.date} locale={i18n.locale} />
         </li>
-        {alerts.length > 0 && (
+        {submission.alerts.length > 0 && (
           <li>
             <div className="mb-1 font-bold">Note:</div>
             <div className="rounded-xl border border-base-content/10 bg-base-100 p-2 whitespace-pre-line text-xs">
-              {alerts.map((alert, i) => (
+              {submission.alerts.map((alert, i) => (
                 <div key={i}>
                   {alert.severity === "success" && (
                     <span className="text-info">
@@ -98,14 +96,14 @@ export default async function Page({ params: { name: taskName, id } }: Props) {
         <Trans>Codice sorgente</Trans>
       </H3>
       <SourceCode
-        url={`${process.env.NEXT_PUBLIC_TERRY_URL}/files/${submission.source.path}`}
+        url={`${process.env.NEXT_PUBLIC_TERRY_URL}/files/${submission.source}`}
         lang={lang}
       />
       <div className="mt-6 flex flex-wrap justify-center gap-2">
-        <a href={`/api-terry/files/${submission.input.path}`} className="btn btn-primary" download>
+        <a href={`/api-terry/files/${submission.input}`} className="btn btn-primary" download>
           <FileInput size={22} /> <Trans>Scarica input</Trans>
         </a>
-        <a href={`/api-terry/files/${submission.output.path}`} className="btn btn-primary" download>
+        <a href={`/api-terry/files/${submission.output}`} className="btn btn-primary" download>
           <FileOutput size={22} /> <Trans>Scarica output</Trans>
         </a>
       </div>
@@ -113,7 +111,7 @@ export default async function Page({ params: { name: taskName, id } }: Props) {
   );
 }
 
-function TestcaseTable({ submission }: { submission: Submission }) {
+function TestcaseTable({ submission }: { submission: TerrySubmissionDetail }) {
   return (
     <div className="grid min-w-fit grid-cols-[auto_auto_1fr] text-nowrap rounded-box bg-base-200 px-4 py-2 text-sm *:px-2 *:py-1">
       <Header>
@@ -125,28 +123,25 @@ function TestcaseTable({ submission }: { submission: Submission }) {
       <Header className="text-center">
         <Trans>Dettagli</Trans>
       </Header>
-      {submission.feedback.cases.map((tc, idx) => {
-        const output = submission.output.validation.cases[idx];
-        return (
-          <Fragment key={idx}>
-            <div className="font-mono">Case #{idx + 1}</div>
-            {tc.correct ? (
-              <div className="text-success">
-                <Check className="inline" /> <Trans>Corretto</Trans>
-              </div>
-            ) : output.status === "missing" ? (
-              <div className="text-error">
-                <X className="inline" /> <Trans>Non inviato</Trans>
-              </div>
-            ) : (
-              <div className="text-error">
-                <X className="inline" /> <Trans>Errato</Trans>
-              </div>
-            )}
-            <div className="min-w-40 text-wrap">{tc.message ?? output.message}</div>
-          </Fragment>
-        );
-      })}
+      {submission.cases.map((tc, idx) => (
+        <Fragment key={idx}>
+          <div className="font-mono">Case #{idx + 1}</div>
+          {tc.correct ? (
+            <div className="text-success">
+              <Check className="inline" /> <Trans>Corretto</Trans>
+            </div>
+          ) : tc.status === "missing" ? (
+            <div className="text-error">
+              <X className="inline" /> <Trans>Non inviato</Trans>
+            </div>
+          ) : (
+            <div className="text-error">
+              <X className="inline" /> <Trans>Errato</Trans>
+            </div>
+          )}
+          <div className="min-w-40 text-wrap">{tc.message}</div>
+        </Fragment>
+      ))}
     </div>
   );
 }

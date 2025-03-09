@@ -12,18 +12,26 @@ import {
   uploadSource,
 } from "@olinfo/terry-api";
 
-export async function requestInput(token: string, taskName: string): Promise<string | undefined> {
+import { getSessionUser } from "~/lib/user";
+
+export async function requestInput(taskName: string): Promise<string | undefined> {
+  const user = getSessionUser();
+  if (!user) return;
+
   try {
-    await generateInput(token, taskName);
+    await generateInput(user.username, taskName);
   } catch (err) {
     return (err as Error).message;
   }
   revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
 }
 
-export async function changeInput(token: string, inputId: string): Promise<string | undefined> {
+export async function changeInput(inputId: string): Promise<string | undefined> {
+  const user = getSessionUser();
+  if (!user) return;
+
   try {
-    await abandonInput(token, inputId);
+    await abandonInput(user.username, inputId);
   } catch (err) {
     return (err as Error).message;
   }
