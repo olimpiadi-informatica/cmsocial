@@ -1,12 +1,11 @@
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/macro";
-import { getUser } from "@olinfo/terry-api";
 
 import { ForumPosts } from "~/components/forum-posts";
 import { H2 } from "~/components/header";
+import { getTerryTask } from "~/lib/api/task-terry";
 import { loadLocale } from "~/lib/locale";
-import { getSessionUser } from "~/lib/user";
 
 type Props = {
   params: { name: string };
@@ -15,11 +14,7 @@ type Props = {
 export default async function Page({ params: { name: taskName } }: Props) {
   await loadLocale();
 
-  const trainingUser = getSessionUser();
-  if (!trainingUser) return null;
-
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === taskName);
+  const task = await getTerryTask(taskName);
   if (!task) notFound();
 
   return (

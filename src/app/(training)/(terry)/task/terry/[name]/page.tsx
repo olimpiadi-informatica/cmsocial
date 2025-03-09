@@ -2,31 +2,25 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 
 import type { CompileOptions } from "@mdx-js/mdx";
-import { getUser } from "@olinfo/terry-api";
 import type { MDXComponents } from "mdx/types";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
-
-import { getSessionUser } from "~/lib/user";
 
 import style from "./statement.module.css";
 import Submit from "./submit/page";
 
 import "katex/dist/katex.css";
+import { getTerryTask } from "~/lib/api/task-terry";
 
 type Props = {
   params: { name: string };
 };
 
 export default async function Page({ params: { name: taskName } }: Props) {
-  const trainingUser = getSessionUser();
-  if (!trainingUser) return null;
-
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === taskName);
+  const task = await getTerryTask(taskName);
   if (!task) notFound();
 
-  const statement = task.statement_path;
+  const statement = task.statementPath;
   const resp = await fetch(`${process.env.NEXT_PUBLIC_TERRY_URL}/files${statement}`);
   const source = await resp.text();
 

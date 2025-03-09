@@ -3,7 +3,7 @@ import { cache } from "react";
 import { and, eq, gte, min, sql } from "drizzle-orm";
 
 import { getFile } from "~/lib/api/file";
-import { db } from "~/lib/db";
+import { cmsDb } from "~/lib/db";
 import {
   attachments,
   datasets,
@@ -28,7 +28,7 @@ export type Task = {
 };
 
 export const getTask = cache(async (name: string): Promise<Task | undefined> => {
-  const rows = await db
+  const rows = await cmsDb
     .select({
       name: tasks.name,
       title: tasks.title,
@@ -47,7 +47,7 @@ export const getTask = cache(async (name: string): Promise<Task | undefined> => 
 });
 
 export const getTaskAttachments = cache((name: string): Promise<File[]> => {
-  return db
+  return cmsDb
     .select({
       name: attachments.filename,
       url: getFile(attachments.filename, attachments.digest),
@@ -59,7 +59,7 @@ export const getTaskAttachments = cache((name: string): Promise<File[]> => {
 });
 
 export const getTaskStatement = cache(async (name: string, locale: string): Promise<File> => {
-  const rows = await db
+  const rows = await cmsDb
     .select({
       name: sql<string>`'testo.pdf'`,
       url: getFile("testo.pdf", statements.digest),
@@ -84,7 +84,7 @@ export type TaskStats = {
 };
 
 export const getTaskStats = cache(async (name: string): Promise<TaskStats | undefined> => {
-  const [stats] = await db
+  const [stats] = await cmsDb
     .select({
       subCount: socialTasks.subCount,
       correctSubCount: socialTasks.correctSubCount,
@@ -97,7 +97,7 @@ export const getTaskStats = cache(async (name: string): Promise<TaskStats | unde
     .limit(1);
   if (!stats) return;
 
-  const topUsers = await db
+  const topUsers = await cmsDb
     .select({
       username: users.username,
       time: min(taskScores.time),

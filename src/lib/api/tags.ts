@@ -2,7 +2,7 @@ import { cache } from "react";
 
 import { and, asc, desc, eq, like, sql } from "drizzle-orm";
 
-import { db } from "~/lib/db";
+import { cmsDb } from "~/lib/db";
 import { tags, taskTags, tasks } from "~/lib/db/schema";
 
 export type Tag = {
@@ -11,7 +11,7 @@ export type Tag = {
 };
 
 export const getTags = cache((): Promise<Tag[]> => {
-  return db
+  return cmsDb
     .select({
       name: tags.name,
       description: tags.description,
@@ -21,7 +21,7 @@ export const getTags = cache((): Promise<Tag[]> => {
 });
 
 export const getTechniqueTags = cache((): Promise<Tag[]> => {
-  return db
+  return cmsDb
     .select({
       name: tags.name,
       description: tags.description,
@@ -32,7 +32,7 @@ export const getTechniqueTags = cache((): Promise<Tag[]> => {
 });
 
 export const getYearTags = cache((): Promise<Tag[]> => {
-  return db
+  return cmsDb
     .select({
       name: tags.name,
       description: tags.description,
@@ -51,7 +51,7 @@ export type TaskTag = {
 
 export const getTaskTags = cache(
   (taskName: string, userId: number | undefined): Promise<TaskTag[]> => {
-    return db
+    return cmsDb
       .select({
         name: tags.name,
         description: tags.description,

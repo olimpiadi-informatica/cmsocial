@@ -7,13 +7,13 @@ import { useState } from "react";
 import { Trans, msg } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
 import { Menu } from "@olinfo/react-components";
-import type { User } from "@olinfo/terry-api";
 
 import { H1 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { Pagination } from "~/components/pagination";
+import type { TerryTaskItem } from "~/lib/api/tasks-terry";
 
-export function PageClient({ user }: { user: User }) {
+export function PageClient({ tasks }: { tasks: TerryTaskItem[] }) {
   // useParams() does not update when using client-side navigation (e.g. window.history.pushState)
   const page = Number(usePathname().match(/^\/tasks\/terry\/(\d+)/)?.[1]);
   const pageSize = 20;
@@ -23,11 +23,11 @@ export function PageClient({ user }: { user: User }) {
   const searchParams = useSearchParams();
   const { _ } = useLingui();
 
-  const tasks = user.contest.tasks.filter((t) => isMatched(t, searchParams.get("search")));
-  const pageCount = Math.max(Math.ceil(tasks.length / pageSize), 1);
+  const filteredTasks = tasks.filter((t) => isMatched(t, searchParams.get("search")));
+  const pageCount = Math.max(Math.ceil(filteredTasks.length / pageSize), 1);
   if (page > pageCount) notFound();
 
-  const filteredTasks = tasks.slice((page - 1) * pageSize, page * pageSize);
+  const pageTasks = filteredTasks.slice((page - 1) * pageSize, page * pageSize);
 
   return (
     <div className="flex flex-col gap-4">
@@ -38,11 +38,11 @@ export function PageClient({ user }: { user: User }) {
         <Filter />
       </div>
       <Menu fallback={_(msg`Nessun problema trovato`)}>
-        {filteredTasks.map((task) => (
+        {pageTasks.map((task) => (
           <li key={task.name}>
             <Link href={`/task/terry/${task.name}`} className="grid-cols-[1fr_auto]">
               <div>{task.title}</div>
-              <OutcomeScore score={user.tasks[task.name].score} maxScore={task.max_score} />
+              {task.score != null && <OutcomeScore score={task.score} maxScore={task.maxScore} />}
             </Link>
           </li>
         ))}

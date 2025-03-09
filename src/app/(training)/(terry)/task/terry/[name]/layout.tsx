@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { notFound, redirect } from "next/navigation";
+import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { getUser } from "@olinfo/terry-api";
-
-import { getSessionUser } from "~/lib/user";
+import { getTerryTask } from "~/lib/api/task-terry";
 
 import { TaskTabs } from "./tabs";
 
@@ -14,11 +12,7 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { name } }: Props): Promise<Metadata> {
-  const trainingUser = getSessionUser();
-  if (!trainingUser) return {};
-
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === name);
+  const task = await getTerryTask(name);
   if (!task) return {};
 
   return {
@@ -28,13 +22,7 @@ export async function generateMetadata({ params: { name } }: Props): Promise<Met
 }
 
 export default async function Layout({ params: { name: taskName }, children }: Props) {
-  const trainingUser = getSessionUser();
-  if (!trainingUser) {
-    redirect(`/login?redirect=${encodeURIComponent(`/task/terry/${taskName}`)}`);
-  }
-
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === taskName);
+  const task = await getTerryTask(taskName);
   if (!task) notFound();
 
   return (

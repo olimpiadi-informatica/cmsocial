@@ -1,7 +1,11 @@
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { getUser } from "@olinfo/terry-api";
+import { Trans } from "@lingui/macro";
 
+import { H2 } from "~/components/header";
+import { getTerryTask, getTerryTaskInput } from "~/lib/api/task-terry";
+import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
@@ -11,12 +15,32 @@ type Props = {
 };
 
 export default async function Page({ params: { name: taskName } }: Props) {
-  const trainingUser = getSessionUser();
-  if (!trainingUser) return null;
+  await loadLocale();
 
-  const user = await getUser(trainingUser.username);
-  const task = user.contest.tasks.find((t) => t.name === taskName);
+  const user = getSessionUser();
+  if (!user) {
+    return (
+      <div className="text-center">
+        <H2>
+          <Trans>Invia soluzione</Trans>
+        </H2>
+        <div className="my-2">
+          <Trans>Accedi per inviare soluzioni</Trans>
+        </div>
+        <Link
+          href={`/login?redirect=${encodeURIComponent(`/task/terry/${taskName}/submit`)}`}
+          className="btn btn-primary">
+          <Trans>Accedi</Trans>
+        </Link>
+      </div>
+    );
+  }
+
+  const [task, input] = await Promise.all([
+    getTerryTask(taskName),
+    getTerryTaskInput(taskName, user.username),
+  ]);
   if (!task) notFound();
 
-  return <PageClient user={user} task={task} />;
+  return <PageClient task={task} input={input} />;
 }

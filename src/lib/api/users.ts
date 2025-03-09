@@ -2,12 +2,12 @@ import { cache } from "react";
 
 import { and, desc, eq, sql } from "drizzle-orm";
 
-import { db } from "~/lib/db";
+import { cmsDb } from "~/lib/db";
 import { participations, socialParticipations, socialUsers, users } from "~/lib/db/schema";
 
 export const getUserCount = cache((): Promise<number> => {
-  return db.$count(
-    db
+  return cmsDb.$count(
+    cmsDb
       .select()
       .from(users)
       .innerJoin(participations, eq(participations.userId, users.id))
@@ -33,7 +33,7 @@ export const getRanking = cache((page: number, pageSize: number): Promise<User[]
     throw new Error("pageSize must be less than or equal to 100");
   }
 
-  return db
+  return cmsDb
     .select({
       username: users.username,
       name: sql<string>`${users.firstName} || ' ' || ${users.lastName}`,

@@ -1,12 +1,12 @@
 import { cache } from "react";
 
-import { getScores as getTerryScores } from "@olinfo/terry-api";
 import { and, eq, sql } from "drizzle-orm";
 import { orderBy } from "lodash-es";
 
-import { db } from "~/lib/db";
+import { cmsDb, terryDb } from "~/lib/db";
 import { participations, tasks, users } from "~/lib/db/schema-cms";
 import { socialParticipations, socialUsers, taskScores } from "~/lib/db/schema-cmsocial";
+import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
 
 export enum AccessLevel {
   Admin = 0,
@@ -31,7 +31,7 @@ export type User = {
 };
 
 export const getUser = cache(async (username: string): Promise<User | undefined> => {
-  const [user] = await db
+  const [user] = await cmsDb
     .select({
       id: users.id,
       username: users.username,
@@ -70,14 +70,8 @@ export const getUserScores = cache(
       getTerryScores(username),
     ]);
 
-    const scores = [
-      ...training,
-      ...terry
-        .filter(({ score }) => score > 0)
-        .map(({ max_score, ...task }) => ({ ...task, maxScore: max_score, terry: true })),
-    ];
     return orderBy(
-      scores,
+      [...training, ...terry],
       [(s) => s.score / s.maxScore, "score", "title"],
       ["desc", "desc", "asc"],
     );
@@ -85,7 +79,7 @@ export const getUserScores = cache(
 );
 
 function getTrainingScores(userId: number): Promise<UserScore[]> {
-  return db
+  return cmsDb
     .select({
       name: tasks.name,
       title: tasks.title,
@@ -102,4 +96,18 @@ function getTrainingScores(userId: number): Promise<UserScore[]> {
         eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
       ),
     );
+}
+
+function getTerryScores(username: string): Promise<UserScore[]> {
+  return terryDb
+    .select({
+      name: terryUserTasks.task,
+      title: terryTasks.title,
+      score: terryUserTasks.score,
+      maxScore: terryTasks.maxScore,
+      terry: sql<boolean>`TRUE`,
+    })
+    .from(terryUserTasks)
+    .innerJoin(terryTasks, eq(terryTasks.name, terryUserTasks.task))
+    .where(eq(terryUserTasks.token, username));
 }

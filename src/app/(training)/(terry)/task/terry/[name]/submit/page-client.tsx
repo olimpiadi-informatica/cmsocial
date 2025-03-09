@@ -13,24 +13,26 @@ import {
   SubmitButton,
   useIsAfter,
 } from "@olinfo/react-components";
-import type { User } from "@olinfo/terry-api";
+import { addSeconds } from "date-fns";
 import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } from "lucide-react";
 
 import { H2 } from "~/components/header";
+import type { TerryTask, TerryTaskInput } from "~/lib/api/task-terry";
 import { fileLanguageName } from "~/lib/language";
 
 import { changeInput, requestInput, uploadAndSubmit } from "./actions";
 
 type Props = {
-  user: User;
-  task: User["contest"]["tasks"][number];
+  task: TerryTask;
+  input?: TerryTaskInput;
 };
 
-export function PageClient({ user, task }: Props) {
+export function PageClient({ task, input }: Props) {
   const { _ } = useLingui();
 
-  const input = user.tasks[task.name ?? ""].current_input;
-  const expired = useIsAfter(input?.expiry_date ?? undefined);
+  const expiryDate =
+    input && task.submissionTimeout ? addSeconds(input.date, task.submissionTimeout) : undefined;
+  const expired = useIsAfter(expiryDate);
 
   const validateSource = (file: File) => {
     const lang = fileLanguageName(file.name);
@@ -40,13 +42,13 @@ export function PageClient({ user, task }: Props) {
   };
 
   const onRequestInput = async () => {
-    const err = await requestInput(user.token, task.name);
+    const err = await requestInput(task.name);
     if (err) throw new Error(err);
     await new Promise(() => {});
   };
 
   const onChangeInput = async () => {
-    const err = await changeInput(user.token, input!.id);
+    const err = await changeInput(input!.id);
     if (err) throw new Error(err);
     await new Promise(() => {});
   };
@@ -82,7 +84,7 @@ export function PageClient({ user, task }: Props) {
                 <Trans>Questo input è scaduto.</Trans>
               </span>
             ) : (
-              input.expiry_date && <Timer date={input.expiry_date} />
+              expiryDate && <Timer date={expiryDate} />
             )}
           </div>
         </>

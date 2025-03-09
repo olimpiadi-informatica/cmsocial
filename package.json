@@ -12,6 +12,7 @@
   "dependencies": {
     "@fireworks-js/react": "^2.10",
     "@icons-pack/react-simple-icons": "^12.0",
+    "@libsql/client": "^0.14",
     "@lingui/loader": "^4.11",
     "@lingui/macro": "^4.11",
     "@lingui/react": "^4.11",
