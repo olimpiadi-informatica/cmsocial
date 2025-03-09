@@ -7,6 +7,7 @@ import {
   BookmarkCheck,
   BookmarkX,
   Gem,
+  LockKeyhole,
   LockKeyholeOpen,
   type LucideIcon,
   Medal,
@@ -51,8 +52,10 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
               key={task.name}
               href={url}
               className={clsx(
-                "btn sm:btn-lg !h-auto pb-3 pt-2 dark:btn-neutral",
-                roundedScore === maxScore && "!btn-success",
+                "btn sm:btn-lg !h-auto pb-3 pt-2",
+                roundedScore === maxScore && "btn-success",
+                roundedScore > 0 && roundedScore < maxScore && "btn-warning",
+                roundedScore === 0 && "btn-error",
               )}>
               <div className="*:mb-1">
                 <div className="text-xl">{task.name}</div>
@@ -82,20 +85,25 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
           </div>
         </div>
         <div className="relative mt-4 h-8 w-full">
-          <Threshold color="stroke-error" score={0} icon={BookmarkX} />
           {category.hasHonorable ? (
-            <Threshold
-              color={badgeStroke[Badge.Honorable]}
-              score={honorableScore}
-              icon={BookmarkCheck}
-            />
+            <>
+              <Threshold color="stroke-error" score={0} icon={BookmarkX} />
+              <Threshold
+                color={badgeStroke[Badge.Honorable]}
+                score={honorableScore}
+                icon={BookmarkCheck}
+              />
+            </>
           ) : (
-            <Threshold
-              color="stroke-base-content"
-              score={honorableScore}
-              icon={LockKeyholeOpen}
-              size={32}
-            />
+            <>
+              <Threshold color="stroke-base-content" score={0} icon={LockKeyhole} />
+              <Threshold
+                color="stroke-base-content"
+                score={honorableScore}
+                icon={LockKeyholeOpen}
+                size={32}
+              />
+            </>
           )}
           <Threshold color={badgeStroke[Badge.Bronze]} score={bronzeScore} />
           <Threshold color={badgeStroke[Badge.Silver]} score={silverScore} />
