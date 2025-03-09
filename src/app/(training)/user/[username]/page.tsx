@@ -9,8 +9,9 @@ import clsx from "clsx";
 
 import { H1 } from "~/components/header";
 import { getSchool } from "~/lib/api/location";
-import { AccessLevel, type UserScore, getUser, getUserScores } from "~/lib/api/user";
+import { type UserScore, getUser, getUserScores } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";
+import { AccessLevel } from "~/lib/permissions";
 import { getSessionUser } from "~/lib/user";
 
 type Props = {

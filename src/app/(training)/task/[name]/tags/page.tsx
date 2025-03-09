@@ -1,6 +1,8 @@
 import { range } from "lodash-es";
 
-import { getTags, getTaskTags } from "~/lib/api/tags";
+import { getTags } from "~/lib/api/tags";
+import { getTaskTags } from "~/lib/api/task-tags";
+import { getUser } from "~/lib/api/user";
 import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
@@ -10,17 +12,16 @@ type Props = {
 };
 
 export default async function Page({ params: { name } }: Props) {
-  const user = getSessionUser();
-  const [taskTags, tags] = await Promise.all([getTaskTags(name, user?.id), getTags()]);
+  const sessionUser = getSessionUser();
+  const [user, taskTags, tags] = await Promise.all([
+    getUser(sessionUser?.username),
+    getTaskTags(name, sessionUser?.id),
+    getTags(),
+  ]);
 
   const tagPlaceholders = range(16).map(() => Math.round(1e6 ** (Math.random() + 1)).toString());
 
   return (
-    <PageClient
-      taskTags={taskTags}
-      tags={tags}
-      isLogged={!!user}
-      tagPlaceholders={tagPlaceholders}
-    />
+    <PageClient taskTags={taskTags} tags={tags} user={user} tagPlaceholders={tagPlaceholders} />
   );
 }

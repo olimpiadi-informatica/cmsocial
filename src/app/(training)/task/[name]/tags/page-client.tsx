@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useParams, usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { type MouseEvent, type Ref, type RefObject, forwardRef, useRef, useState } from "react";
 
 import { Trans, msg } from "@lingui/macro";
@@ -18,33 +18,26 @@ import {
 import { Eye, SquarePlus, Trash2 } from "lucide-react";
 
 import { H2 } from "~/components/header";
-import type { Tag, TaskTag } from "~/lib/api/tags";
+import type { Tag } from "~/lib/api/tags";
+import type { TaskTag } from "~/lib/api/task-tags";
+import type { User } from "~/lib/api/user";
+import { AccessLevel } from "~/lib/permissions";
 
 import { addTag, removeTag } from "./actions";
 
 type Props = {
   taskTags: TaskTag[];
   tags: Tag[];
-  isLogged: boolean;
+  user?: User;
   tagPlaceholders: string[];
 };
 
-export function PageClient({ taskTags, tags, isLogged, tagPlaceholders }: Props) {
+export function PageClient({ taskTags, tags, user, tagPlaceholders }: Props) {
   const { _ } = useLingui();
-  const router = useRouter();
 
   const modalRef = useRef<HTMLDialogElement>(null);
 
-  const path = usePathname();
   const isTagsPage = usePathname().endsWith("/tags");
-
-  const openModal = async () => {
-    if (!isLogged) {
-      router.push(`/login?redirect=${encodeURIComponent(path)}`);
-      await new Promise(() => {});
-    }
-    modalRef.current?.showModal();
-  };
 
   return (
     <div>
@@ -62,12 +55,12 @@ export function PageClient({ taskTags, tags, isLogged, tagPlaceholders }: Props)
           </li>
         ))}
       </Menu>
-      {isTagsPage && (
+      {user && user.accessLevel <= AccessLevel.User && isTagsPage && (
         <div className="mt-4 flex justify-center">
-          <Button className="btn-primary" onClick={openModal}>
+          <Button className="btn-primary" onClick={() => modalRef.current?.showModal()}>
             <SquarePlus size={22} /> <Trans>Aggiungi tag</Trans>
           </Button>
-          <AddTagModal ref={modalRef} tags={tags} />
+          <AddTagModal ref={modalRef} taskTags={taskTags} tags={tags} />
         </div>
       )}
     </div>
@@ -82,7 +75,7 @@ function BaseTag({ tag }: { tag: TaskTag }) {
   const remove = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const err = await removeTag(taskName as string, tag.name);
-    if (err) throw new Error(err);
+    if (err) throw new Error(_(err));
     notifySuccess(_(msg`Tag rimosso con successo`));
   };
 
@@ -118,25 +111,22 @@ function HiddenTag({ tag, placeholder }: { tag: TaskTag; placeholder: string }) 
 }
 
 const AddTagModal = forwardRef(function AddTagModal(
-  { tags }: { tags: Tag[] },
+  { taskTags, tags }: { taskTags: TaskTag[]; tags: Tag[] },
   ref: Ref<HTMLDialogElement> | null,
 ) {
   const { name: taskName } = useParams();
   const { notifySuccess } = useNotifications();
   const { _ } = useLingui();
 
-  const options = Object.fromEntries(tags.map((tag) => [tag.name, tag.description]));
+  const options = Object.fromEntries(
+    tags
+      .filter((tag) => !taskTags.some((taskTag) => taskTag.name === tag.name))
+      .map((tag) => [tag.name, tag.description]),
+  );
 
   const submit = async (data: { tag: string }) => {
     const err = await addTag(taskName as string, data.tag);
-    if (err) {
-      switch (err) {
-        case "The task already has this tag":
-          throw new Error(_(msg`Il task ha già questo tag`), { cause: { field: "tag" } });
-        default:
-          throw err;
-      }
-    }
+    if (err) throw new Error(_(err));
     (ref as RefObject<HTMLDialogElement>).current?.close();
     notifySuccess(_(msg`Tag aggiunto con successo`));
   };

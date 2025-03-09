@@ -463,10 +463,6 @@ msgstr "Home"
 msgid "ID"
 msgstr "ID"
 
-#: src/app/(training)/task/[name]/tags/page-client.tsx
-msgid "Il task ha già questo tag"
-msgstr "Il task ha già questo tag"
-
 #: src/app/(training)/(home)/page.tsx
 msgid "Impara gradualmente"
 msgstr "Impara gradualmente"
@@ -677,6 +673,12 @@ msgstr "Nome del problema"
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Non inviato"
 msgstr "Non inviato"
+
+#: src/app/(training)/task/[name]/tags/actions.ts
+#: src/app/(training)/task/[name]/tags/actions.ts
+#: src/lib/api/task-tags.ts
+msgid "Non sei autorizzato"
+msgstr "Non sei autorizzato"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Non valido"
@@ -1040,6 +1042,10 @@ msgstr "Tag"
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag aggiunto con successo"
 msgstr "Tag aggiunto con successo"
+
+#: src/lib/api/task-tags.ts
+msgid "Tag non trovato"
+msgstr "Tag non trovato"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag rimosso con successo"

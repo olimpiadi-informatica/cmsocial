@@ -7,17 +7,7 @@ import { cmsDb, terryDb } from "~/lib/db";
 import { participations, tasks, users } from "~/lib/db/schema-cms";
 import { socialParticipations, socialUsers, taskScores } from "~/lib/db/schema-cmsocial";
 import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
-
-export enum AccessLevel {
-  Admin = 0,
-  Monica = 1,
-  Tutor = 2,
-  Teacher = 3,
-  Superuser = 4,
-  User = 5,
-  Newbie = 6,
-  Guest = 7,
-}
+import type { AccessLevel } from "~/lib/permissions";
 
 export type User = {
   id: number;
@@ -30,7 +20,8 @@ export type User = {
   institute: string | null;
 };
 
-export const getUser = cache(async (username: string): Promise<User | undefined> => {
+export const getUser = cache(async (username?: string): Promise<User | undefined> => {
+  if (!username) return;
   const [user] = await cmsDb
     .select({
       id: users.id,
