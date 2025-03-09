@@ -2,10 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/macro";
-import { DateTime, Menu } from "@olinfo/react-components";
+import { Menu } from "@olinfo/react-components";
 import { getSubmissions, getUser } from "@olinfo/terry-api";
 import { getMe } from "@olinfo/training-api";
 
+import { DateTime } from "~/components/datetime";
 import { H2 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { fileLanguageName } from "~/lib/language";

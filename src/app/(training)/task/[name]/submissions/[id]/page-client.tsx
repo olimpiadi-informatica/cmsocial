@@ -5,7 +5,6 @@ import { Fragment, type ReactNode, useEffect, useState } from "react";
 
 import { Trans } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
-import { DateTime } from "@olinfo/react-components";
 import {
   type SubmissionDetails,
   type Subtask,
@@ -17,6 +16,7 @@ import clsx from "clsx";
 import { Check, X } from "lucide-react";
 import useSWR from "swr";
 
+import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
 

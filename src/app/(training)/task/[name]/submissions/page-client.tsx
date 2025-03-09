@@ -6,10 +6,11 @@ import { useEffect, useState } from "react";
 
 import { Trans } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
-import { DateTime, Menu } from "@olinfo/react-components";
+import { Menu } from "@olinfo/react-components";
 import { type Submission, getTaskSubmissions, isEvaluating } from "@olinfo/training-api";
 import useSWR from "swr";
 
+import { DateTime } from "~/components/datetime";
 import { H2 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
 import { fileLanguageName } from "~/lib/language";

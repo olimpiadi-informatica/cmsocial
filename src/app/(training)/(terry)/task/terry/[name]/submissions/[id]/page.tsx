@@ -2,12 +2,12 @@ import { notFound } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
 import { Trans } from "@lingui/macro";
-import { DateTime } from "@olinfo/react-components";
 import { type Submission, getSubmission, getUser } from "@olinfo/terry-api";
 import { getMe } from "@olinfo/training-api";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
 
+import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { SourceCode } from "~/components/source-code";
