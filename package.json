@@ -33,6 +33,7 @@
     "@types/mdx": "^2.0",
     "@types/node": "^22",
     "@types/pdfobject": "^2.2",
+    "@types/pg": "^8.11",
     "@types/react": "^19.0",
     "@types/react-dom": "^19.0",
     "@types/react-google-recaptcha": "^2.1",

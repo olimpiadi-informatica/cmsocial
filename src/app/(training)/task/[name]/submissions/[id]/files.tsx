@@ -4,6 +4,7 @@ import { Download } from "lucide-react";
 
 import { H3 } from "~/components/header";
 import { SourceCode } from "~/components/source-code";
+import { getFileContent } from "~/lib/api/file";
 import { getSubmissionFiles } from "~/lib/api/submission";
 import { Language, languageByName } from "~/lib/language";
 
@@ -12,12 +13,13 @@ export async function SubmissionFiles({ id, language }: { id: number; language: 
   const files = await getSubmissionFiles(id, lang);
 
   if (files.length === 1) {
+    const file = files[0];
     return (
       <>
         <H3 className="mb-2 mt-6">
           <Trans>Codice sorgente</Trans>
         </H3>
-        <SourceCode url={files[0].url} lang={lang} />
+        <SourceCode url={file.url} getFile={() => getFileContent(file)} lang={lang} />
       </>
     );
   }

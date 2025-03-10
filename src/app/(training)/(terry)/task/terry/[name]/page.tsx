@@ -6,11 +6,14 @@ import type { MDXComponents } from "mdx/types";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
+import { getTerryFileContent } from "~/lib/api/file";
+import { getTerryTask } from "~/lib/api/task-terry";
+import { fileLanguage } from "~/lib/language";
+
 import style from "./statement.module.css";
 import Submit from "./submit/page";
 
 import "katex/dist/katex.css";
-import { getTerryTask } from "~/lib/api/task-terry";
 
 type Props = {
   params: Promise<{ name: string }>;
@@ -23,8 +26,7 @@ export default async function Page({ params }: Props) {
   if (!task) notFound();
 
   const statement = task.statementPath;
-  const resp = await fetch(`${process.env.NEXT_PUBLIC_TERRY_URL}/files${statement}`);
-  const source = await resp.text();
+  const source = await getTerryFileContent(statement).text();
 
   const dirname = statement.replace(/\/[^/]*$/, "");
 
@@ -34,11 +36,12 @@ export default async function Page({ params }: Props) {
   };
 
   const mapUrl = (url?: string) => {
-    return !url || URL.canParse(url) ? url : `/api-terry/files${dirname}/${url}`;
+    return !url || URL.canParse(url) ? url : `/files${dirname}/${url}`;
   };
 
   const a: MDXComponents["a"] = ({ href, ...props }) => {
-    return <a href={mapUrl(href)} {...props} />;
+    const lang = fileLanguage(href);
+    return <a href={mapUrl(href)} {...props} download={!!lang} />;
   };
 
   const img: MDXComponents["img"] = ({ src, ...props }) => {

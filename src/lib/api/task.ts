@@ -50,6 +50,7 @@ export const getTaskAttachments = cache((name: string): Promise<File[]> => {
   return cmsDb
     .select({
       name: attachments.filename,
+      digest: attachments.digest,
       url: getFile(attachments.filename, attachments.digest),
     })
     .from(attachments)
@@ -62,6 +63,7 @@ export const getTaskStatement = cache(async (name: string, locale: string): Prom
   const rows = await cmsDb
     .select({
       name: sql<string>`'testo.pdf'`,
+      digest: statements.digest,
       url: getFile("testo.pdf", statements.digest),
     })
     .from(statements)

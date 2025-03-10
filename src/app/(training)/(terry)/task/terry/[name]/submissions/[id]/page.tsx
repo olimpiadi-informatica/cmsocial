@@ -9,6 +9,7 @@ import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { SourceCode } from "~/components/source-code";
+import { getTerryFileContent } from "~/lib/api/file";
 import { type TerrySubmissionDetail, getTerrySubmission } from "~/lib/api/submission-terry";
 import { Language, fileLanguage, fileLanguageName } from "~/lib/language";
 import { loadLocale } from "~/lib/locale";
@@ -98,7 +99,8 @@ export default async function Page({ params }: Props) {
         <Trans>Codice sorgente</Trans>
       </H3>
       <SourceCode
-        url={`${process.env.NEXT_PUBLIC_TERRY_URL}/files/${submission.source}`}
+        url={`/files/${submission.source}`}
+        getFile={() => getTerryFileContent(submission.source)}
         lang={lang}
       />
       <div className="mt-6 flex flex-wrap justify-center gap-2">

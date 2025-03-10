@@ -133,6 +133,7 @@ export const getSubmissionFiles = cache((id: number, language: Language): Promis
   return cmsDb
     .select({
       name: files.filename,
+      digest: files.digest,
       url: getFile(files.filename, files.digest).mapWith((url: string) =>
         url.replace("%l", languageExtension(language)),
       ),

@@ -9,7 +9,13 @@ import { Download, FileCode2 } from "lucide-react";
 
 import { Language } from "~/lib/language";
 
-export function SourceCode({ url, lang }: { url: string; lang: Language }) {
+type Props = {
+  url: string;
+  getFile: () => Promise<Response> | Response;
+  lang: Language;
+};
+
+export function SourceCode({ url, getFile, lang }: Props) {
   const { _ } = useLingui();
 
   if (lang === Language.Scratch) {
@@ -25,7 +31,7 @@ export function SourceCode({ url, lang }: { url: string; lang: Language }) {
   return (
     <div className="relative overflow-hidden rounded-box border border-base-content/10">
       <Suspense fallback={<div className="skeleton h-[75vh]" />}>
-        <SourceCodeInner url={url} lang={lang} />
+        <SourceCodeInner getFile={getFile} lang={lang} />
       </Suspense>
       <div className="absolute right-0 top-0 flex rounded-bl-xl border-b border-l border-base-content/10 bg-base-100">
         <a
@@ -40,11 +46,13 @@ export function SourceCode({ url, lang }: { url: string; lang: Language }) {
   );
 }
 
-export async function SourceCodeInner({
-  url,
-  lang,
-}: { url: string; lang: Exclude<Language, Language.Scratch> }) {
-  const resp = await fetch(url);
+type InnerProps = {
+  getFile: () => Promise<Response> | Response;
+  lang: Exclude<Language, Language.Scratch>;
+};
+
+export async function SourceCodeInner({ getFile, lang }: InnerProps) {
+  const resp = await getFile();
   const source = await resp.text();
 
   return (
