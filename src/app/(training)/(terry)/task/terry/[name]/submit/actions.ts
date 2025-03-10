@@ -15,7 +15,7 @@ import {
 import { getSessionUser } from "~/lib/user";
 
 export async function requestInput(taskName: string): Promise<string | undefined> {
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) return;
 
   try {
@@ -27,7 +27,7 @@ export async function requestInput(taskName: string): Promise<string | undefined
 }
 
 export async function changeInput(inputId: string): Promise<string | undefined> {
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) return;
 
   try {

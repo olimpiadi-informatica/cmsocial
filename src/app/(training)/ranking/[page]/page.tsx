@@ -18,10 +18,12 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  params: { page: string };
+  params: Promise<{ page: string }>;
 };
 
-export default async function Page({ params: { page: pageStr } }: Props) {
+export default async function Page({ params }: Props) {
+  const { page: pageStr } = await params;
+
   const page = Number(pageStr);
   const pageSize = 20;
 

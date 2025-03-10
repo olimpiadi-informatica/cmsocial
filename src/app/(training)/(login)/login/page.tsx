@@ -10,13 +10,13 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  searchParams: {
-    redirect?: string;
-  };
+  searchParams: Promise<{ redirect?: string }>;
 };
 
-export default function Page({ searchParams: { redirect: redirectUrl = "/" } }: Props) {
-  if (getSessionUser()) {
+export default async function Page({ searchParams }: Props) {
+  const { redirect: redirectUrl = "/" } = await searchParams;
+
+  if (await getSessionUser()) {
     return redirect(redirectUrl);
   }
 

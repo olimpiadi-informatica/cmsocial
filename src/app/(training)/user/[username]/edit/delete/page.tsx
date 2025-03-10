@@ -9,7 +9,7 @@ import { getSessionUser } from "~/lib/user";
 export default async function Page() {
   await loadLocale();
 
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) {
     redirect(`/login?redirect=${encodeURIComponent("/user/me/edit/delete")}`);
   }

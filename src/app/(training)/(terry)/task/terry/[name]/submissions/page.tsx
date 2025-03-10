@@ -12,13 +12,15 @@ import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 };
 
-export default async function Page({ params: { name: taskName } }: Props) {
+export default async function Page({ params }: Props) {
+  const { name: taskName } = await params;
+
   const i18n = await loadLocale();
 
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) {
     return (
       <div>

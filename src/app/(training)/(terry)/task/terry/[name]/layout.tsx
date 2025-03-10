@@ -7,11 +7,13 @@ import { getTerryTask } from "~/lib/api/task-terry";
 import { TaskTabs } from "./tabs";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
   children: ReactNode;
 };
 
-export async function generateMetadata({ params: { name } }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { name } = await params;
+
   const task = await getTerryTask(name);
   if (!task) return {};
 
@@ -21,7 +23,9 @@ export async function generateMetadata({ params: { name } }: Props): Promise<Met
   };
 }
 
-export default async function Layout({ params: { name: taskName }, children }: Props) {
+export default async function Layout({ params, children }: Props) {
+  const { name: taskName } = await params;
+
   const task = await getTerryTask(taskName);
   if (!task) notFound();
 

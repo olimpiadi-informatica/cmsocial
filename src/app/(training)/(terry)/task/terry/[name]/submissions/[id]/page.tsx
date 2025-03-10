@@ -15,13 +15,15 @@ import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
 type Props = {
-  params: { name: string; id: string };
+  params: Promise<{ name: string; id: string }>;
 };
 
-export default async function Page({ params: { name: taskName, id } }: Props) {
+export default async function Page({ params }: Props) {
+  const { name: taskName, id } = await params;
+
   const i18n = await loadLocale();
 
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) {
     redirect(`/login?redirect=${encodeURIComponent(`/task/terry/${taskName}/submissions/${id}`)}`);
   }

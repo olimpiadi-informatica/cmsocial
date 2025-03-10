@@ -8,8 +8,8 @@ export const metadata: Metadata = {
   title: "Training - Recupero password",
 };
 
-export default function Layout({ children }: { children: ReactNode }) {
-  if (getSessionUser()) {
+export default async function Layout({ children }: { children: ReactNode }) {
+  if (await getSessionUser()) {
     return redirect("/");
   }
 

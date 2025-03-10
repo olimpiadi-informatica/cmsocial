@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-  const user = getSessionUser();
+  const user = await getSessionUser();
   const tasks = await getTerryTasks(user?.username);
   return <PageClient tasks={tasks} />;
 }

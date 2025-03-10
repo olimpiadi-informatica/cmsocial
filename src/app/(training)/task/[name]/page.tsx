@@ -7,13 +7,14 @@ import Submit from "./submit/page";
 import Tags from "./tags/page";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 };
 
 export default async function Page({ params }: Props) {
   const i18n = await loadLocale();
+  const { name } = await params;
 
-  const statement = await getTaskStatement(params.name, i18n.locale);
+  const statement = await getTaskStatement(name, i18n.locale);
 
   return (
     <div className="grid grow gap-4 lg:grid-cols-[1fr_18rem]">

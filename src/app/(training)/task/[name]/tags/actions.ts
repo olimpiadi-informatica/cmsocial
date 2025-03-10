@@ -12,7 +12,7 @@ export async function addTag(
   taskName: string,
   tagName: string,
 ): Promise<MessageDescriptor | undefined> {
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) return msg`Non sei autorizzato`;
 
   const err = await addTaskTag(user.id, taskName, tagName);
@@ -25,7 +25,7 @@ export async function removeTag(
   taskName: string,
   tagName: string,
 ): Promise<MessageDescriptor | undefined> {
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) return msg`Non sei autorizzato`;
 
   const err = await removeTaskTag(user.id, taskName, tagName);

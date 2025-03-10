@@ -11,13 +11,15 @@ import { getSessionUser } from "~/lib/user";
 import { PageClient } from "./page-client";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 };
 
-export default async function Page({ params: { name: taskName } }: Props) {
+export default async function Page({ params }: Props) {
+  const { name: taskName } = await params;
+
   await loadLocale();
 
-  const user = getSessionUser();
+  const user = await getSessionUser();
   if (!user) {
     return (
       <div className="text-center">

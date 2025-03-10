@@ -11,10 +11,12 @@ import { SubmitBatch } from "./batch";
 import { SubmitOutputOnly } from "./output-only";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 };
 
-export default async function Page({ params: { name } }: Props) {
+export default async function Page({ params }: Props) {
+  const { name } = await params;
+
   const [_, user, task] = await Promise.all([loadLocale(), getMe(), getTask(name)]);
 
   if (!task) notFound();

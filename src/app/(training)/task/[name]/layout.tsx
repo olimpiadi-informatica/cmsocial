@@ -9,11 +9,13 @@ import { getTask } from "~/lib/api/task";
 import { TaskTabs } from "./tabs";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
   children: ReactNode;
 };
 
-export async function generateMetadata({ params: { name } }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { name } = await params;
+
   const task = await getTask(name);
   if (!task) return {};
 
@@ -23,7 +25,9 @@ export async function generateMetadata({ params: { name } }: Props): Promise<Met
   };
 }
 
-export default async function Layout({ params: { name }, children }: Props) {
+export default async function Layout({ params, children }: Props) {
+  const { name } = await params;
+
   const task = await getTask(name);
   if (!task) notFound();
 

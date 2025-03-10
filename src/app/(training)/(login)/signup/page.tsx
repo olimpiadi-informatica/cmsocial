@@ -10,12 +10,12 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  searchParams: {
-    redirect?: string;
-  };
+  searchParams: Promise<{ redirect?: string }>;
 };
 
-export default async function Page({ searchParams: { redirect: redirectUrl = "/" } }: Props) {
+export default async function Page({ searchParams }: Props) {
+  const { redirect: redirectUrl = "/" } = await searchParams;
+
   if (await getMe()) {
     return redirect(redirectUrl);
   }

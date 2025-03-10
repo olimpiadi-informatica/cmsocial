@@ -13,11 +13,13 @@ import "katex/dist/katex.css";
 import { getTerryTask } from "~/lib/api/task-terry";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 };
 
-export default async function Page({ params: { name: taskName } }: Props) {
-  const task = await getTerryTask(taskName);
+export default async function Page({ params }: Props) {
+  const { name } = await params;
+
+  const task = await getTerryTask(name);
   if (!task) notFound();
 
   const statement = task.statementPath;
@@ -51,7 +53,7 @@ export default async function Page({ params: { name: taskName } }: Props) {
       </div>
       <div className="max-lg:hidden">
         <div className="my-6">
-          <Submit params={{ name: taskName }} />
+          <Submit params={params} />
         </div>
       </div>
     </div>

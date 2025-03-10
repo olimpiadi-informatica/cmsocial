@@ -15,13 +15,15 @@ export const metadata: Metadata = {
 };
 
 type Props = {
-  params: { username: string };
+  params: Promise<{ username: string }>;
   children: ReactNode;
 };
 
-export default async function Layout({ params: { username }, children }: Props) {
+export default async function Layout({ params, children }: Props) {
+  const { username } = await params;
+
   await loadLocale();
-  const me = getSessionUser();
+  const me = await getSessionUser();
 
   if (!me) {
     redirect(`/login?redirect=${encodeURIComponent(`/user/${username}/edit`)}`);

@@ -11,10 +11,12 @@ import { getTaskStats } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
 type Props = {
-  params: { name: string };
+  params: Promise<{ name: string }>;
 };
 
-export default async function Page({ params: { name: taskName } }: Props) {
+export default async function Page({ params }: Props) {
+  const { name: taskName } = await params;
+
   await loadLocale();
   const { _ } = useLingui();
 

@@ -9,7 +9,7 @@ const locales = {
 };
 
 export async function loadLocale(): Promise<I18n> {
-  let locale = cookies().get("lang")?.value ?? "";
+  let locale = (await cookies()).get("lang")?.value ?? "";
   if (!(locale in locales)) {
     locale = "it";
   }

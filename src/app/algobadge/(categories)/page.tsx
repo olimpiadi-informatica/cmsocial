@@ -14,19 +14,21 @@ import { Navbar } from "./navbar";
 import { Tree } from "./tree";
 
 type Props = {
-  searchParams: {
-    category?: string;
+  searchParams: Promise<{
+    category?: CategoryId;
     impersonate?: string;
     unlock?: string;
-  };
+  }>;
 };
 
 export async function generateMetadata({ searchParams }: Props): Promise<Metadata> {
   const i18n = await loadLocale();
+  const { category } = await searchParams;
 
-  const category = searchParams.category as CategoryId;
   const title =
-    category in algobadge ? `AlgoBadge - ${i18n._(algobadge[category].title)}` : "AlgoBadge";
+    category && category in algobadge
+      ? `AlgoBadge - ${i18n._(algobadge[category].title)}`
+      : "AlgoBadge";
 
   return {
     title,
@@ -38,20 +40,20 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
 export default async function Page({ searchParams }: Props) {
   await loadLocale();
 
-  const category = searchParams.category as CategoryId;
+  const { category, impersonate, unlock } = await searchParams;
   if (category && !(category in resources)) notFound();
-  const Resources = resources[category];
+  const Resources = category && resources[category];
 
-  const username = searchParams.impersonate ?? getSessionUser()?.username;
+  const username = impersonate ?? (await getSessionUser())?.username;
 
   const scores = await getAlgobadgeScores(username);
-  const { badges, totalBadge } = getUserBadges(scores, !!searchParams.unlock);
+  const { badges, totalBadge } = getUserBadges(scores, !!unlock);
 
   return (
     <>
       <Navbar badge={totalBadge} />
       <div className="relative mx-auto w-full max-w-screen-xl p-4 pb-8">
-        <Tree badges={badges} searchParams={new URLSearchParams(searchParams)} />
+        <Tree badges={badges} searchParams={new URLSearchParams(await searchParams)} />
         <div className="prose mt-8 max-w-full md:prose-lg">
           {category && <Header category={algobadge[category]} badge={badges[category]} />}
           <div className="[&_svg]:inline-block [&_svg]:align-text-top [&_svg]:me-1">

@@ -8,14 +8,16 @@ import { SubmissionFiles } from "./files";
 import { PageClient } from "./page-client";
 
 type Props = {
-  params: {
+  params: Promise<{
     name: string;
     id: string;
-  };
+  }>;
 };
 
-export default async function Page({ params: { id, name } }: Props) {
-  const user = getSessionUser();
+export default async function Page({ params }: Props) {
+  const { id, name } = await params;
+
+  const user = await getSessionUser();
   if (!user) {
     redirect(`/login?redirect=${encodeURIComponent(`/task/${name}/submissions/${id}`)}`);
   }

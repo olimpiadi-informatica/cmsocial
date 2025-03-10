@@ -16,10 +16,12 @@ import { AccessLevel } from "~/lib/permissions";
 import { getSessionUser } from "~/lib/user";
 
 type Props = {
-  params: { username: string };
+  params: Promise<{ username: string }>;
 };
 
-export async function generateMetadata({ params: { username } }: Props): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { username } = await params;
+
   const user = await getUser(username);
   if (!user) return {};
 
@@ -55,8 +57,10 @@ export async function generateMetadata({ params: { username } }: Props): Promise
   };
 }
 
-export default async function Page({ params: { username } }: Props) {
-  const me = getSessionUser();
+export default async function Page({ params }: Props) {
+  const { username } = await params;
+
+  const me = await getSessionUser();
   const [_i18n, user] = await Promise.all([loadLocale(), getUser(username)]);
   if (!user) notFound();
 

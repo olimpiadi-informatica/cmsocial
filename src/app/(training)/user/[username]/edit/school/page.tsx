@@ -1,5 +1,7 @@
 "use client";
 
+import { use } from "react";
+
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
@@ -12,7 +14,7 @@ import { getCities, getProvinces, getRegions, getSchools } from "~/lib/api/locat
 import { changeSchool } from "./actions";
 
 type Props = {
-  params: { username: string };
+  params: Promise<{ username: string }>;
 };
 
 type Institute = {
@@ -22,7 +24,9 @@ type Institute = {
   institute: string;
 };
 
-export default function Page({ params: { username } }: Props) {
+export default function Page({ params }: Props) {
+  const { username } = use(params);
+
   const { _ } = useLingui();
 
   const submit = async (data: Institute) => {

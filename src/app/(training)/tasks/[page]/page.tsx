@@ -15,28 +15,29 @@ export const metadata: Metadata = {
 };
 
 type Params = {
-  params: {
+  params: Promise<{
     page: string;
-  };
-  searchParams: {
+  }>;
+  searchParams: Promise<{
     search?: string;
     tag?: string | string[];
     order?: "hardest" | "easiest";
-  };
+  }>;
 };
 
 export default async function Page({ params, searchParams }: Params) {
-  const page = Number(params.page);
+  const { search, tag, order } = await searchParams;
+  const page = Number((await params).page);
   const pageSize = 20;
 
   if (!Number.isInteger(page) || page < 1) notFound();
 
-  const user = getSessionUser();
+  const user = await getSessionUser();
 
   const options: TaskListOptions = {
-    search: searchParams.search,
-    tags: compact(Array.isArray(searchParams.tag) ? searchParams.tag : [searchParams.tag]),
-    order: searchParams.order,
+    search: search,
+    tags: compact(Array.isArray(tag) ? tag : [tag]),
+    order: order,
   };
 
   const [taskList, taskCount] = await Promise.all([
