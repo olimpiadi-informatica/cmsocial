@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, gt, sql } from "drizzle-orm";
 import { orderBy } from "lodash-es";
 
 import { cmsDb, terryDb } from "~/lib/db";
@@ -85,6 +85,7 @@ function getTrainingScores(userId: number): Promise<UserScore[]> {
       and(
         eq(participations.userId, userId),
         eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
+        gt(taskScores.score, 0),
       ),
     );
 }
@@ -100,5 +101,5 @@ function getTerryScores(username: string): Promise<UserScore[]> {
     })
     .from(terryUserTasks)
     .innerJoin(terryTasks, eq(terryTasks.name, terryUserTasks.task))
-    .where(eq(terryUserTasks.token, username));
+    .where(and(eq(terryUserTasks.token, username), gt(terryUserTasks.score, 0)));
 }
