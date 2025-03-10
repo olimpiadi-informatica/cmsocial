@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 
-import { getContest, getMe } from "@olinfo/training-api";
+import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
@@ -16,10 +16,9 @@ type Props = {
 export default async function Page({ searchParams }: Props) {
   const { redirect: redirectUrl = "/" } = await searchParams;
 
-  if (await getMe()) {
+  if (await getSessionUser()) {
     return redirect(redirectUrl);
   }
 
-  const contest = await getContest();
-  return <PageClient contest={contest} redirectUrl={redirectUrl} />;
+  return <PageClient redirectUrl={redirectUrl} />;
 }

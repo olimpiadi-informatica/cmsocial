@@ -3,7 +3,6 @@ import type { ReactNode } from "react";
 
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Layout } from "@olinfo/react-components";
-import { getContest } from "@olinfo/training-api";
 
 import { loadLocale } from "~/lib/locale";
 
@@ -24,7 +23,7 @@ export const viewport: Viewport = {
 };
 
 export default async function RootLayout({ children }: { children: ReactNode }) {
-  const [i18n, contest] = await Promise.all([loadLocale(), getContest()]);
+  const i18n = await loadLocale();
 
   return (
     <html lang={i18n.locale}>
@@ -35,7 +34,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           </LayoutClient>
         </Layout>
         <Routing />
-        {contest && <GoogleAnalytics gaId={contest.analytics} />}
+        {process.env.GOOGLE_ANALYTICS_ID && (
+          <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID} />
+        )}
       </body>
     </html>
   );

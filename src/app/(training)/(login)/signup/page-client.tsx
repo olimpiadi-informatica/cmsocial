@@ -14,7 +14,6 @@ import {
   SubmitButton,
   UsernameField,
 } from "@olinfo/react-components";
-import type { Contest } from "@olinfo/training-api";
 import ReCaptchaWidget, { type ReCAPTCHA } from "react-google-recaptcha";
 
 import { H2 } from "~/components/header";
@@ -36,7 +35,7 @@ type FormValue = {
   institute: string;
 };
 
-export function PageClient({ contest, redirectUrl }: { contest: Contest; redirectUrl: string }) {
+export function PageClient({ redirectUrl }: { redirectUrl: string }) {
   const theme = useTheme();
   const { _ } = useLingui();
 
@@ -123,18 +122,14 @@ export function PageClient({ contest, redirectUrl }: { contest: Contest; redirec
           optional
         />
       )}
-      {contest.captcha_enabled && (
+      {process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY && (
         <div className="mx-auto mt-4 h-20">
           {theme && (
             <ReCaptchaWidget
               ref={captchaRef}
               theme={theme}
               className="h-[76px] w-[302px] overflow-hidden rounded-[3px]"
-              sitekey={
-                process.env.NODE_ENV === "production"
-                  ? contest.recaptcha_public_key
-                  : "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"
-              }
+              sitekey={process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY}
             />
           )}
         </div>

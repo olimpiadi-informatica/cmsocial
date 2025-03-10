@@ -2,10 +2,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
-import { getMe, getTask } from "@olinfo/training-api";
+import { getTask } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 import { SubmitBatch } from "./batch";
 import { SubmitOutputOnly } from "./output-only";
@@ -17,7 +18,7 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name } = await params;
 
-  const [_, user, task] = await Promise.all([loadLocale(), getMe(), getTask(name)]);
+  const [_, user, task] = await Promise.all([loadLocale(), getSessionUser(), getTask(name)]);
 
   if (!task) notFound();
   if (!user) {

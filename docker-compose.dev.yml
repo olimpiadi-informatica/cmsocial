@@ -42,7 +42,6 @@ services:
     hostname: frontend
     environment:
       NEXT_PUBLIC_TRAINING_API_URL: http://dev.olinfo.it:8000/api
-      NEXT_PUBLIC_TERRY_URL: http://dev.olinfo.it:8000/api-terry
     depends_on:
       - "dev_backend"
 
