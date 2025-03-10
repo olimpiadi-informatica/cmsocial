@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H1, H2 } from "~/components/header";

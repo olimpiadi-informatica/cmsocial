@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Form, SelectField, SingleFileField, SubmitButton } from "@olinfo/react-components";
 import type { Task } from "@olinfo/training-api";
 import clsx from "clsx";

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 import { getTask } from "~/lib/api/task";
 

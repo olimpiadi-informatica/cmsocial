@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { omitBy, pull, range } from "lodash-es";
 import {

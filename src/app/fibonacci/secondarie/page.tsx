@@ -1,4 +1,4 @@
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import { kebabCase } from "lodash-es";
 

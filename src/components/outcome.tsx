@@ -1,4 +1,4 @@
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
 
 import type { Submission } from "~/lib/api/submissions";

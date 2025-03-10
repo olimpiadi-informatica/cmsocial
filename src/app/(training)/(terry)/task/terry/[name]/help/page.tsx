@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 import { ForumPosts } from "~/components/forum-posts";
 import { H2 } from "~/components/header";

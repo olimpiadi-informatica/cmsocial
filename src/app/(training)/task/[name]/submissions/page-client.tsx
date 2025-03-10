@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { Trans } from "@lingui/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import useSWR from "swr";
 

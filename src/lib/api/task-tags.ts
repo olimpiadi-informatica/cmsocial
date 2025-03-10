@@ -1,7 +1,7 @@
 import { cache } from "react";
 
 import type { MessageDescriptor } from "@lingui/core";
-import { msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { and, asc, desc, eq, sql } from "drizzle-orm";
 
 import { getAccessLevel } from "~/lib/api/permissions";

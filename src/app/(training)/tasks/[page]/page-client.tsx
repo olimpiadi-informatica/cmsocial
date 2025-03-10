@@ -4,8 +4,9 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import clsx from "clsx";
 import { range } from "lodash-es";

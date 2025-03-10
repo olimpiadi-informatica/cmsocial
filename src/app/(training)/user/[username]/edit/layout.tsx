@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { redirect } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 
 import { H1 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";

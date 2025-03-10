@@ -1,7 +1,8 @@
-import { Trans, msg } from "@lingui/macro";
-import { useLingui } from "@lingui/react";
-
 import { SiGithub, SiTelegram, SiYoutube } from "@icons-pack/react-simple-icons";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
+
 import oii from "~/app/icon0.svg";
 
 export function Footer() {

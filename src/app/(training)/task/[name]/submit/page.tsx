@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import { getMe, getTask } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";

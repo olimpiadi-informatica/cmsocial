@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-import { msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Dropdown, DropdownButton, DropdownMenu } from "@olinfo/react-components";
 import { ChevronDown, Languages } from "lucide-react";

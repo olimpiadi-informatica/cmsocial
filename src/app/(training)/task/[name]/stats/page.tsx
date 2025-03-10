@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";

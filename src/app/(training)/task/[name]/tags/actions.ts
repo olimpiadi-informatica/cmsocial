@@ -1,9 +1,10 @@
 "use server";
 
-import type { MessageDescriptor } from "@lingui/core";
 import { revalidatePath } from "next/cache";
 
-import { msg } from "@lingui/macro";
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+
 import { addTaskTag, removeTaskTag } from "~/lib/api/task-tags";
 import { getSessionUser } from "~/lib/user";
 

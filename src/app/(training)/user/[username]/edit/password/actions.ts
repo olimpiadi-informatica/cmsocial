@@ -2,7 +2,7 @@
 
 import { redirect } from "next/navigation";
 
-import { msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { changePassword as changePasswordAPI } from "@olinfo/training-api";
 
 export async function changePassword(

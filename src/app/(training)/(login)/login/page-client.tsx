@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import {
   CheckboxField,
   CurrentPasswordField,

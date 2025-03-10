@@ -4,8 +4,9 @@ import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { type MouseEvent, type Ref, type RefObject, forwardRef, useRef, useState } from "react";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import {
   Button,
   Form,

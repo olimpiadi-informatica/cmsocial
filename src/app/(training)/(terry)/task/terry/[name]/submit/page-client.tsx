@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { useEffect, useReducer } from "react";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import {
   Button,
   DateDistance,

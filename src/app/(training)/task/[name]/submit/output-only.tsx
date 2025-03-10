@@ -1,7 +1,7 @@
 "use client";
-
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
 import type { Task } from "@olinfo/training-api";
 import { sortBy } from "lodash-es";

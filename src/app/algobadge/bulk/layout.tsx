@@ -2,7 +2,7 @@ import { Baloo_2 } from "next/font/google";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import {
   Navbar as BaseNavbar,
   NavbarBrand,

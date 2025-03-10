@@ -1,9 +1,9 @@
 import { notFound, redirect } from "next/navigation";
-import { Fragment, type ReactNode } from "react";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
+import { Fragment, type ReactNode } from "react";
 
 import { DateTime } from "~/components/datetime";
 import { H2, H3 } from "~/components/header";

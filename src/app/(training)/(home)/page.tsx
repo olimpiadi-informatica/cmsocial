@@ -1,8 +1,9 @@
 import Link from "next/link";
 import type { ComponentType, ReactNode } from "react";
 
-import { Trans, msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Card, CardActions, CardBody } from "@olinfo/react-components";
 import clsx from "clsx";
 import { BookText, type LucideIcon, Route, UsersRound } from "lucide-react";

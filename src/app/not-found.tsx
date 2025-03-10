@@ -1,7 +1,8 @@
 import Link from "next/link";
 
-import { Trans } from "@lingui/macro";
+import { Trans } from "@lingui/react/macro";
 import { Home } from "lucide-react";
+
 import { loadLocale } from "~/lib/locale";
 
 export default async function Page() {

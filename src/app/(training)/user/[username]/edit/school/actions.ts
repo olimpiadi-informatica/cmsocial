@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { msg } from "@lingui/macro";
+import { msg } from "@lingui/core/macro";
 import { changeSchool as changeSchoolAPI } from "@olinfo/training-api";
 
 export async function changeSchool(
