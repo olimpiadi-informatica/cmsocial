@@ -32,10 +32,13 @@ type FormValue = {
   region: string;
   province: string;
   city: string;
-  institute: string;
+  institute?: string;
 };
 
-export function PageClient({ redirectUrl }: { redirectUrl: string }) {
+export function PageClient({
+  redirectUrl,
+  captchaKey,
+}: { redirectUrl: string; captchaKey?: string }) {
   const theme = useTheme();
   const { _ } = useLingui();
 
@@ -48,7 +51,7 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
       user.password,
       user.name,
       user.surname,
-      user.institute.trim(),
+      user.institute?.trim(),
       captchaRef.current?.getValue() ?? undefined,
       redirectUrl,
     );
@@ -122,14 +125,14 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
           optional
         />
       )}
-      {process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY && (
+      {captchaKey && (
         <div className="mx-auto mt-4 h-20">
           {theme && (
             <ReCaptchaWidget
               ref={captchaRef}
               theme={theme}
               className="h-[76px] w-[302px] overflow-hidden rounded-[3px]"
-              sitekey={process.env.NEXT_PUBLIC_CAPTCHA_PUBLIC_KEY}
+              sitekey={captchaKey}
             />
           )}
         </div>

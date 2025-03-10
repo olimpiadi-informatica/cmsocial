@@ -20,5 +20,5 @@ export default async function Page({ searchParams }: Props) {
     return redirect(redirectUrl);
   }
 
-  return <PageClient redirectUrl={redirectUrl} />;
+  return <PageClient redirectUrl={redirectUrl} captchaKey={process.env.CAPTCHA_PUBLIC_KEY} />;
 }
