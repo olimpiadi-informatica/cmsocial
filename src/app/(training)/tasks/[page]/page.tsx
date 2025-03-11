@@ -22,11 +22,12 @@ type Params = {
     search?: string;
     tag?: string | string[];
     order?: "hardest" | "easiest";
+    unsolved?: string;
   }>;
 };
 
 export default async function Page({ params, searchParams }: Params) {
-  const { search, tag, order } = await searchParams;
+  const { search, tag, order, unsolved } = await searchParams;
   const page = Number((await params).page);
   const pageSize = 20;
 
@@ -38,11 +39,12 @@ export default async function Page({ params, searchParams }: Params) {
     search: search,
     tags: compact(Array.isArray(tag) ? tag : [tag]),
     order: order,
+    unsolved: !!unsolved,
   };
 
   const [taskList, taskCount] = await Promise.all([
     getTaskList(options, user?.id, page, pageSize),
-    getTaskCount(options),
+    getTaskCount(options, user?.id),
   ]);
 
   const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);

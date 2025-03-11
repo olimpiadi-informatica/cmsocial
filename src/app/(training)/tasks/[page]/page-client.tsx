@@ -37,6 +37,7 @@ export function PageClient(props: Props) {
     search: searchParams.get("search"),
     tags: searchParams.getAll("tag"),
     order: searchParams.get("order") as "hardest" | "easiest",
+    unsolved: !!searchParams.get("unsolved"),
   };
 
   const {

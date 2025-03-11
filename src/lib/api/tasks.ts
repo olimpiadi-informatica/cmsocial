@@ -1,14 +1,28 @@
 import { cache } from "react";
 
-import { type SQL, and, asc, count, desc, eq, exists, ilike, inArray, or } from "drizzle-orm";
+import {
+  type SQL,
+  and,
+  asc,
+  count,
+  desc,
+  eq,
+  exists,
+  ilike,
+  inArray,
+  or,
+  lt,
+  sql,
+} from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
-import { participations, socialTasks, tags, taskScores, taskTags, tasks } from "~/lib/db/schema";
+import { socialTasks, tags, taskScores, taskTags, tasks, participations } from "~/lib/db/schema";
 
 export type TaskListOptions = {
-  search?: string | null;
-  tags?: string[] | null;
-  order?: "hardest" | "easiest" | null;
+  search: string | null | undefined;
+  tags: string[] | null | undefined;
+  order: "hardest" | "easiest" | null | undefined;
+  unsolved: boolean | undefined;
 };
 
 function getFilter(options: TaskListOptions) {
@@ -38,10 +52,10 @@ function getFilter(options: TaskListOptions) {
 
 function getOrder(options: TaskListOptions) {
   const order = [];
-  if (options?.order === "hardest") {
+  if (options.order === "hardest") {
     order.push(desc(socialTasks.scoreMultiplier), asc(socialTasks.correctUserCount));
   }
-  if (options?.order === "easiest") {
+  if (options.order === "easiest") {
     order.push(asc(socialTasks.scoreMultiplier), desc(socialTasks.correctUserCount));
   }
   order.push(desc(socialTasks.id));
@@ -53,7 +67,7 @@ export type TaskItem = {
   name: string;
   title: string;
   scoreMultiplier: number;
-  score?: number | null;
+  score: number | null;
 };
 
 export const getTaskList = cache(
@@ -67,48 +81,64 @@ export const getTaskList = cache(
       throw new Error("pageSize must be less than or equal to 100");
     }
 
-    const taskQuery = cmsDb
+    const scoreSq = cmsDb
+      .select({
+        taskId: taskScores.taskId,
+        userId: participations.userId,
+        score: taskScores.score,
+      })
+      .from(taskScores)
+      .innerJoin(participations, eq(participations.id, taskScores.participationId))
+      .as("score_sq");
+
+    const query = cmsDb
       .select({
         id: tasks.id,
         name: tasks.name,
         title: tasks.title,
         scoreMultiplier: socialTasks.scoreMultiplier,
+        score: userId ? scoreSq.score : sql<null>`NULL`,
       })
       .from(tasks)
       .innerJoin(socialTasks, eq(socialTasks.id, tasks.id))
       .where(getFilter(options))
       .orderBy(...getOrder(options))
       .limit(pageSize)
-      .offset((page - 1) * pageSize);
+      .offset((page - 1) * pageSize)
+      .$dynamic();
 
-    if (!userId) {
-      return taskQuery;
+    if (userId) {
+      return query
+        .leftJoin(scoreSq, eq(scoreSq.taskId, tasks.id))
+        .where(and(eq(scoreSq.userId, userId), lt(scoreSq.score, 100).if(options.unsolved)));
     }
 
-    const tasksSq = taskQuery.as("tasks_sq");
+    return query;
+  },
+);
+
+export const getTaskCount = cache(
+  (options: TaskListOptions, userId: number | undefined): Promise<number> => {
     const scoreSq = cmsDb
       .select({
         taskId: taskScores.taskId,
+        userId: participations.userId,
         score: taskScores.score,
       })
       .from(taskScores)
       .innerJoin(participations, eq(participations.id, taskScores.participationId))
-      .where(eq(participations.userId, userId))
       .as("score_sq");
 
-    return cmsDb
-      .select({
-        id: tasksSq.id,
-        name: tasksSq.name,
-        title: tasksSq.title,
-        scoreMultiplier: tasksSq.scoreMultiplier,
-        score: scoreSq.score,
-      })
-      .from(tasksSq)
-      .leftJoin(scoreSq, eq(scoreSq.taskId, tasksSq.id));
+    const query = cmsDb.select().from(tasks).where(getFilter(options)).$dynamic();
+
+    if (userId && options.unsolved) {
+      return cmsDb.$count(
+        query
+          .leftJoin(scoreSq, eq(scoreSq.taskId, tasks.id))
+          .where(and(eq(scoreSq.userId, userId), lt(scoreSq.score, 100))),
+      );
+    }
+
+    return cmsDb.$count(query);
   },
 );
-
-export const getTaskCount = cache((options: TaskListOptions): Promise<number> => {
-  return cmsDb.$count(tasks, getFilter(options));
-});

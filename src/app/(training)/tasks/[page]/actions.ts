@@ -7,7 +7,7 @@ export async function getTasks(options: TaskListOptions, page: number, pageSize:
   const user = await getSessionUser();
   const [taskList, taskCount] = await Promise.all([
     getTaskList(options, user?.id, page, pageSize),
-    getTaskCount(options),
+    getTaskCount(options, user?.id),
   ]);
   return {
     taskList,
