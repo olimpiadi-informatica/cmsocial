@@ -59,20 +59,22 @@ export const getTaskAttachments = cache((name: string): Promise<File[]> => {
     .orderBy(attachments.filename);
 });
 
-export const getTaskStatement = cache(async (name: string, locale: string): Promise<File> => {
-  const rows = await cmsDb
-    .select({
-      name: sql<string>`'testo.pdf'`,
-      digest: statements.digest,
-      url: getFile("testo.pdf", statements.digest),
-    })
-    .from(statements)
-    .innerJoin(tasks, eq(tasks.id, statements.taskId))
-    .where(eq(tasks.name, name))
-    .orderBy(sql`CASE WHEN ${eq(statements.language, locale)} THEN 0 ELSE 1 END`)
-    .limit(1);
-  return rows[0];
-});
+export const getTaskStatement = cache(
+  async (name: string, locale: string): Promise<File | undefined> => {
+    const rows = await cmsDb
+      .select({
+        name: sql<string>`'testo.pdf'`,
+        digest: statements.digest,
+        url: getFile("testo.pdf", statements.digest),
+      })
+      .from(statements)
+      .innerJoin(tasks, eq(tasks.id, statements.taskId))
+      .where(eq(tasks.name, name))
+      .orderBy(sql`CASE WHEN ${eq(statements.language, locale)} THEN 0 ELSE 1 END`)
+      .limit(1);
+    return rows[0];
+  },
+);
 
 export type TaskStats = {
   subCount: number;

@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+
 import { getTaskStatement } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
@@ -15,6 +17,7 @@ export default async function Page({ params }: Props) {
   const { name } = await params;
 
   const statement = await getTaskStatement(name, i18n.locale);
+  if (!statement) notFound();
 
   return (
     <div className="grid grow gap-4 lg:grid-cols-[1fr_18rem]">
