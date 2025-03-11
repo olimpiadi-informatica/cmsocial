@@ -41,7 +41,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title,
       type: "profile",
       images: image,
-      url: `https://training.olinfo.it/user/${username}`,
+      url: `/user/${username}`,
       description,
       firstName: user.firstName,
       lastName: user.lastName,

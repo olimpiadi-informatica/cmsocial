@@ -13,6 +13,7 @@ import { LayoutClient } from "./layout-client";
 export const metadata: Metadata = {
   title: "Allenamento Olimpiadi Italiane di Informatica",
   description: "Piattaforma di allenamento delle Olimpiadi Italiane di Informatica",
+  metadataBase: new URL("https://training.olinfo.it"),
 };
 
 export const viewport: Viewport = {
