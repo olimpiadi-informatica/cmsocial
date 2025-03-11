@@ -39,10 +39,10 @@ function getFilter(options: TaskListOptions) {
 function getOrder(options: TaskListOptions) {
   const order = [];
   if (options?.order === "hardest") {
-    order.push(desc(socialTasks.scoreMultiplier), desc(socialTasks.correctUserCount));
+    order.push(desc(socialTasks.scoreMultiplier), asc(socialTasks.correctUserCount));
   }
   if (options?.order === "easiest") {
-    order.push(asc(socialTasks.scoreMultiplier), asc(socialTasks.correctUserCount));
+    order.push(asc(socialTasks.scoreMultiplier), desc(socialTasks.correctUserCount));
   }
   order.push(desc(socialTasks.id));
   return order;

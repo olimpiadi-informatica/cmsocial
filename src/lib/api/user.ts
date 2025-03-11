@@ -84,7 +84,7 @@ function getTrainingScores(userId: number): Promise<UserScore[]> {
     .where(
       and(
         eq(participations.userId, userId),
-        eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
+        eq(tasks.contestId, Number(process.env.CMS_CONTEST_ID)),
         gt(taskScores.score, 0),
       ),
     );
