@@ -1,15 +1,13 @@
 import Link from "next/link";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, CardActions, CardBody } from "@olinfo/react-components";
 
 import { loadLocale } from "~/lib/locale";
 
 export default async function Page() {
   await loadLocale();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <div className="flex grow flex-col gap-8">
@@ -27,7 +25,7 @@ export default async function Page() {
       </div>
       <div className="*:mb-4 lg:columns-2">
         <Card>
-          <CardBody title={_(msg`Iscriviti`)}>
+          <CardBody title={t`Iscriviti`}>
             <p>
               <Trans>
                 Nel sito ufficiale potrai trovare il regolamento, il calendario e le modalità di
@@ -46,7 +44,7 @@ export default async function Page() {
           </CardBody>
         </Card>
         <Card>
-          <CardBody title={_(msg`Inizia ad allenarti`)}>
+          <CardBody title={t`Inizia ad allenarti`}>
             <p>
               <Trans>
                 Allenati per i Giochi di Fibonacci risolvendo gli esercizi degli anni passati.

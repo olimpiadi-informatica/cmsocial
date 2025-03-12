@@ -2,9 +2,7 @@
 
 import { useRef } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   EmailField,
   FirstNameField,
@@ -40,7 +38,7 @@ export function PageClient({
   captchaKey,
 }: { redirectUrl: string; captchaKey?: string }) {
   const theme = useTheme();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const captchaRef = useRef<ReCAPTCHA>(null);
 
@@ -58,15 +56,15 @@ export function PageClient({
     if (err) {
       switch (err) {
         case "Username is invalid":
-          throw new Error(_(msg`Username non valido`), { cause: { field: "username" } });
+          throw new Error(t`Username non valido`, { cause: { field: "username" } });
         case "This username is not available":
-          throw new Error(_(msg`Username non disponibile`), { cause: { field: "username" } });
+          throw new Error(t`Username non disponibile`, { cause: { field: "username" } });
         case "Invalid e-mail":
-          throw new Error(_(msg`Email non valida`), { cause: { field: "email" } });
+          throw new Error(t`Email non valida`, { cause: { field: "email" } });
         case "E-mail already used":
-          throw new Error(_(msg`Email già in uso`), { cause: { field: "email" } });
+          throw new Error(t`Email già in uso`, { cause: { field: "email" } });
         case "Anti-spam check failed":
-          throw new Error(_(msg`Captcha fallito`));
+          throw new Error(t`Captcha fallito`);
         default:
           throw err;
       }
@@ -88,18 +86,18 @@ export function PageClient({
         <Trans>Scuola di provenienza (opzionale)</Trans>
       </H2>
       <LocationField
-        label={_(msg`Regione`)}
+        label={t`Regione`}
         field="region"
-        placeholder={_(msg`Scegli la regione`)}
+        placeholder={t`Scegli la regione`}
         id="Italy"
         fetcher={getRegions}
         optional
       />
       {({ region }) => (
         <LocationField
-          label={_(msg`Provincia`)}
+          label={t`Provincia`}
           field="province"
-          placeholder={_(msg`Scegli la provincia`)}
+          placeholder={t`Scegli la provincia`}
           id={region}
           fetcher={getProvinces}
           optional
@@ -107,9 +105,9 @@ export function PageClient({
       )}
       {({ province }) => (
         <LocationField
-          label={_(msg`Comune`)}
+          label={t`Comune`}
           field="city"
-          placeholder={_(msg`Scegli il comune`)}
+          placeholder={t`Scegli il comune`}
           id={province}
           fetcher={getCities}
           optional
@@ -117,9 +115,9 @@ export function PageClient({
       )}
       {({ city }) => (
         <LocationField
-          label={_(msg`Istituto`)}
+          label={t`Istituto`}
           field="institute"
-          placeholder={_(msg`Scegli la scuola`)}
+          placeholder={t`Scegli la scuola`}
           id={city}
           fetcher={getSchools}
           optional

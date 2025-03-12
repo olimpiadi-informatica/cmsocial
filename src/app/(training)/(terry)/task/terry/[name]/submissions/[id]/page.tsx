@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
 import { Fragment, type ReactNode } from "react";
 
-import { DateTime } from "~/components/datetime";
+import { DateTime } from "~/components/date";
 import { H2, H3 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { SourceCode } from "~/components/source-code";
@@ -22,7 +22,7 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name: taskName, id } = await params;
 
-  const i18n = await loadLocale();
+  await loadLocale();
 
   const user = await getSessionUser();
   if (!user) {
@@ -59,7 +59,7 @@ export default async function Page({ params }: Props) {
           <span className="font-bold">
             <Trans>Data e ora:</Trans>
           </span>{" "}
-          <DateTime date={submission.date} locale={i18n.locale} />
+          <DateTime date={submission.date} />
         </li>
         {submission.alerts.length > 0 && (
           <li>

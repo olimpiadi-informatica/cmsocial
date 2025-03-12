@@ -1,19 +1,18 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { Dropdown, DropdownButton, DropdownMenu } from "@olinfo/react-components";
 import { ChevronDown, Languages } from "lucide-react";
 
 import { DropdownAction } from "./dropdown-action";
 
 export function LocaleDropdown() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <Dropdown className="dropdown-end">
-      <DropdownButton className="gap-1" ariaLabel={_(msg`Cambia lingua`)}>
+      <DropdownButton className="gap-1" ariaLabel={t`Cambia lingua`}>
         <Languages size={20} />
         <ChevronDown size={18} strokeWidth={2.5} />
       </DropdownButton>

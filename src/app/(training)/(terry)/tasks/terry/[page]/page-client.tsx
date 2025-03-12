@@ -4,9 +4,7 @@ import Link from "next/link";
 import { notFound, usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
@@ -22,7 +20,7 @@ export function PageClient({ tasks }: { tasks: TerryTaskItem[] }) {
   if (!Number.isInteger(page) || page < 1) notFound();
 
   const searchParams = useSearchParams();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const filteredTasks = tasks.filter((t) => isMatched(t, searchParams.get("search")));
   const pageCount = Math.max(Math.ceil(filteredTasks.length / pageSize), 1);
@@ -38,7 +36,7 @@ export function PageClient({ tasks }: { tasks: TerryTaskItem[] }) {
         </H1>
         <Filter />
       </div>
-      <Menu fallback={_(msg`Nessun problema trovato`)}>
+      <Menu fallback={t`Nessun problema trovato`}>
         {pageTasks.map((task) => (
           <li key={task.name}>
             <Link href={`/task/terry/${task.name}`} className="grid-cols-[1fr_auto]">
@@ -55,7 +53,7 @@ export function PageClient({ tasks }: { tasks: TerryTaskItem[] }) {
 
 function Filter() {
   const searchParams = useSearchParams();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const [push, setPush] = useState(true);
 
@@ -80,8 +78,8 @@ function Filter() {
         className="input input-bordered"
         name="task"
         type="search"
-        placeholder={_(msg`Nome del problema`)}
-        aria-label={_(msg`Nome del problema`)}
+        placeholder={t`Nome del problema`}
+        aria-label={t`Nome del problema`}
         defaultValue={searchParams.get("search") ?? ""}
         onChange={(e) => setFilter("search", e.target.value)}
         onBlur={() => setPush(true)}

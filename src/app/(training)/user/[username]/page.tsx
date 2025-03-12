@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
 import clsx from "clsx";
 
@@ -69,7 +67,7 @@ export default async function Page({ params }: Props) {
     getUserScores(user.id, username),
   ]);
 
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <div className="flex flex-col gap-4">
@@ -106,12 +104,12 @@ export default async function Page({ params }: Props) {
         </CardBody>
       </Card>
       <Card>
-        <CardBody title={_(msg`Problemi risolti`)}>
+        <CardBody title={t`Problemi risolti`}>
           <div className="sm:columns-2 md:columns-3 lg:columns-4">
             {scores.map((task) => (
               <TaskBadge key={task.name} {...task} />
             ))}
-            {scores.length === 0 && _(msg`Nessun problema risolto`)}
+            {scores.length === 0 && t`Nessun problema risolto`}
           </div>
         </CardBody>
       </Card>

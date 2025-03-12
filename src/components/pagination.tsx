@@ -4,8 +4,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import clsx, { type ClassValue } from "clsx";
 import { clamp, range } from "lodash-es";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
@@ -83,7 +82,7 @@ type ButtonProps = {
 function PageButton({ page, disabled, prefetch, className, children }: ButtonProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const base = pathname.replace(/\/\d+$/, "");
 
@@ -94,7 +93,7 @@ function PageButton({ page, disabled, prefetch, className, children }: ButtonPro
       href={`${base}/${page}?${searchParams}`}
       className={clsx("join-item", className)}
       prefetch={!disabled && prefetch}
-      aria-label={_(msg`Pagina ${page}`)}>
+      aria-label={t`Pagina ${page}`}>
       {children}
     </Link>
   );

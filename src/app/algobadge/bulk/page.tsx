@@ -2,8 +2,7 @@
 
 import { type CSSProperties, useEffect, useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { uniq } from "lodash-es";
 
 import { algobadge } from "~/lib/algobadge";
@@ -13,7 +12,7 @@ import { Summary } from "./summary";
 import { UsersTable } from "./table";
 
 export default function Page() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const [usernames, setUsernames] = useState<string>();
   const parsedUsernames = uniq(usernames?.split(/\s+/).filter(Boolean) ?? []);
@@ -32,7 +31,7 @@ export default function Page() {
       <div className="m-4">
         <textarea
           className="textarea textarea-bordered w-full"
-          placeholder={_(msg`Inserisci gli username`)}
+          placeholder={t`Inserisci gli username`}
           rows={8}
           value={usernames ?? ""}
           onChange={(e) => setUsernames(e.target.value)}

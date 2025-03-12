@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -18,7 +16,7 @@ export default async function Page({ params }: Props) {
   const { name: taskName } = await params;
 
   await loadLocale();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const stats = await getTaskStats(taskName);
   if (!stats) notFound();
@@ -67,7 +65,7 @@ export default async function Page({ params }: Props) {
       <H2 className="mb-2 mt-8">
         <Trans>Soluzione più veloci</Trans>
       </H2>
-      <Menu fallback={_(msg`Nessuna soluzione`)}>
+      <Menu fallback={t`Nessuna soluzione`}>
         {stats.topUsers.map((user, i) => (
           <li key={user.username}>
             <Link href={`/user/${user.username}`} className="flex justify-between">

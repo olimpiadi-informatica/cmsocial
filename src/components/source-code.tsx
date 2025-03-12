@@ -1,8 +1,6 @@
 import { Suspense } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Code } from "@olinfo/react-components";
 import { truncate } from "lodash-es";
 import { Download, FileCode2 } from "lucide-react";
@@ -16,7 +14,7 @@ type Props = {
 };
 
 export function SourceCode({ url, getFile, lang }: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   if (lang === Language.Scratch) {
     return (
@@ -37,7 +35,7 @@ export function SourceCode({ url, getFile, lang }: Props) {
         <a
           href={url}
           className="btn btn-square btn-ghost forced-colors:border-none"
-          aria-label={_(msg`Scarica codice`)}
+          aria-label={t`Scarica codice`}
           download>
           <Download />
         </a>

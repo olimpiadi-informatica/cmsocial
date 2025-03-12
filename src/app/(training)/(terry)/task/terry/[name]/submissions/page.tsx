@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
-import { DateTime } from "~/components/datetime";
+import { DateTime } from "~/components/date";
 import { H2 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { getTerrySubmissions } from "~/lib/api/submissions-terry";
@@ -18,7 +18,7 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name: taskName } = await params;
 
-  const i18n = await loadLocale();
+  await loadLocale();
 
   const user = await getSessionUser();
   if (!user) {
@@ -72,7 +72,7 @@ export default async function Page({ params }: Props) {
                 <div className="mr-1">{sub.id.split("-")[0]}</div>
                 <div>{fileLanguageName(sub.source)}</div>
                 <div>
-                  <DateTime date={sub.date} locale={i18n.locale} />
+                  <DateTime date={sub.date} />
                 </div>
                 <div className="min-w-40 text-end">
                   <OutcomeScore score={sub.score} maxScore={sub.maxScore} />
