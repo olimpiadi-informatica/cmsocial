@@ -660,7 +660,7 @@
     jiti "^1.17.1"
     lodash.get "^4.4.2"
 
-"@lingui/core@5.2.0":
+"@lingui/core@5.2.0", "@lingui/core@^5.2":
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/@lingui/core/-/core-5.2.0.tgz#ab70491568c744fe31927c515197b36f3bc6cb49"
   integrity sha512-cz35uKDxIGb/CPvgwn7BM/QYpxtARmQm7n+mHUoNJdNKSrg9R7vKkLRG7k9dukZwix2Mdjh+2dPIJnAkor2CiA==

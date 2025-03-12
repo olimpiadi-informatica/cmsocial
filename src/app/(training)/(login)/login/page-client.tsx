@@ -2,9 +2,7 @@
 
 import Link from "next/link";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   CheckboxField,
   CurrentPasswordField,
@@ -16,7 +14,7 @@ import {
 import { login } from "./actions";
 
 export function PageClient({ redirectUrl }: { redirectUrl: string }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const submit = async (credential: {
     username: string;
@@ -32,7 +30,7 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
     if (err) {
       switch (err) {
         case "login.error":
-          throw new Error(_(msg`Username o password non corretti`));
+          throw new Error(t`Username o password non corretti`);
         default:
           throw err;
       }
@@ -44,7 +42,7 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
     <Form defaultValue={{ keepSigned: true }} onSubmit={submit}>
       <UsernameField field="username" />
       <CurrentPasswordField field="password" />
-      <CheckboxField field="keepSigned" label={_(msg`Ricordami`)} optional />
+      <CheckboxField field="keepSigned" label={t`Ricordami`} optional />
       <SubmitButton>
         <Trans>Entra</Trans>
       </SubmitButton>

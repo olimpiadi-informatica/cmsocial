@@ -1,8 +1,6 @@
 import type { ReactNode } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 import { type ForumPost, searchForumPosts } from "~/lib/api/forum";
 
@@ -13,7 +11,7 @@ type Props = {
 };
 
 export async function ForumPosts({ taskName, taskTitle, taskUrl }: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const posts = await searchForumPosts(taskTitle);
 
@@ -44,7 +42,7 @@ export async function ForumPosts({ taskName, taskTitle, taskUrl }: Props) {
               <img
                 src={avatar(post, 1)}
                 srcSet={`${avatar(post, 1)} 1x, ${avatar(post, 2)} 2x, ${avatar(post, 3)} 3x`}
-                alt={_(msg`Foto profilo di ${post.username}`)}
+                alt={t`Foto profilo di ${post.username}`}
               />
             </div>
           </div>

@@ -2,9 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { compact, uniq } from "lodash-es";
 
 import { type Link, type Node, setupSimulation } from "./simulation";
@@ -20,7 +18,7 @@ const DEFAULT_GRAPH = `\
 1 3`;
 
 export default function Page() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const ref = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState({ width: 0, height: 0 });
@@ -146,7 +144,7 @@ export default function Page() {
               width={size.width}
               height={size.height}
               className="absolute inset-0">
-              <title>{_(msg`Grafo`)}</title>
+              <title>{t`Grafo`}</title>
               <g ref={edgesRef} />
               <g ref={nodesRef} />
             </svg>

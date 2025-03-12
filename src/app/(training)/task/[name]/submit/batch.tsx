@@ -5,9 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, SelectField, SingleFileField, SubmitButton } from "@olinfo/react-components";
 import type { Task } from "@olinfo/training-api";
 import clsx from "clsx";
@@ -24,27 +22,23 @@ const Editor = dynamic(() => import("./editor"), {
 });
 
 export function SubmitBatch({ task }: { task: Task }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const languages = useMemo(() => task.supported_languages.map((l) => compilerLang(l)), [task]);
 
   const langMessage = (lang?: string) => {
     switch (compilerLang(lang)) {
       case Language.Pascal:
-        return _(
-          msg`Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno.`,
-        );
+        return t`Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno.`;
       case Language.Java:
-        return _(
-          msg`Assicurati di chiamare la tua classe "${task.submission_format[0].replace(".%l", "")}", altrimenti la compilazione non andrà a buon fine.`,
-        );
+        return t`Assicurati di chiamare la tua classe "${task.submission_format[0].replace(".%l", "")}", altrimenti la compilazione non andrà a buon fine.`;
     }
   };
 
   const validateFile = (file: File) => {
-    if (file.size > 100_000) return _(msg`File troppo grande`);
+    if (file.size > 100_000) return t`File troppo grande`;
     if (!task.supported_languages.some((l) => fileLanguage(file.name) === compilerLang(l))) {
-      return _(msg`Tipo di file non valido`);
+      return t`Tipo di file non valido`;
     }
   };
 
@@ -61,7 +55,7 @@ export function SubmitBatch({ task }: { task: Task }) {
     if (err) {
       switch (err) {
         case "Too frequent submissions!":
-          throw new Error(_(msg`Sottoposizioni troppo frequenti`));
+          throw new Error(t`Sottoposizioni troppo frequenti`);
         default:
           throw err;
       }
@@ -86,12 +80,12 @@ export function SubmitBatch({ task }: { task: Task }) {
         )}>
         <SelectField
           field="lang"
-          label={_(msg`Linguaggio`)}
+          label={t`Linguaggio`}
           options={Object.fromEntries(task.supported_languages.map((l) => [l, l]))}
         />
         <SingleFileField
           field="src"
-          label={_(msg`Codice sorgente`)}
+          label={t`Codice sorgente`}
           validate={validateFile}
           optional={isSubmitPage}
         />

@@ -2,14 +2,13 @@
 
 import { Suspense, lazy, useEffect, useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { supportsPDFs } from "pdfobject";
 
 const MobileStatement = lazy(() => import("./mobile-statement"));
 
 export function Statement({ url }: { url: string }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const [isMobile, setMobile] = useState<boolean>();
   useEffect(() => setMobile(!supportsPDFs), []);
@@ -26,9 +25,7 @@ export function Statement({ url }: { url: string }) {
     );
   }
 
-  return (
-    <object title={_(msg`Testo del problema`)} data={`${url}#navpanes=0`} className="size-full" />
-  );
+  return <object title={t`Testo del problema`} data={`${url}#navpanes=0`} className="size-full" />;
 }
 
 function LoadingStatement() {

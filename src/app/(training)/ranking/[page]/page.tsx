@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { msg } from "@lingui/core/macro";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Menu } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
@@ -29,7 +28,7 @@ export default async function Page({ params }: Props) {
 
   if (!Number.isInteger(page) || page < 1) notFound();
 
-  const [i18n, users, count] = await Promise.all([
+  const [, users, count] = await Promise.all([
     loadLocale(),
     getRanking(page, pageSize),
     getUserCount(),
@@ -38,12 +37,14 @@ export default async function Page({ params }: Props) {
   const pageCount = Math.max(Math.ceil(count / pageSize), 1);
   if (page > pageCount) notFound();
 
+  const { t } = useLingui();
+
   return (
     <div className="flex flex-col gap-4">
       <H1 className="px-2">
         <Trans>Pagina {page}</Trans>
       </H1>
-      <Menu fallback={i18n._(msg`Nessun utente trovato`)}>
+      <Menu fallback={t`Nessun utente trovato`}>
         {users.map((user, i) => (
           <li key={user.username}>
             <Link href={`/user/${user.username}`} className="flex justify-between">

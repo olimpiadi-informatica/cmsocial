@@ -1,6 +1,4 @@
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -15,7 +13,7 @@ export default async function Page({ params }: Props) {
   const { name } = await params;
 
   await loadLocale();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const attachments = await getTaskAttachments(name);
 
@@ -24,7 +22,7 @@ export default async function Page({ params }: Props) {
       <H2 className="mb-2">
         <Trans>Allegati</Trans>
       </H2>
-      <Menu fallback={_(msg`Nessun allegato`)}>
+      <Menu fallback={t`Nessun allegato`}>
         {attachments.map((att) => (
           <li key={att.name}>
             <a href={att.url} download>

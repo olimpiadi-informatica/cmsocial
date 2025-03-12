@@ -1,9 +1,7 @@
 import Link from "next/link";
 import type { ComponentType, ReactNode } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, CardActions, CardBody } from "@olinfo/react-components";
 import clsx from "clsx";
 import { BookText, type LucideIcon, Route, UsersRound } from "lucide-react";
@@ -18,7 +16,7 @@ import { Wiki } from "./wiki";
 
 export default async function Home() {
   await loadLocale();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <>
@@ -45,7 +43,7 @@ export default async function Home() {
         </div>
         <div className="grid gap-4 lg:grid-cols-2">
           <Card>
-            <CardBody title={_(msg`Risolvi tutti i problemi`)}>
+            <CardBody title={t`Risolvi tutti i problemi`}>
               <p>
                 <Trans>
                   La vasta scelta di problemi presenti nel sito ti permetterà di prepararti al
@@ -69,7 +67,7 @@ export default async function Home() {
           </Card>
 
           <Card>
-            <CardBody title={_(msg`Entra nella community`)}>
+            <CardBody title={t`Entra nella community`}>
               <p>
                 <Trans>
                   Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei
@@ -86,7 +84,7 @@ export default async function Home() {
           </Card>
 
           <Card>
-            <CardBody title={_(msg`Impara gradualmente`)}>
+            <CardBody title={t`Impara gradualmente`}>
               <p>
                 <Trans>
                   Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere,
@@ -102,7 +100,7 @@ export default async function Home() {
           </Card>
 
           <Card>
-            <CardBody title={_(msg`Leggi la wiki`)}>
+            <CardBody title={t`Leggi la wiki`}>
               <p>
                 <Trans>
                   Nella wiki ufficiale troverai spiegazioni dettagliate e soluzioni di problemi

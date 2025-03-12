@@ -1,12 +1,10 @@
 import { SiGithub, SiTelegram, SiYoutube } from "@icons-pack/react-simple-icons";
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 
 import oii from "~/app/icon0.svg";
 
 export function Footer() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <div className="bg-base-200 text-base-content">
@@ -16,7 +14,7 @@ export function Footer() {
             src={oii.src}
             width={oii.width}
             height={oii.height}
-            alt={_(msg`Logo Olimpiadi Italiane di Informatica`)}
+            alt={t`Logo Olimpiadi Italiane di Informatica`}
             className="h-20 w-auto"
           />
           <p>Olimpiadi di Informatica &copy; {new Date().getFullYear()}</p>

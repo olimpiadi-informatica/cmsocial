@@ -4,9 +4,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import clsx from "clsx";
 import { range } from "lodash-es";
@@ -26,7 +24,7 @@ type Props = {
 };
 
 export function PageClient(props: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   // useParams() does not update when using client-side navigation (e.g. window.history.pushState)
   const page = Number(usePathname().match(/^\/tasks\/(\d+)/)?.[1]);
@@ -63,7 +61,7 @@ export function PageClient(props: Props) {
           ))}
         </div>
       ) : null}
-      <Menu fallback={_(msg`Nessun problema trovato`)}>
+      <Menu fallback={t`Nessun problema trovato`}>
         {taskList.map((task) => (
           <li key={task.id}>
             <Link href={`/task/${task.name}`} className="grid-cols-[auto_1fr_auto]">
@@ -81,14 +79,14 @@ export function PageClient(props: Props) {
 
 function Tag({ tag }: { tag: string }) {
   const searchParams = useSearchParams();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const newParams = new URLSearchParams(searchParams);
   newParams.delete("tag", tag);
 
   return (
     <div className="badge badge-neutral flex h-6 gap-1">
-      <Link href={`/tasks/1?${newParams}`} aria-label={_(msg`Rimuovi filtro ${tag}`)}>
+      <Link href={`/tasks/1?${newParams}`} aria-label={t`Rimuovi filtro ${tag}`}>
         <X size={14} />
       </Link>
       {tag}
@@ -98,7 +96,7 @@ function Tag({ tag }: { tag: string }) {
 
 function Filter() {
   const searchParams = useSearchParams();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const [push, setPush] = useState(true);
 
@@ -123,8 +121,8 @@ function Filter() {
         className="input join-item input-bordered w-48"
         name="task"
         type="search"
-        placeholder={_(msg`Nome del problema`)}
-        aria-label={_(msg`Nome del problema`)}
+        placeholder={t`Nome del problema`}
+        aria-label={t`Nome del problema`}
         defaultValue={searchParams.get("search") ?? ""}
         onChange={(e) => setFilter("search", e.target.value)}
         onBlur={() => setPush(true)}
@@ -132,7 +130,7 @@ function Filter() {
       />
       <select
         className="join-item select select-bordered"
-        aria-label={_(msg`Ordinamento`)}
+        aria-label={t`Ordinamento`}
         defaultValue={searchParams.get("order") ?? ""}
         onChange={(e) => setFilter("order", e.target.value)}
         onBlur={() => setPush(true)}>

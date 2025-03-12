@@ -3,12 +3,11 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import useSWR from "swr";
 
-import { DateTime } from "~/components/datetime";
+import { DateTime } from "~/components/date";
 import { H2 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
 import type { Submission } from "~/lib/api/submissions";
@@ -21,8 +20,6 @@ type Props = {
 };
 
 export function PageClient({ taskName, submissions: fallbackSubmissions }: Props) {
-  const { i18n } = useLingui();
-
   const [refreshInterval, setRefreshInterval] = useState<number>();
 
   const { data: submissions } = useSWR(
@@ -68,7 +65,7 @@ export function PageClient({ taskName, submissions: fallbackSubmissions }: Props
                 <div className="w-20 font-mono">{sub.id}</div>
                 <div>{sub.language}</div>
                 <div>
-                  <DateTime date={sub.timestamp} locale={i18n.locale} />
+                  <DateTime date={sub.timestamp} />
                 </div>
                 <div className="min-w-40 text-end">
                   <Outcome submission={sub} />

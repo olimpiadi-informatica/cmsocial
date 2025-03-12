@@ -2,9 +2,7 @@
 
 import { use } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CurrentPasswordField, EmailField, Form, SubmitButton } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -18,18 +16,18 @@ type Props = {
 export default function Page({ params }: Props) {
   const { username } = use(params);
 
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const submit = async (data: { password: string; email: string }) => {
     const err = await changeEmail(username, data.password, data.email);
     if (err) {
       switch (err) {
         case "login.error":
-          throw new Error(_(msg`Password non corretta`), { cause: { field: "password" } });
+          throw new Error(t`Password non corretta`, { cause: { field: "password" } });
         case "Invalid e-mail":
-          throw new Error(_(msg`Email non valida`), { cause: { field: "email" } });
+          throw new Error(t`Email non valida`, { cause: { field: "email" } });
         case "E-mail already used":
-          throw new Error(_(msg`Email già in uso`), { cause: { field: "email" } });
+          throw new Error(t`Email già in uso`, { cause: { field: "email" } });
         default:
           throw err;
       }

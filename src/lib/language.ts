@@ -1,4 +1,4 @@
-import { t } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react/macro";
 
 export enum Language {
   C = "c",
@@ -92,6 +92,7 @@ export function fileLanguage(fileName: string) {
 }
 
 export function fileLanguageName(fileName: string) {
+  const { t } = useLingui();
   const lang = fileLanguage(fileName);
   switch (lang) {
     case Language.C:

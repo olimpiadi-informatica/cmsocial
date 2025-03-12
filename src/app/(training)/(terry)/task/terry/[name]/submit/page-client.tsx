@@ -3,20 +3,12 @@
 import Link from "next/link";
 import { useEffect, useReducer } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import {
-  Button,
-  DateDistance,
-  Form,
-  SingleFileField,
-  SubmitButton,
-  useIsAfter,
-} from "@olinfo/react-components";
+import { Trans, useLingui } from "@lingui/react/macro";
+import { Button, Form, SingleFileField, SubmitButton, useIsAfter } from "@olinfo/react-components";
 import { addSeconds } from "date-fns";
 import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } from "lucide-react";
 
+import { DateDistance } from "~/components/date";
 import { H2 } from "~/components/header";
 import type { TerryTask, TerryTaskInput } from "~/lib/api/task-terry";
 import { fileLanguageName } from "~/lib/language";
@@ -29,7 +21,7 @@ type Props = {
 };
 
 export function PageClient({ task, input }: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const expiryDate =
     input && task.submissionTimeout ? addSeconds(input.date, task.submissionTimeout) : undefined;
@@ -38,7 +30,7 @@ export function PageClient({ task, input }: Props) {
   const validateSource = (file: File) => {
     const lang = fileLanguageName(file.name);
     if (lang === "N/A") {
-      return _(msg`Seleziona il file sorgente`);
+      return t`Seleziona il file sorgente`;
     }
   };
 
@@ -101,8 +93,8 @@ export function PageClient({ task, input }: Props) {
         <H2>
           <Trans>Invia soluzione</Trans>
         </H2>
-        <SingleFileField field="source" label={_(msg`File sorgente`)} validate={validateSource} />
-        <SingleFileField field="output" label={_(msg`File di output`)} />
+        <SingleFileField field="source" label={t`File sorgente`} validate={validateSource} />
+        <SingleFileField field="output" label={t`File di output`} />
         <SubmitButton icon={Send}>
           <Trans>Invia</Trans>
         </SubmitButton>
@@ -115,8 +107,6 @@ export function PageClient({ task, input }: Props) {
 }
 
 function Timer({ date }: { date: Date }) {
-  const { i18n } = useLingui();
-
   const [, refresh] = useReducer((x) => x + 1, 0);
   useEffect(() => {
     const id = setInterval(refresh, 1000);
@@ -127,7 +117,7 @@ function Timer({ date }: { date: Date }) {
     <span className="text-sm text-base-content/80">
       <TimerIcon className="inline-block align-text-top" size={14} />{" "}
       <Trans>
-        Questo input scade <DateDistance date={date} locale={i18n.locale} />.
+        Questo input scade <DateDistance date={date} />.
       </Trans>
     </span>
   );

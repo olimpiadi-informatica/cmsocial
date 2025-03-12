@@ -1,9 +1,7 @@
 import { Baloo_2 } from "next/font/google";
 import Link from "next/link";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Navbar as BaseNavbar,
   NavbarBrand,
@@ -22,7 +20,7 @@ import { Badge, badgeColor } from "~/lib/algobadge";
 const titleFont = Baloo_2({ weight: ["400", "500"], subsets: ["latin"], display: "swap" });
 
 export function Navbar({ badge }: { badge: Badge }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <BaseNavbar color="bg-base-300 text-base-content">
@@ -37,7 +35,7 @@ export function Navbar({ badge }: { badge: Badge }) {
             <Trans>Home</Trans>
           </Link>
         </NavbarMenuItem>
-        <NavbarSubmenu title={_(msg`Problemi`)}>
+        <NavbarSubmenu title={t`Problemi`}>
           <NavbarMenuItem>
             <Link href="/tasks/terry/1">
               <Trans>Territoriali</Trans>

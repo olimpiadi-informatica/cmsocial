@@ -3,12 +3,11 @@
 import { useRouter } from "next/navigation";
 import { Fragment, type ReactNode, useEffect } from "react";
 
-import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
 import { Check, X } from "lucide-react";
 
-import { DateTime } from "~/components/datetime";
+import { DateTime } from "~/components/date";
 import { H2, H3 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
 import type { SubmissionResult } from "~/lib/api/submission";
@@ -19,7 +18,6 @@ type Props = {
 };
 
 export function PageClient({ submission, children }: Props) {
-  const { i18n } = useLingui();
   const router = useRouter();
 
   useEffect(() => {
@@ -54,7 +52,7 @@ export function PageClient({ submission, children }: Props) {
           <span className="font-bold">
             <Trans>Data e ora:</Trans>
           </span>{" "}
-          <DateTime date={submission.timestamp} locale={i18n.locale} />
+          <DateTime date={submission.timestamp} />
         </li>
       </ul>
       <div className="grid w-full auto-cols-auto overflow-x-auto max-md:w-screen max-md:-translate-x-4 max-md:px-4">

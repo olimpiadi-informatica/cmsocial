@@ -1,8 +1,6 @@
 import Link from "next/link";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Navbar as BaseNavbar,
   NavbarBrand,
@@ -16,7 +14,7 @@ import { LocaleDropdown } from "~/components/navbar/locale-dropdown";
 import logo from "./icon.jpg";
 
 export function Navbar() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <BaseNavbar color="bg-base-300 text-base-content">
@@ -25,7 +23,7 @@ export function Navbar() {
           src={logo.src}
           width={logo.width}
           height={logo.height}
-          alt={_(msg`Logo Giochi di Fibonacci`)}
+          alt={t`Logo Giochi di Fibonacci`}
           className="h-full w-auto rounded"
         />
       </NavbarBrand>

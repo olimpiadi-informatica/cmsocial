@@ -13,6 +13,7 @@
     "@fireworks-js/react": "^2.10",
     "@icons-pack/react-simple-icons": "^12.0",
     "@libsql/client": "^0.14",
+    "@lingui/core": "^5.2",
     "@lingui/loader": "^5.2",
     "@lingui/macro": "^5.2",
     "@lingui/react": "^5.2",

@@ -1,8 +1,6 @@
 import Link from "next/link";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Navbar as BaseNavbar,
   NavbarBrand,
@@ -17,7 +15,7 @@ import { LocaleDropdown } from "~/components/navbar/locale-dropdown";
 import { UserDropdown } from "~/components/navbar/user-dropdown";
 
 export function Navbar() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   return (
     <BaseNavbar color="bg-base-300 text-base-content">
@@ -26,7 +24,7 @@ export function Navbar() {
           src={logo.src}
           width={logo.width}
           height={logo.height}
-          alt={_(msg`Logo OII`)}
+          alt={t`Logo OII`}
           className="h-full w-auto"
         />
       </NavbarBrand>
@@ -36,7 +34,7 @@ export function Navbar() {
             <Trans>Home</Trans>
           </Link>
         </NavbarMenuItem>
-        <NavbarSubmenu title={_(msg`Problemi`)}>
+        <NavbarSubmenu title={t`Problemi`}>
           <NavbarMenuItem>
             <Link href="/scolastiche">
               <Trans>Scolastiche</Trans>
