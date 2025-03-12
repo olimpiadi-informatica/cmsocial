@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq } from "drizzle-orm";
 
 import { terryDb } from "~/lib/db";
 import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
@@ -13,7 +13,7 @@ export type TerryTaskItem = {
 };
 
 export const getTerryTasks = cache((username?: string): Promise<TerryTaskItem[]> => {
-  return terryDb
+  const query = terryDb
     .select({
       name: terryTasks.name,
       title: terryTasks.title,
@@ -22,11 +22,15 @@ export const getTerryTasks = cache((username?: string): Promise<TerryTaskItem[]>
       num: terryTasks.num,
     })
     .from(terryTasks)
-    .leftJoin(
+    .orderBy(terryTasks.num)
+    .$dynamic();
+
+  if (username) {
+    return query.leftJoin(
       terryUserTasks,
-      username
-        ? and(eq(terryUserTasks.task, terryTasks.name), eq(terryUserTasks.token, username))
-        : sql`FALSE`,
-    )
-    .orderBy(terryTasks.num);
+      and(eq(terryUserTasks.task, terryTasks.name), eq(terryUserTasks.token, username)),
+    );
+  }
+
+  return query;
 });

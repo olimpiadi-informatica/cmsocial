@@ -10,13 +10,14 @@ import {
   exists,
   ilike,
   inArray,
+  isNull,
+  ne,
   or,
-  lt,
   sql,
 } from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
-import { socialTasks, tags, taskScores, taskTags, tasks, participations } from "~/lib/db/schema";
+import { participations, socialTasks, tags, taskScores, taskTags, tasks } from "~/lib/db/schema";
 
 export type TaskListOptions = {
   search: string | null | undefined;
@@ -25,7 +26,7 @@ export type TaskListOptions = {
   unsolved: boolean | undefined;
 };
 
-function getFilter(options: TaskListOptions) {
+function getFilter(options: TaskListOptions): (SQL | undefined)[] {
   const filter: (SQL | undefined)[] = [eq(tasks.contestId, Number(process.env.CMS_CONTEST_ID))];
   if (options.search) {
     const like = `%${options.search}%`;
@@ -47,7 +48,7 @@ function getFilter(options: TaskListOptions) {
       ),
     );
   }
-  return and(...filter);
+  return filter;
 }
 
 function getOrder(options: TaskListOptions) {
@@ -101,19 +102,22 @@ export const getTaskList = cache(
       })
       .from(tasks)
       .innerJoin(socialTasks, eq(socialTasks.id, tasks.id))
-      .where(getFilter(options))
       .orderBy(...getOrder(options))
       .limit(pageSize)
-      .offset((page - 1) * pageSize)
-      .$dynamic();
+      .offset((page - 1) * pageSize);
 
     if (userId) {
       return query
-        .leftJoin(scoreSq, eq(scoreSq.taskId, tasks.id))
-        .where(and(eq(scoreSq.userId, userId), lt(scoreSq.score, 100).if(options.unsolved)));
+        .leftJoin(scoreSq, and(eq(scoreSq.taskId, tasks.id), eq(scoreSq.userId, userId)))
+        .where(
+          and(
+            ...getFilter(options),
+            or(isNull(scoreSq.score), ne(scoreSq.score, 100))!.if(options.unsolved),
+          ),
+        );
     }
 
-    return query;
+    return query.where(and(...getFilter(options)));
   },
 );
 
@@ -129,16 +133,17 @@ export const getTaskCount = cache(
       .innerJoin(participations, eq(participations.id, taskScores.participationId))
       .as("score_sq");
 
-    const query = cmsDb.select().from(tasks).where(getFilter(options)).$dynamic();
+    const query = cmsDb.select().from(tasks);
 
     if (userId && options.unsolved) {
       return cmsDb.$count(
         query
-          .leftJoin(scoreSq, eq(scoreSq.taskId, tasks.id))
-          .where(and(eq(scoreSq.userId, userId), lt(scoreSq.score, 100))),
+          .leftJoin(scoreSq, and(eq(scoreSq.taskId, tasks.id), eq(scoreSq.userId, userId)))
+          .where(and(...getFilter(options), or(isNull(scoreSq.score), ne(scoreSq.score, 100))))
+          .as("tasks_sq"),
       );
     }
 
-    return cmsDb.$count(query);
+    return cmsDb.$count(query.where(and(...getFilter(options))).as("tasks_sq"));
   },
 );
