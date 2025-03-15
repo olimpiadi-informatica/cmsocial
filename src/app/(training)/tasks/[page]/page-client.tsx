@@ -100,10 +100,10 @@ function Filter() {
 
   const [push, setPush] = useState(true);
 
-  const setFilter = (key: string, value: string) => {
+  const setFilter = (key: string, value: string | boolean) => {
     const newParams = new URLSearchParams(searchParams);
     if (value) {
-      newParams.set(key, value);
+      newParams.set(key, value.toString());
     } else {
       newParams.delete(key);
     }
@@ -132,16 +132,28 @@ function Filter() {
         className="join-item select select-bordered"
         aria-label={t`Ordinamento`}
         defaultValue={searchParams.get("order") ?? ""}
-        onChange={(e) => setFilter("order", e.target.value)}
+        onChange={(e) => {
+          setFilter("order", e.target.value.replace("+unsolved", ""));
+          setFilter("unsolved", e.target.value.endsWith("+unsolved"));
+        }}
         onBlur={() => setPush(true)}>
         <option value="">
           <Trans>Più recenti</Trans>
         </option>
+        <option value="+unsolved">
+          <Trans>Più recenti non risolti</Trans>
+        </option>
         <option value="easiest">
           <Trans>Più facili</Trans>
         </option>
+        <option value="easiest+unsolved">
+          <Trans>Più facili non risolti</Trans>
+        </option>
         <option value="hardest">
           <Trans>Più difficili</Trans>
+        </option>
+        <option value="hardest+unsolved">
+          <Trans>Più difficili non risolti</Trans>
         </option>
       </select>
     </form>
