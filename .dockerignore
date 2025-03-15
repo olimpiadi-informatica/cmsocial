@@ -1,3 +1,7 @@
 docker-compose*.yml
-tools/
-dev-config/
+/tools/
+/dev-config/
+/node_modules/
+/.github/
+/.next/
+/.vscode/

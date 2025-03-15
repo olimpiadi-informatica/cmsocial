@@ -42,6 +42,9 @@ services:
     hostname: frontend
     environment:
       NEXT_PUBLIC_TRAINING_API_URL: http://dev.olinfo.it:8000/api
+      CAPTCHA_PUBLIC_KEY: 6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI
+      CMS_DATABASE_URL: postgres://postgres@postgres:5432/cmsdb
+      CMS_CONTEST_ID: 1
     depends_on:
       - "dev_backend"
 
