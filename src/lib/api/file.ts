@@ -1,4 +1,4 @@
-import { createReadStream } from "node:fs";
+import { createReadStream, existsSync } from "node:fs";
 import path from "node:path";
 import { Readable } from "node:stream";
 
@@ -42,7 +42,11 @@ export async function getFileContent(file: Omit<File, "url">) {
   );
 }
 
-export function getTerryFileContent(filePath: string): Response {
-  const stream = createReadStream(path.join(process.env.TERRY_FILES_PATH!, filePath));
+export function getTerryFileContent(fileName: string): Response {
+  const filePath = path.join(process.env.TERRY_FILES_PATH!, fileName);
+  if (!existsSync(filePath)) {
+    return new Response(null, { status: 404 });
+  }
+  const stream = createReadStream(filePath);
   return new Response(Readable.toWeb(stream) as ReadableStream);
 }
