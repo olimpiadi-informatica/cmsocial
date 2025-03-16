@@ -22,7 +22,7 @@ export function PageClient({ submission, children }: Props) {
 
   useEffect(() => {
     if (isEvaluating(submission)) {
-      const id = setInterval(() => router.refresh(), 1000);
+      const id = setInterval(() => router.refresh(), 500);
       return () => clearInterval(id);
     }
   }, [submission, router]);
@@ -97,7 +97,7 @@ export function PageClient({ submission, children }: Props) {
             <Trans>Esito della compilazione:</Trans>
           </span>{" "}
           {submission.compilationOutcome || (
-            <span className="inline-flex gap-2 align-text-top">
+            <span className="inline-flex ml-2 gap-2 align-bottom">
               <span className="loading loading-spinner loading-xs" />{" "}
               <Trans>Compilazione in corso</Trans>
             </span>
@@ -228,10 +228,10 @@ function description(text: string) {
   }
 }
 
-export function isEvaluating(submission: SubmissionResult) {
+function isEvaluating(submission: SubmissionResult) {
   if (submission.compilationOutcome === null) return true;
   if (submission.compilationOutcome === "fail") return false;
-  return submission.evaluationOutcome === null;
+  return submission.score === null;
 }
 
 type ResourceProps<T extends bigint | number> = {

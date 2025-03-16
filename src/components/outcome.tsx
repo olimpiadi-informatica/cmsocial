@@ -1,12 +1,13 @@
 import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
 
+import type { SubmissionResult } from "~/lib/api/submission";
 import type { Submission } from "~/lib/api/submissions";
 
-export function Outcome({ submission }: { submission: Submission }) {
+export function Outcome({ submission }: { submission: Submission | SubmissionResult }) {
   if (submission.compilationOutcome === null) {
     return (
-      <span className="inline-flex gap-2 align-bottom">
+      <span className="inline-flex ml-2 gap-2 align-bottom">
         <span className="loading loading-spinner loading-xs" /> <Trans>Compilazione in corso</Trans>
       </span>
     );
@@ -18,15 +19,21 @@ export function Outcome({ submission }: { submission: Submission }) {
       </span>
     );
   }
-  if (submission.evaluationOutcome === null) {
+  if (submission.evaluationOutcome === null || submission.score === null) {
     return (
-      <span className="inline-flex gap-2 align-bottom">
+      <span className="inline-flex ml-2 gap-2 align-bottom">
         <span className="loading loading-spinner loading-xs" /> <Trans>Esecuzione in corso</Trans>
+        {"evaluationsCount" in submission && submission.evaluationsCount > 0 && (
+          <span className="text-base-content/80">
+            {" "}
+            ({Math.round((submission.evaluationsCount / submission.testcaseCount) * 100)}%)
+          </span>
+        )}
       </span>
     );
   }
 
-  return <OutcomeScore score={submission.score!} />;
+  return <OutcomeScore score={submission.score} />;
 }
 
 export function OutcomeScore({ score, maxScore }: { score: number; maxScore?: number }) {

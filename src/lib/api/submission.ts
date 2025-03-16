@@ -8,11 +8,13 @@ import {
   type RawSubmissionResultSubtask,
   type RawSubmissionResultTestcase,
   datasets,
+  evaluations,
   files,
   participations,
   submissionResults,
   submissions,
   tasks,
+  testcases,
 } from "~/lib/db/schema-cms";
 import { type Language, languageExtension } from "~/lib/language";
 
@@ -45,6 +47,8 @@ export type SubmissionResult = {
   compilationStderr: string | null;
   score: number | null;
   scoreDetails: SubmissionResultSubtask[] | null;
+  evaluationsCount: number;
+  testcaseCount: number;
 };
 
 export const getSubmission = cache(
@@ -64,6 +68,14 @@ export const getSubmission = cache(
         compilationStderr: submissionResults.compilationStderr,
         score: submissionResults.score,
         scoreDetails: submissionResults.scoreDetails,
+        evaluationsCount: cmsDb.$count(
+          evaluations,
+          and(
+            eq(evaluations.datasetId, tasks.activeDatasetId),
+            eq(evaluations.submissionId, submissions.id),
+          ),
+        ),
+        testcaseCount: cmsDb.$count(testcases, eq(testcases.datasetId, tasks.activeDatasetId)),
       })
       .from(submissions)
       .innerJoin(tasks, eq(tasks.id, submissions.taskId))

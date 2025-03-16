@@ -1,40 +1,31 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
-import useSWR from "swr";
 
 import { DateTime } from "~/components/date";
 import { H2 } from "~/components/header";
 import { Outcome } from "~/components/outcome";
 import type { Submission } from "~/lib/api/submissions";
 
-import { getSubmissions } from "./actions";
-
 type Props = {
   taskName: string;
   submissions: Submission[];
 };
 
-export function PageClient({ taskName, submissions: fallbackSubmissions }: Props) {
-  const [refreshInterval, setRefreshInterval] = useState<number>();
-
-  const { data: submissions } = useSWR(
-    ["api/submissions", taskName],
-    ([, taskName]) => getSubmissions(taskName),
-    { fallbackData: fallbackSubmissions, refreshInterval },
-  );
+export function PageClient({ taskName, submissions }: Props) {
+  const router = useRouter();
 
   useEffect(() => {
     if (submissions.some(isEvaluating)) {
-      setRefreshInterval(1000);
-    } else {
-      setRefreshInterval(undefined);
+      const id = setInterval(() => router.refresh(), 1000);
+      return () => clearInterval(id);
     }
-  }, [submissions]);
+  }, [submissions, router]);
 
   return (
     <div>
@@ -84,8 +75,8 @@ export function PageClient({ taskName, submissions: fallbackSubmissions }: Props
   );
 }
 
-export function isEvaluating(submission: Submission) {
+function isEvaluating(submission: Submission) {
   if (submission.compilationOutcome === null) return true;
   if (submission.compilationOutcome === "fail") return false;
-  return submission.evaluationOutcome === null;
+  return submission.score === null;
 }
