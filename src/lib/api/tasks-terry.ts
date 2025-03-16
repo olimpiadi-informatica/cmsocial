@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, eq } from "drizzle-orm";
+import { and, eq, sql } from "drizzle-orm";
 
 import { terryDb } from "~/lib/db";
 import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
@@ -17,13 +17,12 @@ export const getTerryTasks = cache((username?: string): Promise<TerryTaskItem[]>
     .select({
       name: terryTasks.name,
       title: terryTasks.title,
-      score: terryUserTasks.score,
+      score: username ? terryUserTasks.score : sql<null>`NULL`,
       maxScore: terryTasks.maxScore,
       num: terryTasks.num,
     })
     .from(terryTasks)
-    .orderBy(terryTasks.num)
-    .$dynamic();
+    .orderBy(terryTasks.num);
 
   if (username) {
     return query.leftJoin(
