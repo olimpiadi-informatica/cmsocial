@@ -1,3 +1,6 @@
+import { headers } from "next/headers";
+import { userAgent } from "next/server";
+
 import { compact } from "lodash-es";
 import { parseEntities } from "parse-entities";
 import { z } from "zod";
@@ -31,12 +34,17 @@ export type ForumPost = {
 };
 
 export async function searchForumPosts(query: string): Promise<ForumPost[]> {
+  const ua = userAgent({ headers: await headers() });
+  if (ua.isBot) return [];
+
   const url = `https://forum.olinfo.it/search/query?term=${encodeURIComponent(query)}`;
   const resp = await fetch(url, {
     headers: {
       Accept: "application/json",
     },
   });
+  if (!resp.ok) return [];
+
   const json = await resp.json();
   const { posts, topics } = responseSchema.parse(json);
   if (!posts) return [];

@@ -32,6 +32,15 @@ export function PageClient({ task, input }: Props) {
     if (lang === "N/A") {
       return t`Seleziona il file sorgente`;
     }
+    if (file.size > 100_000) {
+      return t`File troppo grande`;
+    }
+  };
+
+  const validateOutput = (file: File) => {
+    if (file.size > 100_000) {
+      return t`File troppo grande`;
+    }
   };
 
   const onRequestInput = async () => {
@@ -94,7 +103,7 @@ export function PageClient({ task, input }: Props) {
           <Trans>Invia soluzione</Trans>
         </H2>
         <SingleFileField field="source" label={t`File sorgente`} validate={validateSource} />
-        <SingleFileField field="output" label={t`File di output`} />
+        <SingleFileField field="output" label={t`File di output`} validate={validateOutput} />
         <SubmitButton icon={Send}>
           <Trans>Invia</Trans>
         </SubmitButton>

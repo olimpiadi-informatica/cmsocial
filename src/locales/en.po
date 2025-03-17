@@ -386,6 +386,8 @@ msgid "File sorgente"
 msgstr "Source file"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File troppo grande"
 msgstr "File too big"
 

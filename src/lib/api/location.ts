@@ -1,5 +1,8 @@
 "use server";
 
+import { headers } from "next/headers";
+import { userAgent } from "next/server";
+
 import { parse } from "set-cookie-parser";
 import { type ZodType, z } from "zod";
 
@@ -22,6 +25,9 @@ async function getCsrf() {
 }
 
 async function query<T>(query: string, schema: ZodType<T, any, any>): Promise<T> {
+  const ua = userAgent({ headers: await headers() });
+  if (ua.isBot) throw new Error("Unsupported user agent");
+
   const csrf = await getCsrf();
   const res = await fetch(OLIMANAGER_URL, {
     method: "POST",
