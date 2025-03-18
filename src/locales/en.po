@@ -22,9 +22,17 @@ msgstr "{0} points"
 msgid "{num} categorie"
 msgstr "{num} categories"
 
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "<0>Memoria utilizzata</0>:"
+msgstr "<0>Memory used</0>:"
+
 #: src/app/(training)/(home)/page.tsx
 msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
 msgstr "<1><2>Italian</2> <3>Olympiads in</3> <4>Informatics</4></1> <0>training website</0>"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "<0>Tempo di compilazione</0>:"
+msgstr "<0>Compilation time</0>:"
 
 #: src/app/(training)/user/[username]/edit/delete/page.tsx
 msgid "A:"
@@ -576,8 +584,8 @@ msgid "Memoria"
 msgstr "Memory"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
-msgid "Memoria utilizzata:"
-msgstr "Memory used:"
+msgid "Memoria utilizzata durante la fase di compilazione che precede l'esecuzione. Non è vincolata dal limite di memoria del problema e non influenza il punteggio."
+msgstr "Memory used during the compilation phase before the execution. It is not bound by the problem's memory limit and does not affect the score."
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Menzione"
@@ -1070,8 +1078,8 @@ msgid "Tempo"
 msgstr "Time"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
-msgid "Tempo di compilazione:"
-msgstr "Compilation time:"
+msgid "Tempo impiegato dalla fase di compilazione che precede l'esecuzione. Non è vincolato dal limite di tempo del problema e non influenza il punteggio."
+msgstr "Time taken by the compilation phase before the execution. It is not bound by the problem's time limit and does not affect the score."
 
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/(training)/navbar.tsx

@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { Fragment, type ReactNode, useEffect } from "react";
 
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
 import { Check, X } from "lucide-react";
 
@@ -19,6 +19,8 @@ type Props = {
 
 export function PageClient({ submission, children }: Props) {
   const router = useRouter();
+
+  const { t } = useLingui();
 
   useEffect(() => {
     if (isEvaluating(submission)) {
@@ -105,14 +107,26 @@ export function PageClient({ submission, children }: Props) {
         </li>
         <li>
           <span className="font-bold">
-            <Trans>Tempo di compilazione:</Trans>
+            <Trans>
+              <abbr
+                title={t`Tempo impiegato dalla fase di compilazione che precede l'esecuzione. Non è vincolato dal limite di tempo del problema e non influenza il punteggio.`}>
+                Tempo di compilazione
+              </abbr>
+              :
+            </Trans>
           </span>{" "}
           <Resource value={submission.compilationTime} unit="sec" precision={3} />
         </li>
         <li>
-          <span className="font-bold">
-            <Trans>Memoria utilizzata:</Trans>
-          </span>{" "}
+          <abbr className="font-bold">
+            <Trans>
+              <abbr
+                title={t`Memoria utilizzata durante la fase di compilazione che precede l'esecuzione. Non è vincolata dal limite di memoria del problema e non influenza il punteggio.`}>
+                Memoria utilizzata
+              </abbr>
+              :
+            </Trans>
+          </abbr>{" "}
           <Resource
             value={
               submission.compilationMemory != null ? submission.compilationMemory >> 20n : null
