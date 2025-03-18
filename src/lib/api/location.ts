@@ -24,9 +24,9 @@ async function getCsrf() {
   return csrf;
 }
 
-async function query<T>(query: string, schema: ZodType<T, any, any>): Promise<T> {
+async function query<T>(query: string, schema: ZodType<T, any, any>): Promise<T | undefined> {
   const ua = userAgent({ headers: await headers() });
-  if (ua.isBot) throw new Error("Unsupported user agent");
+  if (ua.isBot) return;
 
   const csrf = await getCsrf();
   const res = await fetch(OLIMANAGER_URL, {
@@ -39,6 +39,7 @@ async function query<T>(query: string, schema: ZodType<T, any, any>): Promise<T>
     cache: "no-store",
     body: JSON.stringify({ query }),
   });
+  if (!res.ok) return;
 
   const responseSchema = z.union([
     z.object({ errors: z.array(z.object({ message: z.string() })) }),
@@ -103,7 +104,7 @@ export async function getProvinces(regionId: string): Promise<Location[]> {
     }`,
     provincesSchema,
   );
-  return data.provinces.provinces;
+  return data?.provinces?.provinces ?? [];
 }
 
 const citiesSchema = z.object({
@@ -124,7 +125,7 @@ export async function getCities(provinceId: string): Promise<Location[]> {
     }`,
     citiesSchema,
   );
-  return data.cities.cities;
+  return data?.cities?.cities ?? [];
 }
 
 const schoolsSchema = z.object({
@@ -158,6 +159,7 @@ export async function getSchools(cityId: string): Promise<Location[]> {
     }`,
     schoolsSchema,
   );
+  if (!data) return [];
   return data.schools.schools.edges.map(
     (edge): Location => ({ id: edge.node.externalId, name: edge.node.name }),
   );
@@ -221,6 +223,7 @@ export async function getSchool(schoolId: string | undefined | null): Promise<st
     }`,
     schoolSchema,
   );
+  if (!data) return;
   const school = data.schools.schools.edges[0]?.node;
   if (!school) return;
   return `${school.type.name} ${school.name}, ${school.location.city.name}, ${school.location.city.province.region.name}`;
