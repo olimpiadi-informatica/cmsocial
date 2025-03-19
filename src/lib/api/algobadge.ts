@@ -1,4 +1,4 @@
-import { and, desc, eq, inArray, max, sql } from "drizzle-orm";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { cache } from "react";
 
 import { algobadge } from "~/lib/algobadge";
@@ -57,31 +57,29 @@ function getTerryScores(username: string): Promise<AlgobadgeScore[]> {
   const lastSubmissionSq = terryDb
     .select({
       task: terrySubmissions.task,
-      date: max(terrySubmissions.date).as("last_date"),
+      score: terrySubmissions.score,
+      rank: sql<number>`ROW_NUMBER() OVER (PARTITION BY ${terrySubmissions.task} ORDER BY ${terrySubmissions.date} DESC)`.as(
+        "rank",
+      ),
     })
     .from(terrySubmissions)
     .where(
       and(eq(terrySubmissions.token, username), inArray(terrySubmissions.task, terryTaskNames)),
     )
-    .groupBy(terrySubmissions.task)
     .as("last_submission_sq");
 
   return terryDb
     .select({
       taskName: terryTasks.name,
       taskTitle: terryTasks.title,
-      score: terrySubmissions.score,
+      score: lastSubmissionSq.score,
       maxScore: terryTasks.maxScore,
       terry: sql`1`.mapWith(Boolean),
     })
     .from(terryTasks)
-    .innerJoin(lastSubmissionSq, eq(lastSubmissionSq.task, terryTasks.name))
     .innerJoin(
-      terrySubmissions,
-      and(
-        eq(terrySubmissions.task, lastSubmissionSq.task),
-        eq(terrySubmissions.date, lastSubmissionSq.date),
-      ),
+      lastSubmissionSq,
+      and(eq(lastSubmissionSq.task, terryTasks.name), eq(lastSubmissionSq.rank, 1)),
     );
 }
 
