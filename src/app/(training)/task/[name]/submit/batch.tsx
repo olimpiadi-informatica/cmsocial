@@ -104,11 +104,9 @@ export function SubmitBatch({ task }: { task: Task }) {
           </div>
         );
       }}
-      {task.attachments.some((a) => a.name.startsWith("grader")) && (
-        <Link href="https://wiki.olinfo.it/Guide/grader" className="link link-info mb-4">
-          <Trans>Come si usano i grader?</Trans>
-        </Link>
-      )}
+      <Link href={`/task/${task.name}/submit/help`} className="link link-info mb-4">
+        <Trans>Come funziona l'input e l'output?</Trans>
+      </Link>
       {isSubmitPage &&
         (({ lang, src }) => (
           <div className="relative min-h-[75vh] w-full grow overflow-hidden rounded border border-base-content/10 *:absolute *:inset-0">

@@ -26,6 +26,11 @@ export const attachments = pgTable("attachments", {
   digest: varchar().notNull(),
 });
 
+export type TaskType = "Batch" | "Communication" | "OutputOnly";
+export type BatchParameters = ["grader" | "alone", ["" | "input.txt", "" | "output.txt"]];
+export type CommunicationParameters = [number, "stub" | "alone", "std_io" | "fifo"];
+export type OutputOnlyParameters = ["comparator"];
+
 export const datasets = pgTable("datasets", {
   id: serial().primaryKey(),
   taskId: integer("task_id").notNull(),
@@ -33,8 +38,10 @@ export const datasets = pgTable("datasets", {
   autojudge: boolean().notNull(),
   timeLimit: doublePrecision("time_limit"),
   memoryLimit: bigint("memory_limit", { mode: "bigint" }),
-  taskType: varchar("task_type").$type<"Batch" | "OutputOnly">().notNull(),
-  taskTypeParameters: jsonb("task_type_parameters").notNull(),
+  taskType: varchar("task_type").$type<TaskType>().notNull(),
+  taskTypeParameters: jsonb("task_type_parameters")
+    .$type<BatchParameters | CommunicationParameters | OutputOnlyParameters>()
+    .notNull(),
   scoreType: varchar("score_type").notNull(),
   scoreTypeParameters: jsonb("score_type_parameters").notNull(),
 });

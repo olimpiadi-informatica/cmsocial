@@ -45,6 +45,11 @@ export default async function Layout({ params, children }: Props) {
             {task.memoryLimit ? `${task.memoryLimit >> 20n} MB` : "N/A"}
           </div>
         </div>
+        <div className="flex items-center justify-center">
+          <div>
+            <Trans>Input/output:</Trans> {task.io}
+          </div>
+        </div>
         <div className="text-center">
           <Trans>Punteggio massimo:</Trans> {Math.round(task.scoreMultiplier * 100)}
         </div>

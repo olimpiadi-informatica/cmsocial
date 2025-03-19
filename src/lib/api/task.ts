@@ -5,6 +5,9 @@ import { and, eq, gte, min, sql } from "drizzle-orm";
 import { getFile } from "~/lib/api/file";
 import { cmsDb } from "~/lib/db";
 import {
+  type BatchParameters,
+  type CommunicationParameters,
+  type TaskType,
   attachments,
   datasets,
   participations,
@@ -24,11 +27,12 @@ export type Task = {
   submissionFormat: string[];
   timeLimit: number | null;
   memoryLimit: bigint | null;
-  taskType: "Batch" | "OutputOnly";
+  taskType: TaskType;
+  io: "grader" | "output-only" | "stdin / stdout" | "input.txt / output.txt";
 };
 
 export const getTask = cache(async (name: string): Promise<Task | undefined> => {
-  const rows = await cmsDb
+  const [task] = await cmsDb
     .select({
       name: tasks.name,
       title: tasks.title,
@@ -37,13 +41,38 @@ export const getTask = cache(async (name: string): Promise<Task | undefined> => 
       timeLimit: datasets.timeLimit,
       memoryLimit: datasets.memoryLimit,
       taskType: datasets.taskType,
+      taskTypeParameters: datasets.taskTypeParameters,
     })
     .from(tasks)
     .innerJoin(socialTasks, eq(socialTasks.id, tasks.id))
     .innerJoin(datasets, eq(datasets.id, tasks.activeDatasetId))
     .where(eq(tasks.name, name))
     .limit(1);
-  return rows[0];
+  if (!task) return;
+
+  let io: Task["io"];
+  switch (task.taskType) {
+    case "Batch": {
+      const params = task.taskTypeParameters as BatchParameters;
+      if (params[0] === "grader") {
+        io = "grader";
+      } else if (params[1][0] === "input.txt" || params[1][1] === "output.txt") {
+        io = "input.txt / output.txt";
+      } else {
+        io = "stdin / stdout";
+      }
+      break;
+    }
+    case "Communication": {
+      const params = task.taskTypeParameters as CommunicationParameters;
+      io = params[1] === "stub" ? "grader" : "stdin / stdout";
+      break;
+    }
+    case "OutputOnly":
+      io = "output-only";
+      break;
+  }
+  return { ...task, io };
 });
 
 export const getTaskAttachments = cache((name: string): Promise<File[]> => {

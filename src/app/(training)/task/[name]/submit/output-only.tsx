@@ -1,4 +1,7 @@
 "use client";
+
+import Link from "next/link";
+
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
 import type { Task } from "@olinfo/training-api";
@@ -58,6 +61,9 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
       <SubmitButton icon={Send}>
         <Trans>Invia</Trans>
       </SubmitButton>
+      <Link href={`/task/${task.name}/submit/help`} className="link link-info mb-4">
+        <Trans>Come funziona l'input e l'output?</Trans>
+      </Link>
     </Form>
   );
 }

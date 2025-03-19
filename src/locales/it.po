@@ -216,9 +216,10 @@ msgstr "Codice non valido"
 msgid "Codice sorgente"
 msgstr "Codice sorgente"
 
+#: src/app/(training)/task/[name]/submit/output-only.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
-msgid "Come si usano i grader?"
-msgstr "Come si usano i grader?"
+msgid "Come funziona l'input e l'output?"
+msgstr "Come funziona l'input e l'output?"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Compilazione"
@@ -487,6 +488,10 @@ msgstr "Induzione e ricorsione"
 #: src/app/fibonacci/page.tsx
 msgid "Inizia ad allenarti"
 msgstr "Inizia ad allenarti"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Input/output:"
+msgstr "Input/output:"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Insegnante"
