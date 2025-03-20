@@ -19,7 +19,10 @@ export function getFile(name: PgColumn | string, digest: PgColumn): SQL<string> 
 
 export async function getFileContent(file: Omit<File, "url">) {
   const res = await cmsDb.execute(sql`SELECT loid FROM fsobjects WHERE digest = ${file.digest}`);
-  const oid = res.rows[0].loid;
+  const oid = res.rows[0]?.loid;
+  if (!oid) {
+    return new Response(null, { status: 404 });
+  }
 
   const chunkSize = 1 << 16;
   let offset = 0;
@@ -39,6 +42,9 @@ export async function getFileContent(file: Omit<File, "url">) {
         }
       },
     }),
+    {
+      headers: { "Cache-Control": "public, max-age=31536000, immutable" },
+    },
   );
 }
 
@@ -48,5 +54,7 @@ export function getTerryFileContent(fileName: string): Response {
     return new Response(null, { status: 404 });
   }
   const stream = createReadStream(filePath);
-  return new Response(Readable.toWeb(stream) as ReadableStream);
+  return new Response(Readable.toWeb(stream) as ReadableStream, {
+    headers: { "Cache-Control": "public, max-age=31536000, immutable" },
+  });
 }
