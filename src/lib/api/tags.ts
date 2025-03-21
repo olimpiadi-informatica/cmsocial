@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, eq, like } from "drizzle-orm";
+import { and, desc, eq, like } from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
 import { tags } from "~/lib/db/schema";
@@ -39,5 +39,5 @@ export const getYearTags = cache((): Promise<Tag[]> => {
     })
     .from(tags)
     .where(and(eq(tags.isEvent, true), like(tags.name, "ioi20%")))
-    .orderBy(tags.name);
+    .orderBy(desc(tags.name));
 });
