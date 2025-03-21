@@ -5,9 +5,11 @@ import {
   and,
   asc,
   count,
+  countDistinct,
   desc,
   eq,
   exists,
+  gt,
   ilike,
   inArray,
   isNull,
@@ -17,12 +19,20 @@ import {
 } from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
-import { participations, socialTasks, tags, taskScores, taskTags, tasks } from "~/lib/db/schema";
+import {
+  participations,
+  socialTasks,
+  submissions,
+  tags,
+  taskScores,
+  taskTags,
+  tasks,
+} from "~/lib/db/schema";
 
 export type TaskListOptions = {
   search: string | null | undefined;
   tags: string[] | null | undefined;
-  order: "hardest" | "easiest" | null | undefined;
+  order: "hardest" | "easiest" | "trending" | null | undefined;
   unsolved: boolean | undefined;
 };
 
@@ -71,6 +81,21 @@ function getOrder(options: TaskListOptions) {
   }
   if (options.order === "easiest") {
     order.push(asc(socialTasks.scoreMultiplier), desc(socialTasks.correctUserCount));
+  }
+  if (options.order === "trending") {
+    order.push(
+      desc(
+        cmsDb
+          .select({ c: countDistinct(submissions.participationId) })
+          .from(submissions)
+          .where(
+            and(
+              eq(submissions.taskId, tasks.id),
+              gt(submissions.timestamp, sql`NOW() - INTERVAL '2 week'`),
+            ),
+          ),
+      ),
+    );
   }
   order.push(desc(socialTasks.id));
   return order;

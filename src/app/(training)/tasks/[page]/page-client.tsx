@@ -34,7 +34,7 @@ export function PageClient(props: Props) {
   const options: TaskListOptions = {
     search: searchParams.get("search"),
     tags: searchParams.getAll("tag"),
-    order: searchParams.get("order") as "hardest" | "easiest",
+    order: searchParams.get("order") as "hardest" | "easiest" | "trending",
     unsolved: !!searchParams.get("unsolved"),
   };
 
@@ -136,6 +136,9 @@ function Filter() {
         onBlur={() => setPush(true)}>
         <option value="">
           <Trans>Più recenti</Trans>
+        </option>
+        <option value="trending">
+          <Trans>Di tendenza</Trans>
         </option>
         <option value="easiest">
           <Trans>Più facili</Trans>

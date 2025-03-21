@@ -289,6 +289,10 @@ msgstr "You must send the following files:"
 msgid "Devi usare HTTPS per scaricare il file."
 msgstr "You must use HTTPS to download the file."
 
+#: src/app/(training)/tasks/[page]/page-client.tsx
+msgid "Di tendenza"
+msgstr "Trending"
+
 #: src/app/algobadge/bulk/common.ts
 msgid "Diamante"
 msgstr "Diamond"
