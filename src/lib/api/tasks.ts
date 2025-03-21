@@ -26,7 +26,17 @@ export type TaskListOptions = {
   unsolved: boolean | undefined;
 };
 
-function getFilter(options: TaskListOptions): (SQL | undefined)[] {
+const scoreSq = cmsDb
+  .select({
+    taskId: taskScores.taskId,
+    userId: participations.userId,
+    score: taskScores.score,
+  })
+  .from(taskScores)
+  .innerJoin(participations, eq(participations.id, taskScores.participationId))
+  .as("score_sq");
+
+function getFilter(userId: number | undefined, options: TaskListOptions): SQL | undefined {
   const filter: (SQL | undefined)[] = [eq(tasks.contestId, Number(process.env.CMS_CONTEST_ID))];
   if (options.search) {
     const like = `%${options.search}%`;
@@ -48,7 +58,10 @@ function getFilter(options: TaskListOptions): (SQL | undefined)[] {
       ),
     );
   }
-  return filter;
+  if (userId && options.unsolved) {
+    filter.push(or(isNull(scoreSq.score), ne(scoreSq.score, 100)));
+  }
+  return and(...filter);
 }
 
 function getOrder(options: TaskListOptions) {
@@ -109,41 +122,24 @@ export const getTaskList = cache(
     if (userId) {
       return query
         .leftJoin(scoreSq, and(eq(scoreSq.taskId, tasks.id), eq(scoreSq.userId, userId)))
-        .where(
-          and(
-            ...getFilter(options),
-            or(isNull(scoreSq.score), ne(scoreSq.score, 100))!.if(options.unsolved),
-          ),
-        );
+        .where(getFilter(userId, options));
     }
 
-    return query.where(and(...getFilter(options)));
+    return query.where(getFilter(userId, options));
   },
 );
 
 export const getTaskCount = cache(
-  (options: TaskListOptions, userId: number | undefined): Promise<number> => {
-    const scoreSq = cmsDb
-      .select({
-        taskId: taskScores.taskId,
-        userId: participations.userId,
-        score: taskScores.score,
-      })
-      .from(taskScores)
-      .innerJoin(participations, eq(participations.id, taskScores.participationId))
-      .as("score_sq");
-
-    const query = cmsDb.select().from(tasks);
-
+  async (options: TaskListOptions, userId: number | undefined): Promise<number> => {
     if (userId && options.unsolved) {
-      return cmsDb.$count(
-        query
-          .leftJoin(scoreSq, and(eq(scoreSq.taskId, tasks.id), eq(scoreSq.userId, userId)))
-          .where(and(...getFilter(options), or(isNull(scoreSq.score), ne(scoreSq.score, 100))))
-          .as("tasks_sq"),
-      );
+      const [res] = await cmsDb
+        .select({ count: count() })
+        .from(tasks)
+        .leftJoin(scoreSq, and(eq(scoreSq.taskId, tasks.id), eq(scoreSq.userId, userId)))
+        .where(getFilter(userId, options));
+      return res.count;
     }
 
-    return cmsDb.$count(query.where(and(...getFilter(options))).as("tasks_sq"));
+    return cmsDb.$count(tasks, getFilter(userId, options));
   },
 );

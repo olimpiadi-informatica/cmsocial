@@ -1,24 +1,22 @@
 import { cache } from "react";
 
-import { and, desc, eq, sql } from "drizzle-orm";
+import { and, count, desc, eq, sql } from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
 import { participations, socialParticipations, socialUsers, users } from "~/lib/db/schema";
 
-export const getUserCount = cache((): Promise<number> => {
-  return cmsDb.$count(
-    cmsDb
-      .select()
-      .from(users)
-      .innerJoin(participations, eq(participations.userId, users.id))
-      .where(
-        and(
-          eq(participations.hidden, false),
-          eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
-        ),
-      )
-      .as("visible_users"),
-  );
+export const getUserCount = cache(async (): Promise<number> => {
+  const [res] = await cmsDb
+    .select({ count: count() })
+    .from(users)
+    .innerJoin(participations, eq(participations.userId, users.id))
+    .where(
+      and(
+        eq(participations.hidden, false),
+        eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
+      ),
+    );
+  return res.count;
 });
 
 export type User = {

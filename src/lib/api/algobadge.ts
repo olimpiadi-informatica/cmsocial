@@ -54,32 +54,18 @@ function getTrainingScores(userId: number): Promise<AlgobadgeScore[]> {
 }
 
 function getTerryScores(username: string): Promise<AlgobadgeScore[]> {
-  const lastSubmissionSq = terryDb
-    .select({
-      task: terrySubmissions.task,
-      score: terrySubmissions.score,
-      rank: sql<number>`ROW_NUMBER() OVER (PARTITION BY ${terrySubmissions.task} ORDER BY ${terrySubmissions.date} DESC)`.as(
-        "rank",
-      ),
-    })
-    .from(terrySubmissions)
-    .where(
-      and(eq(terrySubmissions.token, username), inArray(terrySubmissions.task, terryTaskNames)),
-    )
-    .as("last_submission_sq");
-
   return terryDb
-    .select({
+    .selectDistinct({
       taskName: terryTasks.name,
       taskTitle: terryTasks.title,
-      score: lastSubmissionSq.score,
+      score: sql<number>`FIRST_VALUE(${terrySubmissions.score}) OVER (PARTITION BY ${terrySubmissions.task} ORDER BY ${terrySubmissions.date} DESC)`,
       maxScore: terryTasks.maxScore,
       terry: sql`1`.mapWith(Boolean),
     })
     .from(terryTasks)
-    .innerJoin(
-      lastSubmissionSq,
-      and(eq(lastSubmissionSq.task, terryTasks.name), eq(lastSubmissionSq.rank, 1)),
+    .innerJoin(terrySubmissions, eq(terrySubmissions.task, terryTasks.name))
+    .where(
+      and(eq(terrySubmissions.token, username), inArray(terrySubmissions.task, terryTaskNames)),
     );
 }
 
