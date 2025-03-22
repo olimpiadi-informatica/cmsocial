@@ -981,10 +981,6 @@ msgstr "Secondary schools"
 msgid "Segnalazioni bug"
 msgstr "Bug reports"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
-msgid "Seleziona il file sorgente"
-msgstr "Select the source file"
-
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Seleziona un tag"
 msgstr "Select a tag"
@@ -1132,6 +1128,8 @@ msgid "Ti mancano {needed} punti al badge successivo!"
 msgstr "You need {needed} more points for the next badge!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Tipo di file non valido"
 msgstr "Invalid file type"
 

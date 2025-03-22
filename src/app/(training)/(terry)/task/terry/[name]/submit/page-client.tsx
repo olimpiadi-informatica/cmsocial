@@ -3,7 +3,9 @@
 import Link from "next/link";
 import { useEffect, useReducer } from "react";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Button, Form, SingleFileField, SubmitButton, useIsAfter } from "@olinfo/react-components";
 import { addSeconds } from "date-fns";
 import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } from "lucide-react";
@@ -21,25 +23,28 @@ type Props = {
 };
 
 export function PageClient({ task, input }: Props) {
-  const { t } = useLingui();
+  const { _ } = useLingui();
 
   const expiryDate =
     input && task.submissionTimeout ? addSeconds(input.date, task.submissionTimeout) : undefined;
   const expired = useIsAfter(expiryDate);
 
   const validateSource = (file: File) => {
-    const lang = fileLanguageName(file.name);
+    const lang = fileLanguageName(file.name, _);
     if (lang === "N/A") {
-      return t`Seleziona il file sorgente`;
+      return _(msg`Tipo di file non valido`);
     }
     if (file.size > 100_000) {
-      return t`File troppo grande`;
+      return _(msg`File troppo grande`);
     }
   };
 
   const validateOutput = (file: File) => {
+    if (file.type !== "text/plain") {
+      return _(msg`Tipo di file non valido`);
+    }
     if (file.size > 100_000) {
-      return t`File troppo grande`;
+      return _(msg`File troppo grande`);
     }
   };
 
@@ -102,8 +107,8 @@ export function PageClient({ task, input }: Props) {
         <H2>
           <Trans>Invia soluzione</Trans>
         </H2>
-        <SingleFileField field="source" label={t`File sorgente`} validate={validateSource} />
-        <SingleFileField field="output" label={t`File di output`} validate={validateOutput} />
+        <SingleFileField field="source" label={_(msg`File sorgente`)} validate={validateSource} />
+        <SingleFileField field="output" label={_(msg`File di output`)} validate={validateOutput} />
         <SubmitButton icon={Send}>
           <Trans>Invia</Trans>
         </SubmitButton>
