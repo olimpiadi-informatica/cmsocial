@@ -22,7 +22,7 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name: taskName, id } = await params;
 
-  await loadLocale();
+  const { _ } = await loadLocale();
 
   const user = await getSessionUser();
   if (!user) {
@@ -53,7 +53,7 @@ export default async function Page({ params }: Props) {
           <span className="font-bold">
             <Trans>Linguaggio:</Trans>
           </span>{" "}
-          {fileLanguageName(submission.source)}
+          {fileLanguageName(submission.source, _)}
         </li>
         <li>
           <span className="font-bold">

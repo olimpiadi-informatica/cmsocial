@@ -1,4 +1,5 @@
-import { useLingui } from "@lingui/react/macro";
+import type { I18n } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 
 export enum Language {
   C = "c",
@@ -91,8 +92,7 @@ export function fileLanguage(fileName: string) {
   }
 }
 
-export function fileLanguageName(fileName: string) {
-  const { t } = useLingui();
+export function fileLanguageName(fileName: string, _: I18n["_"]) {
   const lang = fileLanguage(fileName);
   switch (lang) {
     case Language.C:
@@ -124,9 +124,9 @@ export function fileLanguageName(fileName: string) {
     case Language.Scratch:
       return "Scratch";
     case Language.Plain:
-      return t`Testo semplice`;
+      return _(msg`Testo semplice`);
     case Language.Pseudocode:
-      return t`Pseudocodice`;
+      return _(msg`Pseudocodice`);
     case Language.Ruby:
       return "Ruby";
     case Language.Rust:

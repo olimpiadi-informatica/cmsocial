@@ -1132,6 +1132,7 @@ msgid "Ti mancano {needed} punti al badge successivo!"
 msgstr "Ti mancano {needed} punti al badge successivo!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Tipo di file non valido"
 msgstr "Tipo di file non valido"
 
