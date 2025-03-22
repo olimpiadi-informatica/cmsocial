@@ -4,6 +4,7 @@ import { Readable } from "node:stream";
 
 import { type SQL, sql } from "drizzle-orm";
 import type { PgColumn } from "drizzle-orm/pg-core/columns";
+import mime from "mime";
 
 import { cmsDb } from "~/lib/db";
 
@@ -43,7 +44,10 @@ export async function getFileContent(file: Omit<File, "url">) {
       },
     }),
     {
-      headers: { "Cache-Control": "public, max-age=31536000, immutable" },
+      headers: {
+        "Cache-Control": "public, max-age=31536000, immutable",
+        "Content-Type": mime.getType(file.name) ?? "application/octet-stream",
+      },
     },
   );
 }
@@ -55,6 +59,9 @@ export function getTerryFileContent(fileName: string): Response {
   }
   const stream = createReadStream(filePath);
   return new Response(Readable.toWeb(stream) as ReadableStream, {
-    headers: { "Cache-Control": "public, max-age=31536000, immutable" },
+    headers: {
+      "Cache-Control": "public, max-age=604800",
+      "Content-Type": mime.getType(fileName) ?? "application/octet-stream",
+    },
   });
 }

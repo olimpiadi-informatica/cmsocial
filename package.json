@@ -49,6 +49,7 @@
     "katex": "^0.16",
     "lodash-es": "^4.17",
     "lucide-react": ">=0.395, <1",
+    "mime": "^4.0",
     "monaco-editor-core": "^0.52",
     "next": "^15.2",
     "next-mdx-remote": "^5.0",
