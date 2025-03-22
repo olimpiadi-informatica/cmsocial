@@ -21,18 +21,18 @@ export default async function Page({ params }: Props) {
 
   return (
     <div className="grid grow gap-4 lg:grid-cols-[1fr_18rem]">
-      <div className="relative min-h-[75vh] overflow-hidden rounded-lg">
+      <main className="relative min-h-[75vh] overflow-hidden rounded-lg">
         <div className="absolute inset-0">
           <Statement url={statement.url} />
         </div>
-      </div>
-      <div className="max-lg:hidden">
+      </main>
+      <aside className="max-lg:hidden">
         <div className="grid gap-8">
           <Submit params={params} />
           <Attachments params={params} />
           <Tags params={params} />
         </div>
-      </div>
+      </aside>
     </div>
   );
 }

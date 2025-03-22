@@ -54,12 +54,12 @@ export default async function Page({ searchParams }: Props) {
       <Navbar badge={totalBadge} />
       <div className="relative mx-auto w-full max-w-screen-xl p-4 pb-8">
         <Tree badges={badges} searchParams={new URLSearchParams(await searchParams)} />
-        <div className="prose mt-8 max-w-full md:prose-lg">
+        <main className="prose mt-8 max-w-full md:prose-lg">
           {category && <Header category={algobadge[category]} badge={badges[category]} />}
           <div className="[&_svg]:inline-block [&_svg]:align-text-top [&_svg]:me-1">
             {Resources ? <Resources /> : <Home totalBadge={totalBadge} />}
           </div>
-        </div>
+        </main>
         {totalBadge === Badge.Diamond && <Fireworks />}
       </div>
     </>

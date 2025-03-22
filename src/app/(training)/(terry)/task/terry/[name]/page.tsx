@@ -51,14 +51,14 @@ export default async function Page({ params }: Props) {
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_18rem]">
-      <div className={style.statement}>
+      <main className={style.statement}>
         <MDXRemote options={{ mdxOptions }} components={{ a, img }} source={source} />
-      </div>
-      <div className="max-lg:hidden">
+      </main>
+      <aside className="max-lg:hidden">
         <div className="my-6">
           <Submit params={params} />
         </div>
-      </div>
+      </aside>
     </div>
   );
 }

@@ -20,7 +20,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="mx-auto max-w-screen-xl flex grow flex-col gap-8 p-4 pb-8">
+      <main className="mx-auto max-w-screen-xl flex grow flex-col gap-8 p-4 pb-8">
         <div className="hero">
           <div className="hero-content flex-col text-center">
             <h1 className="text-pretty text-4xl lg:text-5xl font-extrabold dark:md:text-white dark:md:w-min">
@@ -114,7 +114,7 @@ export default async function Home() {
             <CardImage image={Wiki} className="min-h-40 min-w-40" />
           </Card>
         </div>
-      </div>
+      </main>
       <Footer />
     </>
   );

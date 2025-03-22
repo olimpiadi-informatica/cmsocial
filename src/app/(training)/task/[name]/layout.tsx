@@ -33,7 +33,7 @@ export default async function Layout({ params, children }: Props) {
 
   return (
     <div className="flex grow flex-col gap-4">
-      <div>
+      <header>
         <h1 className="text-center text-3xl font-bold">{task.title}</h1>
         <div className="flex flex-col items-center justify-center gap-x-2 sm:flex-row">
           <div>
@@ -53,7 +53,7 @@ export default async function Layout({ params, children }: Props) {
         <div className="text-center">
           <Trans>Punteggio massimo:</Trans> {Math.round(task.scoreMultiplier * 100)}
         </div>
-      </div>
+      </header>
       <TaskTabs />
       {children}
     </div>

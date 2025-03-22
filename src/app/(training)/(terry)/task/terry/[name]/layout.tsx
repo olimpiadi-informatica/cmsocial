@@ -31,7 +31,9 @@ export default async function Layout({ params, children }: Props) {
 
   return (
     <div className="flex grow flex-col gap-4">
-      <h1 className="text-center text-3xl font-bold">{task.title}</h1>
+      <header>
+        <h1 className="text-center text-3xl font-bold">{task.title}</h1>
+      </header>
       <TaskTabs />
       {children}
     </div>
