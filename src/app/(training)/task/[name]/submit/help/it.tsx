@@ -33,7 +33,7 @@ export function HelpIt({ io, taskType }: { io: Task["io"]; taskType: Task["taskT
             " Assicurati di eseguire il flush dell'output dopo ogni operazione."}
         </p>
       )}
-      {io === "input.txt / output.txt" && (
+      {io === "file" && (
         <p>
           Il tuo programma dovrà leggere i dati di input dal file <code>input.txt</code> e scrivere
           gli output nel file <code>output.txt</code>.

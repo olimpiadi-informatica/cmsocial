@@ -28,7 +28,7 @@ export type Task = {
   timeLimit: number | null;
   memoryLimit: bigint | null;
   taskType: TaskType;
-  io: "grader" | "output-only" | "stdin / stdout" | "input.txt / output.txt";
+  io: "grader" | "output-only" | "stdin / stdout" | "file";
 };
 
 export const getTask = cache(async (name: string): Promise<Task | undefined> => {
@@ -57,7 +57,7 @@ export const getTask = cache(async (name: string): Promise<Task | undefined> => 
       if (params[0] === "grader") {
         io = "grader";
       } else if (params[1][0] === "input.txt" || params[1][1] === "output.txt") {
-        io = "input.txt / output.txt";
+        io = "file";
       } else {
         io = "stdin / stdout";
       }

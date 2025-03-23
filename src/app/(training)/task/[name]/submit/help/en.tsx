@@ -32,7 +32,7 @@ export function HelpEn({ io, taskType }: { io: Task["io"]; taskType: Task["taskT
           {taskType === "Communication" && " Make sure to flush the output after each operation."}
         </p>
       )}
-      {io === "input.txt / output.txt" && (
+      {io === "file" && (
         <p>
           Your program will need to read input data from the file <code>input.txt</code> and write
           output to the file <code>output.txt</code>.
