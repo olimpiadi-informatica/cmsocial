@@ -10,7 +10,9 @@ export type Submission = {
   timestamp: Date;
   language: string | null;
   compilationOutcome: "ok" | "fail" | null;
+  compilationTries: number | null;
   evaluationOutcome: "ok" | null;
+  evaluationTries: number | null;
   score: number | null;
 };
 
@@ -22,7 +24,9 @@ export const getTaskSubmissions = cache(
         timestamp: submissions.timestamp,
         language: submissions.language,
         compilationOutcome: submissionResults.compilationOutcome,
+        compilationTries: submissionResults.compilationTries,
         evaluationOutcome: submissionResults.evaluationOutcome,
+        evaluationTries: submissionResults.evaluationTries,
         score: submissionResults.score,
       })
       .from(submissions)

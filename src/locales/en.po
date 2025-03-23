@@ -359,6 +359,10 @@ msgstr "Join the community"
 msgid "Errato"
 msgstr "Wrong"
 
+#: src/components/outcome.tsx
+msgid "Errore del server"
+msgstr "Server error"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Errore:"
 msgstr "Error:"

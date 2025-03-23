@@ -40,7 +40,9 @@ export type SubmissionResult = {
   timeLimit: number | null;
   memoryLimit: bigint | null;
   compilationOutcome: "ok" | "fail" | null;
+  compilationTries: number | null;
   evaluationOutcome: "ok" | null;
+  evaluationTries: number | null;
   compilationMemory: bigint | null;
   compilationTime: number | null;
   compilationStdout: string | null;
@@ -61,7 +63,9 @@ export const getSubmission = cache(
         timeLimit: datasets.timeLimit,
         memoryLimit: datasets.memoryLimit,
         compilationOutcome: submissionResults.compilationOutcome,
+        compilationTries: submissionResults.compilationTries,
         evaluationOutcome: submissionResults.evaluationOutcome,
+        evaluationTries: submissionResults.evaluationTries,
         compilationMemory: submissionResults.compilationMemory,
         compilationTime: submissionResults.compilationTime,
         compilationStdout: submissionResults.compilationStdout,

@@ -5,6 +5,16 @@ import type { SubmissionResult } from "~/lib/api/submission";
 import type { Submission } from "~/lib/api/submissions";
 
 export function Outcome({ submission }: { submission: Submission | SubmissionResult }) {
+  if (
+    (submission.compilationOutcome === null && (submission.compilationTries ?? 0) >= 3) ||
+    (submission.evaluationOutcome === null && (submission.evaluationTries ?? 0) >= 3)
+  ) {
+    return (
+      <span className="inline-block rounded-lg bg-error px-2 text-sm text-error-content">
+        <Trans>Errore del server</Trans>
+      </span>
+    );
+  }
   if (submission.compilationOutcome === null) {
     return (
       <span className="inline-flex ml-2 gap-2 align-bottom">
