@@ -1,5 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
+import { clamp, round } from "lodash-es";
 
 import type { SubmissionResult } from "~/lib/api/submission";
 import type { Submission } from "~/lib/api/submissions";
@@ -55,7 +56,7 @@ export function OutcomeScore({ score, maxScore }: { score: number; maxScore?: nu
     "bg-green-400 text-success-content",
   ];
 
-  const scoreFraction = Math.min(Math.max(score / (maxScore ?? 100), 0), 1);
+  const scoreFraction = clamp(round(score, 1) / (maxScore ?? 100), 0, 1);
   const color = colors[Math.floor(scoreFraction * 4)];
 
   return (

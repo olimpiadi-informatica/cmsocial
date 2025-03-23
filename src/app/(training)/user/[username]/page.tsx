@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
 import clsx from "clsx";
+import { clamp } from "lodash-es";
 
 import { H1 } from "~/components/header";
 import { getSchool } from "~/lib/api/location";
@@ -175,7 +176,7 @@ function TaskBadge({ name, terry, title, score, maxScore }: UserScore) {
     "bg-green-400 text-success-content",
   ];
 
-  const scoreFraction = Math.min(Math.max(score / maxScore, 0), 1);
+  const scoreFraction = clamp(score / maxScore, 0, 1);
   const color = colors[Math.floor(scoreFraction * 4)];
 
   return (

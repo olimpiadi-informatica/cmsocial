@@ -3,6 +3,7 @@ import Link from "next/link";
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import clsx from "clsx";
+import { round } from "lodash-es";
 import {
   BookmarkCheck,
   BookmarkX,
@@ -44,7 +45,7 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
         {category.tasks.map((task) => {
           const url = task.terry ? `/task/terry/${task.name}` : `/task/${task.name}`;
           const score = badge?.tasks?.[task.name];
-          const roundedScore = Math.round((score ?? 0) * 10) / 10;
+          const roundedScore = round(score ?? 0, 1);
           const maxScore = task.maxScore ?? 100;
 
           return (

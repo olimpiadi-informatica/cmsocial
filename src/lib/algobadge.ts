@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { map, mapValues } from "lodash-es";
+import { map, mapValues, round } from "lodash-es";
 
 import type { AlgobadgeScores } from "~/lib/api/algobadge";
 
@@ -277,7 +277,7 @@ function computeCategoryBadge(
 
   return {
     category,
-    score: Math.round(score * 10) / 10,
+    score: round(score, 1),
     maxScore,
     tasks,
     badge: computeBadge(score, maxScore, category.hasHonorable),

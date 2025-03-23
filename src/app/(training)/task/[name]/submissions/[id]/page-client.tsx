@@ -5,6 +5,7 @@ import { Fragment, type ReactNode, useEffect } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
+import { round } from "lodash-es";
 import { Check, X } from "lucide-react";
 
 import { DateTime } from "~/components/date";
@@ -79,7 +80,7 @@ export function PageClient({ submission, children }: Props) {
                 </div>
               )}
               <div>
-                {Math.round(subtask.score * 100) / 100} / {subtask.maxScore}
+                {round(subtask.score, 2)} / {subtask.maxScore}
               </div>
             </H3>
             <SubtaskTable
