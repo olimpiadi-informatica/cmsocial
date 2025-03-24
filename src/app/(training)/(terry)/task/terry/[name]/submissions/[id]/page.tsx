@@ -1,5 +1,6 @@
 import { notFound, redirect } from "next/navigation";
 
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
@@ -22,7 +23,8 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name: taskName, id } = await params;
 
-  const { _ } = await loadLocale();
+  await loadLocale();
+  const { _ } = useLingui();
 
   const user = await getSessionUser();
   if (!user) {

@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
@@ -18,7 +19,8 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name: taskName } = await params;
 
-  const { _ } = await loadLocale();
+  await loadLocale();
+  const { _ } = useLingui();
 
   const user = await getSessionUser();
   if (!user) {
