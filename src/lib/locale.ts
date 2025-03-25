@@ -1,4 +1,5 @@
 import { cookies } from "next/headers";
+import { cache } from "react";
 
 import { type I18n, setupI18n } from "@lingui/core";
 import { setI18n } from "@lingui/react/server";
@@ -8,7 +9,7 @@ const locales = {
   it: () => import("@lingui/loader!~/locales/it.po"),
 };
 
-export async function loadLocale(): Promise<I18n> {
+export const loadLocale = cache(async (): Promise<I18n> => {
   let locale = (await cookies()).get("lang")?.value ?? "";
   if (!(locale in locales)) {
     locale = "it";
@@ -19,4 +20,4 @@ export async function loadLocale(): Promise<I18n> {
   setI18n(i18n);
 
   return i18n;
-}
+});

@@ -5,6 +5,7 @@ import type { ReactNode } from "react";
 import { Trans } from "@lingui/react/macro";
 
 import { getTask } from "~/lib/api/task";
+import { loadLocale } from "~/lib/locale";
 
 import { TaskTabs } from "./tabs";
 
@@ -27,6 +28,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Layout({ params, children }: Props) {
   const { name } = await params;
+  await loadLocale();
 
   const task = await getTask(name);
   if (!task) notFound();
