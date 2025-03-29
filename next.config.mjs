@@ -51,6 +51,9 @@ const nextConfig = {
   },
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
+    serverActions: {
+      bodySizeLimit: "2mb",
+    },
   },
 };
 

@@ -13,7 +13,7 @@ import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } f
 import { DateDistance } from "~/components/date";
 import { H2 } from "~/components/header";
 import type { TerryTask, TerryTaskInput } from "~/lib/api/task-terry";
-import { fileLanguageName } from "~/lib/language";
+import { Language, fileLanguage } from "~/lib/language";
 
 import { changeInput, requestInput, uploadAndSubmit } from "./actions";
 
@@ -30,11 +30,12 @@ export function PageClient({ task, input }: Props) {
   const expired = useIsAfter(expiryDate);
 
   const validateSource = (file: File) => {
-    const lang = fileLanguageName(file.name, _);
-    if (lang === "N/A") {
+    const lang = fileLanguage(file.name);
+    if (!lang || lang === Language.Plain) {
       return _(msg`Tipo di file non valido`);
     }
-    if (file.size > 100_000) {
+    const sizeLimit = lang === Language.Scratch ? 1_000_000 : 100_000;
+    if (file.size > sizeLimit) {
       return _(msg`File troppo grande`);
     }
   };
@@ -43,7 +44,7 @@ export function PageClient({ task, input }: Props) {
     if (file.type !== "text/plain") {
       return _(msg`Tipo di file non valido`);
     }
-    if (file.size > 100_000) {
+    if (file.size > 1_000_000) {
       return _(msg`File troppo grande`);
     }
   };
