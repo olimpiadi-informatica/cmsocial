@@ -28,6 +28,23 @@ const nextConfig = {
         destination: "/user/:username/edit/password",
         permanent: false,
       },
+      {
+        source: "/(wp-|\.git|\.env)(.*)",
+        destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        permanent: true,
+      },
+      {
+        source: "/(.*)",
+        has: [
+          {
+            type: "header",
+            key: "referer",
+            value: "https://training.olinfo.it/wp-admin/"
+          },
+        ],
+        destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+        permanent: true,
+      },
     ];
   },
   async rewrites() {
