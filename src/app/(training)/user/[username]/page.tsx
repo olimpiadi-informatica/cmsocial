@@ -64,7 +64,7 @@ export default async function Page({ params }: Props) {
   if (!user) notFound();
 
   const [school, scores] = await Promise.all([
-    getSchool(user.institute),
+    getSchool(user.institute).catch(() => undefined),
     getUserScores(user.id, username),
   ]);
 

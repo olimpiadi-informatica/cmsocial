@@ -38,7 +38,7 @@ export default async function Page({ params }: Props) {
             <Trans>Utenti che l&apos;hanno risolto:</Trans>
           </span>{" "}
           {stats.correctUserCount}{" "}
-          {stats.userCount && (
+          {stats.userCount > 0 && (
             <span className="text-sm text-base-content/80">
               ({Math.round((stats.correctUserCount / stats.userCount) * 100)}%)
             </span>
@@ -55,7 +55,7 @@ export default async function Page({ params }: Props) {
             <Trans>Soluzioni corrette:</Trans>
           </span>{" "}
           {stats.correctSubCount}{" "}
-          {stats.subCount && (
+          {stats.subCount > 0 && (
             <span className="text-sm text-base-content/80">
               ({Math.round((stats.correctSubCount / stats.subCount) * 100)}%)
             </span>

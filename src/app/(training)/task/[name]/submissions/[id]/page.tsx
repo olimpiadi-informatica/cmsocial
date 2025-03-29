@@ -16,6 +16,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { id, name } = await params;
+  if (!Number.isInteger(+id)) notFound();
 
   const user = await getSessionUser();
   if (!user) {
