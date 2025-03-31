@@ -142,7 +142,7 @@ function UserBadge({ level }: { level: AccessLevel }) {
       );
     case AccessLevel.Superuser:
       return (
-        <span className="badge badge-success">
+        <span className="badge badge-primary">
           <Trans>Aristocratico</Trans>
         </span>
       );
