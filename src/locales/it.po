@@ -726,11 +726,13 @@ msgstr "Nuova password"
 msgid "Oggetto:"
 msgstr "Oggetto:"
 
-#. placeholder {0}: year - 2
-#. placeholder {1}: ((year - 1) % 100).toString().padStart(2, "0")
-#: src/app/(training)/tasks/years/page.tsx
-msgid "Olimpiadi di Informatica {0}/{1}"
-msgstr "Olimpiadi di Informatica {0}/{1}"
+#: src/app/(training)/tasks/years/layout.tsx
+msgid "OII"
+msgstr "OII"
+
+#: src/app/(training)/tasks/years/layout.tsx
+msgid "OIS"
+msgstr "OIS"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Olimpiadi di Informatica a Squadre"
@@ -822,7 +824,7 @@ msgid "Problemi introduttivi"
 msgstr "Problemi introduttivi"
 
 #: src/app/(training)/navbar.tsx
-#: src/app/(training)/tasks/years/page.tsx
+#: src/app/(training)/tasks/years/layout.tsx
 msgid "Problemi per anno"
 msgstr "Problemi per anno"
 

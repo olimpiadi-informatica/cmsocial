@@ -61,7 +61,7 @@ export function Navbar() {
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link href="/tasks/years">
+            <Link href="/tasks/years/oii">
               <Trans>Problemi per anno</Trans>
             </Link>
           </NavbarMenuItem>

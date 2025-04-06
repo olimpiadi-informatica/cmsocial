@@ -94,7 +94,7 @@ function getTrainingScores(userId: number): Promise<UserScore[]> {
 function getTerryScores(username: string): Promise<UserScore[]> {
   return terryDb
     .select({
-      name: terryUserTasks.task,
+      name: terryTasks.name,
       title: terryTasks.title,
       score: terryUserTasks.score,
       maxScore: terryTasks.maxScore,
