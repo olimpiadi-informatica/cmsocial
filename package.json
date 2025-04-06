@@ -24,7 +24,7 @@
     "@olinfo/react-components": "^0.11",
     "@olinfo/tailwind": "^0.1",
     "@olinfo/terry-api": "^0.2",
-    "@olinfo/training-api": "^0.9",
+    "@olinfo/training-api": "^0.10",
     "@shikijs/monaco": "^3.2",
     "@types/d3-drag": "^3.0",
     "@types/d3-force": "^3.0",
