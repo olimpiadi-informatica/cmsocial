@@ -1,19 +1,15 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 
-import type { CompileOptions } from "@mdx-js/mdx";
-import type { MDXComponents } from "mdx/types";
-import rehypeKatex from "rehype-katex";
-import remarkMath from "remark-math";
-
+import { MarkdownStatement } from "~/components/statement/markdown";
+import { PdfStatement } from "~/components/statement/pdf";
 import { getTerryFileContent } from "~/lib/api/file";
 import { getTerryTask } from "~/lib/api/task-terry";
-import { fileLanguage } from "~/lib/language";
+import { loadLocale } from "~/lib/locale";
 
-import style from "./statement.module.css";
 import Submit from "./submit/page";
 
-import "katex/dist/katex.css";
+const EN_PDF_PREFIX =
+  "> **Warning**: You can find the English version of the statement at [statement.pdf](statement.pdf)";
 
 type Props = {
   params: Promise<{ name: string }>;
@@ -21,38 +17,28 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { name } = await params;
+  const i18n = await loadLocale();
 
   const task = await getTerryTask(name);
   if (!task) notFound();
 
   const statement = task.statementPath;
+  const basePath = `/files${statement.replace(/\/[^/]*$/, "")}`;
+
   const source = await getTerryFileContent(statement).text();
-
-  const dirname = statement.replace(/\/[^/]*$/, "");
-
-  const mdxOptions: CompileOptions = {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
-  };
-
-  const mapUrl = (url?: string) => {
-    return !url || URL.canParse(url) ? url : `/files${dirname}/${url}`;
-  };
-
-  const a: MDXComponents["a"] = ({ href, ...props }) => {
-    const lang = fileLanguage(href);
-    return <a href={mapUrl(href)} {...props} download={!!lang} />;
-  };
-
-  const img: MDXComponents["img"] = ({ src, ...props }) => {
-    // biome-ignore lint/a11y/useAltText: alt is provided through props
-    return <img src={mapUrl(src)} {...props} />;
-  };
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_18rem]">
-      <main className={style.statement}>
-        <MDXRemote options={{ mdxOptions }} components={{ a, img }} source={source} />
+      <main>
+        {i18n.locale === "en" && source.startsWith(EN_PDF_PREFIX) ? (
+          <div className="relative min-h-[75vh] overflow-hidden rounded-lg">
+            <div className="absolute inset-0">
+              <PdfStatement url={`${basePath}/statement.pdf`} />
+            </div>
+          </div>
+        ) : (
+          <MarkdownStatement source={source.replace(EN_PDF_PREFIX, "")} basePath={basePath} />
+        )}
       </main>
       <aside className="max-lg:hidden">
         <div className="my-6">

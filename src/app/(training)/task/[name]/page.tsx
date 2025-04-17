@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 
+import { PdfStatement } from "~/components/statement/pdf";
 import { getTaskStatement } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
 import Attachments from "./attachments/page";
-import { Statement } from "./statement";
 import Submit from "./submit/page";
 import Tags from "./tags/page";
 
@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
     <div className="grid grow gap-4 lg:grid-cols-[1fr_18rem]">
       <main className="relative min-h-[75vh] overflow-hidden rounded-lg">
         <div className="absolute inset-0">
-          <Statement url={statement.url} />
+          <PdfStatement url={statement.url} />
         </div>
       </main>
       <aside className="max-lg:hidden">

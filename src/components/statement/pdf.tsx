@@ -5,9 +5,9 @@ import { Suspense, lazy, useEffect, useState } from "react";
 import { useLingui } from "@lingui/react/macro";
 import { supportsPDFs } from "pdfobject";
 
-const MobileStatement = lazy(() => import("./mobile-statement"));
+const PdfMobileStatement = lazy(() => import("./pdf-mobile"));
 
-export function Statement({ url }: { url: string }) {
+export function PdfStatement({ url }: { url: string }) {
   const { t } = useLingui();
 
   const [isMobile, setMobile] = useState<boolean>();
@@ -20,7 +20,7 @@ export function Statement({ url }: { url: string }) {
   if (isMobile) {
     return (
       <Suspense fallback={<LoadingStatement />}>
-        <MobileStatement url={url} fallback={<LoadingStatement />} />
+        <PdfMobileStatement url={url} fallback={<LoadingStatement />} />
       </Suspense>
     );
   }
