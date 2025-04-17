@@ -1,9 +1,9 @@
 import { cache } from "react";
 
-import { and, eq, sql } from "drizzle-orm";
+import { and, eq, exists, sql } from "drizzle-orm";
 
 import { terryDb } from "~/lib/db";
-import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
+import { terrySubmissions, terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
 
 export type TerryTaskItem = {
   name: string;
@@ -27,7 +27,18 @@ export const getTerryTasks = cache((username?: string): Promise<TerryTaskItem[]>
   if (username) {
     return query.leftJoin(
       terryUserTasks,
-      and(eq(terryUserTasks.task, terryTasks.name), eq(terryUserTasks.token, username)),
+      and(
+        eq(terryUserTasks.task, terryTasks.name),
+        eq(terryUserTasks.token, username),
+        exists(
+          terryDb
+            .select()
+            .from(terrySubmissions)
+            .where(
+              and(eq(terrySubmissions.task, terryTasks.name), eq(terrySubmissions.token, username)),
+            ),
+        ),
+      ),
     );
   }
 
