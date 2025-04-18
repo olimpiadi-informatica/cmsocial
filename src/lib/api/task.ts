@@ -99,11 +99,24 @@ export const getTaskStatement = cache(
       .from(statements)
       .innerJoin(tasks, eq(tasks.id, statements.taskId))
       .where(eq(tasks.name, name))
-      .orderBy(sql`CASE WHEN ${eq(statements.language, locale)} THEN 0 ELSE 1 END`)
+      .orderBy(sql`CASE
+                       WHEN ${eq(statements.language, locale)} THEN 0
+                       WHEN ${statements.language} = ANY(${tasks.primaryStatements}) THEN 1
+                       ELSE 2
+                   END`)
       .limit(1);
     return rows[0];
   },
 );
+
+export const getTaskLocales = cache(async (name: string): Promise<string[]> => {
+  const locales = await cmsDb
+    .select({ locale: statements.language })
+    .from(statements)
+    .innerJoin(tasks, eq(tasks.id, statements.taskId))
+    .where(eq(tasks.name, name));
+  return locales.map((locale) => locale.locale);
+});
 
 export type TaskStats = {
   subCount: number;

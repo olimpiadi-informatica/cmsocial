@@ -1147,6 +1147,10 @@ msgstr "Return to home"
 msgid "Totale"
 msgstr "Total"
 
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Traduzioni:"
+msgstr "Translations:"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Tutor"
 msgstr "Tutor"

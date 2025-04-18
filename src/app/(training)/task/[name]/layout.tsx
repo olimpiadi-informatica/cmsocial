@@ -4,9 +4,10 @@ import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/react/macro";
 
-import { getTask } from "~/lib/api/task";
+import { getTask, getTaskLocales } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
+import { flags } from "~/lib/flags";
 import { TaskTabs } from "./tabs";
 
 type Props = {
@@ -33,6 +34,8 @@ export default async function Layout({ params, children }: Props) {
   const task = await getTask(name);
   if (!task) notFound();
 
+  const taskLocales = (await getTaskLocales(name)).map((locale) => flags[locale]);
+
   return (
     <div className="flex grow flex-col gap-4">
       <header>
@@ -54,6 +57,9 @@ export default async function Layout({ params, children }: Props) {
         </div>
         <div className="text-center">
           <Trans>Punteggio massimo:</Trans> {Math.round(task.scoreMultiplier * 100)}
+        </div>
+        <div className="text-center">
+          <Trans>Traduzioni:</Trans> {taskLocales}
         </div>
       </header>
       <TaskTabs />
