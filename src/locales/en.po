@@ -1121,7 +1121,7 @@ msgstr "Testcases"
 msgid "Testo"
 msgstr "Statement"
 
-#: src/app/(training)/task/[name]/statement.tsx
+#: src/components/statement/pdf.tsx
 msgid "Testo del problema"
 msgstr "Task statement"
 
