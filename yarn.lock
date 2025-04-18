@@ -987,6 +987,11 @@
     lodash.merge "^4.6.2"
     postcss-selector-parser "6.0.10"
 
+"@types/country-flag-icons@^1.2.2":
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/@types/country-flag-icons/-/country-flag-icons-1.2.2.tgz#8f51089cab857f0f700feabd38b3960d006d64f2"
+  integrity sha512-CefEn/J336TBDp7NX8JqzlDtCBOsm8M3r1Li0gEOt0HOMHF1XemNyrx9lSHjsafcb1yYWybU0N8ZAXuyCaND0w==
+
 "@types/d3-array@^3.0.3":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@types/d3-array/-/d3-array-3.2.1.tgz#1f6658e3d2006c4fceac53fde464166859f8b8c5"
@@ -1616,6 +1621,11 @@ cosmiconfig@^8.0.0:
     js-yaml "^4.1.0"
     parse-json "^5.2.0"
     path-type "^4.0.0"
+
+country-flag-icons@^1.5.18:
+  version "1.5.18"
+  resolved "https://registry.yarnpkg.com/country-flag-icons/-/country-flag-icons-1.5.18.tgz#091de61e4c1f69dfb7e6575ed1e1135c9333ee15"
+  integrity sha512-z+Uzesi8u8IdkViqqbzzbkf3+a7WJpcET5B7sPwTg7GXqPYpVEgNlZ/FC3l8KO4mEf+mNkmzKLppKTN4PlCJEQ==
 
 cross-spawn@^7.0.6:
   version "7.0.6"

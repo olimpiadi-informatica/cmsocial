@@ -1,9 +1,12 @@
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
+import type { ReactNode } from "react";
 
 import { useLingui } from "@lingui/react/macro";
 import { Dropdown, DropdownButton, DropdownMenu } from "@olinfo/react-components";
 import { ChevronDown, Languages } from "lucide-react";
+
+import { Flag } from "~/components/flags";
 
 import { DropdownAction } from "./dropdown-action";
 
@@ -17,14 +20,18 @@ export function LocaleDropdown() {
         <ChevronDown size={18} strokeWidth={2.5} />
       </DropdownButton>
       <DropdownMenu>
-        <LocaleItem lang="it">&#127470;&#127481; Italiano</LocaleItem>
-        <LocaleItem lang="en">&#127468;&#127463; English</LocaleItem>
+        <LocaleItem lang="it">
+          <Flag locale="it" /> Italiano
+        </LocaleItem>
+        <LocaleItem lang="en">
+          <Flag locale="en" /> English
+        </LocaleItem>
       </DropdownMenu>
     </Dropdown>
   );
 }
 
-function LocaleItem({ lang, children }: { lang: string; children: string }) {
+function LocaleItem({ lang, children }: { lang: string; children: ReactNode }) {
   const { i18n } = useLingui();
 
   async function changeLanguage(): Promise<undefined> {
