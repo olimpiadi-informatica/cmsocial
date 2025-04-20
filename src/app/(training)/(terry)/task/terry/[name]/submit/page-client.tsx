@@ -62,10 +62,12 @@ export function PageClient({ task, input }: Props) {
   };
 
   const onSubmit = async (data: { source: File; output: File }) => {
-    const files = new FormData();
-    files.append("source", data.source);
-    files.append("output", data.output);
-    const err = await uploadAndSubmit(task.name, input!.id, files);
+    const source = new FormData();
+    source.append("file", data.source);
+    const output = new FormData();
+    output.append("file", data.output);
+
+    const err = await uploadAndSubmit(task.name, input!.id, source, output);
     if (err) throw new Error(err);
     await new Promise(() => {});
   };

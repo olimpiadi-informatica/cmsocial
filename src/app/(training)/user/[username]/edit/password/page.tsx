@@ -2,7 +2,8 @@
 
 import { use } from "react";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import {
   CurrentPasswordField,
   Form,
@@ -12,6 +13,7 @@ import {
 
 import { H2 } from "~/components/header";
 
+import { msg } from "@lingui/core/macro";
 import { changePassword } from "./actions";
 
 type Props = {
@@ -21,18 +23,11 @@ type Props = {
 export default function Page({ params }: Props) {
   const { username } = use(params);
 
-  const { t } = useLingui();
+  const { _ } = useLingui();
 
-  const submit = async (data: { oldPassword: string; newPassword: string }) => {
-    const err = await changePassword(username, data.oldPassword, data.newPassword);
-    if (err) {
-      switch (err) {
-        case "Wrong password":
-          throw new Error(t`Password non corretta`, { cause: { field: "oldPassword" } });
-        default:
-          throw err;
-      }
-    }
+  const submit = async (data: { currentPassword: string; newPassword: string }) => {
+    const err = await changePassword(username, data.currentPassword, data.newPassword);
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
@@ -41,8 +36,8 @@ export default function Page({ params }: Props) {
       <H2>
         <Trans>Modifica password</Trans>
       </H2>
-      <CurrentPasswordField field="oldPassword" label={t`Vecchia password`} />
-      <NewPasswordField field="newPassword" label={t`Nuova password`} minLength={8} />
+      <CurrentPasswordField field="currentPassword" label={_(msg`Vecchia password`)} />
+      <NewPasswordField field="newPassword" label={_(msg`Nuova password`)} minLength={8} />
       <SubmitButton>
         <Trans>Modifica password</Trans>
       </SubmitButton>

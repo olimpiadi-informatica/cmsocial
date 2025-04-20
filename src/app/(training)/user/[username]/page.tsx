@@ -10,7 +10,6 @@ import { Link } from "~/components/link";
 import { getSchool } from "~/lib/api/location";
 import { getUser } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";
-import { AccessLevel } from "~/lib/permissions";
 import { getSessionUser } from "~/lib/user";
 
 import { ActivityGraph } from "./activity-graph";
@@ -84,12 +83,7 @@ export default async function Page({ params }: Props) {
             className="max-sm:mx-auto max-sm:p-4"
           />
         </div>
-        <CardBody
-          title={
-            <>
-              {user.username} <UserBadge level={user.accessLevel} />
-            </>
-          }>
+        <CardBody title={user.username}>
           <div>
             {user.firstName} {user.lastName}
           </div>
@@ -126,53 +120,4 @@ export default async function Page({ params }: Props) {
       </Card>
     </div>
   );
-}
-
-function UserBadge({ level }: { level: AccessLevel }) {
-  switch (level) {
-    case AccessLevel.Admin:
-      return (
-        <span className="badge badge-error">
-          <Trans>Admin</Trans>
-        </span>
-      );
-    case AccessLevel.Monica:
-      return <span className="badge badge-secondary">Monica</span>;
-    case AccessLevel.Tutor:
-      return (
-        <span className="badge badge-accent">
-          <Trans>Tutor</Trans>
-        </span>
-      );
-    case AccessLevel.Teacher:
-      return (
-        <span className="badge badge-primary">
-          <Trans>Insegnante</Trans>
-        </span>
-      );
-    case AccessLevel.Superuser:
-      return (
-        <span className="badge badge-primary">
-          <Trans>Aristocratico</Trans>
-        </span>
-      );
-    case AccessLevel.User:
-      return (
-        <span className="badge badge-info">
-          <Trans>Anziano</Trans>
-        </span>
-      );
-    case AccessLevel.Newbie:
-      return (
-        <span className="badge badge-info">
-          <Trans>Novizio</Trans>
-        </span>
-      );
-    case AccessLevel.Guest:
-      return (
-        <span className="badge badge-info">
-          <Trans>Ospite</Trans>
-        </span>
-      );
-  }
 }

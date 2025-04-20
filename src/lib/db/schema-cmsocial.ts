@@ -5,19 +5,8 @@ import {
   pgTable,
   serial,
   text,
-  timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
-
-export const socialUsers = pgTable("social_users", {
-  id: integer().primaryKey(),
-  accessLevel: integer("access_level").notNull(),
-  registrationTime: timestamp("registration_time").notNull(),
-  instituteId: integer("institute_id"),
-  instituteCode: varchar("institute_code"),
-  recoverCode: varchar("recover_code"),
-  lastRecover: timestamp("last_recover").default(new Date(0)).notNull(),
-});
 
 export const socialContests = pgTable("social_contests", {
   id: integer().primaryKey(),
@@ -42,8 +31,6 @@ export const socialParticipations = pgTable("social_participations", {
   id: integer().primaryKey(),
   accessLevel: integer("access_level"),
   score: integer().notNull(),
-  lastHelpTime: timestamp("last_help_time").notNull(),
-  helpCount: integer("help_count").notNull(),
 });
 
 export const socialTasks = pgTable("social_tasks", {
