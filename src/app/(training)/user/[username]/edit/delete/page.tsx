@@ -1,66 +1,51 @@
-import { redirect } from "next/navigation";
+"use client";
 
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
+import { Form, SubmitButton, TextField } from "@olinfo/react-components";
+import { TriangleAlert } from "lucide-react";
 
 import { H2 } from "~/components/header";
-import { loadLocale } from "~/lib/locale";
-import { getSessionUser } from "~/lib/user";
 
-export default async function Page() {
-  await loadLocale();
+import { deleteUser } from "./actions";
 
-  const user = await getSessionUser();
-  if (!user) {
-    redirect(`/login?redirect=${encodeURIComponent("/user/me/edit/delete")}`);
-  }
+const CORRECT_CONFIRMATION = msg`Voglio cancellare il mio account`;
 
-  const to = "info@olimpiadi-informatica.it";
-  const subject = "Richiesta di cancellazione dell'account di training";
-  const body = `\
-Gentile staff delle Olimpiadi di Informatica,
+export default function Page() {
+  const { _ } = useLingui();
 
-con la presente email, chiedo la cancellazione dell'account di training.olinfo.it associato a questa email (${user.email}) e di tutti i dati ad esso collegati.
-
-Resto in attesa di una conferma al termine della procedura e vi ringrazio per la vostra collaborazione.
-
-Cordiali saluti,
-${user.firstName} ${user.lastName}`;
-
-  const link = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const submit = async () => {
+    const err = await deleteUser();
+    if (err) throw new Error(_(err));
+    await new Promise(() => {});
+  };
 
   return (
-    <div>
-      <H2>
+    <Form onSubmit={submit}>
+      <H2 className="text-error">
         <Trans>Eliminazione account</Trans>
       </H2>
-      <div className="text-center mt-4 mb-8">
-        <Trans>Per eliminare il tuo account, contattaci via email.</Trans>
+      <div className="my-2">
+        <TriangleAlert size={18} className="inline-block text-error mr-2 mb-1" />
+        <Trans>Attenzione! Questa azione è irreversibile.</Trans>
       </div>
-      <div className="mockup-window bg-base-300 border border-base-content/40">
-        <div className="bg-base-200 px-6 py-4 *:px-px *:pb-2 *:mb-2 *:border-b *:border-b-base-content/40">
-          <div>
-            <span className="text-base-content/60 font-semibold select-none">
-              <Trans>A:</Trans>{" "}
-            </span>
-            <a className="link link-info" href={link}>
-              {to}
-            </a>
-          </div>
-          <div>
-            <span className="text-base-content/60 font-semibold select-none">
-              <Trans>Oggetto:</Trans>{" "}
-            </span>
-            {subject}
-          </div>
-          <div>
-            <span className="text-base-content/60 font-semibold select-none">
-              <Trans>Da:</Trans>{" "}
-            </span>
-            {user.email}
-          </div>
-          <div className="whitespace-pre-line mt-4 !border-b-0">{body}</div>
-        </div>
+      <div className="w-full my-2">
+        <Trans>Per continuare, inserisci la frase di conferma:</Trans>
       </div>
-    </div>
+      <div className="text-center font-mono text-sm select-none mb-4">
+        {_(CORRECT_CONFIRMATION)}
+      </div>
+      <TextField
+        label={_(msg`Frase di conferma`)}
+        field="confirmation"
+        placeholder={_(msg`Inserisci la frase di conferma`)}
+      />
+      {({ confirmation }) => (
+        <SubmitButton className="btn-error" disabled={confirmation !== _(CORRECT_CONFIRMATION)}>
+          <Trans>Elimina account</Trans>
+        </SubmitButton>
+      )}
+    </Form>
   );
 }

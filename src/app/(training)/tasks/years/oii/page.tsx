@@ -12,7 +12,7 @@ export default async function Page() {
 
   const [tags, tasks] = await Promise.all([
     getOiiYearTags(),
-    getTasksByEvents(user?.id, user?.username, ["territoriali", "pre-oii", "nazionali"]),
+    getTasksByEvents(user?.cmsId, user?.username, ["territoriali", "pre-oii", "nazionali"]),
   ]);
 
   const years = tags

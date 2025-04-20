@@ -1,21 +1,44 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { login as loginAPI } from "@olinfo/training-api";
+import type { MessageDescriptor } from "@lingui/core";
+
+import { auth } from "~/lib/auth";
+import { getAuthError } from "~/lib/auth/errors";
 
 export async function login(
-  username: string,
+  usernameOrEmail: string,
   password: string,
-  keepSigned: boolean,
+  rememberMe: boolean,
   redirectUrl: string,
-): Promise<string | undefined> {
+): Promise<MessageDescriptor | undefined> {
   try {
-    await loginAPI(username, password, keepSigned);
+    if (usernameOrEmail.includes("@")) {
+      await auth.api.signInEmail({
+        headers: await headers(),
+        body: {
+          email: usernameOrEmail,
+          password,
+          rememberMe,
+        },
+      });
+    } else {
+      await auth.api.signInUsername({
+        headers: await headers(),
+        body: {
+          username: usernameOrEmail,
+          password,
+          rememberMe,
+        },
+      });
+    }
   } catch (err) {
-    return (err as Error).message;
+    return getAuthError(err);
   }
+
   revalidatePath("/", "layout");
   redirect(redirectUrl);
 }

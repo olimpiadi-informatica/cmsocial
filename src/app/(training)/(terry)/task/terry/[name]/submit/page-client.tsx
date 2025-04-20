@@ -7,6 +7,7 @@ import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { Button, Form, SingleFileField, SubmitButton, useIsAfter } from "@olinfo/react-components";
 import { addSeconds } from "date-fns";
+import { isString } from "lodash-es";
 import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } from "lucide-react";
 
 import { DateDistance } from "~/components/date";
@@ -51,22 +52,24 @@ export function PageClient({ task, input }: Props) {
 
   const onRequestInput = async () => {
     const err = await requestInput(task.name);
-    if (err) throw new Error(err);
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
   const onChangeInput = async () => {
     const err = await changeInput(input!.id);
-    if (err) throw new Error(err);
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
   const onSubmit = async (data: { source: File; output: File }) => {
-    const files = new FormData();
-    files.append("source", data.source);
-    files.append("output", data.output);
-    const err = await uploadAndSubmit(task.name, input!.id, files);
-    if (err) throw new Error(err);
+    const source = new FormData();
+    source.append("file", data.source);
+    const output = new FormData();
+    output.append("file", data.output);
+
+    const err = await uploadAndSubmit(task.name, input!.id, source, output);
+    if (err) throw new Error(isString(err) ? err : _(err));
     await new Promise(() => {});
   };
 

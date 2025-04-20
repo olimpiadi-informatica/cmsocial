@@ -2,7 +2,9 @@
 
 import { use } from "react";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Form, SubmitButton } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -25,11 +27,11 @@ type Institute = {
 export default function Page({ params }: Props) {
   const { username } = use(params);
 
-  const { t } = useLingui();
+  const { _ } = useLingui();
 
   const submit = async (data: Institute) => {
     const err = await changeSchool(username, data.institute.trim());
-    if (err) throw new Error(err);
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
@@ -39,35 +41,35 @@ export default function Page({ params }: Props) {
         <Trans>Scuola di provenienza</Trans>
       </H2>
       <LocationField
-        label={t`Regione`}
+        label={_(msg`Regione`)}
         field="region"
-        placeholder={t`Scegli la regione`}
+        placeholder={_(msg`Scegli la regione`)}
         id="Italy"
         fetcher={getRegions}
       />
       {({ region }) => (
         <LocationField
-          label={t`Provincia`}
+          label={_(msg`Provincia`)}
           field="province"
-          placeholder={t`Scegli la provincia`}
+          placeholder={_(msg`Scegli la provincia`)}
           id={region}
           fetcher={getProvinces}
         />
       )}
       {({ province }) => (
         <LocationField
-          label={t`Comune`}
+          label={_(msg`Comune`)}
           field="city"
-          placeholder={t`Scegli il comune`}
+          placeholder={_(msg`Scegli il comune`)}
           id={province}
           fetcher={getCities}
         />
       )}
       {({ city }) => (
         <LocationField
-          label={t`Istituto`}
+          label={_(msg`Istituto`)}
           field="institute"
-          placeholder={t`Scegli la scuola`}
+          placeholder={_(msg`Scegli la scuola`)}
           id={city}
           fetcher={getSchools}
         />

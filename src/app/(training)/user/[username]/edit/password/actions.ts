@@ -2,18 +2,29 @@
 
 import { redirect } from "next/navigation";
 
+import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { changePassword as changePasswordAPI } from "@olinfo/training-api";
+
+import { headers } from "next/headers";
+import { auth } from "~/lib/auth";
+import { getAuthError } from "~/lib/auth/errors";
 
 export async function changePassword(
   username: string,
-  oldPassword: string,
+  currentPassword: string,
   newPassword: string,
-): Promise<string | undefined> {
+): Promise<MessageDescriptor | undefined> {
   try {
-    await changePasswordAPI(oldPassword, newPassword);
+    await auth.api.changePassword({
+      headers: await headers(),
+      body: {
+        newPassword,
+        currentPassword,
+        revokeOtherSessions: true,
+      },
+    });
   } catch (err) {
-    return (err as Error).message;
+    return getAuthError(err);
   }
 
   const messageId = msg`Password modificata con successo`.id;
