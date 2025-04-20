@@ -189,7 +189,9 @@ class APIHandler(object):
                 else:
                     auth_data = jwt.decode(local.jwt_payload,
                                            config.get('core', 'secret'),
-                                           algorithms=["HS256"])
+                                           algorithms=['HS256'],
+                                           require=['exp', 'iat', 'nbf', 'aud'],
+                                           audience='https://training.olinfo.it')
                 username = auth_data['username']
 
                 local.participation = self.get_participation(

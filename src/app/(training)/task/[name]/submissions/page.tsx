@@ -38,6 +38,6 @@ export default async function Page({ params }: Props) {
     );
   }
 
-  const submissions = await getTaskSubmissions(taskName, user.id);
+  const submissions = await getTaskSubmissions(taskName, user.cmsId);
   return <PageClient taskName={taskName} submissions={submissions} />;
 }

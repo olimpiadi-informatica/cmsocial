@@ -23,7 +23,10 @@ export default async function Page({ params }: Props) {
     redirect(`/login?redirect=${encodeURIComponent(`/task/${name}/submissions/${id}`)}`);
   }
 
-  const [_i18n, submission] = await Promise.all([loadLocale(), getSubmission(+id, name, user.id)]);
+  const [_i18n, submission] = await Promise.all([
+    loadLocale(),
+    getSubmission(+id, name, user.cmsId),
+  ]);
   if (!submission) notFound();
 
   return (

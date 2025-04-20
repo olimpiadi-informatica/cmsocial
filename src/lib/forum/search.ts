@@ -5,6 +5,8 @@ import { compact } from "lodash-es";
 import { parseEntities } from "parse-entities";
 import { z } from "zod";
 
+import { discourseApi } from "~/lib/forum/common";
+
 const postSchema = z.object({
   id: z.number(),
   topic_id: z.number(),
@@ -37,16 +39,17 @@ export async function searchForumPosts(query: string): Promise<ForumPost[]> {
   const ua = userAgent({ headers: await headers() });
   if (ua.isBot) return [];
 
-  const url = `https://forum.olinfo.it/search/query?term=${encodeURIComponent(query)}`;
-  const resp = await fetch(url, {
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  if (!resp.ok) return [];
-
-  const json = await resp.json();
-  const { posts, topics } = responseSchema.parse(json);
+  let resp: z.infer<typeof responseSchema>;
+  try {
+    resp = await discourseApi(
+      "GET",
+      `/search/query?term=${encodeURIComponent(query)}`,
+      responseSchema,
+    );
+  } catch {
+    return [];
+  }
+  const { posts, topics } = resp;
   if (!posts) return [];
 
   return compact(

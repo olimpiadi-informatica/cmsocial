@@ -9,16 +9,11 @@ export const metadata: Metadata = {
   title: "Training - Registrazione",
 };
 
-type Props = {
-  searchParams: Promise<{ redirect?: string }>;
-};
-
-export default async function Page({ searchParams }: Props) {
-  const { redirect: redirectUrl = "/" } = await searchParams;
-
-  if (await getSessionUser()) {
-    return redirect(redirectUrl);
+export default async function Page() {
+  const user = await getSessionUser();
+  if (user) {
+    redirect("/");
   }
 
-  return <PageClient redirectUrl={redirectUrl} captchaKey={process.env.CAPTCHA_PUBLIC_KEY} />;
+  return <PageClient captchaKey={process.env.CAPTCHA_PUBLIC_KEY!} />;
 }

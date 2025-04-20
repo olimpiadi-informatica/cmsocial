@@ -1,6 +1,8 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
 import { sortBy } from "lodash-es";
 import { Send } from "lucide-react";
@@ -12,11 +14,11 @@ import type { Task } from "~/lib/api/task";
 import { submitOutputOnly } from "./actions";
 
 export function SubmitOutputOnly({ task }: { task: Task }) {
-  const { t } = useLingui();
+  const { _ } = useLingui();
 
   const validate = (files: Record<string, File>) => {
     for (const output of task.submissionFormat) {
-      if (!files[output]) return t`File "${output}" mancante`;
+      if (!files[output]) return _(msg`File "${output}" mancante`);
     }
   };
 
@@ -27,14 +29,7 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
     }
 
     const err = await submitOutputOnly(task.name, files);
-    if (err) {
-      switch (err) {
-        case "Too frequent submissions!":
-          throw new Error(t`Sottoposizioni troppo frequenti`);
-        default:
-          throw err;
-      }
-    }
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
@@ -53,7 +48,7 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
       </div>
       <MultipleFileField
         field="outputs"
-        label={t`File di output`}
+        label={_(msg`File di output`)}
         accept=".txt"
         validate={validate}
       />

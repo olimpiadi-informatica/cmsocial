@@ -4,7 +4,8 @@ import { Trans, useLingui } from "@lingui/react/macro";
 
 import { headers } from "next/headers";
 import { userAgent } from "next/server";
-import { type ForumPost, searchForumPosts } from "~/lib/api/forum";
+
+import { type ForumPost, searchForumPosts } from "~/lib/forum/search";
 
 type Props = {
   taskName: string;

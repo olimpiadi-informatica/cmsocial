@@ -1,5 +1,6 @@
+import { headers } from "next/headers";
+
 import { isString } from "lodash-es";
-import { cookies } from "next/headers";
 
 export async function submitTask(
   taskName: string,
@@ -24,13 +25,11 @@ export async function submitTask(
 }
 
 async function legacyApi(endpoint: string, body: object) {
-  const token = (await cookies()).get("training_token");
-
   const resp = await fetch(`https://training.olinfo.it/api/${endpoint}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Cookie: `training_token=${token?.value}`,
+      cookie: (await headers()).get("cookie") ?? "",
     },
     body: JSON.stringify(body),
     cache: "no-store",
