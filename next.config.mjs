@@ -39,23 +39,11 @@ const nextConfig = {
           {
             type: "header",
             key: "referer",
-            value: "https://training.olinfo.it/wp-admin/"
+            value: "https://training.olinfo.it/wp-admin/",
           },
         ],
         destination: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
         permanent: true,
-      },
-    ];
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/api/:path*",
-        destination: "https://training.olinfo.it/api/:path*",
-      },
-      {
-        source: "/api-terry/:path*",
-        destination: "https://territoriali.olinfo.it/:path*",
       },
     ];
   },

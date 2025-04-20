@@ -3,18 +3,22 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
+import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { changeSchool as changeSchoolAPI } from "@olinfo/training-api";
+
+import { updateUserSchool } from "~/lib/api/user";
+import { getSessionUser } from "~/lib/user";
 
 export async function changeSchool(
   username: string,
   institute: string,
-): Promise<string | undefined> {
-  try {
-    await changeSchoolAPI(institute);
-  } catch (err) {
-    return (err as Error).message;
+): Promise<MessageDescriptor | undefined> {
+  const user = await getSessionUser();
+  if (!user) {
+    return msg`Utente non trovato`;
   }
+
+  await updateUserSchool(user.cmsId, institute);
   revalidatePath(`/user/${username}`);
 
   const messageId = msg`Scuola cambiata con successo`.id;

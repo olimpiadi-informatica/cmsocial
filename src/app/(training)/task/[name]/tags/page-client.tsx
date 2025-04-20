@@ -21,19 +21,17 @@ import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
 import type { Tag } from "~/lib/api/tags";
 import type { TaskTag } from "~/lib/api/task-tags";
-import type { User } from "~/lib/api/user";
-import { AccessLevel } from "~/lib/permissions";
 
 import { addTag, removeTag } from "./actions";
 
 type Props = {
   taskTags: TaskTag[];
   allTags: Tag[];
-  user?: User;
+  canAddTag?: boolean;
   tagPlaceholders: string[];
 };
 
-export function PageClient({ taskTags, allTags, user, tagPlaceholders }: Props) {
+export function PageClient({ taskTags, allTags, canAddTag, tagPlaceholders }: Props) {
   const { _ } = useLingui();
 
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -56,7 +54,7 @@ export function PageClient({ taskTags, allTags, user, tagPlaceholders }: Props) 
           </li>
         ))}
       </Menu>
-      {user && user.accessLevel <= AccessLevel.User && isTagsPage && (
+      {canAddTag && isTagsPage && (
         <div className="mt-4 flex justify-center">
           <Button className="btn-primary" onClick={() => modalRef.current?.showModal()}>
             <SquarePlus size={22} /> <Trans>Aggiungi tag</Trans>

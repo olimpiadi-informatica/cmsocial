@@ -15,7 +15,7 @@ export async function addTag(
   const user = await getSessionUser();
   if (!user) return msg`Non sei autorizzato`;
 
-  const err = await addTaskTag(user.id, taskName, tagName);
+  const err = await addTaskTag(user.cmsId, taskName, tagName);
   if (err) return err;
 
   revalidatePath("/(training)/task/[name]", "layout");
@@ -28,7 +28,7 @@ export async function removeTag(
   const user = await getSessionUser();
   if (!user) return msg`Non sei autorizzato`;
 
-  const err = await removeTaskTag(user.id, taskName, tagName);
+  const err = await removeTaskTag(user.cmsId, taskName, tagName);
   if (err) return err;
 
   revalidatePath("/(training)/task/[name]", "layout");
