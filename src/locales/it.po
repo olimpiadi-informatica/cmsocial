@@ -289,7 +289,7 @@ msgstr "Devi inviare i seguenti file:"
 msgid "Devi usare HTTPS per scaricare il file."
 msgstr "Devi usare HTTPS per scaricare il file."
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Di tendenza"
 msgstr "Di tendenza"
 
@@ -407,6 +407,14 @@ msgstr "File sorgente"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File troppo grande"
 msgstr "File troppo grande"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Filtra"
+msgstr "Filtra"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Filtra tag"
+msgstr "Filtra tag"
 
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/(training)/navbar.tsx
@@ -631,6 +639,10 @@ msgstr "Modifica su Gravatar"
 msgid "Mostra tag"
 msgstr "Mostra tag"
 
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Nascondi risolti"
+msgstr "Nascondi risolti"
+
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Nazionali e altre gare"
 msgstr "Nazionali e altre gare"
@@ -689,8 +701,11 @@ msgstr "Nessuna sottoposizione inviata"
 msgid "Nessuno"
 msgstr "Nessuno"
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Nome"
+msgstr "Nome"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 msgid "Nome del problema"
@@ -742,7 +757,7 @@ msgstr "Olimpiadi di Informatica a Squadre"
 msgid "Olimpiadi Italiane di Informatica"
 msgstr "Olimpiadi Italiane di Informatica"
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Ordinamento"
 msgstr "Ordinamento"
 
@@ -790,15 +805,15 @@ msgstr "Password non corretta"
 msgid "Per eliminare il tuo account, contattaci via email."
 msgstr "Per eliminare il tuo account, contattaci via email."
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Più difficili"
 msgstr "Più difficili"
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Più facili"
 msgstr "Più facili"
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Più recenti"
 msgstr "Più recenti"
 
@@ -901,7 +916,7 @@ msgstr "Richiedi input"
 msgid "Ricordami"
 msgstr "Ricordami"
 
-#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Rimuovi filtro {tag}"
 msgstr "Rimuovi filtro {tag}"
 
@@ -987,6 +1002,7 @@ msgstr "Scuole Secondarie"
 msgid "Segnalazioni bug"
 msgstr "Segnalazioni bug"
 
+#: src/app/(training)/tasks/[page]/filter.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Seleziona un tag"
 msgstr "Seleziona un tag"
@@ -1063,6 +1079,8 @@ msgstr "Strutture dati"
 msgid "Subtask {0}"
 msgstr "Subtask {0}"
 
+#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag"
 msgstr "Tag"

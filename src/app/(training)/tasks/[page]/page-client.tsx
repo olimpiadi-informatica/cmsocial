@@ -8,19 +8,22 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import clsx from "clsx";
 import { range } from "lodash-es";
-import { X } from "lucide-react";
+import { Search, X } from "lucide-react";
 import useSWR from "swr";
 
 import { H1 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { Pagination } from "~/components/pagination";
+import type { Tag } from "~/lib/api/tags";
 import type { TaskItem, TaskListOptions } from "~/lib/api/tasks";
 
 import { getTasks } from "./actions";
+import { Filter } from "./filter";
 
 type Props = {
   taskList: TaskItem[];
   taskCount: number;
+  allTags: Tag[];
 };
 
 export function PageClient(props: Props) {
@@ -43,111 +46,53 @@ export function PageClient(props: Props) {
   } = useSWR(["api/task-list", options, page, pageSize], ([, ...params]) => getTasks(...params), {
     fallbackData: props,
     keepPreviousData: true,
+    revalidateOnFocus: false,
+    revalidateOnMount: false,
   });
   const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);
 
+  const [searchOpen, setSearchOpen] = useState(false);
+
   return (
     <div className="flex flex-col gap-4">
-      <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="flex flex-wrap items-center justify-between sm:justify-center gap-4">
         <H1 className="px-2">
           <Trans>Pagina {page}</Trans>
         </H1>
-        <Filter />
+        <label className="swap swap-rotate sm:hidden px-2">
+          <input
+            type="checkbox"
+            checked={searchOpen}
+            onChange={() => setSearchOpen((open) => !open)}
+          />
+          <Search className="swap-off" />
+          <X className="swap-on" />
+        </label>
       </div>
-      {options.tags?.length ? (
-        <div className="flex flex-wrap gap-2">
-          {options.tags.map((tag) => (
-            <Tag key={tag} tag={tag} />
-          ))}
+      <div className="flex gap-x-4 max-sm:flex-col-reverse">
+        <div className="grow">
+          <Menu fallback={t`Nessun problema trovato`}>
+            {taskList.map((task) => (
+              <li key={task.id}>
+                <Link href={`/task/${task.name}`} className="grid-cols-[auto_1fr_auto]">
+                  <Difficulty difficulty={task.scoreMultiplier} />
+                  {task.title}
+                  {task.score != null && <OutcomeScore score={task.score} />}
+                </Link>
+              </li>
+            ))}
+          </Menu>
         </div>
-      ) : null}
-      <Menu fallback={t`Nessun problema trovato`}>
-        {taskList.map((task) => (
-          <li key={task.id}>
-            <Link href={`/task/${task.name}`} className="grid-cols-[auto_1fr_auto]">
-              <Difficulty difficulty={task.scoreMultiplier} />
-              {task.title}
-              {task.score != null && <OutcomeScore score={task.score} />}
-            </Link>
-          </li>
-        ))}
-      </Menu>
+        <div
+          className={clsx(
+            "shrink-0 grid overflow-y-clip transition-[grid-template-rows] duration-200 sm:max-w-xs sm:w-1/3",
+            searchOpen ? "!grid-rows-[1fr]" : "grid-rows-[0fr]",
+          )}>
+          <Filter allTags={props.allTags} />
+        </div>
+      </div>
       <Pagination page={page} pageCount={pageCount} />
     </div>
-  );
-}
-
-function Tag({ tag }: { tag: string }) {
-  const searchParams = useSearchParams();
-  const { t } = useLingui();
-
-  const newParams = new URLSearchParams(searchParams);
-  newParams.delete("tag", tag);
-
-  return (
-    <div className="badge badge-neutral flex h-6 gap-1">
-      <Link href={`/tasks/1?${newParams}`} aria-label={t`Rimuovi filtro ${tag}`}>
-        <X size={14} />
-      </Link>
-      {tag}
-    </div>
-  );
-}
-
-function Filter() {
-  const searchParams = useSearchParams();
-  const { t } = useLingui();
-
-  const [push, setPush] = useState(true);
-
-  const setFilter = (key: string, value: string) => {
-    const newParams = new URLSearchParams(searchParams);
-    if (value) {
-      newParams.set(key, value);
-    } else {
-      newParams.delete(key);
-    }
-    if (push) {
-      window.history.pushState(null, "", `/tasks/1?${newParams}`);
-      setPush(false);
-    } else {
-      window.history.replaceState(null, "", `/tasks/1?${newParams}`);
-    }
-  };
-
-  return (
-    <form role="search" className="join max-w-full" onSubmit={(e) => e.preventDefault()}>
-      <input
-        className="input join-item input-bordered w-48"
-        name="task"
-        type="search"
-        placeholder={t`Nome del problema`}
-        aria-label={t`Nome del problema`}
-        defaultValue={searchParams.get("search") ?? ""}
-        onChange={(e) => setFilter("search", e.target.value)}
-        onBlur={() => setPush(true)}
-        size={1}
-      />
-      <select
-        className="join-item select select-bordered"
-        aria-label={t`Ordinamento`}
-        defaultValue={searchParams.get("order") ?? ""}
-        onChange={(e) => setFilter("order", e.target.value)}
-        onBlur={() => setPush(true)}>
-        <option value="">
-          <Trans>Più recenti</Trans>
-        </option>
-        <option value="trending">
-          <Trans>Di tendenza</Trans>
-        </option>
-        <option value="easiest">
-          <Trans>Più facili</Trans>
-        </option>
-        <option value="hardest">
-          <Trans>Più difficili</Trans>
-        </option>
-      </select>
-    </form>
   );
 }
 

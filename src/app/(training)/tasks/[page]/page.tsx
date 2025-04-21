@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { compact } from "lodash-es";
 
+import { getTechniqueTags } from "~/lib/api/tags";
 import { type TaskListOptions, getTaskCount, getTaskList } from "~/lib/api/tasks";
 import { getSessionUser } from "~/lib/user";
 
@@ -42,13 +43,14 @@ export default async function Page({ params, searchParams }: Params) {
     unsolved: !!unsolved,
   };
 
-  const [taskList, taskCount] = await Promise.all([
+  const [taskList, taskCount, allTags] = await Promise.all([
     getTaskList(options, user?.id, page, pageSize),
     getTaskCount(options, user?.id),
+    getTechniqueTags(),
   ]);
 
   const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);
   if (page > pageCount) notFound();
 
-  return <PageClient taskList={taskList} taskCount={taskCount} />;
+  return <PageClient taskList={taskList} taskCount={taskCount} allTags={allTags} />;
 }

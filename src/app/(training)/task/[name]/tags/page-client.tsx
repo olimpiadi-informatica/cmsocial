@@ -28,12 +28,12 @@ import { addTag, removeTag } from "./actions";
 
 type Props = {
   taskTags: TaskTag[];
-  tags: Tag[];
+  allTags: Tag[];
   user?: User;
   tagPlaceholders: string[];
 };
 
-export function PageClient({ taskTags, tags, user, tagPlaceholders }: Props) {
+export function PageClient({ taskTags, allTags, user, tagPlaceholders }: Props) {
   const { _ } = useLingui();
 
   const modalRef = useRef<HTMLDialogElement>(null);
@@ -61,7 +61,10 @@ export function PageClient({ taskTags, tags, user, tagPlaceholders }: Props) {
           <Button className="btn-primary" onClick={() => modalRef.current?.showModal()}>
             <SquarePlus size={22} /> <Trans>Aggiungi tag</Trans>
           </Button>
-          <AddTagModal ref={modalRef} taskTags={taskTags} tags={tags} />
+          <AddTagModal
+            ref={modalRef}
+            tags={allTags.filter((tag) => !taskTags.some((taskTag) => taskTag.name === tag.name))}
+          />
         </div>
       )}
     </div>
@@ -112,18 +115,14 @@ function HiddenTag({ tag, placeholder }: { tag: TaskTag; placeholder: string }) 
 }
 
 const AddTagModal = forwardRef(function AddTagModal(
-  { taskTags, tags }: { taskTags: TaskTag[]; tags: Tag[] },
+  { tags }: { tags: Tag[] },
   ref: Ref<HTMLDialogElement> | null,
 ) {
   const { name: taskName } = useParams();
   const { notifySuccess } = useNotifications();
   const { _ } = useLingui();
 
-  const options = Object.fromEntries(
-    tags
-      .filter((tag) => !taskTags.some((taskTag) => taskTag.name === tag.name))
-      .map((tag) => [tag.name, tag.description]),
-  );
+  const options = Object.fromEntries(tags.map((tag) => [tag.name, tag.description]));
 
   const submit = async (data: { tag: string }) => {
     const err = await addTag(taskName as string, data.tag);
@@ -134,7 +133,7 @@ const AddTagModal = forwardRef(function AddTagModal(
 
   return (
     <Modal ref={ref} title={_(msg`Aggiungi tag`)}>
-      <Form onSubmit={submit}>
+      <Form onSubmit={submit} className="!max-w-none">
         <SelectField
           field="tag"
           label={_(msg`Tag`)}

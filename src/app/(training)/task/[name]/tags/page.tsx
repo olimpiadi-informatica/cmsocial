@@ -15,7 +15,7 @@ export default async function Page({ params }: Props) {
   const { name } = await params;
 
   const sessionUser = await getSessionUser();
-  const [user, taskTags, tags] = await Promise.all([
+  const [user, taskTags, allTags] = await Promise.all([
     getUser(sessionUser?.username),
     getTaskTags(name, sessionUser?.id),
     getTags(),
@@ -24,6 +24,11 @@ export default async function Page({ params }: Props) {
   const tagPlaceholders = range(16).map(() => Math.round(1e6 ** (Math.random() + 1)).toString());
 
   return (
-    <PageClient taskTags={taskTags} tags={tags} user={user} tagPlaceholders={tagPlaceholders} />
+    <PageClient
+      taskTags={taskTags}
+      allTags={allTags}
+      user={user}
+      tagPlaceholders={tagPlaceholders}
+    />
   );
 }
