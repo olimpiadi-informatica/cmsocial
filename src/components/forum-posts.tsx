@@ -2,6 +2,8 @@ import type { ReactNode } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 
+import { headers } from "next/headers";
+import { userAgent } from "next/server";
 import { type ForumPost, searchForumPosts } from "~/lib/api/forum";
 
 type Props = {
@@ -87,7 +89,7 @@ function Highlight({ keyword, children }: { keyword: string; children: string })
   return parts;
 }
 
-function ForumLinks({ taskName, taskTitle, taskUrl }: Props) {
+async function ForumLinks({ taskName, taskTitle, taskUrl }: Props) {
   return (
     <div className="text-center">
       <a
@@ -99,9 +101,9 @@ function ForumLinks({ taskName, taskTitle, taskUrl }: Props) {
       </a>
       <br />
       <a
-        href={newPostUrl(taskName, taskTitle, taskUrl)}
+        href={await newPostUrl(taskName, taskTitle, taskUrl)}
         target="_blank"
-        rel="noreferrer"
+        rel="noreferrer nofollow"
         className="link link-info">
         <Trans>Crea un nuovo argomento</Trans>
       </a>
@@ -109,12 +111,15 @@ function ForumLinks({ taskName, taskTitle, taskUrl }: Props) {
   );
 }
 
-function newPostUrl(taskName: string, taskTitle: string, taskUrl: string) {
+async function newPostUrl(taskName: string, taskTitle: string, taskUrl: string) {
+  const ua = userAgent({ headers: await headers() });
+
   const url = new URL("https://forum.olinfo.it/new-topic");
-  url.searchParams.append("title", `Aiuto per ${taskTitle} (${taskName})`);
-  url.searchParams.append(
-    "body",
-    `\
+  if (!ua.isBot) {
+    url.searchParams.append("title", `Aiuto per ${taskTitle} (${taskName})`);
+    url.searchParams.append(
+      "body",
+      `\
 Ciao a tutti, ho bisogno di aiuto per risolvere il problema [${taskTitle}](https://training.olinfo.it${taskUrl}).
 
 [SPIEGARE COSA NON FUNZIONA QUI]
@@ -125,8 +130,9 @@ Ecco il mio codice:
 \`\`\`
 
 Grazie mille in anticipo!`,
-  );
-  url.searchParams.append("category", "Aiuto");
+    );
+    url.searchParams.append("category", "Aiuto");
+  }
 
   return url.href;
 }
