@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import type { ReactNode } from "react";
+import { type ReactNode, unstable_ViewTransition as ViewTransition } from "react";
 
 import { Trans } from "@lingui/react/macro";
 
@@ -38,7 +38,7 @@ export default async function Layout({ params, children }: Props) {
         <Trans>Modifica profilo</Trans>
       </H1>
       <UserEditTabs />
-      {children}
+      <ViewTransition>{children}</ViewTransition>
     </div>
   );
 }

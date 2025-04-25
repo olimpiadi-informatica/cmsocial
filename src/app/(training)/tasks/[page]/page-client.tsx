@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { unstable_ViewTransition as ViewTransition, useDeferredValue, useState } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
@@ -53,6 +53,8 @@ export function PageClient(props: Props) {
 
   const [searchOpen, setSearchOpen] = useState(false);
 
+  const taskListDeferred = useDeferredValue(taskList);
+
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between sm:justify-center gap-4">
@@ -72,14 +74,16 @@ export function PageClient(props: Props) {
       <div className="flex gap-x-4 max-sm:flex-col-reverse">
         <div className="grow">
           <Menu fallback={t`Nessun problema trovato`}>
-            {taskList.map((task) => (
-              <li key={task.id}>
-                <Link href={`/task/${task.name}`} className="grid-cols-[auto_1fr_auto]">
-                  <Difficulty difficulty={task.scoreMultiplier} />
-                  {task.title}
-                  {task.score != null && <OutcomeScore score={task.score} />}
-                </Link>
-              </li>
+            {taskListDeferred.map((task) => (
+              <ViewTransition key={task.id}>
+                <li>
+                  <Link href={`/task/${task.name}`} className="grid-cols-[auto_1fr_auto]">
+                    <Difficulty difficulty={task.scoreMultiplier} />
+                    {task.title}
+                    {task.score != null && <OutcomeScore score={task.score} />}
+                  </Link>
+                </li>
+              </ViewTransition>
             ))}
           </Menu>
         </div>

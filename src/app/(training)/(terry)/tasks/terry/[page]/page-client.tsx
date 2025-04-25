@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { notFound, usePathname, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { unstable_ViewTransition as ViewTransition, useDeferredValue, useState } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
@@ -19,7 +19,7 @@ export function PageClient({ tasks }: { tasks: TerryTaskItem[] }) {
 
   if (!Number.isInteger(page) || page < 1) notFound();
 
-  const searchParams = useSearchParams();
+  const searchParams = useDeferredValue(useSearchParams());
   const { t } = useLingui();
 
   const filteredTasks = tasks.filter((t) => isMatched(t, searchParams.get("search")));
@@ -38,12 +38,14 @@ export function PageClient({ tasks }: { tasks: TerryTaskItem[] }) {
       </div>
       <Menu fallback={t`Nessun problema trovato`}>
         {pageTasks.map((task) => (
-          <li key={task.name}>
-            <Link href={`/task/terry/${task.name}`} className="grid-cols-[1fr_auto]">
-              <div>{task.title}</div>
-              {task.score != null && <OutcomeScore score={task.score} maxScore={task.maxScore} />}
-            </Link>
-          </li>
+          <ViewTransition key={task.name}>
+            <li>
+              <Link href={`/task/terry/${task.name}`} className="grid-cols-[1fr_auto]">
+                <div>{task.title}</div>
+                {task.score != null && <OutcomeScore score={task.score} maxScore={task.maxScore} />}
+              </Link>
+            </li>
+          </ViewTransition>
         ))}
       </Menu>
       <Pagination page={page} pageCount={pageCount} />

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
+import { type ReactNode, unstable_ViewTransition as ViewTransition } from "react";
 
 import { Trans } from "@lingui/react/macro";
 
@@ -67,7 +67,7 @@ export default async function Layout({ params, children }: Props) {
         </div>
       </header>
       <TaskTabs />
-      {children}
+      <ViewTransition>{children}</ViewTransition>
     </div>
   );
 }

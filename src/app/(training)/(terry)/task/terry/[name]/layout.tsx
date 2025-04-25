@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import type { ReactNode } from "react";
+import { type ReactNode, unstable_ViewTransition as ViewTransition } from "react";
 
 import { getTerryTask } from "~/lib/api/task-terry";
 
@@ -35,7 +35,7 @@ export default async function Layout({ params, children }: Props) {
         <h1 className="text-center text-3xl font-bold">{task.title}</h1>
       </header>
       <TaskTabs />
-      {children}
+      <ViewTransition>{children}</ViewTransition>
     </div>
   );
 }

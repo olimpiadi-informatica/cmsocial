@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { unstable_ViewTransition as ViewTransition } from "react";
 
 import { Fireworks } from "~/components/fireworks";
 import { Badge, type CategoryId, algobadge, getUserBadges } from "~/lib/algobadge";
@@ -57,7 +58,9 @@ export default async function Page({ searchParams }: Props) {
         <main className="prose mt-8 max-w-full md:prose-lg">
           {category && <Header category={algobadge[category]} badge={badges[category]} />}
           <div className="[&_svg]:inline-block [&_svg]:align-text-top [&_svg]:me-1">
-            {Resources ? <Resources /> : <Home totalBadge={totalBadge} />}
+            <ViewTransition>
+              {Resources ? <Resources /> : <Home totalBadge={totalBadge} />}
+            </ViewTransition>
           </div>
         </main>
         {totalBadge === Badge.Diamond && <Fireworks />}

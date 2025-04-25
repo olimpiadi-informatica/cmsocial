@@ -21,7 +21,7 @@
     "@mdx-js/react": "^3.0",
     "@next/mdx": "^15.2",
     "@next/third-parties": "^15.2",
-    "@olinfo/react-components": "^0.11",
+    "@olinfo/react-components": "^0.12",
     "@olinfo/tailwind": "^0.1",
     "@olinfo/terry-api": "^0.2",
     "@olinfo/training-api": "^0.10",
@@ -47,7 +47,7 @@
     "d3-force": "^3.0",
     "d3-path": "^3.1",
     "d3-selection": "^3.0",
-    "drizzle-orm": "^0.41",
+    "drizzle-orm": "^0.43",
     "katex": "^0.16",
     "lodash-es": "^4.17",
     "lucide-react": ">=0.395 <1",
@@ -78,9 +78,6 @@
     "@biomejs/biome": "^1.8.3",
     "@lingui/cli": "^5.2",
     "@lingui/swc-plugin": "^5.4"
-  },
-  "resolutions": {
-    "@types/react": "19.0"
   },
   "postcss": {
     "plugins": {

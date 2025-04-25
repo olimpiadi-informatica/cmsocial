@@ -71,6 +71,7 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: "2mb",
     },
+    viewTransition: true,
   },
 };
 

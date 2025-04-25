@@ -20,6 +20,7 @@ export const getUserCount = cache(async (): Promise<number> => {
 });
 
 export type User = {
+  id: number;
   username: string;
   name: string;
   score: number;
@@ -33,6 +34,7 @@ export const getRanking = cache((page: number, pageSize: number): Promise<User[]
 
   return cmsDb
     .select({
+      id: users.id,
       username: users.username,
       name: sql<string>`${users.firstName} || ' ' || ${users.lastName}`,
       score: socialParticipations.score,
