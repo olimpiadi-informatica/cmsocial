@@ -73,6 +73,11 @@ msgstr "Add"
 msgid "Aggiungi tag"
 msgstr "Add tag"
 
+#. placeholder {0}: tag.description
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Aggiungi tag {0}"
+msgstr "Add tag {0}"
+
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 msgid "Aiuto"
@@ -407,14 +412,6 @@ msgstr "Source file"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File troppo grande"
 msgstr "File too big"
-
-#: src/app/(training)/tasks/[page]/filter.tsx
-msgid "Filtra"
-msgstr "Filter"
-
-#: src/app/(training)/tasks/[page]/filter.tsx
-msgid "Filtra tag"
-msgstr "Filter by tag"
 
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/(training)/navbar.tsx
@@ -916,9 +913,10 @@ msgstr "Generate input"
 msgid "Ricordami"
 msgstr "Keep me logged in"
 
+#. placeholder {0}: tag.description
 #: src/app/(training)/tasks/[page]/filter.tsx
-msgid "Rimuovi filtro {tag}"
-msgstr "Remove tag {tag}"
+msgid "Rimuovi tag {0}"
+msgstr "Remove tag {0}"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Risolvi tutti i problemi"
@@ -1002,7 +1000,6 @@ msgstr "Secondary schools"
 msgid "Segnalazioni bug"
 msgstr "Bug reports"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Seleziona un tag"
 msgstr "Select a tag"
@@ -1079,7 +1076,6 @@ msgstr "Data structures"
 msgid "Subtask {0}"
 msgstr "Subtask {0}"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
 #: src/app/(training)/tasks/[page]/filter.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag"

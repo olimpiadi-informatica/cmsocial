@@ -1,18 +1,23 @@
 import { useSearchParams } from "next/navigation";
-import { type Ref, type RefObject, forwardRef, useRef, useState } from "react";
+import {
+  unstable_ViewTransition as ViewTransition,
+  startTransition,
+  useDeferredValue,
+  useState,
+} from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-import { Form, Modal, SelectField, SubmitButton } from "@olinfo/react-components";
-import { Plus, X } from "lucide-react";
+import clsx from "clsx";
+import { ChevronDown, ChevronUp, Plus, X } from "lucide-react";
 
 import type { Tag } from "~/lib/api/tags";
 
 export function Filter({ allTags }: { allTags: Tag[] }) {
   const searchParams = useSearchParams();
   const { t } = useLingui();
-  const ref = useRef<HTMLDialogElement>(null);
 
   const [push, setPush] = useState(true);
+  const [showAllTags, setShowAllTags] = useState(false);
 
   const setFilter = (key: string, value: string) => {
     const newParams = new URLSearchParams(searchParams);
@@ -29,13 +34,11 @@ export function Filter({ allTags }: { allTags: Tag[] }) {
     }
   };
 
-  const tags = searchParams.getAll("tag");
-
   return (
     <>
       <form
         role="search"
-        className="flex flex-col gap-2 w-full max-sm:min-h-0 max-sm:last:*:mb-4"
+        className="flex flex-col gap-2 w-full min-h-0"
         onSubmit={(e) => e.preventDefault()}>
         <label className="form-control w-full">
           <div className="label pb-1.5">
@@ -94,79 +97,63 @@ export function Filter({ allTags }: { allTags: Tag[] }) {
           </label>
         </div>
         <div className="form-control w-full">
-          <div className="label pb-1.5">
+          <label className="label pb-1.5">
             <span className="label-text">
               <Trans>Tag</Trans>
             </span>
-          </div>
-          <div className="flex flex-wrap gap-2 my-2">
-            {tags.map((tag) => (
-              <TagChip key={tag} tag={tag} />
+            <div className="btn btn-neutral btn-circle btn-sm swap swap-rotate">
+              <input
+                type="checkbox"
+                checked={showAllTags}
+                onChange={() => startTransition(() => setShowAllTags((show) => !show))}
+              />
+              <ChevronDown size={20} className="swap-off" />
+              <ChevronUp size={20} className="swap-on" />
+            </div>
+          </label>
+          <div className="flex flex-wrap gap-2 min-h-0 mb-4">
+            {allTags.map((tag) => (
+              <ViewTransition key={`tag-${tag.name}`}>
+                <TagChip tag={tag} showAllTags={showAllTags} />
+              </ViewTransition>
             ))}
-            <button
-              type="button"
-              className="badge badge-neutral badge-xl flex h-6 gap-1"
-              onClick={() => ref.current?.showModal()}>
-              <Plus size={14} />
-            </button>
           </div>
         </div>
       </form>
-      <TagModal ref={ref} tags={allTags.filter((tag) => !tags.includes(tag.name))} />
     </>
   );
 }
 
-function TagChip({ tag }: { tag: string }) {
-  const searchParams = useSearchParams();
+function TagChip({ tag, showAllTags }: { tag: Tag; showAllTags: boolean }) {
   const { t } = useLingui();
+  const params = useSearchParams();
 
-  const newParams = new URLSearchParams(searchParams);
-  newParams.delete("tag", tag);
+  const isTagSelected = useDeferredValue(params.has("tag", tag.name));
+  if (!showAllTags && !isTagSelected) return null;
 
-  const removeTag = () => {
+  const toggleTag = () => {
+    const newParams = new URLSearchParams(params);
+    if (isTagSelected) {
+      newParams.delete("tag", tag.name);
+    } else {
+      newParams.append("tag", tag.name);
+    }
     window.history.pushState(null, "", `/tasks/1?${newParams}`);
   };
 
   return (
-    <div className="badge badge-neutral badge-xl flex h-6 gap-1">
-      <button type="button" onClick={removeTag} aria-label={t`Rimuovi filtro ${tag}`}>
-        <X size={14} />
-      </button>
-      {tag}
-    </div>
+    <button
+      type="button"
+      onClick={toggleTag}
+      className={clsx(
+        "badge badge-xl flex h-6 gap-1",
+        isTagSelected ? "badge-primary" : "badge-neutral",
+      )}
+      aria-label={
+        isTagSelected ? t`Rimuovi tag ${tag.description}` : t`Aggiungi tag ${tag.description}`
+      }>
+      {isTagSelected ? <X size={14} /> : <Plus size={14} />}
+      {tag.description}
+    </button>
   );
 }
-
-const TagModal = forwardRef(function AddTagModal(
-  { tags }: { tags: Tag[] },
-  ref: Ref<HTMLDialogElement> | null,
-) {
-  const searchParams = useSearchParams();
-  const { t } = useLingui();
-
-  const options = Object.fromEntries(tags.map((tag) => [tag.name, tag.description]));
-
-  const submit = (data: { tag: string }) => {
-    const newParams = new URLSearchParams(searchParams);
-    newParams.append("tag", data.tag);
-    window.history.pushState(null, "", `/tasks/1?${newParams}`);
-    (ref as RefObject<HTMLDialogElement>).current?.close();
-  };
-
-  return (
-    <Modal ref={ref} title={t`Filtra tag`}>
-      <Form onSubmit={submit} className="!max-w-none">
-        <SelectField
-          field="tag"
-          label={t`Tag`}
-          placeholder={t`Seleziona un tag`}
-          options={options}
-        />
-        <SubmitButton>
-          <Trans>Filtra</Trans>
-        </SubmitButton>
-      </Form>
-    </Modal>
-  );
-});

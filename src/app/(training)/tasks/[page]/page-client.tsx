@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
-import { unstable_ViewTransition as ViewTransition, useDeferredValue, useState } from "react";
+import { unstable_ViewTransition as ViewTransition, useDeferredValue } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
@@ -19,6 +19,7 @@ import type { TaskItem, TaskListOptions } from "~/lib/api/tasks";
 
 import { getTasks } from "./actions";
 import { Filter } from "./filter";
+import style from "./page.module.css";
 
 type Props = {
   taskList: TaskItem[];
@@ -51,24 +52,18 @@ export function PageClient(props: Props) {
   });
   const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);
 
-  const [searchOpen, setSearchOpen] = useState(false);
-
   const taskListDeferred = useDeferredValue(taskList);
 
   return (
-    <div className="flex flex-col gap-4">
+    <div className={clsx("flex flex-col gap-4", style.page)}>
       <div className="flex flex-wrap items-center justify-between sm:justify-center gap-4">
         <H1 className="px-2">
           <Trans>Pagina {page}</Trans>
         </H1>
         <label className="swap swap-rotate sm:hidden px-2">
-          <input
-            type="checkbox"
-            checked={searchOpen}
-            onChange={() => setSearchOpen((open) => !open)}
-          />
-          <Search className="swap-off" />
-          <X className="swap-on" />
+          <input type="checkbox" className={style.searchToggle} defaultChecked />
+          <Search className="swap-on" />
+          <X className="swap-off" />
         </label>
       </div>
       <div className="flex gap-x-4 max-sm:flex-col-reverse">
@@ -87,11 +82,7 @@ export function PageClient(props: Props) {
             ))}
           </Menu>
         </div>
-        <div
-          className={clsx(
-            "shrink-0 grid overflow-y-clip transition-[grid-template-rows] duration-200 sm:max-w-xs sm:w-1/3",
-            searchOpen ? "!grid-rows-[1fr]" : "grid-rows-[0fr]",
-          )}>
+        <div className={clsx("shrink-0 sm:max-w-xs sm:w-1/3", style.filterContainer)}>
           <Filter allTags={props.allTags} />
         </div>
       </div>

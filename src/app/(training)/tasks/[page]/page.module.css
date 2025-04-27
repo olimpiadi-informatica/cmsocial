@@ -1,0 +1,10 @@
+.filterContainer {
+    @apply grid grid-rows-[1fr] overflow-y-clip;
+    @apply transition-all duration-200;
+}
+
+@media not all and (min-width: 640px) {
+    .page:has(.searchToggle:checked) .filterContainer {
+        @apply !grid-rows-[0fr] opacity-40 scale-90;
+    }
+}
