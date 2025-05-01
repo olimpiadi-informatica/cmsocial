@@ -10,6 +10,7 @@
     "translate": "lingui extract --clean"
   },
   "dependencies": {
+    "@date-fns/tz": "^1.2",
     "@fireworks-js/react": "^2.10",
     "@icons-pack/react-simple-icons": "^12.0",
     "@libsql/client": "^0.15",
@@ -47,6 +48,7 @@
     "d3-force": "^3.0",
     "d3-path": "^3.1",
     "d3-selection": "^3.0",
+    "date-fns": "^4.1",
     "drizzle-orm": "^0.43",
     "katex": "^0.16",
     "lodash-es": "^4.17",

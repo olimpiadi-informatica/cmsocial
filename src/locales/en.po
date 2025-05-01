@@ -13,11 +13,6 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: Poedit 3.4.4\n"
 
-#. placeholder {0}: user.score
-#: src/app/(training)/user/[username]/page.tsx
-msgid "{0} punti"
-msgstr "{0} points"
-
 #: src/app/algobadge/bulk/summary-badges.tsx
 msgid "{num} categorie"
 msgstr "{num} categories"
@@ -133,6 +128,10 @@ msgstr "Make sure to call your class \"{0}\", otherwise the compilation will fai
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Attenzione:"
 msgstr "Warning:"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Attività"
+msgstr "Activities"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Badge"
@@ -668,7 +667,7 @@ msgstr "No attachments"
 msgid "Nessun post trovato."
 msgstr "No posts found."
 
-#: src/app/(training)/user/[username]/page.tsx
+#: src/app/(training)/user/[username]/task-scores.tsx
 msgid "Nessun problema risolto"
 msgstr "No task solved"
 
@@ -851,6 +850,7 @@ msgstr "Tasks by contest"
 msgid "Problemi per tecnica"
 msgstr "Tasks by technique"
 
+#: src/app/(training)/user/[username]/stats.tsx
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Problemi risolti"
 msgstr "Solved task"
@@ -879,6 +879,10 @@ msgstr "Pseudocode"
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Punteggio massimo:"
 msgstr "Maximum score:"
+
+#: src/app/(training)/user/[username]/stats.tsx
+msgid "Punti"
+msgstr "Points"
 
 #: src/app/not-found.tsx
 msgid "Questa pagina non è stata trovata 😢"
@@ -1041,6 +1045,7 @@ msgstr "Submission"
 msgid "Sottoposizione {0}"
 msgstr "Submission {0}"
 
+#: src/app/(training)/user/[username]/stats.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
@@ -1055,6 +1060,7 @@ msgstr "Submissions"
 msgid "Sottoposizioni troppo frequenti"
 msgstr "Too frequent submissions"
 
+#: src/app/(training)/user/[username]/page.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Statistiche"
 msgstr "Stats"
@@ -1101,6 +1107,10 @@ msgstr "Tags"
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Tempo"
 msgstr "Time"
+
+#: src/app/(training)/user/[username]/stats.tsx
+msgid "Tempo di esecuzione"
+msgstr "Execution time"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Tempo impiegato dalla fase di compilazione che precede l'esecuzione. Non è vincolato dal limite di tempo del problema e non influenza il punteggio."
@@ -1188,6 +1198,10 @@ msgstr "Invalid username"
 #: src/app/(training)/(login)/login/page-client.tsx
 msgid "Username o password non corretti"
 msgstr "Wrong username or password"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Utente dal <0/>"
+msgstr "User since <0/>"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Utenti che l'hanno provato:"

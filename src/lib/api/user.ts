@@ -16,6 +16,7 @@ export type User = {
   lastName: string;
   image: string;
   score: number;
+  registrationTime: Date;
   accessLevel: AccessLevel;
   institute: string | null;
 };
@@ -30,6 +31,7 @@ export const getUser = cache(async (username?: string): Promise<User | undefined
       lastName: users.lastName,
       image: sql<string>`'https://www.gravatar.com/avatar/' || MD5(${users.email}) || '?d=identicon'`,
       score: socialParticipations.score,
+      registrationTime: socialUsers.registrationTime,
       accessLevel: socialUsers.accessLevel,
       institute: socialUsers.instituteCode,
     })

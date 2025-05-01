@@ -6,13 +6,17 @@ import { unstable_ViewTransition as ViewTransition } from "react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
 
+import { DateTime } from "~/components/date";
 import { H1 } from "~/components/header";
-import { TaskBadge } from "~/components/task-badge";
 import { getSchool } from "~/lib/api/location";
-import { getUser, getUserScores } from "~/lib/api/user";
+import { getUser } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";
 import { AccessLevel } from "~/lib/permissions";
 import { getSessionUser } from "~/lib/user";
+
+import { ActivityGraph } from "./activity-graph";
+import { Stats } from "./stats";
+import { TaskScores } from "./task-scores";
 
 type Props = {
   params: Promise<{ username: string }>;
@@ -58,17 +62,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function Page({ params }: Props) {
   const { username } = await params;
+  await loadLocale();
+  const { t } = useLingui();
 
   const me = await getSessionUser();
-  const [_i18n, user] = await Promise.all([loadLocale(), getUser(username)]);
+  const user = await getUser(username);
   if (!user) notFound();
 
-  const [school, scores] = await Promise.all([
-    getSchool(user.institute).catch(() => undefined),
-    getUserScores(user.id, username),
-  ]);
-
-  const { t } = useLingui();
+  const school = await getSchool(user.institute).catch(() => undefined);
 
   return (
     <div className="flex flex-col gap-4">
@@ -96,8 +97,11 @@ export default async function Page({ params }: Props) {
             {user.firstName} {user.lastName}
           </div>
           {school && <div className="text-sm text-base-content/80">{school}</div>}
-          <div className="text-xl font-bold">
-            <Trans>{user.score} punti</Trans>
+          <div className="text-sm text-base-content/80">
+            <Trans>
+              Utente dal{" "}
+              <DateTime date={user.registrationTime} dateStyle="long" timeStyle="hidden" />
+            </Trans>
           </div>
           {me?.username === user.username && (
             <div className="mt-auto">
@@ -109,13 +113,18 @@ export default async function Page({ params }: Props) {
         </CardBody>
       </Card>
       <Card>
+        <CardBody title={t`Statistiche`}>
+          <Stats user={user} />
+        </CardBody>
+      </Card>
+      <Card className="*:w-full">
+        <CardBody title={t`Attività`}>
+          <ActivityGraph user={user} />
+        </CardBody>
+      </Card>
+      <Card>
         <CardBody title={t`Problemi risolti`}>
-          <div className="sm:columns-2 md:columns-3 lg:columns-4">
-            {scores.map((task) => (
-              <TaskBadge key={task.name} {...task} />
-            ))}
-            {scores.length === 0 && t`Nessun problema risolto`}
-          </div>
+          <TaskScores user={user} />
         </CardBody>
       </Card>
     </div>
