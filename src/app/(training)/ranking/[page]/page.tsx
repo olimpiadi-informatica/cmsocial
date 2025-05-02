@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { unstable_ViewTransition as ViewTransition } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Menu } from "@olinfo/react-components";
@@ -51,9 +50,7 @@ export default async function Page({ params }: Props) {
             <Link href={`/user/${user.username}`} className="flex justify-between">
               <div className="flex items-center gap-2 sm:gap-4">
                 <div className="min-w-8">{i + (page - 1) * pageSize + 1}</div>
-                <ViewTransition name={`avatar-${user.id}`}>
-                  <Avatar size={32} username={user.username} url={user.image} />
-                </ViewTransition>
+                <Avatar size={32} username={user.username} url={user.image} />
                 <div>{user.username}</div>
                 <div className="text-base-content/60 max-sm:hidden">({user.name})</div>
               </div>

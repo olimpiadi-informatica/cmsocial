@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { unstable_ViewTransition as ViewTransition } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
@@ -78,14 +77,12 @@ export default async function Page({ params }: Props) {
       </H1>
       <Card>
         <div className="flex m-3">
-          <ViewTransition name={`avatar-${user.id}`}>
-            <Avatar
-              size={256}
-              username={user.username}
-              url={user.image}
-              className="max-sm:mx-auto max-sm:p-4"
-            />
-          </ViewTransition>
+          <Avatar
+            size={256}
+            username={user.username}
+            url={user.image}
+            className="max-sm:mx-auto max-sm:p-4"
+          />
         </div>
         <CardBody
           title={
