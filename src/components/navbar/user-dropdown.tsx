@@ -1,5 +1,4 @@
 import { revalidatePath } from "next/cache";
-import Link from "next/link";
 
 import { Trans } from "@lingui/react/macro";
 import {
@@ -11,6 +10,8 @@ import {
 } from "@olinfo/react-components";
 import { type User, getMe, logout, userPictureUrl } from "@olinfo/training-api";
 import { LogOut, UserRound } from "lucide-react";
+
+import { Link } from "~/components/link";
 
 import { DropdownAction } from "./dropdown-action";
 import { LoginButton } from "./login-button";

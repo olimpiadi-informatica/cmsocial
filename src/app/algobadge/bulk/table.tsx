@@ -1,7 +1,6 @@
-import Link from "next/link";
-
 import { Medal } from "lucide-react";
 
+import { Link } from "~/components/link";
 import { Table } from "~/components/table";
 import { Badge, algobadge, badgeStroke } from "~/lib/algobadge";
 

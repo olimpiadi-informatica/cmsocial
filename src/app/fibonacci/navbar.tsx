@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Navbar as BaseNavbar,
@@ -9,6 +7,7 @@ import {
   NavbarMenuItem,
 } from "@olinfo/react-components";
 
+import { Link } from "~/components/link";
 import { LocaleDropdown } from "~/components/navbar/locale-dropdown";
 
 import logo from "./icon.jpg";

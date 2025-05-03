@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useReducer } from "react";
 
 import { msg } from "@lingui/core/macro";
@@ -12,6 +11,7 @@ import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } f
 
 import { DateDistance } from "~/components/date";
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import type { TerryTask, TerryTaskInput } from "~/lib/api/task-terry";
 import { Language, fileLanguage } from "~/lib/language";
 

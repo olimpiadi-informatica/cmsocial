@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
   CheckboxField,
@@ -10,6 +8,8 @@ import {
   SubmitButton,
   UsernameField,
 } from "@olinfo/react-components";
+
+import { Link } from "~/components/link";
 
 import { login } from "./actions";
 

@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { type MouseEvent, type Ref, type RefObject, forwardRef, useRef, useState } from "react";
 
@@ -19,6 +18,7 @@ import {
 import { Eye, SquarePlus, Trash2 } from "lucide-react";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import type { Tag } from "~/lib/api/tags";
 import type { TaskTag } from "~/lib/api/task-tags";
 import type { User } from "~/lib/api/user";

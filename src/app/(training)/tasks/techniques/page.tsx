@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
+import { Link } from "~/components/link";
 import { getTechniqueTags } from "~/lib/api/tags";
 import { loadLocale } from "~/lib/locale";
 

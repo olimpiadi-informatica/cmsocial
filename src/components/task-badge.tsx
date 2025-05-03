@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import clsx from "clsx";
 import { clamp } from "lodash-es";
 
+import { Link } from "~/components/link";
 import type { UserScore } from "~/lib/api/user";
 
 export function TaskBadge({ name, terry, title, score, maxScore }: UserScore) {

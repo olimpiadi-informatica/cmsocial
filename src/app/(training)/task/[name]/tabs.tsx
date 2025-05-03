@@ -1,12 +1,13 @@
 "use client";
 
-import Link from "next/link";
 import { useParams, useSelectedLayoutSegment } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/react/macro";
 import { Tabs } from "@olinfo/react-components";
 import clsx from "clsx";
+
+import { Link } from "~/components/link";
 
 export function TaskTabs() {
   return (

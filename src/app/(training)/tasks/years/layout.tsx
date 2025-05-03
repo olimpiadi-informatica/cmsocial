@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/react/macro";
@@ -9,6 +8,7 @@ import clsx from "clsx";
 
 import { useSelectedLayoutSegment } from "next/navigation";
 import { H1 } from "~/components/header";
+import { Link } from "~/components/link";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

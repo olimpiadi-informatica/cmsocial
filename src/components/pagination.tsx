@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import type { ReactNode } from "react";
 
@@ -8,6 +7,8 @@ import { useLingui } from "@lingui/react/macro";
 import clsx, { type ClassValue } from "clsx";
 import { clamp, range } from "lodash-es";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
+
+import { Link } from "~/components/link";
 
 type Props = {
   page: number;

@@ -1,9 +1,8 @@
-import Link from "next/link";
-
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H1, H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { loadLocale } from "~/lib/locale";
 
 export default async function Page() {

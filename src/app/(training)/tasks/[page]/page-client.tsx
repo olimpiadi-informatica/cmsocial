@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 import { unstable_ViewTransition as ViewTransition, useDeferredValue } from "react";
 
@@ -12,6 +11,7 @@ import { Search, X } from "lucide-react";
 import useSWR from "swr";
 
 import { H1 } from "~/components/header";
+import { Link } from "~/components/link";
 import { OutcomeScore } from "~/components/outcome";
 import { Pagination } from "~/components/pagination";
 import type { Tag } from "~/lib/api/tags";

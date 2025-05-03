@@ -1,5 +1,3 @@
-import Link from "next/link";
-
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import clsx from "clsx";
@@ -14,6 +12,7 @@ import {
   Medal,
 } from "lucide-react";
 
+import { Link } from "~/components/link";
 import {
   Badge,
   type Category,

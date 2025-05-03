@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Card, CardActions, CardBody } from "@olinfo/react-components";
 
+import { Link } from "~/components/link";
 import { loadLocale } from "~/lib/locale";
 
 export default async function Page() {

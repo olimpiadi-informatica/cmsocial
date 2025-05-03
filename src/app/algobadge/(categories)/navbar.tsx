@@ -1,5 +1,4 @@
 import { Baloo_2 } from "next/font/google";
-import Link from "next/link";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import {
@@ -13,6 +12,7 @@ import {
 import clsx from "clsx";
 import { BookmarkCheck, BookmarkX, Gem, Medal } from "lucide-react";
 
+import { Link } from "~/components/link";
 import { LocaleDropdown } from "~/components/navbar/locale-dropdown";
 import { UserDropdown } from "~/components/navbar/user-dropdown";
 import { Badge, badgeColor } from "~/lib/algobadge";

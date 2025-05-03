@@ -1,10 +1,10 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { getTaskStats } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 

@@ -1,7 +1,5 @@
 "use client";
 
-import Link from "next/link";
-
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
 import type { Task } from "@olinfo/training-api";
@@ -9,6 +7,7 @@ import { sortBy } from "lodash-es";
 import { Send } from "lucide-react";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 
 import { submitOutputOnly } from "./actions";
 

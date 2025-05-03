@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { notFound, usePathname, useSearchParams } from "next/navigation";
 import { unstable_ViewTransition as ViewTransition, useDeferredValue, useState } from "react";
 
@@ -8,6 +7,7 @@ import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
+import { Link } from "~/components/link";
 import { OutcomeScore } from "~/components/outcome";
 import { Pagination } from "~/components/pagination";
 import type { TerryTaskItem } from "~/lib/api/tasks-terry";

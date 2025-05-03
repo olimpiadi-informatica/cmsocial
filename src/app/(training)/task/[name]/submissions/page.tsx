@@ -1,8 +1,7 @@
-import Link from "next/link";
-
 import { Trans } from "@lingui/react/macro";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { getTaskSubmissions } from "~/lib/api/submissions";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Menu } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
+import { Link } from "~/components/link";
 import { Pagination } from "~/components/pagination";
 import { getRanking, getUserCount } from "~/lib/api/users";
 import { loadLocale } from "~/lib/locale";

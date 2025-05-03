@@ -1,4 +1,3 @@
-import Link from "next/link";
 import type { ComponentType, ReactNode } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -6,6 +5,7 @@ import { Card, CardActions, CardBody } from "@olinfo/react-components";
 import clsx from "clsx";
 import { BookText, type LucideIcon, Route, UsersRound } from "lucide-react";
 
+import { Link } from "~/components/link";
 import { loadLocale } from "~/lib/locale";
 
 import { Algobadge } from "./algobadge";

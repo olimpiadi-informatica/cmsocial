@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useMemo, useState } from "react";
 
@@ -12,6 +11,7 @@ import clsx from "clsx";
 import { Send, TriangleAlert } from "lucide-react";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { Language, fileLanguage } from "~/lib/language";
 
 import { submitBatch } from "./actions";

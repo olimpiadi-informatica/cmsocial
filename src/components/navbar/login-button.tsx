@@ -1,10 +1,11 @@
 "use client";
 
-import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
 import { LogIn } from "lucide-react";
+
+import { Link } from "~/components/link";
 
 export function LoginButton() {
   const path = usePathname();

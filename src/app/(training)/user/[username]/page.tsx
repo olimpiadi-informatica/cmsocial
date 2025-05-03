@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -7,6 +6,7 @@ import { Avatar, Card, CardBody } from "@olinfo/react-components";
 
 import { DateTime } from "~/components/date";
 import { H1 } from "~/components/header";
+import { Link } from "~/components/link";
 import { getSchool } from "~/lib/api/location";
 import { getUser } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";

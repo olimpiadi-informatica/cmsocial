@@ -1,11 +1,10 @@
-import Link from "next/link";
-
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { DateTime } from "~/components/date";
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { OutcomeScore } from "~/components/outcome";
 import { getTerrySubmissions } from "~/lib/api/submissions-terry";
 import { fileLanguageName } from "~/lib/language";

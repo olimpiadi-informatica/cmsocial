@@ -1,8 +1,9 @@
-import Link from "next/link";
 import type { CSSProperties } from "react";
 
 import clsx from "clsx";
 import { LockKeyhole } from "lucide-react";
+
+import { Link } from "~/components/link";
 
 import { Badge, type CategoryBadge, CategoryId, algobadge, badgeBackground } from "~/lib/algobadge";
 

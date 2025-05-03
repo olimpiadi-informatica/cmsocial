@@ -1,10 +1,10 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
 import { getTask } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 

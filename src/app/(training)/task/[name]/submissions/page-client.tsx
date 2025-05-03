@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 
@@ -9,6 +8,7 @@ import { Menu } from "@olinfo/react-components";
 
 import { DateTime } from "~/components/date";
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { Outcome } from "~/components/outcome";
 import type { Submission } from "~/lib/api/submissions";
 

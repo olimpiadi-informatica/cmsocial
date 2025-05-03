@@ -1,9 +1,9 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
 
 import { H2 } from "~/components/header";
+import { Link } from "~/components/link";
 import { getTerryTask, getTerryTaskInput } from "~/lib/api/task-terry";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
