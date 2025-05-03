@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, eq, gte, min, sql } from "drizzle-orm";
+import { and, eq, gte, like, min, or, sql } from "drizzle-orm";
 
 import { getFile } from "~/lib/api/file";
 import { cmsDb } from "~/lib/db";
@@ -9,7 +9,9 @@ import {
   type CommunicationParameters,
   type TaskType,
   attachments,
+  contests,
   datasets,
+  managers,
   participations,
   socialTasks,
   statements,
@@ -17,6 +19,7 @@ import {
   tasks,
   users,
 } from "~/lib/db/schema";
+import { type Language, fileLanguage, languageByName } from "~/lib/language";
 
 import type { File } from "./file";
 
@@ -116,6 +119,35 @@ export const getTaskLocales = cache(async (name: string): Promise<string[]> => {
     .innerJoin(tasks, eq(tasks.id, statements.taskId))
     .where(eq(tasks.name, name));
   return locales.map((locale) => locale.locale);
+});
+
+export const getTaskLanguages = cache(async (name: string): Promise<Record<string, Language>> => {
+  const [contest] = await cmsDb
+    .select({ languages: contests.languages })
+    .from(contests)
+    .where(eq(contests.id, Number(process.env.CMS_CONTEST_ID)));
+  const languages: [string, Language][] = contest.languages!.map((lang) => [
+    lang,
+    languageByName(lang)!,
+  ]);
+
+  const graders = await cmsDb
+    .select({ filename: managers.filename })
+    .from(managers)
+    .innerJoin(tasks, eq(tasks.activeDatasetId, managers.datasetId))
+    .where(
+      and(
+        eq(tasks.name, name),
+        or(like(managers.filename, "grader.%"), like(managers.filename, "stub.%")),
+      ),
+    );
+
+  if (graders.length === 0) {
+    return Object.fromEntries(languages);
+  }
+
+  const graderLanguages = graders.map((grader) => fileLanguage(grader.filename));
+  return Object.fromEntries(languages.filter(([_, lang]) => graderLanguages.includes(lang)));
 });
 
 export type TaskStats = {

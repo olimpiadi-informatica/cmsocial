@@ -2,35 +2,31 @@
 
 import { redirect } from "next/navigation";
 
-import {
-  type Submission,
-  type Task,
-  submitBatch as submitBatchAPI,
-  submitOutputOnly as submitOutputOnlyAPI,
-} from "@olinfo/training-api";
+import { submitTask } from "~/lib/api/submit";
 
 export async function submitBatch(
-  task: Task,
+  taskName: string,
   language: string,
   files: FormData,
 ): Promise<string | undefined> {
-  let submission: Submission;
+  let id: number;
   try {
-    submission = await submitBatchAPI(task, language, files.get("src") as File);
+    id = await submitTask(taskName, language, files);
   } catch (err) {
     return (err as Error).message;
   }
-  redirect(`/task/${task.name}/submissions/${submission.id}`);
+  redirect(`/task/${taskName}/submissions/${id}`);
 }
 
-export async function submitOutputOnly(task: Task, files: FormData): Promise<string | undefined> {
-  const outputs = Object.fromEntries(files.entries()) as Record<string, File>;
-
-  let submission: Submission;
+export async function submitOutputOnly(
+  taskName: string,
+  files: FormData,
+): Promise<string | undefined> {
+  let id: number;
   try {
-    submission = await submitOutputOnlyAPI(task, outputs);
+    id = await submitTask(taskName, undefined, files);
   } catch (err) {
     return (err as Error).message;
   }
-  redirect(`/task/${task.name}/submissions/${submission.id}`);
+  redirect(`/task/${taskName}/submissions/${id}`);
 }

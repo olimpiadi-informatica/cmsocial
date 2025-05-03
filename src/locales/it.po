@@ -125,7 +125,7 @@ msgstr "Argento"
 msgid "Aristocratico"
 msgstr "Aristocratico"
 
-#. placeholder {0}: task.submission_format[0].replace(".%l", "")
+#. placeholder {0}: task.submissionFormat[0].replace(".%l", "")
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Assicurati di chiamare la tua classe \"{0}\", altrimenti la compilazione non andrà a buon fine."
 msgstr "Assicurati di chiamare la tua classe \"{0}\", altrimenti la compilazione non andrà a buon fine."

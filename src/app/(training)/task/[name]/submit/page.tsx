@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
-import { getTask } from "@olinfo/training-api";
 
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
+import { getTask, getTaskLanguages } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
@@ -18,7 +18,12 @@ type Props = {
 export default async function Page({ params }: Props) {
   const { name } = await params;
 
-  const [_, user, task] = await Promise.all([loadLocale(), getSessionUser(), getTask(name)]);
+  const [_, user, task, languages] = await Promise.all([
+    loadLocale(),
+    getSessionUser(),
+    getTask(name),
+    getTaskLanguages(name),
+  ]);
 
   if (!task) notFound();
   if (!user) {
@@ -39,9 +44,9 @@ export default async function Page({ params }: Props) {
     );
   }
 
-  return task.task_type === "OutputOnly" ? (
+  return task.io === "output-only" ? (
     <SubmitOutputOnly task={task} />
   ) : (
-    <SubmitBatch task={task} />
+    <SubmitBatch task={task} languages={languages} />
   );
 }

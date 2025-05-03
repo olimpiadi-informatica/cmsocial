@@ -125,7 +125,7 @@ msgstr "Silver"
 msgid "Aristocratico"
 msgstr "Superuser"
 
-#. placeholder {0}: task.submission_format[0].replace(".%l", "")
+#. placeholder {0}: task.submissionFormat[0].replace(".%l", "")
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Assicurati di chiamare la tua classe \"{0}\", altrimenti la compilazione non andrà a buon fine."
 msgstr "Make sure to call your class \"{0}\", otherwise the compilation will fail."

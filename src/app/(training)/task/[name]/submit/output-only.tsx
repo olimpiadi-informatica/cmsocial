@@ -2,12 +2,12 @@
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
-import type { Task } from "@olinfo/training-api";
 import { sortBy } from "lodash-es";
 import { Send } from "lucide-react";
 
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
+import type { Task } from "~/lib/api/task";
 
 import { submitOutputOnly } from "./actions";
 
@@ -15,7 +15,7 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
   const { t } = useLingui();
 
   const validate = (files: Record<string, File>) => {
-    for (const output of task.submission_format) {
+    for (const output of task.submissionFormat) {
       if (!files[output]) return t`File "${output}" mancante`;
     }
   };
@@ -26,7 +26,7 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
       files.append(name, file);
     }
 
-    const err = await submitOutputOnly(task, files);
+    const err = await submitOutputOnly(task.name, files);
     if (err) {
       switch (err) {
         case "Too frequent submissions!":
@@ -47,7 +47,7 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
         <Trans>Devi inviare i seguenti file:</Trans>
       </div>
       <div className="columns-2 text-sm">
-        {sortBy(task.submission_format).map((file) => (
+        {sortBy(task.submissionFormat).map((file) => (
           <div key={file}>{file}</div>
         ))}
       </div>

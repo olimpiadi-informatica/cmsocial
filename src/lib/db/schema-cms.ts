@@ -104,6 +104,13 @@ export const contests = pgTable("contests", {
   allowRegistration: boolean("allow_registration").default(false).notNull(),
 });
 
+export const managers = pgTable("managers", {
+  id: serial().primaryKey(),
+  datasetId: integer("dataset_id").notNull(),
+  filename: varchar().notNull(),
+  digest: varchar().notNull(),
+});
+
 export const participations = pgTable("participations", {
   id: serial().primaryKey(),
   ip: varchar(),
@@ -138,12 +145,6 @@ export const submissions = pgTable("submissions", {
   comment: varchar().default("").notNull(),
   official: boolean().default(true).notNull(),
   eventstream: text(),
-});
-
-export const submissionFormatElements = pgTable("submission_format_elements", {
-  id: serial().primaryKey(),
-  taskId: integer("task_id").notNull(),
-  filename: varchar().notNull(),
 });
 
 export const tasks = pgTable("tasks", {
