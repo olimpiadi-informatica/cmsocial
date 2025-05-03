@@ -104,6 +104,11 @@ msgstr "Other websites"
 msgid "Anagrafica"
 msgstr "Personal informations"
 
+#: src/app/(training)/tasks/years/ois/table.tsx
+#: src/app/(training)/tasks/years/oii/table.tsx
+msgid "Anno"
+msgstr "Year"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Anziano"
 msgstr "Senior"
@@ -412,6 +417,10 @@ msgstr "Source file"
 msgid "File troppo grande"
 msgstr "File too big"
 
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Finale"
+msgstr "Final"
+
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/(training)/(home)/page.tsx
@@ -639,6 +648,10 @@ msgstr "Show tag"
 msgid "Nascondi risolti"
 msgstr "Hide solved"
 
+#: src/app/(training)/tasks/years/oii/table.tsx
+msgid "Nazionali"
+msgstr "Nationals"
+
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Nazionali e altre gare"
 msgstr "Nationals & more"
@@ -817,6 +830,10 @@ msgstr "Newest"
 msgid "Portale di allenamento dei Giochi di Fibonacci"
 msgstr "Training website of the Fibonacci Games"
 
+#: src/app/(training)/tasks/years/oii/table.tsx
+msgid "Pre-OII"
+msgstr "Pre-OII"
+
 #: src/app/(training)/(home)/page.tsx
 msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
 msgstr "Introduce yourself to other students, discuss the tasks, clear up your doubts on: basic constructs of you programming language, algorithms and data structures, libraries, algorithm techniques, and much more!"
@@ -930,6 +947,22 @@ msgstr "Solve every task"
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Risultato"
 msgstr "Outcome"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 1"
+msgstr "1st round"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 2"
+msgstr "2nd round"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 3"
+msgstr "3rd round"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 4"
+msgstr "4th round"
 
 #: src/components/source-code.tsx
 #: src/components/source-code.tsx
@@ -1118,6 +1151,7 @@ msgstr "Time taken by the compilation phase before the execution. It is not boun
 
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/years/oii/table.tsx
 #: src/app/(training)/(home)/page.tsx
 msgid "Territoriali"
 msgstr "Regionals"

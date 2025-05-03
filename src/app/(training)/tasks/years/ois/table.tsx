@@ -1,5 +1,6 @@
 "use client";
 
+import { Trans } from "@lingui/react/macro";
 import { sumBy } from "lodash-es";
 
 import { Table } from "~/components/table";
@@ -26,12 +27,24 @@ export function OisTable({ years }: { years: YearTasks[] }) {
 function TableHeaders() {
   return (
     <>
-      <div>Anno</div>
-      <div>Round 1</div>
-      <div>Round 2</div>
-      <div>Round 3</div>
-      <div>Round 4</div>
-      <div>Finale</div>
+      <div>
+        <Trans>Anno</Trans>
+      </div>
+      <div>
+        <Trans>Round 1</Trans>
+      </div>
+      <div>
+        <Trans>Round 2</Trans>
+      </div>
+      <div>
+        <Trans>Round 3</Trans>
+      </div>
+      <div>
+        <Trans>Round 4</Trans>
+      </div>
+      <div>
+        <Trans>Finale</Trans>
+      </div>
     </>
   );
 }
