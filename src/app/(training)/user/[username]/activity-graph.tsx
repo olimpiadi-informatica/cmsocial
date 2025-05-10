@@ -42,7 +42,7 @@ export async function ActivityGraph({ user }: { user: User }) {
 
   return (
     <div className="overflow-x-auto max-w-full mx-auto">
-      <div className="grid grid-rows-8 grid-flow-col gap-0.5 overflow-hidden w-min">
+      <div className="grid grid-rows-8 grid-flow-col gap-0.5 overflow-hidden w-min px-4">
         <div />
         {range(7).map((i) => {
           const day = intlFormat(addDays(from, i), { weekday: "short" }, { locale: i18n.locale });

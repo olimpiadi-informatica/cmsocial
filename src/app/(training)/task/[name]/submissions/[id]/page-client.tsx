@@ -49,7 +49,7 @@ export function PageClient({ submission, children }: Props) {
           <span className="font-bold">
             <Trans>Linguaggio:</Trans>
           </span>{" "}
-          {submission.language}
+          {submission.language ?? "N/A"}
         </li>
         <li>
           <span className="font-bold">

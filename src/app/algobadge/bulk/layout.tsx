@@ -33,7 +33,7 @@ export default async function Layout({ children }: { children: ReactNode }) {
 
 function Navbar() {
   return (
-    <BaseNavbar color="bg-base-300 text-base-content">
+    <BaseNavbar color="bg-base-300/85 text-base-content">
       <NavbarBrand>
         <Title />
       </NavbarBrand>

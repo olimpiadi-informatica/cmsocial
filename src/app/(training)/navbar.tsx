@@ -17,7 +17,7 @@ export function Navbar() {
   const { t } = useLingui();
 
   return (
-    <BaseNavbar color="bg-base-300 text-base-content">
+    <BaseNavbar color="bg-base-300/85 text-base-content">
       <NavbarBrand>
         <img
           src={logo.src}

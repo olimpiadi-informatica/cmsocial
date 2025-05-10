@@ -17,7 +17,7 @@ import { DropdownAction } from "./dropdown-action";
 import { LoginButton } from "./login-button";
 
 export async function UserDropdown() {
-  const user = await getMe();
+  const user = await getMe().catch(() => undefined);
   return user ? <UserDropdownInner user={user} /> : <LoginButton />;
 }
 

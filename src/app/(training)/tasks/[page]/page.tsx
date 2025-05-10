@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { compact } from "lodash-es";
+import { compact, uniq } from "lodash-es";
 
 import { getTechniqueTags } from "~/lib/api/tags";
 import { type TaskListOptions, getTaskCount, getTaskList } from "~/lib/api/tasks";
@@ -38,7 +38,7 @@ export default async function Page({ params, searchParams }: Params) {
 
   const options: TaskListOptions = {
     search: search,
-    tags: compact(Array.isArray(tag) ? tag : [tag]),
+    tags: compact(Array.isArray(tag) ? uniq(tag) : [tag]),
     order: order,
     unsolved: !!unsolved,
   };

@@ -6,7 +6,7 @@ import { unstable_ViewTransition as ViewTransition, useDeferredValue } from "rea
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import clsx from "clsx";
-import { range } from "lodash-es";
+import { compact, range, uniq } from "lodash-es";
 import { Search, X } from "lucide-react";
 import useSWR from "swr";
 
@@ -37,7 +37,7 @@ export function PageClient(props: Props) {
   const searchParams = useSearchParams();
   const options: TaskListOptions = {
     search: searchParams.get("search"),
-    tags: searchParams.getAll("tag"),
+    tags: compact(uniq(searchParams.getAll("tag"))),
     order: searchParams.get("order") as "hardest" | "easiest" | "trending",
     unsolved: !!searchParams.get("unsolved"),
   };

@@ -29,7 +29,7 @@ export default async function Page({ params }: Props) {
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_18rem]">
-      <main>
+      <main className="overflow-x-hidden">
         {i18n.locale === "en" && source.startsWith(EN_PDF_PREFIX) ? (
           <div className="relative min-h-[75vh] overflow-hidden rounded-lg">
             <div className="absolute inset-0">

@@ -81,7 +81,7 @@ export function Footer() {
             href="https://forum.olinfo.it/new-topic?category=Meta"
             className="link-hover link"
             target="_blank"
-            rel="noreferrer">
+            rel="noreferrer nofollow">
             <Trans>Segnalazioni bug</Trans>
           </a>
           <a
