@@ -38,10 +38,10 @@ export const getRanking = cache((page: number, pageSize: number): Promise<User[]
       username: users.username,
       name: sql<string>`${users.firstName} || ' ' || ${users.lastName}`,
       score: socialParticipations.score,
-      image: sql<string>`'https://www.gravatar.com/avatar/' || MD5(${users.email}) || '?d=identicon'`,
+      image: socialUsers.image,
     })
     .from(users)
-    .innerJoin(socialUsers, eq(socialUsers.id, users.id))
+    .innerJoin(socialUsers, eq(socialUsers.cmsId, users.id))
     .innerJoin(participations, eq(participations.userId, users.id))
     .innerJoin(socialParticipations, eq(socialParticipations.id, participations.id))
     .where(

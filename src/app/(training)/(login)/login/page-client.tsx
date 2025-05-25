@@ -1,6 +1,8 @@
 "use client";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import {
   CheckboxField,
   CurrentPasswordField,
@@ -14,7 +16,7 @@ import { Link } from "~/components/link";
 import { login } from "./actions";
 
 export function PageClient({ redirectUrl }: { redirectUrl: string }) {
-  const { t } = useLingui();
+  const { _ } = useLingui();
 
   const submit = async (credential: {
     username: string;
@@ -27,14 +29,7 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
       credential.keepSigned,
       redirectUrl,
     );
-    if (err) {
-      switch (err) {
-        case "login.error":
-          throw new Error(t`Username o password non corretti`);
-        default:
-          throw err;
-      }
-    }
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
@@ -42,12 +37,12 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
     <Form defaultValue={{ keepSigned: true }} onSubmit={submit}>
       <UsernameField field="username" />
       <CurrentPasswordField field="password" />
-      <CheckboxField field="keepSigned" label={t`Ricordami`} optional />
+      <CheckboxField field="keepSigned" label={_(msg`Ricordami`)} optional />
       <SubmitButton>
         <Trans>Entra</Trans>
       </SubmitButton>
       <div className="mt-6 w-full">
-        <Link href="/recover" className="link link-info">
+        <Link href="/forgot-password" className="link link-info">
           <Trans>Password dimenticata</Trans>
         </Link>
       </div>

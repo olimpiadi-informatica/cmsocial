@@ -4,14 +4,12 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 import {
-  type Submission,
   abandonInput,
   generateInput,
   submit,
   uploadOutput,
   uploadSource,
-} from "@olinfo/terry-api";
-
+} from "~/lib/api/submit-terry";
 import { getSessionUser } from "~/lib/user";
 
 export async function requestInput(taskName: string): Promise<string | undefined> {
@@ -41,13 +39,14 @@ export async function changeInput(inputId: string): Promise<string | undefined> 
 export async function uploadAndSubmit(
   taskName: string,
   inputId: string,
-  files: FormData,
+  sourceFile: FormData,
+  outputFile: FormData,
 ): Promise<string | undefined> {
-  let submission: Submission;
+  let submissionId: string;
   try {
     const [source, output] = await Promise.all([
-      uploadSource(inputId, files.get("source") as File),
-      uploadOutput(inputId, files.get("output") as File),
+      uploadSource(inputId, sourceFile),
+      uploadOutput(inputId, outputFile),
     ]);
 
     for (const alert of source.validation.alerts) {
@@ -56,9 +55,9 @@ export async function uploadAndSubmit(
       }
     }
 
-    submission = await submit(inputId, source.id, output.id);
+    submissionId = await submit(inputId, source.id, output.id);
   } catch (err) {
     return (err as Error).message;
   }
-  redirect(`/task/terry/${taskName}/submissions/${submission.id}`);
+  redirect(`/task/terry/${taskName}/submissions/${submissionId}`);
 }
