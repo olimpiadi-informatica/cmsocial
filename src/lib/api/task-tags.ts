@@ -4,11 +4,10 @@ import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { and, asc, desc, eq, sql } from "drizzle-orm";
 
-import { getAccessLevel } from "~/lib/api/permissions";
 import { cmsDb } from "~/lib/db";
 import { tasks } from "~/lib/db/schema-cms";
 import { tags, taskTags } from "~/lib/db/schema-cmsocial";
-import { AccessLevel } from "~/lib/permissions";
+import { hasPermission } from "~/lib/user";
 
 export type TaskTag = {
   name: string;
@@ -19,19 +18,18 @@ export type TaskTag = {
 
 export const getTaskTags = cache(
   async (taskName: string, userId: number | undefined): Promise<TaskTag[]> => {
-    const accessLevel = await getAccessLevel(userId);
+    const canRemoveAny = await hasPermission("tag", "remove-any");
 
     return cmsDb
       .select({
         name: tags.name,
         description: tags.description,
         isEvent: tags.isEvent,
-        canDelete:
-          accessLevel === AccessLevel.Admin
-            ? sql<boolean>`true`
-            : userId != null
-              ? sql<boolean>`${eq(taskTags.addedBy, userId)}`
-              : sql<boolean>`false`,
+        canDelete: canRemoveAny
+          ? sql<boolean>`true`
+          : userId != null
+            ? sql<boolean>`${eq(taskTags.addedBy, userId)}`
+            : sql<boolean>`false`,
       })
       .from(tags)
       .innerJoin(taskTags, eq(taskTags.tagId, tags.id))
@@ -46,8 +44,8 @@ export async function addTaskTag(
   taskName: string,
   tagName: string,
 ): Promise<MessageDescriptor | undefined> {
-  const accessLevel = await getAccessLevel(userId);
-  if (accessLevel > AccessLevel.User) return msg`Non sei autorizzato`;
+  const canAdd = await hasPermission("tag", "remove-any");
+  if (!canAdd) return msg`Non sei autorizzato`;
 
   await cmsDb.insert(taskTags).values({
     taskId: sql`(SELECT ${tasks.id} FROM ${tasks} WHERE ${eq(tasks.name, taskName)})`,
@@ -61,7 +59,9 @@ export async function removeTaskTag(
   taskName: string,
   tagName: string,
 ): Promise<MessageDescriptor | undefined> {
-  const accessLevel = await getAccessLevel(userId);
+  const canRemoveOwn = await hasPermission("tag", "remove-own");
+  const canRemoveAny = await hasPermission("tag", "remove-any");
+  if (!canRemoveOwn) return msg`Non sei autorizzato`;
 
   const deleted = await cmsDb
     .delete(taskTags)
@@ -72,7 +72,7 @@ export async function removeTaskTag(
           sql`(SELECT ${tasks.id} FROM ${tasks} WHERE ${eq(tasks.name, taskName)})`,
         ),
         eq(taskTags.tagId, sql`(SELECT ${tags.id} FROM ${tags} WHERE ${eq(tags.name, tagName)})`),
-        eq(taskTags.addedBy, userId).if(accessLevel !== AccessLevel.Admin),
+        eq(taskTags.addedBy, userId).if(!canRemoveAny),
       ),
     )
     .returning();

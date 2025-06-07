@@ -4,10 +4,15 @@ import { and, eq, gt, sql } from "drizzle-orm";
 import { orderBy } from "lodash-es";
 
 import { cmsDb, terryDb } from "~/lib/db";
-import { participations, tasks, users } from "~/lib/db/schema-cms";
-import { socialParticipations, socialUsers, taskScores } from "~/lib/db/schema-cmsocial";
+import {
+  participations,
+  socialParticipations,
+  socialUsers,
+  taskScores,
+  tasks,
+  users,
+} from "~/lib/db/schema";
 import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
-import type { AccessLevel } from "~/lib/permissions";
 
 export type User = {
   id: number;
@@ -16,12 +21,12 @@ export type User = {
   lastName: string;
   image: string;
   score: number;
+  role: "newbie" | "trusted" | "admin" | null;
   registrationTime: Date;
-  accessLevel: AccessLevel;
   institute: string | null;
 };
 
-export const getUser = cache(async (username?: string): Promise<User | undefined> => {
+export const getUser = cache(async (username?: string | null): Promise<User | undefined> => {
   if (!username) return;
   const [user] = await cmsDb
     .select({
@@ -31,12 +36,12 @@ export const getUser = cache(async (username?: string): Promise<User | undefined
       lastName: users.lastName,
       image: sql<string>`'https://www.gravatar.com/avatar/' || MD5(${users.email}) || '?d=identicon'`,
       score: socialParticipations.score,
-      registrationTime: socialUsers.registrationTime,
-      accessLevel: socialUsers.accessLevel,
-      institute: socialUsers.instituteCode,
+      role: socialUsers.role,
+      registrationTime: socialUsers.createdAt,
+      institute: socialUsers.institute,
     })
     .from(users)
-    .innerJoin(socialUsers, eq(socialUsers.id, users.id))
+    .innerJoin(socialUsers, eq(socialUsers.cmsId, users.id))
     .innerJoin(participations, eq(participations.userId, users.id))
     .innerJoin(socialParticipations, eq(socialParticipations.id, participations.id))
     .where(
@@ -105,4 +110,11 @@ function getTerryScores(username: string): Promise<UserScore[]> {
     .from(terryUserTasks)
     .innerJoin(terryTasks, eq(terryTasks.name, terryUserTasks.task))
     .where(and(eq(terryUserTasks.token, username), gt(terryUserTasks.score, 0)));
+}
+
+export async function updateUserSchool(userId: number, institute: string) {
+  await cmsDb
+    .update(socialUsers)
+    .set({ institute: institute })
+    .where(eq(socialUsers.cmsId, userId));
 }

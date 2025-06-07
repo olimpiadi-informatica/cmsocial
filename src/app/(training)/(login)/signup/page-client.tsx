@@ -2,7 +2,9 @@
 
 import { useRef } from "react";
 
-import { Trans, useLingui } from "@lingui/react/macro";
+import { msg } from "@lingui/core/macro";
+import { useLingui } from "@lingui/react";
+import { Trans } from "@lingui/react/macro";
 import {
   EmailField,
   FirstNameField,
@@ -12,12 +14,11 @@ import {
   SubmitButton,
   UsernameField,
 } from "@olinfo/react-components";
-import ReCaptchaWidget, { type ReCAPTCHA } from "react-google-recaptcha";
 
 import { H2 } from "~/components/header";
 import { LocationField } from "~/components/location-field";
+import { ReCaptcha, type ReCaptchaInner } from "~/components/recaptcha";
 import { getCities, getProvinces, getRegions, getSchools } from "~/lib/api/location";
-import { useTheme } from "~/lib/theme";
 
 import { signup } from "./actions";
 
@@ -33,14 +34,9 @@ type FormValue = {
   institute?: string;
 };
 
-export function PageClient({
-  redirectUrl,
-  captchaKey,
-}: { redirectUrl: string; captchaKey?: string }) {
-  const theme = useTheme();
-  const { t } = useLingui();
-
-  const captchaRef = useRef<ReCAPTCHA>(null);
+export function PageClient({ captchaKey }: { captchaKey: string }) {
+  const { _ } = useLingui();
+  const captchaRef = useRef<ReCaptchaInner>(null);
 
   const submit = async (user: FormValue) => {
     const err = await signup(
@@ -50,54 +46,38 @@ export function PageClient({
       user.name,
       user.surname,
       user.institute?.trim(),
-      captchaRef.current?.getValue() ?? undefined,
-      redirectUrl,
+      captchaRef.current?.getValue(),
     );
-    if (err) {
-      switch (err) {
-        case "Username is invalid":
-          throw new Error(t`Username non valido`, { cause: { field: "username" } });
-        case "This username is not available":
-          throw new Error(t`Username non disponibile`, { cause: { field: "username" } });
-        case "Invalid e-mail":
-          throw new Error(t`Email non valida`, { cause: { field: "email" } });
-        case "E-mail already used":
-          throw new Error(t`Email già in uso`, { cause: { field: "email" } });
-        case "Anti-spam check failed":
-          throw new Error(t`Captcha fallito`);
-        default:
-          throw err;
-      }
-    }
+    if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
   return (
     <Form onSubmit={submit}>
       <EmailField field="email" />
-      <UsernameField field="username" minLength={4} />
-      <NewPasswordField field="password" minLength={8} />
+      <UsernameField field="username" minLength={4} maxLength={50} pattern="^\w+$" />
+      <NewPasswordField field="password" minLength={8} maxLength={50} />
       <H2 className="mt-8">
         <Trans>Anagrafica</Trans>
       </H2>
-      <FirstNameField field="name" />
-      <LastNameField field="surname" />
+      <FirstNameField field="name" minLength={2} maxLength={50} pattern="^[\p{L}\s'\-]+$" />
+      <LastNameField field="surname" minLength={2} maxLength={50} pattern="^[\p{L}\s'\-]+$" />
       <H2 className="mt-8">
         <Trans>Scuola di provenienza (opzionale)</Trans>
       </H2>
       <LocationField
-        label={t`Regione`}
+        label={_(msg`Regione`)}
         field="region"
-        placeholder={t`Scegli la regione`}
+        placeholder={_(msg`Scegli la regione`)}
         id="Italy"
         fetcher={getRegions}
         optional
       />
       {({ region }) => (
         <LocationField
-          label={t`Provincia`}
+          label={_(msg`Provincia`)}
           field="province"
-          placeholder={t`Scegli la provincia`}
+          placeholder={_(msg`Scegli la provincia`)}
           id={region}
           fetcher={getProvinces}
           optional
@@ -105,9 +85,9 @@ export function PageClient({
       )}
       {({ province }) => (
         <LocationField
-          label={t`Comune`}
+          label={_(msg`Comune`)}
           field="city"
-          placeholder={t`Scegli il comune`}
+          placeholder={_(msg`Scegli il comune`)}
           id={province}
           fetcher={getCities}
           optional
@@ -115,26 +95,17 @@ export function PageClient({
       )}
       {({ city }) => (
         <LocationField
-          label={t`Istituto`}
+          label={_(msg`Istituto`)}
           field="institute"
-          placeholder={t`Scegli la scuola`}
+          placeholder={_(msg`Scegli la scuola`)}
           id={city}
           fetcher={getSchools}
           optional
         />
       )}
-      {captchaKey && (
-        <div className="mx-auto mt-4 h-20">
-          {theme && (
-            <ReCaptchaWidget
-              ref={captchaRef}
-              theme={theme}
-              className="h-[76px] w-[302px] overflow-hidden rounded-[3px]"
-              sitekey={captchaKey}
-            />
-          )}
-        </div>
-      )}
+      <div className="mx-auto mt-4">
+        <ReCaptcha ref={captchaRef} captchaKey={captchaKey} />
+      </div>
       <SubmitButton>
         <Trans>Crea</Trans>
       </SubmitButton>

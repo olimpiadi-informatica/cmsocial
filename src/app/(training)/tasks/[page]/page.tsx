@@ -44,8 +44,8 @@ export default async function Page({ params, searchParams }: Params) {
   };
 
   const [taskList, taskCount, allTags] = await Promise.all([
-    getTaskList(options, user?.id, page, pageSize),
-    getTaskCount(options, user?.id),
+    getTaskList(options, user?.cmsId, page, pageSize),
+    getTaskCount(options, user?.cmsId),
     getTechniqueTags(),
   ]);
 
