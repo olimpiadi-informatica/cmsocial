@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
+import { logger } from "better-auth";
 
 import { submitTask } from "~/lib/api/submit";
 import { hasPermission } from "~/lib/user";
@@ -24,7 +25,7 @@ export async function submitBatch(
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
       default: {
-        console.error("Error submitting", err);
+        logger.error("Error submitting", err);
         return msg`Errore sconosciuto`;
       }
     }
@@ -47,7 +48,7 @@ export async function submitOutputOnly(
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
       default: {
-        console.error("Error submitting", err);
+        logger.error("Error submitting", err);
         return msg`Errore sconosciuto`;
       }
     }

@@ -19,15 +19,12 @@ export type User = {
 };
 
 export const getSessionUser = cache(async (): Promise<User | undefined> => {
-  try {
-    const session = await auth.api.getSession({
+  const session = await auth.api
+    .getSession({
       headers: await headers(),
-    });
-    return session?.user as User | undefined;
-  } catch (e) {
-    console.error(e);
-    return undefined;
-  }
+    })
+    .catch(() => null);
+  return session?.user as User | undefined;
 });
 
 export const hasPermission = cache(async function hasPermission<Resource extends keyof Statements>(

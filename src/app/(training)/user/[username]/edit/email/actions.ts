@@ -6,6 +6,7 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
+import { logger } from "better-auth";
 
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
@@ -16,12 +17,12 @@ export async function changeEmail(
   email: string,
 ): Promise<MessageDescriptor | undefined> {
   const user = await getSessionUser();
-  if (!user) {
-    return msg`Utente non trovato`;
-  }
+  if (!user) return msg`Utente non trovato`;
 
   const err = await verifyPassword(password);
   if (err) return err;
+
+  logger.info(`Changing email from ${user.email} to ${email}`);
 
   try {
     await auth.api.changeEmail({

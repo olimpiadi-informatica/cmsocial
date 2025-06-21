@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
+import { logger } from "better-auth";
 
 import {
   abandonInput,
@@ -25,7 +26,7 @@ export async function requestInput(taskName: string): Promise<MessageDescriptor 
   try {
     await generateInput(user.username, taskName);
   } catch (e) {
-    console.error("Error generating input", e);
+    logger.error("Error generating input", e);
     return msg`Errore sconosciuto`;
   }
   revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
@@ -41,7 +42,7 @@ export async function changeInput(inputId: string): Promise<MessageDescriptor | 
   try {
     await abandonInput(user.username, inputId);
   } catch (e) {
-    console.error("Error abandoning input", e);
+    logger.error("Error abandoning input", e);
     return msg`Errore sconosciuto`;
   }
   revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
@@ -71,7 +72,7 @@ export async function uploadAndSubmit(
 
     submissionId = await submit(inputId, source.id, output.id);
   } catch (e) {
-    console.error("Error submitting", e);
+    logger.error("Error submitting", e);
     return msg`Errore sconosciuto`;
   }
   redirect(`/task/terry/${taskName}/submissions/${submissionId}`);

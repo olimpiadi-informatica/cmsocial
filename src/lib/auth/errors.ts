@@ -1,5 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
+import { logger } from "better-auth";
 import { APIError } from "better-call";
 
 import type { auth } from "~/lib/auth";
@@ -35,6 +36,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   TOTP_NOT_ENABLED: msg`TOTP non abilitato`,
   TWO_FACTOR_NOT_ENABLED: msg`2FA non abilitato`,
   USERNAME_IS_ALREADY_TAKEN_PLEASE_TRY_ANOTHER: msg`Username non disponibile`,
+  USERNAME_IS_INVALID: msg`Username non valido`,
   USER_ALREADY_EXISTS: msg`Utente già esistente`,
   USER_EMAIL_NOT_FOUND: msg`Email non trovata`,
   USER_NOT_FOUND: msg`Utente non trovato`,
@@ -46,11 +48,11 @@ export function getAuthError(err: unknown): MessageDescriptor {
     if (code && code in authErrors) {
       return authErrors[code as keyof typeof authErrors];
     }
-    console.error(`Auth error "${code}"`);
+    logger.error(`Auth error "${code}"`);
   }
   if (process.env.NODE_ENV === "development") {
     throw err;
   }
-  console.error("Auth error", err);
+  logger.error("Auth error", err);
   return msg`Errore sconosciuto`;
 }

@@ -928,6 +928,10 @@ msgstr "Training website of the Fibonacci Games"
 msgid "Pre-OII"
 msgstr "Pre-OII"
 
+#: src/app/(training)/(email-callback)/verify-email/page.tsx
+msgid "Premi conferma per completare la verifica della tua email"
+msgstr "Press confirm to complete your email verification"
+
 #: src/app/(training)/(home)/page.tsx
 msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
 msgstr "Introduce yourself to other students, discuss the tasks, clear up your doubts on: basic constructs of you programming language, algorithms and data structures, libraries, algorithm techniques, and much more!"
@@ -1333,6 +1337,7 @@ msgid "Username non trovato"
 msgstr "Username not found"
 
 #: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
 msgid "Username non valido"
 msgstr "Invalid username"
 
@@ -1353,6 +1358,8 @@ msgstr "User already exists"
 #: src/lib/auth/errors.ts
 #: src/app/(training)/user/[username]/edit/school/actions.ts
 #: src/app/(training)/user/[username]/edit/email/actions.ts
+#: src/app/(training)/user/[username]/edit/delete/actions.ts
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Utente non trovato"
 msgstr "User not found"
 

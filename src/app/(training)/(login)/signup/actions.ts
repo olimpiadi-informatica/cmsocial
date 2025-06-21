@@ -6,6 +6,8 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
+import { logger } from "better-auth";
+
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 
@@ -36,9 +38,11 @@ export async function signup(
       },
     });
   } catch (err) {
-    // TODO: await deleteNewUser(email);
+    // await deleteDanglingUser(email);
     return getAuthError(err);
   }
+
+  logger.info(`User ${email} created`);
 
   revalidatePath("/", "layout");
   const messageId = msg`Controlla la tua casella di posta per confermare l'account.`.id;

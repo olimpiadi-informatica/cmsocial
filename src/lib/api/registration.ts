@@ -1,6 +1,8 @@
-import { eq } from "drizzle-orm";
+import { logger } from "better-auth";
+import { and, eq, notExists } from "drizzle-orm";
+
 import { cmsDb } from "~/lib/db";
-import { participations, users } from "~/lib/db/schema";
+import { participations, socialUsers, users } from "~/lib/db/schema";
 import type { User } from "~/lib/user";
 
 export async function createUser(user: User) {
@@ -15,6 +17,21 @@ export async function createUser(user: User) {
     })
     .returning({ id: users.id });
   return cmsUser.id;
+}
+
+export async function deleteDanglingUser(email: string) {
+  const deleted = await cmsDb
+    .delete(users)
+    .where(
+      and(
+        eq(users.email, email),
+        notExists(cmsDb.select().from(socialUsers).where(eq(socialUsers.cmsId, users.id))),
+      ),
+    )
+    .returning();
+  logger.warn(
+    `${deleted.length} dangling user(s) deleted: ${deleted.map((u) => u.email).join(", ")}`,
+  );
 }
 
 export async function deleteUser(email: string) {
