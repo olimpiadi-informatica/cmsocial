@@ -2,13 +2,14 @@ import { type BetterAuthOptions, betterAuth } from "better-auth";
 import { emailHarmony } from "better-auth-harmony";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { admin, captcha, haveIBeenPwned, username } from "better-auth/plugins";
+import { admin, captcha, haveIBeenPwned } from "better-auth/plugins";
 
 import { passwordHash, passwordVerify } from "./api/crypto";
 import { createParticipation, createUser, deleteUser } from "./api/registration";
 import { userExtraFields } from "./auth/extra-fields";
 import { legacyCookieHook } from "./auth/legacy-cookie";
 import { ac, roles } from "./auth/permissions";
+import { username } from "./auth/username-plugin";
 import { cmsDb } from "./db";
 import * as schema from "./db/schema-auth";
 import {
