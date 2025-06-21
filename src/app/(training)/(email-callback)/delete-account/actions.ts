@@ -8,6 +8,7 @@ import { msg } from "@lingui/core/macro";
 
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
+import { verifyPassword } from "~/lib/user";
 
 export async function deleteAccount(
   password: string,
@@ -15,10 +16,13 @@ export async function deleteAccount(
 ): Promise<MessageDescriptor | undefined> {
   if (!token) return msg`Token non valido`;
 
+  const err = await verifyPassword(password);
+  if (err) return err;
+
   try {
-    await auth.api.deleteUser({
+    await auth.api.deleteUserCallback({
       headers: await headers(),
-      body: { password, token },
+      query: { token },
     });
   } catch (err) {
     return getAuthError(err);

@@ -74,7 +74,7 @@ export const auth = betterAuth({
     admin({ ac, roles }),
     captcha({
       provider: "google-recaptcha",
-      secretKey: process.env.RECAPTCHA_SECRET_KEY!,
+      secretKey: process.env.CAPTCHA_SECRET_KEY!,
       endpoints: ["/sign-up/email", "/forget-password"],
     }),
     emailHarmony(),
