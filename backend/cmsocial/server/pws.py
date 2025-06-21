@@ -513,6 +513,8 @@ class APIHandler(object):
         return err
 
     def sso_handler(self):
+        return 'Service Unavailable'
+
         if local.user is None:
             return 'Unauthorized'
         payload = local.data['payload']
@@ -544,6 +546,8 @@ class APIHandler(object):
         )
 
     def user_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'new':
             try:
                 username = local.data['username']
@@ -817,6 +821,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
                     domain=local.contest.social_contest.cookie_domain)
 
     def contest_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'list':
             local.resp['contests'] = []
             query = local.session.query(Contest)\
@@ -981,6 +987,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
             return 'Bad Request'
 
     def lessons_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'list':
             query = local.session.query(Lesson)\
                 .filter(Lesson.contest_id == local.contest.id)\
@@ -1070,6 +1078,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
             return 'Bad Request'
 
     def material_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'list':
             query = local.session.query(Material)\
                 .filter(Material.contest_id == local.contest.id)\
@@ -1139,6 +1149,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
             return 'Bad Request'
 
     def task_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'list':
             if local.contest is None:
                 return 'Bad request'
@@ -1283,6 +1295,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
             return 'Bad request'
 
     def tag_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'list':
             tags = local.session.query(Tag)\
                 .order_by(Tag.id)\
@@ -1369,6 +1383,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
             return 'Bad request'
 
     def help_handler(self):
+        return 'Service Unavailable'
+
         if local.participation is None:
             return 'Unauthorized'
 
@@ -1421,6 +1437,8 @@ Recovery code: %s""" % (user.username, user.social_user.recover_code)):
             local.resp["output"] = testcase.output
 
     def test_handler(self):
+        return 'Service Unavailable'
+
         if local.data['action'] == 'list':
             tests = local.session.query(Test)\
                 .filter(Test.access_level >= local.access_level)\
