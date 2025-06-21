@@ -39,7 +39,7 @@ export async function searchForumPosts(query: string): Promise<ForumPost[]> {
   const ua = userAgent({ headers: await headers() });
   if (ua.isBot) return [];
 
-  let resp: z.infer<typeof responseSchema>;
+  let resp: z.infer<typeof responseSchema> | null;
   try {
     resp = await discourseApi(
       "GET",
@@ -49,6 +49,8 @@ export async function searchForumPosts(query: string): Promise<ForumPost[]> {
   } catch {
     return [];
   }
+
+  if (!resp) return [];
   const { posts, topics } = resp;
   if (!posts) return [];
 

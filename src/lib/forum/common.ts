@@ -4,7 +4,7 @@ export async function discourseApi<T, Shape extends ZodRawShape>(
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
   endpoint: `/${string}`,
   schema: ZodObject<Shape, any, any, T, any>,
-): Promise<T> {
+): Promise<T | null> {
   const headers: Record<string, string> = {
     Accept: "application/json",
     "Api-Key": process.env.FORUM_API_KEY!,
@@ -17,6 +17,7 @@ export async function discourseApi<T, Shape extends ZodRawShape>(
     cache: "no-store",
   });
 
+  if (resp.status === 404) return null;
   if (!resp.ok) throw new Error((await resp.text()) ?? resp.statusText);
 
   const json = await resp.json();

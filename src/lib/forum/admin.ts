@@ -14,11 +14,20 @@ const successSchema = z.object({
 
 // TODO: create hook
 export async function forumLogOut(username: string) {
-  const { user } = await discourseApi("GET", `/u/by-external/${username}.json`, userSchema);
-  await discourseApi("POST", `/admin/users/${user.id}/log_out.json`, successSchema);
+  const userId = await getUserId(username);
+  if (userId) {
+    await discourseApi("POST", `/admin/users/${userId}/log_out.json`, successSchema);
+  }
 }
 
 export async function forumDeleteUser(username: string) {
-  const { user } = await discourseApi("GET", `/u/by-external/${username}.json`, userSchema);
-  await discourseApi("PUT", `/admin/users/${user.id}/anonymize.json`, successSchema);
+  const userId = await getUserId(username);
+  if (userId) {
+    await discourseApi("PUT", `/admin/users/${userId}/anonymize.json`, successSchema);
+  }
+}
+
+async function getUserId(username: string): Promise<number | undefined> {
+  const resp = await discourseApi("GET", `/u/by-external/${username}.json`, userSchema);
+  return resp?.user?.id;
 }

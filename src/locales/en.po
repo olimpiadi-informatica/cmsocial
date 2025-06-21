@@ -263,7 +263,7 @@ msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da r
 msgstr "With algobadge you will be guided through a curated selection of tasks to solve, ordered by increasing difficulty, while being able to explore new algorithmic techniques in a gradual and effective way."
 
 #: src/app/(training)/(email-callback)/verify-email/page.tsx
-#: src/app/(training)/(email-callback)/delete-account/page.tsx
+#: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
 msgstr "Confirm"
 
@@ -353,7 +353,7 @@ msgid "Edizione {edition}"
 msgstr "Edition {edition}"
 
 #: src/app/(training)/user/[username]/edit/delete/page.tsx
-#: src/app/(training)/(email-callback)/delete-account/page.tsx
+#: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Elimina account"
 msgstr "Delete account"
 
