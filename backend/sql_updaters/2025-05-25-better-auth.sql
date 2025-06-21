@@ -42,7 +42,6 @@ CREATE TABLE "verifications" (
 	"updated_at" timestamp
 );
 
-ALTER TABLE "social_users" RENAME COLUMN "registration_time" TO "created_at";
 ALTER TABLE "social_users" ADD COLUMN "auth_id" text;
 ALTER TABLE "social_users" ADD COLUMN "first_name" text;
 ALTER TABLE "social_users" ADD COLUMN "last_name" text;

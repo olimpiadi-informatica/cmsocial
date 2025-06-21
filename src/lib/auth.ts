@@ -81,7 +81,7 @@ export const auth = betterAuth({
     haveIBeenPwned(),
     nextCookies(),
     username({
-      minUsernameLength: 6,
+      minUsernameLength: 4,
       maxUsernameLength: 32,
     }),
   ],
