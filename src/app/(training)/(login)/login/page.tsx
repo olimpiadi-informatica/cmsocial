@@ -17,7 +17,7 @@ export default async function Page({ searchParams }: Props) {
   const { redirect: redirectUrl = "/" } = await searchParams;
 
   if (await getSessionUser()) {
-    return redirect(redirectUrl);
+    redirect(redirectUrl);
   }
 
   return <PageClient redirectUrl={redirectUrl} />;

@@ -1,34 +1,25 @@
-"use client";
+import type { Metadata } from "next";
+import { redirect } from "next/navigation";
 
-import { useSearchParams } from "next/navigation";
+import { getSessionUser } from "~/lib/user";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
-import { CurrentPasswordField, Form, SubmitButton } from "@olinfo/react-components";
+import { PageClient } from "./page-client";
 
-import { H1 } from "~/components/header";
+export const metadata: Metadata = {
+  title: "Training - Login",
+};
 
-import { deleteAccount } from "./actions";
+type Props = {
+  searchParams: Promise<{ token?: string }>;
+};
 
-export default function Page() {
-  const { _ } = useLingui();
-  const params = useSearchParams();
+export default async function Page({ searchParams }: Props) {
+  const user = await getSessionUser();
 
-  const submit = async (data: { password: string }) => {
-    const err = await deleteAccount(data.password, params.get("token"));
-    if (err) throw new Error(_(err));
-    await new Promise(() => {});
-  };
+  if (!user) {
+    const loginUrl = `/delete-account?${new URLSearchParams(await searchParams)}`;
+    redirect(`/login?redirect=${encodeURIComponent(loginUrl)}`);
+  }
 
-  return (
-    <Form onSubmit={submit}>
-      <H1>
-        <Trans>Elimina account</Trans>
-      </H1>
-      <CurrentPasswordField field="password" />
-      <SubmitButton className="btn-error">
-        <Trans>Conferma</Trans>
-      </SubmitButton>
-    </Form>
-  );
+  return <PageClient />;
 }
