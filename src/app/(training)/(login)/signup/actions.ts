@@ -6,8 +6,6 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-
-import { deleteUser } from "~/lib/api/registration";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 
@@ -38,7 +36,7 @@ export async function signup(
       },
     });
   } catch (err) {
-    await deleteUser(email);
+    // TODO: await deleteNewUser(email);
     return getAuthError(err);
   }
 

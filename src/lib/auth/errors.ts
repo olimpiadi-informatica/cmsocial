@@ -46,7 +46,7 @@ export function getAuthError(err: unknown): MessageDescriptor {
     if (code && code in authErrors) {
       return authErrors[code as keyof typeof authErrors];
     }
-    console.error("Auth error", code, err);
+    console.error(`Auth error "${code}"`);
   }
   if (process.env.NODE_ENV === "development") {
     throw err;
