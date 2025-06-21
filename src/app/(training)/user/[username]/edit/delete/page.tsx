@@ -26,10 +26,6 @@ export default function Page() {
       <H2 className="text-error">
         <Trans>Eliminazione account</Trans>
       </H2>
-      <div className="my-2">
-        <TriangleAlert size={18} className="inline-block text-error mr-2 mb-1" />
-        <Trans>Attenzione! Questa azione è irreversibile.</Trans>
-      </div>
       <div className="w-full my-2">
         <Trans>Per continuare, inserisci la frase di conferma:</Trans>
       </div>
@@ -46,6 +42,10 @@ export default function Page() {
           <Trans>Elimina account</Trans>
         </SubmitButton>
       )}
+      <div className="mt-4">
+        <TriangleAlert size={18} className="inline-block text-error mr-2 mb-1" />
+        <Trans>Attenzione! Questa azione è irreversibile.</Trans>
+      </div>
     </Form>
   );
 }

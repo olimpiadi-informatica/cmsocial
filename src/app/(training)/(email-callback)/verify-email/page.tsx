@@ -21,10 +21,13 @@ export default function Page() {
   };
 
   return (
-    <Form onSubmit={submit}>
+    <Form onSubmit={submit} className="max-w-none">
       <H1>
         <Trans>Verifica email</Trans>
       </H1>
+      <div className="text-center w-full my-2">
+        <Trans>Premi conferma per completare la verifica della tua email</Trans>
+      </div>
       <SubmitButton>
         <Trans>Conferma</Trans>
       </SubmitButton>
