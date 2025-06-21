@@ -1,10 +1,10 @@
-import type { Account, BetterAuthPlugin, User } from "better-auth";
+import type { Account, AuthPluginSchema, BetterAuthPlugin, User } from "better-auth";
 import { createAuthEndpoint, createAuthMiddleware, sendVerificationEmailFn } from "better-auth/api";
 import { setSessionCookie } from "better-auth/cookies";
 import { APIError } from "better-call";
 import { z } from "zod";
 
-export const ERROR_CODES = {
+const ERROR_CODES = {
   INVALID_USERNAME_OR_PASSWORD: "invalid username or password",
   EMAIL_NOT_VERIFIED: "email not verified",
   UNEXPECTED_ERROR: "unexpected error",
@@ -13,6 +13,29 @@ export const ERROR_CODES = {
   USERNAME_TOO_LONG: "username is too long",
   INVALID_USERNAME: "username is invalid",
 };
+
+const schema = {
+  user: {
+    fields: {
+      username: {
+        type: "string",
+        required: false,
+        sortable: true,
+        unique: true,
+        returned: true,
+        transform: {
+          input(value) {
+            return value?.toString().toLowerCase();
+          },
+        },
+      },
+      displayUsername: {
+        type: "string",
+        required: false,
+      },
+    },
+  },
+} satisfies AuthPluginSchema;
 
 export type UsernameOptions = {
   minUsernameLength?: number;
@@ -197,6 +220,7 @@ export const username = (options?: UsernameOptions) => {
         },
       ),
     },
+    schema,
     hooks: {
       before: [
         {
