@@ -24,7 +24,8 @@ export async function requestInput(taskName: string): Promise<MessageDescriptor 
 
   try {
     await generateInput(user.username, taskName);
-  } catch {
+  } catch (e) {
+    console.error("Error generating input", e);
     return msg`Errore sconosciuto`;
   }
   revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
@@ -39,7 +40,8 @@ export async function changeInput(inputId: string): Promise<MessageDescriptor | 
 
   try {
     await abandonInput(user.username, inputId);
-  } catch {
+  } catch (e) {
+    console.error("Error abandoning input", e);
     return msg`Errore sconosciuto`;
   }
   revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
@@ -68,7 +70,8 @@ export async function uploadAndSubmit(
     }
 
     submissionId = await submit(inputId, source.id, output.id);
-  } catch {
+  } catch (e) {
+    console.error("Error submitting", e);
     return msg`Errore sconosciuto`;
   }
   redirect(`/task/terry/${taskName}/submissions/${submissionId}`);

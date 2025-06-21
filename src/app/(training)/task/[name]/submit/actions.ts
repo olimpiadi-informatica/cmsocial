@@ -23,8 +23,10 @@ export async function submitBatch(
     switch ((err as Error).message as string) {
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
-      default:
+      default: {
+        console.error("Error submitting", err);
         return msg`Errore sconosciuto`;
+      }
     }
   }
   redirect(`/task/${taskName}/submissions/${id}`);
@@ -44,8 +46,10 @@ export async function submitOutputOnly(
     switch ((err as Error).message as string) {
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
-      default:
+      default: {
+        console.error("Error submitting", err);
         return msg`Errore sconosciuto`;
+      }
     }
   }
   redirect(`/task/${taskName}/submissions/${id}`);
