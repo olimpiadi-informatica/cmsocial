@@ -38,5 +38,5 @@ function toBase64(str: string): string {
 }
 
 function hmac(payload: string): string {
-  return createHmac("sha256", process.env.AUTH_SECRET!).update(payload).digest("hex");
+  return createHmac("sha256", process.env.BETTER_AUTH_SECRET!).update(payload).digest("hex");
 }

@@ -5,6 +5,8 @@ import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Training - Registrazione",
 };

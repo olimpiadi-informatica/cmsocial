@@ -5,7 +5,7 @@ import { cookies } from "next/headers";
 import { createAuthMiddleware } from "better-auth/api";
 import { SignJWT } from "jose";
 
-const JWT_SECRET = new TextEncoder().encode(process.env.AUTH_SECRET!);
+const JWT_SECRET = new TextEncoder().encode(process.env.BETTER_AUTH_SECRET!);
 
 export const legacyCookieHook = createAuthMiddleware(async (ctx) => {
   const cookieStore = await cookies();
