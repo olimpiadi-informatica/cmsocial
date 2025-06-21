@@ -26,7 +26,7 @@ export const legacyCookieHook = createAuthMiddleware(async (ctx) => {
     .setProtectedHeader({ alg: "HS256" })
     .setIssuer("https://training.olinfo.it")
     .setSubject(user.id)
-    .setAudience(["https://training.olinfo.it", "https://territoriali.olinfo.it"])
+    // .setAudience(["https://training.olinfo.it", "https://territoriali.olinfo.it"])
     .setIssuedAt()
     .setNotBefore(session.createdAt)
     .setExpirationTime(session.expiresAt)

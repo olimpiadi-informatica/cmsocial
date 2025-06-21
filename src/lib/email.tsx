@@ -19,6 +19,7 @@ const transporter =
   process.env.NODE_ENV === "production"
     ? createTransport({
         host: process.env.MAIL_SERVER,
+        port: Number(process.env.MAIL_SERVER_PORT),
         auth: {
           user: process.env.MAIL_USERNAME,
           pass: process.env.MAIL_PASSWORD,
