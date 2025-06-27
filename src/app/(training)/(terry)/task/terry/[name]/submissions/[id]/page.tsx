@@ -106,10 +106,10 @@ export default async function Page({ params }: Props) {
         lang={lang}
       />
       <div className="mt-6 flex flex-wrap justify-center gap-2">
-        <a href={`/api-terry/files/${submission.input}`} className="btn btn-primary" download>
+        <a href={`/files/${submission.input}`} className="btn btn-primary" download>
           <FileInput size={22} /> <Trans>Scarica input</Trans>
         </a>
-        <a href={`/api-terry/files/${submission.output}`} className="btn btn-primary" download>
+        <a href={`/files/${submission.output}`} className="btn btn-primary" download>
           <FileOutput size={22} /> <Trans>Scarica output</Trans>
         </a>
       </div>

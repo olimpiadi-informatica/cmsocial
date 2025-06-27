@@ -81,7 +81,7 @@ export function PageClient({ task, input }: Props) {
       {input ? (
         <>
           <div className="flex flex-wrap justify-center gap-4">
-            <a href={`/api-terry/files/${input.path}`} download className="btn btn-primary">
+            <a href={`/files/${input.path}`} download className="btn btn-primary">
               <Download /> <Trans>Scarica input</Trans>
             </a>
             <Button className="btn-primary" onClick={onChangeInput} icon={ArrowLeftRight}>
