@@ -386,6 +386,10 @@ msgstr "Email non verificata"
 msgid "Email o password non valide"
 msgstr "Email o password non valide"
 
+#: src/lib/auth/errors.ts
+msgid "Email uguale alla precedente"
+msgstr "Email uguale alla precedente"
+
 #: src/app/(training)/(email-callback)/verify-email/actions.ts
 msgid "Email verificata con successo!"
 msgstr "Email verificata con successo!"

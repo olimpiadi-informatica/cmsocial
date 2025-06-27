@@ -10,6 +10,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   BACKUP_CODES_NOT_ENABLED: msg`Codici di backup non abilitati`,
   CREDENTIAL_ACCOUNT_NOT_FOUND: msg`Username non trovato`,
   EMAIL_CAN_NOT_BE_UPDATED: msg`L'email non può essere modificata`,
+  EMAIL_IS_THE_SAME: msg`Email uguale alla precedente`,
   EMAIL_NOT_VERIFIED: msg`Email non verificata`,
   FAILED_TO_CREATE_SESSION: msg`Errore durante la creazione della sessione`,
   FAILED_TO_CREATE_USER: msg`Errore durante la creazione dell'utente`,
