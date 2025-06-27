@@ -1,6 +1,6 @@
 import { BookText, Globe } from "lucide-react";
 
-import { ResourceLink, ResourceList, ResourceVideo, Resources } from "~/components/resources";
+import { ResourceLink, ResourceList, Resources, ResourceVideo } from "~/components/resources";
 
 export function Lib() {
   return (

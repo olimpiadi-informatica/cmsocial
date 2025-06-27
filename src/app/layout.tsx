@@ -8,6 +8,7 @@ import { loadLocale } from "~/lib/locale";
 
 import { Routing } from "./routing";
 import "./globals.css";
+
 import { LayoutClient } from "./layout-client";
 
 export const metadata: Metadata = {

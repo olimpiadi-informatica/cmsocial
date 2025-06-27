@@ -1,24 +1,11 @@
-import { and, desc, eq, inArray, sql } from "drizzle-orm";
 import { cache } from "react";
 
-import { algobadge } from "~/lib/algobadge";
+import { and, desc, eq, inArray, sql } from "drizzle-orm";
+
+import { type AlgobadgeScore, type AlgobadgeScores, algobadge } from "~/lib/algobadge";
 import { cmsDb, terryDb } from "~/lib/db";
 import { participations, submissionResults, submissions, tasks, users } from "~/lib/db/schema";
 import { terrySubmissions, terryTasks } from "~/lib/db/schema-terry";
-
-export type AlgobadgeScore = {
-  taskName: string;
-  taskTitle: string;
-  score: number | null;
-  maxScore: number;
-  terry: boolean;
-};
-
-export type AlgobadgeScores = {
-  username: string;
-  name: string;
-  scores: AlgobadgeScore[];
-};
 
 const trainingTaskNames = Object.values(algobadge)
   .flatMap((category) => category.tasks)

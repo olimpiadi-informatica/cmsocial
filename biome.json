@@ -1,7 +1,7 @@
 {
-  "$schema": "https://biomejs.dev/schemas/1.8.3/schema.json",
+  "$schema": "https://biomejs.dev/schemas/2.0.6/schema.json",
   "files": {
-    "include": ["src"]
+    "includes": ["src/**"]
   },
   "vcs": {
     "enabled": true,
@@ -28,12 +28,27 @@
         "noUnusedVariables": "error",
         "useHookAtTopLevel": "error"
       },
+      "nursery": {
+        "noFloatingPromises": "error",
+        "noImportCycles": "error",
+        "useUniqueElementIds": "off"
+      },
+      "performance": {
+        "noImgElement": "off"
+      },
       "security": {
         "noDangerouslySetInnerHtml": "off"
       },
       "style": {
+        "noInferrableTypes": "error",
         "noNegationElse": "error",
         "noNonNullAssertion": "off",
+        "noParameterAssign": "error",
+        "noUnusedTemplateLiteral": "error",
+        "noUselessElse": "error",
+        "useAsConstAssertion": "error",
+        "useConsistentArrayType": { "level": "error", "options": { "syntax": "shorthand" } },
+        "useDefaultParameterLast": "error",
         "useFilenamingConvention": {
           "level": "error",
           "options": {
@@ -42,8 +57,10 @@
           }
         },
         "useFragmentSyntax": "error",
-        "useShorthandArrayType": "error",
-        "useShorthandAssign": "error"
+        "useNumberNamespace": "error",
+        "useSelfClosingElements": "error",
+        "useShorthandAssign": "error",
+        "useSingleVarDeclarator": "error"
       },
       "suspicious": {
         "noArrayIndexKey": "off",
@@ -63,6 +80,28 @@
     },
     "linter": {
       "enabled": false
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": {
+          "level": "on",
+          "options": {
+            "groups": [
+              ":NODE:",
+              ":BLANK_LINE:",
+              ["next", "next/**", "react", "react/**", "react-dom", "react-dom/**"],
+              ":BLANK_LINE:",
+              ":PACKAGE:",
+              ":BLANK_LINE:",
+              ":ALIAS:",
+              ":BLANK_LINE:",
+              ":PATH:"
+            ]
+          }
+        }
+      }
     }
   }
 }

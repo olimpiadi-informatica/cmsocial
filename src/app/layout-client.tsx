@@ -1,11 +1,11 @@
 "use client";
 
+import { useRouter, useSearchParams } from "next/navigation";
 import { type ReactNode, useEffect, useMemo } from "react";
 
 import { type Messages, setupI18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import { useNotifications } from "@olinfo/react-components";
-import { useRouter, useSearchParams } from "next/navigation";
 import { SWRConfig } from "swr";
 
 type LayoutProps = {

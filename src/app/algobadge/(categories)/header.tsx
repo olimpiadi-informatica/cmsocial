@@ -15,10 +15,10 @@ import {
 import { Link } from "~/components/link";
 import {
   Badge,
-  type Category,
-  type CategoryBadge,
   badgeStroke,
   bronzeScore,
+  type Category,
+  type CategoryBadge,
   diamondScore,
   goldScore,
   honorableScore,

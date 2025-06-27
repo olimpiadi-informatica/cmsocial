@@ -15,7 +15,8 @@ import { LogOut, UserRound } from "lucide-react";
 import { Link } from "~/components/link";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
-import { type User, getSessionUser } from "~/lib/user";
+import type { User } from "~/lib/auth/types";
+import { getSessionUser } from "~/lib/user";
 
 import { DropdownAction } from "./dropdown-action";
 import { LoginButton } from "./login-button";

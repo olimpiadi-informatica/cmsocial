@@ -2,7 +2,7 @@ import { Medal } from "lucide-react";
 
 import { Link } from "~/components/link";
 import { Table } from "~/components/table";
-import { Badge, algobadge, badgeStroke } from "~/lib/algobadge";
+import { algobadge, Badge, badgeStroke } from "~/lib/algobadge";
 
 import { BadgeExtra, type UserBadge } from "./common";
 

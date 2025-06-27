@@ -1,7 +1,6 @@
 import { cache } from "react";
 
 import {
-  type SQL,
   and,
   asc,
   count,
@@ -15,6 +14,7 @@ import {
   isNull,
   ne,
   or,
+  type SQL,
   sql,
 } from "drizzle-orm";
 
@@ -25,8 +25,8 @@ import {
   submissions,
   tags,
   taskScores,
-  taskTags,
   tasks,
+  taskTags,
 } from "~/lib/db/schema";
 
 export type TaskListOptions = {

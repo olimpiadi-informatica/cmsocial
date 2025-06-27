@@ -1,6 +1,6 @@
 import { createHmac } from "node:crypto";
 
-import type { User } from "~/lib/user";
+import type { User } from "~/lib/auth/types";
 
 export function forumLogin(user: User, payload: string | null, signature: string | null): string {
   if (!payload || !signature || hmac(payload) !== signature) {

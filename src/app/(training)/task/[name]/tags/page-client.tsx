@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams, usePathname } from "next/navigation";
-import { type MouseEvent, type Ref, type RefObject, forwardRef, useRef, useState } from "react";
+import { forwardRef, type MouseEvent, type Ref, type RefObject, useRef, useState } from "react";
 
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";

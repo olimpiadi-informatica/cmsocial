@@ -13,9 +13,9 @@ import {
   YAxis,
 } from "recharts";
 
-import { Badge, type CategoryId, algobadge } from "~/lib/algobadge";
+import { algobadge, Badge, type CategoryId } from "~/lib/algobadge";
 
-import { type ExtendedBadge, type UserBadge, badgeColor, badgeName, badgeTypes } from "./common";
+import { badgeColor, badgeName, badgeTypes, type ExtendedBadge, type UserBadge } from "./common";
 import { TooltipContent } from "./tooltip";
 
 type DataEntry = { name: CategoryId } & { [key in ExtendedBadge]?: number };

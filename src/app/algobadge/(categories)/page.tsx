@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { unstable_ViewTransition as ViewTransition } from "react";
 
 import { Fireworks } from "~/components/fireworks";
-import { Badge, type CategoryId, algobadge, getUserBadges } from "~/lib/algobadge";
+import { algobadge, Badge, type CategoryId, getUserBadges } from "~/lib/algobadge";
 import { getAlgobadgeScores } from "~/lib/api/algobadge";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";

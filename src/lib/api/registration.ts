@@ -1,9 +1,9 @@
 import { logger } from "better-auth";
 import { and, eq, notExists } from "drizzle-orm";
 
+import type { User } from "~/lib/auth/types";
 import { cmsDb } from "~/lib/db";
 import { participations, socialUsers, users } from "~/lib/db/schema";
-import type { User } from "~/lib/user";
 
 export async function createUser(user: User) {
   const [cmsUser] = await cmsDb

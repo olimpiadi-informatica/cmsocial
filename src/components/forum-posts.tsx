@@ -1,9 +1,8 @@
+import { headers } from "next/headers";
+import { userAgent } from "next/server";
 import type { ReactNode } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-
-import { headers } from "next/headers";
-import { userAgent } from "next/server";
 
 import { type ForumPost, searchForumPosts } from "~/lib/forum/search";
 

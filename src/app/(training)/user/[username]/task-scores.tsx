@@ -1,7 +1,7 @@
 import { useLingui } from "@lingui/react/macro";
 
 import { TaskBadge } from "~/components/task-badge";
-import { type User, getUserScores } from "~/lib/api/user";
+import { getUserScores, type User } from "~/lib/api/user";
 
 export async function TaskScores({ user }: { user: User }) {
   const { t } = useLingui();

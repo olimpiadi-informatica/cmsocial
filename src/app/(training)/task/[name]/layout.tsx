@@ -7,6 +7,7 @@ import { Trans } from "@lingui/react/macro";
 import { Flag } from "~/components/flags";
 import { getTask, getTaskLocales } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
+
 import { TaskTabs } from "./tabs";
 
 type Props = {

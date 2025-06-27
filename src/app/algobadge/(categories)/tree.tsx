@@ -4,8 +4,7 @@ import clsx from "clsx";
 import { LockKeyhole } from "lucide-react";
 
 import { Link } from "~/components/link";
-
-import { Badge, type CategoryBadge, CategoryId, algobadge, badgeBackground } from "~/lib/algobadge";
+import { algobadge, Badge, badgeBackground, type CategoryBadge, CategoryId } from "~/lib/algobadge";
 
 type TreeProps = {
   badges: Record<CategoryId, CategoryBadge>;

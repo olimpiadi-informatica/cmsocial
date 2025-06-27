@@ -6,10 +6,11 @@ import { renderToStaticMarkup } from "next/dist/compiled/react-dom/server";
 import type { ReactNode } from "react";
 
 import type { User } from "better-auth";
-import { type SendMailOptions, createTransport } from "nodemailer";
+import { createTransport, type SendMailOptions } from "nodemailer";
 import type StreamTransport from "nodemailer/lib/stream-transport";
 
 import { ChangeEmail } from "~/lib/emails/change-email";
+
 import { DeleteAccount } from "./emails/delete-account";
 import { ResetPassword } from "./emails/reset-password";
 import { Template } from "./emails/template";
@@ -67,11 +68,7 @@ export function sendVerificationEmail(data: { user: User; token: string }) {
   );
 }
 
-export function sendChangeEmailVerification(data: {
-  user: User;
-  newEmail: string;
-  token: string;
-}) {
+export function sendChangeEmailVerification(data: { user: User; newEmail: string; token: string }) {
   return sendEmail(
     data.newEmail,
     "Cambia email - training.olinfo.it",

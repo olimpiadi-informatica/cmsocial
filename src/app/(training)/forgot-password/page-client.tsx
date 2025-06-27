@@ -7,8 +7,8 @@ import { Trans } from "@lingui/react/macro";
 import { EmailField, Form, SubmitButton } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
-
 import { ReCaptcha, type ReCaptchaInner } from "~/components/recaptcha";
+
 import { recoverPassword } from "./actions";
 
 export function PageClient({ captchaKey }: { captchaKey: string }) {

@@ -15,7 +15,7 @@ import { Send, TriangleAlert } from "lucide-react";
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
 import type { Task } from "~/lib/api/task";
-import { Language, fileLanguage } from "~/lib/language";
+import { fileLanguage, Language } from "~/lib/language";
 
 import { submitBatch } from "./actions";
 
@@ -27,7 +27,10 @@ const Editor = dynamic(() => import("./editor"), {
 export function SubmitBatch({
   task,
   languages,
-}: { task: Task; languages: Record<string, Language> }) {
+}: {
+  task: Task;
+  languages: Record<string, Language>;
+}) {
   const { _ } = useLingui();
 
   const langMessage = (lang?: string) => {

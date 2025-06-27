@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { compact, uniq } from "lodash-es";
 
 import { getTechniqueTags } from "~/lib/api/tags";
-import { type TaskListOptions, getTaskCount, getTaskList } from "~/lib/api/tasks";
+import { getTaskCount, getTaskList, type TaskListOptions } from "~/lib/api/tasks";
 import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";

@@ -1,5 +1,4 @@
 import { verify as verifyBcrypt } from "@node-rs/bcrypt";
-
 import { hashPassword as hashScrypt, verifyPassword as verifyScript } from "better-auth/crypto";
 
 export async function passwordHash(password: string): Promise<string> {
@@ -10,7 +9,10 @@ export async function passwordHash(password: string): Promise<string> {
 export async function passwordVerify({
   hash,
   password,
-}: { hash: string; password: string }): Promise<boolean> {
+}: {
+  hash: string;
+  password: string;
+}): Promise<boolean> {
   if (hash.startsWith("bcrypt:")) {
     return await verifyBcrypt(password, hash.replace(/^bcrypt:/, ""));
   }

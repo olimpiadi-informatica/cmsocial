@@ -69,9 +69,9 @@
     "react": "^19.0",
     "react-dom": "^19.0",
     "react-google-recaptcha": "^3.1",
-    "react-pdf": "^9.0",
+    "react-pdf": "^10.0",
     "react-virtuoso": "^4.7",
-    "recharts": "^2.12",
+    "recharts": "^3.0",
     "rehype-katex": "^7.0",
     "remark-math": "^6.0",
     "set-cookie-parser": "^2.7",
@@ -82,7 +82,7 @@
     "zod": "^3.23"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.8.3",
+    "@biomejs/biome": "^2.0",
     "@lingui/cli": "^5.2",
     "@lingui/swc-plugin": "^5.4"
   },

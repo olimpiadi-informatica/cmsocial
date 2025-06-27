@@ -1,7 +1,7 @@
 import { SiTelegram } from "@icons-pack/react-simple-icons";
 import { BookText, Globe, UsersRound } from "lucide-react";
 
-import { ResourceLink, ResourceList, ResourceVideo, Resources } from "~/components/resources";
+import { ResourceLink, ResourceList, Resources, ResourceVideo } from "~/components/resources";
 
 export function Intro() {
   return (

@@ -1,18 +1,18 @@
 import { notFound, redirect } from "next/navigation";
+import { Fragment, type ReactNode } from "react";
 
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
-import { Fragment, type ReactNode } from "react";
 
 import { DateTime } from "~/components/date";
 import { H2, H3 } from "~/components/header";
 import { OutcomeScore } from "~/components/outcome";
 import { SourceCode } from "~/components/source-code";
 import { getTerryFileContent } from "~/lib/api/file";
-import { type TerrySubmissionDetail, getTerrySubmission } from "~/lib/api/submission-terry";
-import { Language, fileLanguage, fileLanguageName } from "~/lib/language";
+import { getTerrySubmission, type TerrySubmissionDetail } from "~/lib/api/submission-terry";
+import { fileLanguage, fileLanguageName, Language } from "~/lib/language";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 

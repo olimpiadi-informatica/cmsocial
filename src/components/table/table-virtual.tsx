@@ -3,9 +3,8 @@ import { Fragment, forwardRef, useLayoutEffect, useRef, useState } from "react";
 import clsx from "clsx";
 import { type Components, Virtuoso } from "react-virtuoso";
 
-import type { TableProps } from "~/components/table";
-
 import style from "./table.module.css";
+import type { TableProps } from "./types";
 
 export default function TableVirtual<T>({
   data,

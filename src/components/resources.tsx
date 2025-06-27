@@ -1,6 +1,7 @@
+import type { ReactNode } from "react";
+
 import { YouTubeEmbed } from "@next/third-parties/google";
 import { BookText, type LucideIcon } from "lucide-react";
-import type { ReactNode } from "react";
 
 export function Resources({ children }: { children: ReactNode }) {
   return <div className="sm:columns-2 lg:columns-3">{children}</div>;

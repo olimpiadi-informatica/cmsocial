@@ -1,12 +1,12 @@
 "use client";
 
+import { useSelectedLayoutSegment } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/react/macro";
 import { Tabs } from "@olinfo/react-components";
 import clsx from "clsx";
 
-import { useSelectedLayoutSegment } from "next/navigation";
 import { H1 } from "~/components/header";
 import { Link } from "~/components/link";
 

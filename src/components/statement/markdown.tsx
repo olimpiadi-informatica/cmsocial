@@ -7,6 +7,7 @@ import remarkMath from "remark-math";
 import { fileLanguage } from "~/lib/language";
 
 import "katex/dist/katex.css";
+
 import style from "./markdown.module.css";
 
 export function MarkdownStatement({ source, basePath }: { source: string; basePath: string }) {

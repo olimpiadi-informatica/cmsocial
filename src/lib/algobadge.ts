@@ -2,8 +2,6 @@ import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { map, mapValues, round } from "lodash-es";
 
-import type { AlgobadgeScores } from "~/lib/api/algobadge";
-
 export enum CategoryId {
   DP = "dp",
   DS = "ds",
@@ -14,6 +12,20 @@ export enum CategoryId {
   Math = "math",
   Rec = "rec",
 }
+
+export type AlgobadgeScore = {
+  taskName: string;
+  taskTitle: string;
+  score: number | null;
+  maxScore: number;
+  terry: boolean;
+};
+
+export type AlgobadgeScores = {
+  username: string;
+  name: string;
+  scores: AlgobadgeScore[];
+};
 
 export type Task = {
   name: string;

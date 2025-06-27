@@ -1,16 +1,9 @@
 import dynamic from "next/dynamic";
-import type { ComponentType } from "react";
 
 import clsx from "clsx";
 
 import style from "./table.module.css";
-
-export type TableProps<T> = {
-  data: T[];
-  header: ComponentType<{ context: any }>;
-  row: ComponentType<{ item: T }>;
-  className?: string;
-};
+import type { TableProps } from "./types";
 
 const LargeTable = dynamic(() => import("./table-virtual"), { ssr: false });
 

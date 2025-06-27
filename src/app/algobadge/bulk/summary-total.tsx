@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { useLingui } from "@lingui/react";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
-import { type ExtendedBadge, type UserBadge, badgeColor, badgeName, badgeTypes } from "./common";
+import { badgeColor, badgeName, badgeTypes, type ExtendedBadge, type UserBadge } from "./common";
 import { TooltipContent } from "./tooltip";
 
 export function SummaryTotal({ users }: { users: UserBadge[] }) {

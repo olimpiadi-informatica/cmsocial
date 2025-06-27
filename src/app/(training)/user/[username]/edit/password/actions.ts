@@ -1,11 +1,11 @@
 "use server";
 
+import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 
-import { headers } from "next/headers";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 

@@ -1,8 +1,8 @@
-import { compact } from "lodash-es";
 import { useEffect, useId, useSyncExternalStore } from "react";
 
-import { getUserBadges } from "~/lib/algobadge";
-import type { AlgobadgeScores } from "~/lib/api/algobadge";
+import { compact } from "lodash-es";
+
+import { type AlgobadgeScores, getUserBadges } from "~/lib/algobadge";
 
 import { getAlgobadgeScores } from "./actions";
 import { BadgeExtra, type UserBadge } from "./common";
@@ -19,18 +19,23 @@ function fetchNext() {
     if (!username) return;
 
     fetching++;
-    getAlgobadgeScores(username).then((scores?: AlgobadgeScores) => {
-      const { badges, totalBadge } = getUserBadges(scores, true);
-      updateUser(username, {
-        username,
-        name: scores?.name,
-        badges,
-        totalBadge: scores ? totalBadge : BadgeExtra.Invalid,
-      });
+    getAlgobadgeScores(username).then(
+      (scores?: AlgobadgeScores) => {
+        const { badges, totalBadge } = getUserBadges(scores, true);
+        updateUser(username, {
+          username,
+          name: scores?.name,
+          badges,
+          totalBadge: scores ? totalBadge : BadgeExtra.Invalid,
+        });
 
-      fetching--;
-      fetchNext();
-    });
+        fetching--;
+        fetchNext();
+      },
+      () => {
+        fetching--;
+      },
+    );
   }
 }
 

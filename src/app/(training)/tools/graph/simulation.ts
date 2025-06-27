@@ -1,12 +1,12 @@
 import { type D3DragEvent, drag } from "d3-drag";
 import {
-  type SimulationLinkDatum,
-  type SimulationNodeDatum,
   forceCollide,
   forceLink,
   forceSimulation,
   forceX,
   forceY,
+  type SimulationLinkDatum,
+  type SimulationNodeDatum,
 } from "d3-force";
 import { select } from "d3-selection";
 

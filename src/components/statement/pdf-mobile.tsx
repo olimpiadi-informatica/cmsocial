@@ -14,7 +14,10 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 export default function PdfMobileStatement({
   url,
   fallback,
-}: { url?: string; fallback: ReactNode }) {
+}: {
+  url?: string;
+  fallback: ReactNode;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const [width, setWidth] = useState<number>();
 

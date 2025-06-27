@@ -14,7 +14,7 @@ import { DateDistance } from "~/components/date";
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
 import type { TerryTask, TerryTaskInput } from "~/lib/api/task-terry";
-import { Language, fileLanguage } from "~/lib/language";
+import { fileLanguage, Language } from "~/lib/language";
 
 import { changeInput, requestInput, uploadAndSubmit } from "./actions";
 

@@ -1,8 +1,9 @@
+import type { Metadata } from "next";
+
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import { kebabCase } from "lodash-es";
 
-import type { Metadata } from "next";
 import { H1 } from "~/components/header";
 import { loadLocale } from "~/lib/locale";
 

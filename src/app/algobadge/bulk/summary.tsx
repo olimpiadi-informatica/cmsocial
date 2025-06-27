@@ -4,7 +4,7 @@ import { Trans } from "@lingui/react/macro";
 import { Card } from "@olinfo/react-components";
 import { mapValues } from "lodash-es";
 
-import { type UserBadge, badgeName } from "./common";
+import { badgeName, type UserBadge } from "./common";
 import { SummaryBadges } from "./summary-badges";
 import { SummaryCategories } from "./summary-categories";
 import { SummaryTotal } from "./summary-total";

@@ -1,6 +1,6 @@
 "use client";
 
-import { type Ref, forwardRef } from "react";
+import { forwardRef, type Ref } from "react";
 
 import ReCaptchaWidget, { type ReCAPTCHA } from "react-google-recaptcha";
 

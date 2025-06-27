@@ -2,6 +2,7 @@
 
 import { use } from "react";
 
+import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
 import {
@@ -13,7 +14,6 @@ import {
 
 import { H2 } from "~/components/header";
 
-import { msg } from "@lingui/core/macro";
 import { changePassword } from "./actions";
 
 type Props = {
