@@ -4,6 +4,8 @@ import { nextCookies } from "better-auth/next-js";
 import { admin, captcha, haveIBeenPwned } from "better-auth/plugins";
 import { emailHarmony } from "better-auth-harmony";
 
+import { baseUrlHook } from "~/lib/auth/base-url";
+
 import { passwordHash, passwordVerify } from "./api/crypto";
 import { createParticipation, createUser, deleteUser } from "./api/registration";
 import { userExtraFields } from "./auth/extra-fields";
@@ -22,6 +24,7 @@ import {
 import { forumDeleteUser } from "./forum/admin";
 
 export const auth = betterAuth({
+  basePath: "/auth",
   database: drizzleAdapter(cmsDb, {
     provider: "pg",
     schema: {
@@ -57,6 +60,7 @@ export const auth = betterAuth({
     additionalFields: userExtraFields,
   },
   hooks: {
+    before: baseUrlHook,
     after: legacyCookieHook,
   },
   databaseHooks: {

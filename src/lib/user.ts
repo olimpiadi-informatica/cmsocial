@@ -24,6 +24,7 @@ export const hasPermission = cache(async function hasPermission<Resource extends
   if (!user) return false;
 
   const result = await auth.api.userHasPermission({
+    headers: await headers(),
     body: {
       userId: user.id,
       permission: { [resource]: [action] },

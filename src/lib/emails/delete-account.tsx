@@ -2,7 +2,15 @@ import type { User } from "better-auth";
 
 import { Button } from "./button";
 
-export function DeleteAccount({ user, token }: { user: User; token: string }) {
+export function DeleteAccount({
+  origin,
+  user,
+  token,
+}: {
+  origin: string;
+  user: User;
+  token: string;
+}) {
   return (
     <div>
       <p>Ciao {user.name},</p>
@@ -14,7 +22,10 @@ export function DeleteAccount({ user, token }: { user: User; token: string }) {
         Attenzione! Questa operazione è irreversibile. Se desideri confermare la cancellazione del
         tuo account, clicca sul link qui sotto:
       </p>
-      <Button url={`/delete-account?token=${encodeURIComponent(token)}`} text="Cancella account" />
+      <Button
+        url={`${origin}/delete-account?token=${encodeURIComponent(token)}`}
+        text="Cancella account"
+      />
       <p>
         Il link sarà valido solo per 60 minuti. Se non hai richiesto tu la cancellazione
         dell'account, ignora semplicemente questa email.

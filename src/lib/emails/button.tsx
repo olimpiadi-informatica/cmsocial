@@ -1,15 +1,8 @@
 export function Button({ url, text }: { url: string; text: string }) {
-  const origin =
-    process.env.NODE_ENV === "production"
-      ? "https://training.olinfo.it"
-      : `http://localhost:${process.env.PORT ?? 3000}`;
-
-  const href = new URL(url, origin).href;
-
   return (
     <div style={{ width: "100%" }}>
       <a
-        href={href}
+        href={url}
         style={{
           backgroundColor: "#65c3c8",
           borderRadius: "8px",

@@ -52,34 +52,44 @@ export async function sendEmail(address: string, subject: string, body: ReactNod
   }
 }
 
-export function sendResetPassword(data: { user: User; token: string }) {
+type Data = {
+  user: User;
+  token: string;
+  url: string;
+};
+
+export function sendResetPassword(data: Data) {
   return sendEmail(
     data.user.email,
     "Reimposta password - training.olinfo.it",
-    <ResetPassword user={data.user} token={data.token} />,
+    <ResetPassword origin={origin(data)} user={data.user} token={data.token} />,
   );
 }
 
-export function sendVerificationEmail(data: { user: User; token: string }) {
+export function sendVerificationEmail(data: Data) {
   return sendEmail(
     data.user.email,
     "Verifica email - training.olinfo.it",
-    <VerifyEmail user={data.user} token={data.token} />,
+    <VerifyEmail origin={origin(data)} user={data.user} token={data.token} />,
   );
 }
 
-export function sendChangeEmailVerification(data: { user: User; newEmail: string; token: string }) {
+export function sendChangeEmailVerification(data: Data & { newEmail: string }) {
   return sendEmail(
     data.newEmail,
     "Cambia email - training.olinfo.it",
-    <ChangeEmail user={data.user} token={data.token} />,
+    <ChangeEmail origin={origin(data)} user={data.user} token={data.token} />,
   );
 }
 
-export function sendDeleteAccountVerification(data: { user: User; token: string }) {
+export function sendDeleteAccountVerification(data: Data) {
   return sendEmail(
     data.user.email,
     "Cancella account - training.olinfo.it",
-    <DeleteAccount user={data.user} token={data.token} />,
+    <DeleteAccount origin={origin(data)} user={data.user} token={data.token} />,
   );
+}
+
+function origin(data: Data) {
+  return new URL(data.url).origin;
 }

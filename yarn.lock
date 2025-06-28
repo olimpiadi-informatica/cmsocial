@@ -1704,9 +1704,9 @@ better-auth-harmony@^1.2:
     validator "^13.15.15"
 
 better-auth@^1.2:
-  version "1.2.10"
-  resolved "https://registry.yarnpkg.com/better-auth/-/better-auth-1.2.10.tgz#073c19a704e70ac573eea9aacbd9afe99c51e52a"
-  integrity sha512-nEj1RG4DdLUuJiV5CR93ORyPCptGRBwksaPPCkUtGo9ka+UIlTpaiKoTaTqVLLYlqwX4bOj9tJ32oBNdf2G3Kg==
+  version "1.2.12"
+  resolved "https://registry.yarnpkg.com/better-auth/-/better-auth-1.2.12.tgz#b152e072dce70473a306cff9678b3f718ef72b01"
+  integrity sha512-YicCyjQ+lxb7YnnaCewrVOjj3nPVa0xcfrOJK7k5MLMX9Mt9UnJ8GYaVQNHOHLyVxl92qc3C758X1ihqAUzm4w==
   dependencies:
     "@better-auth/utils" "0.2.5"
     "@better-fetch/fetch" "^1.1.18"
@@ -1716,7 +1716,7 @@ better-auth@^1.2:
     "@simplewebauthn/server" "^13.0.0"
     better-call "^1.0.8"
     defu "^6.1.4"
-    jose "^5.9.6"
+    jose "^6.0.11"
     kysely "^0.28.2"
     nanostores "^0.11.3"
     zod "^3.24.1"
@@ -2891,12 +2891,7 @@ jiti@^1.17.1, jiti@^1.21.6:
   resolved "https://registry.yarnpkg.com/jiti/-/jiti-1.21.7.tgz#9dd81043424a3d28458b193d965f0d18a2300ba9"
   integrity sha512-/imKNG4EbWNrVjoNC/1H5/9GFy+tqjGBHCaSsN+P2RnPqjsLmv6UD3Ej+Kj8nBWaRAwyk7kK5ZUc+OEatnTR3A==
 
-jose@^5.9.6:
-  version "5.10.0"
-  resolved "https://registry.yarnpkg.com/jose/-/jose-5.10.0.tgz#c37346a099d6467c401351a9a0c2161e0f52c4be"
-  integrity sha512-s+3Al/p9g32Iq+oqXxkW//7jk2Vig6FF1CFqzVXoTUXt2qz89YWbL+OwS17NFYEvxC35n0FKeGO2LGYSxeM2Gg==
-
-jose@^6.0:
+jose@^6.0, jose@^6.0.11:
   version "6.0.11"
   resolved "https://registry.yarnpkg.com/jose/-/jose-6.0.11.tgz#0b7ea8b3b21a1bda5e00255a044c3a0e43270882"
   integrity sha512-QxG7EaliDARm1O1S8BGakqncGT9s25bKL1WSf6/oa17Tkqwi8D2ZNglqCF+DsYF88/rV66Q/Q2mFAy697E1DUg==
