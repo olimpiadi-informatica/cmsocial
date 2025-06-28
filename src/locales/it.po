@@ -374,6 +374,7 @@ msgid "Email non trovata"
 msgstr "Email non trovata"
 
 #: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
 msgid "Email non valida"
 msgstr "Email non valida"
@@ -1314,6 +1315,10 @@ msgstr "Tipo di file non valido"
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Token non valido"
 msgstr "Token non valido"
+
+#: src/lib/auth/errors.ts
+msgid "Token scaduto"
+msgstr "Token scaduto"
 
 #: src/app/not-found.tsx
 msgid "Torna alla home"

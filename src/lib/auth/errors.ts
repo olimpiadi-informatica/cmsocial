@@ -8,6 +8,7 @@ import type { auth } from "~/lib/auth";
 export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, MessageDescriptor> = {
   ACCOUNT_NOT_FOUND: msg`Username non trovato`,
   BACKUP_CODES_NOT_ENABLED: msg`Codici di backup non abilitati`,
+  COULDNT_UPDATE_YOUR_EMAIL: msg`Email non valida`,
   CREDENTIAL_ACCOUNT_NOT_FOUND: msg`Username non trovato`,
   EMAIL_CAN_NOT_BE_UPDATED: msg`L'email non può essere modificata`,
   EMAIL_IS_THE_SAME: msg`Email uguale alla precedente`,
@@ -34,6 +35,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   PROVIDER_NOT_FOUND: msg`Provider non trovato`,
   SESSION_EXPIRED: msg`Sessione scaduta`,
   SOCIAL_ACCOUNT_ALREADY_LINKED: msg`Account già collegato`,
+  TOKEN_EXPIRED: msg`Token scaduto`,
   TOTP_NOT_ENABLED: msg`TOTP non abilitato`,
   TWO_FACTOR_NOT_ENABLED: msg`2FA non abilitato`,
   USERNAME_IS_ALREADY_TAKEN_PLEASE_TRY_ANOTHER: msg`Username non disponibile`,
