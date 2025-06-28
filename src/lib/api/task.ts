@@ -31,6 +31,7 @@ export type Task = {
   timeLimit: number | null;
   memoryLimit: bigint | null;
   taskType: TaskType;
+  createdAt: Date;
   io: "grader" | "output-only" | "stdin / stdout" | "file";
 };
 
@@ -45,6 +46,7 @@ export const getTask = cache(async (name: string): Promise<Task | undefined> => 
       memoryLimit: datasets.memoryLimit,
       taskType: datasets.taskType,
       taskTypeParameters: datasets.taskTypeParameters,
+      createdAt: socialTasks.createdAt,
     })
     .from(tasks)
     .innerJoin(socialTasks, eq(socialTasks.id, tasks.id))

@@ -1,4 +1,12 @@
-import { boolean, doublePrecision, integer, pgTable, serial, varchar } from "drizzle-orm/pg-core";
+import {
+  boolean,
+  date,
+  doublePrecision,
+  integer,
+  pgTable,
+  serial,
+  varchar,
+} from "drizzle-orm/pg-core";
 
 export const socialParticipations = pgTable("social_participations", {
   id: integer().primaryKey(),
@@ -12,6 +20,7 @@ export const socialTasks = pgTable("social_tasks", {
   userCount: integer("nusers").notNull(),
   correctUserCount: integer("nuserscorrect").notNull(),
   scoreMultiplier: doublePrecision("score_multiplier").default(1).notNull(),
+  createdAt: date("_created", { mode: "date" }).notNull(),
 });
 
 export const tags = pgTable("tags", {

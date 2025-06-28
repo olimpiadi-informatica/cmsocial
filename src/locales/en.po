@@ -200,6 +200,10 @@ msgstr "Invalid captcha"
 msgid "Caricamento"
 msgstr "Loading"
 
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Caricato il:"
+msgstr "Uploaded on:"
+
 #: src/app/algobadge/bulk/summary.tsx
 #: src/app/algobadge/bulk/layout.tsx
 msgid "Categorie"

@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 
 import { Trans } from "@lingui/react/macro";
 
+import { DateTime } from "~/components/date";
 import { Flag } from "~/components/flags";
 import { getTask, getTaskLocales } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
@@ -40,30 +41,46 @@ export default async function Layout({ params, children }: Props) {
     <div className="flex grow flex-col gap-4">
       <header>
         <h1 className="text-center text-3xl font-bold">{task.title}</h1>
-        <div className="flex flex-col items-center justify-center gap-x-2 sm:flex-row">
+        <div className="grid md:grid-cols-2 gap-x-4 justify-center max-md:text-center w-max mx-auto">
           <div>
-            <Trans>Limite di tempo:</Trans> {task.timeLimit ? `${task.timeLimit} sec` : "N/A"}
+            <span className="font-bold">
+              <Trans>Limite di tempo:</Trans>
+            </span>{" "}
+            {task.timeLimit ? `${task.timeLimit} sec` : "N/A"}
           </div>
-          <div className="max-sm:hidden">/</div>
           <div>
-            <Trans>Limite di memoria:</Trans>{" "}
+            <span className="font-bold">
+              <Trans>Limite di memoria:</Trans>
+            </span>{" "}
             {task.memoryLimit ? `${task.memoryLimit >> 20n} MB` : "N/A"}
           </div>
-        </div>
-        <div className="flex items-center justify-center">
           <div>
-            <Trans>Input/output:</Trans> {task.io}
+            <span className="font-bold">
+              <Trans>Input/output:</Trans>
+            </span>{" "}
+            {task.io}
           </div>
-        </div>
-        <div className="text-center">
-          <Trans>Punteggio massimo:</Trans> {Math.round(task.scoreMultiplier * 100)}
-        </div>
-        <div className="text-center">
-          <Trans>Traduzioni:</Trans>{" "}
-          <div className="inline-flex gap-1">
-            {taskLocales.map((locale) => (
-              <Flag key={locale} locale={locale} />
-            ))}
+          <div>
+            <span className="font-bold">
+              <Trans>Punteggio massimo:</Trans>
+            </span>{" "}
+            {Math.round(task.scoreMultiplier * 100)}
+          </div>
+          <div>
+            <span className="font-bold">
+              <Trans>Traduzioni:</Trans>
+            </span>{" "}
+            <div className="inline-flex gap-1">
+              {taskLocales.map((locale) => (
+                <Flag key={locale} locale={locale} />
+              ))}
+            </div>
+          </div>
+          <div>
+            <span className="font-bold">
+              <Trans>Caricato il:</Trans>
+            </span>{" "}
+            <DateTime date={task.createdAt} dateStyle="long" timeStyle="hidden" />
           </div>
         </div>
       </header>
