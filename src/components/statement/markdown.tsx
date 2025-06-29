@@ -1,6 +1,6 @@
 import type { CompileOptions } from "@mdx-js/mdx";
 import type { MDXComponents } from "mdx/types";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import { MDXRemote } from "next-mdx-remote-client/rsc";
 import rehypeKatex from "rehype-katex";
 import remarkMath from "remark-math";
 
