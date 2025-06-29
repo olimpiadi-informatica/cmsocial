@@ -24,8 +24,11 @@ export async function submitBatch(
     switch ((err as Error).message as string) {
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
+      case "Unauthorized":
+        logger.error("Error submitting:", err);
+        return msg`Ripetere login`;
       default: {
-        logger.error("Error submitting", err);
+        logger.error("Error submitting:", err);
         return msg`Errore sconosciuto`;
       }
     }
@@ -47,8 +50,11 @@ export async function submitOutputOnly(
     switch ((err as Error).message as string) {
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
+      case "Unauthorized":
+        logger.error("Error submitting:", err);
+        return msg`Ripetere login`;
       default: {
-        logger.error("Error submitting", err);
+        logger.error("Error submitting:", err);
         return msg`Errore sconosciuto`;
       }
     }

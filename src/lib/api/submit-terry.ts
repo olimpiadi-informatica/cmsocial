@@ -1,6 +1,7 @@
-import { headers } from "next/headers";
-
 import z, { type ZodType } from "zod";
+
+import { createLegacyToken } from "~/lib/auth/legacy-cookie";
+import { getSessionUser } from "~/lib/user";
 
 const alertSchema = z.object({
   message: z.string(),
@@ -51,10 +52,15 @@ export async function abandonInput(token: string, id: string) {
 }
 
 async function legacyApi(endpoint: string, body: FormData): Promise<Response> {
+  const user = await getSessionUser();
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+
   const resp = await fetch(`https://territoriali.olinfo.it/api/${endpoint}`, {
     method: "POST",
     headers: {
-      cookie: (await headers()).get("cookie") ?? "",
+      cookie: `training_token=${await createLegacyToken(user, "1 minute")}`,
     },
     body,
   });

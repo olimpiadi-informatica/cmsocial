@@ -1,6 +1,7 @@
-import { headers } from "next/headers";
-
 import { isString } from "lodash-es";
+
+import { createLegacyToken } from "~/lib/auth/legacy-cookie";
+import { getSessionUser } from "~/lib/user";
 
 export async function submitTask(
   taskName: string,
@@ -25,11 +26,16 @@ export async function submitTask(
 }
 
 async function legacyApi(endpoint: string, body: object) {
+  const user = await getSessionUser();
+  if (!user) {
+    throw new Error("Unauthorized");
+  }
+
   const resp = await fetch(`https://training.olinfo.it/api/${endpoint}`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      cookie: (await headers()).get("cookie") ?? "",
+      cookie: `training_token=${await createLegacyToken(user, "1 minute")}`,
     },
     body: JSON.stringify(body),
     cache: "no-store",
