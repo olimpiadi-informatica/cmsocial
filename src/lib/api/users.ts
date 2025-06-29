@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, count, desc, eq, sql } from "drizzle-orm";
+import { and, count, desc, eq } from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
 import { participations, socialParticipations, socialUsers, users } from "~/lib/db/schema";
@@ -36,7 +36,7 @@ export const getRanking = cache((page: number, pageSize: number): Promise<User[]
     .select({
       id: users.id,
       username: users.username,
-      name: sql<string>`${users.firstName} || ' ' || ${users.lastName}`,
+      name: socialUsers.name,
       score: socialParticipations.score,
       image: socialUsers.image,
     })

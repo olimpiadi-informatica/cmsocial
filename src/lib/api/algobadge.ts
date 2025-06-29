@@ -4,7 +4,13 @@ import { and, desc, eq, inArray, sql } from "drizzle-orm";
 
 import { type AlgobadgeScore, type AlgobadgeScores, algobadge } from "~/lib/algobadge";
 import { cmsDb, terryDb } from "~/lib/db";
-import { participations, submissionResults, submissions, tasks, users } from "~/lib/db/schema";
+import {
+  participations,
+  socialUsers,
+  submissionResults,
+  submissions,
+  tasks,
+} from "~/lib/db/schema";
 import { terrySubmissions, terryTasks } from "~/lib/db/schema-terry";
 
 const trainingTaskNames = Object.values(algobadge)
@@ -62,16 +68,16 @@ export const getAlgobadgeScores = cache(
 
     const [user] = await cmsDb
       .select({
-        id: users.id,
-        username: users.username,
-        name: sql<string>`${users.firstName} || ' ' || ${users.lastName}`,
+        cmsId: socialUsers.cmsId,
+        username: socialUsers.username,
+        name: socialUsers.name,
       })
-      .from(users)
-      .where(eq(users.username, username));
+      .from(socialUsers)
+      .where(eq(socialUsers.username, username));
     if (!user) return;
 
     const [training, terry] = await Promise.all([
-      getTrainingScores(user.id),
+      getTrainingScores(user.cmsId),
       getTerryScores(username),
     ]);
 

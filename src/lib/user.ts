@@ -5,16 +5,29 @@ import { msg } from "@lingui/core/macro";
 
 import { auth } from "./auth";
 import type { Statements } from "./auth/permissions";
-import type { User } from "./auth/types";
+import { RegistrationStep, type User } from "./auth/types";
 
-export const getSessionUser = cache(async (): Promise<User | undefined> => {
-  const session = await auth.api
-    .getSession({
-      headers: await headers(),
-    })
-    .catch(() => null);
-  return session?.user as User | undefined;
-});
+export const getSessionUser = cache(
+  async (allowUnfinishedRegistration?: boolean): Promise<User | undefined> => {
+    const session = await auth.api
+      .getSession({
+        headers: await headers(),
+      })
+      .catch(() => null);
+
+    const user = session?.user as User | undefined;
+
+    if (
+      !allowUnfinishedRegistration &&
+      user &&
+      user.registrationStep !== RegistrationStep.Completed
+    ) {
+      return;
+    }
+
+    return user;
+  },
+);
 
 export const hasPermission = cache(async function hasPermission<Resource extends keyof Statements>(
   resource: Resource,

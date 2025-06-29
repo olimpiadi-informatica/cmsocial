@@ -7,8 +7,10 @@ import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { logger } from "better-auth";
 
+import { deleteTerryUser, deleteUser } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
+import { deleteForumUser } from "~/lib/forum/admin";
 import { getSessionUser, verifyPassword } from "~/lib/user";
 
 export async function deleteAccount(
@@ -30,6 +32,9 @@ export async function deleteAccount(
       headers: await headers(),
       query: { token },
     });
+    await deleteUser(user.cmsId);
+    await deleteTerryUser(user.username);
+    await deleteForumUser(user.username);
   } catch (err) {
     return getAuthError(err);
   }

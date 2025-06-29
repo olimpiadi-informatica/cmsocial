@@ -24,8 +24,8 @@ const nextConfig = {
         permanent: false,
       },
       {
-        source: "/user/:username/edit",
-        destination: "/user/:username/edit/password",
+        source: "/user/:username/edit(.*)",
+        destination: "/account/profile",
         permanent: false,
       },
       {
@@ -52,7 +52,19 @@ const nextConfig = {
     if (config.target[0] === "web") {
       config.target[1] = "es2022";
     }
+    config.module.rules.push({
+      test: /\.po$/,
+      use: ["@lingui/loader"],
+    });
     return config;
+  },
+  turbopack: {
+    rules: {
+      "*.po": {
+        loaders: ["@lingui/loader"],
+        as: "*.js",
+      }
+    }
   },
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],

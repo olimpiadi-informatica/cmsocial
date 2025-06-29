@@ -5,8 +5,8 @@ import { type I18n, setupI18n } from "@lingui/core";
 import { setI18n } from "@lingui/react/server";
 
 const locales = {
-  en: () => import("@lingui/loader!~/locales/en.po"),
-  it: () => import("@lingui/loader!~/locales/it.po"),
+  en: () => import("~/locales/en.po"),
+  it: () => import("~/locales/it.po"),
 };
 
 export const loadLocale = cache(async (): Promise<I18n> => {

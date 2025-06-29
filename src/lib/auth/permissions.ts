@@ -11,6 +11,10 @@ export type Statements = typeof statements;
 
 export const ac = createAccessControl(statements);
 
+const unverified = ac.newRole({
+  ...userAc.statements,
+});
+
 const newbie = ac.newRole({
   ...userAc.statements,
   task: ["submit"],
@@ -28,4 +32,4 @@ const admin = ac.newRole({
   task: ["submit"],
 });
 
-export const roles = { newbie, trusted, admin };
+export const roles = { unverified, newbie, trusted, admin };

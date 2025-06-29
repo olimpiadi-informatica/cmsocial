@@ -35,9 +35,9 @@ msgstr "2FA not enabled"
 
 #: src/app/(training)/task/[name]/submit/page.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
+#: src/app/(training)/login/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
-#: src/app/(training)/(login)/tabs.tsx
 msgid "Accedi"
 msgstr "Log in"
 
@@ -66,6 +66,14 @@ msgstr "Account already linked"
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Admin"
 msgstr "Admin"
+
+#: src/app/(training)/account/profile/page.tsx
+msgid "Aggiorna dati"
+msgstr "Update information"
+
+#: src/app/(training)/account/school/page.tsx
+msgid "Aggiorna scuola"
+msgstr "Update school"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Aggiungi"
@@ -108,10 +116,6 @@ msgstr "Other contests"
 msgid "Altre Risorse"
 msgstr "Other websites"
 
-#: src/app/(training)/(login)/signup/page-client.tsx
-msgid "Anagrafica"
-msgstr "Personal information"
-
 #: src/app/(training)/tasks/years/ois/table.tsx
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Anno"
@@ -120,6 +124,10 @@ msgstr "Year"
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Anziano"
 msgstr "Senior"
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Apri Gmail"
+msgstr "Open Gmail"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Archi del grafo"
@@ -138,7 +146,7 @@ msgstr "Make sure to call your class \"{0}\", otherwise the compilation will fai
 msgid "Attenzione:"
 msgstr "Warning:"
 
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/(training)/account/delete/page.tsx
 msgid "Attenzione! Questa azione è irreversibile."
 msgstr "Warning! This action is irreversible."
 
@@ -170,10 +178,6 @@ msgstr "Bronze"
 msgid "Browser non supportato. Usa Chrome o Edge."
 msgstr "Unsupported browser. Use Chrome or Edge."
 
-#: src/app/(training)/user/[username]/edit/avatar/page.tsx
-msgid "Cambia foto profilo"
-msgstr "Update profile picture"
-
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cambia input"
 msgstr "Generate new input"
@@ -187,12 +191,12 @@ msgstr "Change language"
 msgid "Cambia password"
 msgstr "Update password"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-msgid "Cambia scuola"
-msgstr "Update school"
+#: src/app/(training)/account/layout.tsx
+msgid "Cancella account"
+msgstr "Delete account"
 
+#: src/app/signup/_steps/actions.ts
 #: src/app/(training)/forgot-password/actions.ts
-#: src/app/(training)/(login)/signup/actions.ts
 msgid "Captcha non valido"
 msgstr "Invalid captcha"
 
@@ -239,6 +243,10 @@ msgstr "Source code"
 msgid "Codici di backup non abilitati"
 msgstr "Backup codes not enabled"
 
+#: src/app/signup/_steps/actions.ts
+msgid "Cognome non valido"
+msgstr "Invalid last name"
+
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Come funziona l'input e l'output?"
@@ -257,8 +265,8 @@ msgstr "Compilation failed"
 msgid "Compilazione in corso"
 msgstr "Compiling"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Comune"
 msgstr "City"
 
@@ -266,26 +274,27 @@ msgstr "City"
 msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
 msgstr "With algobadge you will be guided through a curated selection of tasks to solve, ordered by increasing difficulty, while being able to explore new algorithmic techniques in a gradual and effective way."
 
-#: src/app/(training)/(email-callback)/verify-email/page.tsx
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
 msgstr "Confirm"
 
-#: src/app/(training)/user/[username]/edit/delete/actions.ts
+#: src/app/signup/_steps/step4.tsx
+#: src/app/signup/_steps/step3.tsx
+#: src/app/signup/_steps/step1.tsx
+msgid "Continua"
+msgstr "Continue"
+
+#: src/app/(training)/account/delete/actions.ts
 msgid "Controlla la tua casella di posta per completare l'eliminazione dell'account."
 msgstr "Check your inbox to complete the account deletion."
-
-#: src/app/(training)/(login)/signup/actions.ts
-msgid "Controlla la tua casella di posta per confermare l'account."
-msgstr "Check your inbox to confirm your account."
-
-#: src/app/(training)/user/[username]/edit/email/actions.ts
-msgid "Controlla la tua casella di posta per confermare l'email."
-msgstr "Check your inbox to confirm your email."
 
 #: src/app/(training)/forgot-password/actions.ts
 msgid "Controlla la tua casella di posta per recuperare la password."
 msgstr "Check your inbox to recover your password."
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Controlla la tua casella di posta per verificare l'account"
+msgstr "Check your inbox to verify the account"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
@@ -296,13 +305,17 @@ msgstr "Correct"
 msgid "Cosa devo inviare?"
 msgstr "What should I submit?"
 
-#: src/app/(training)/(login)/signup/page-client.tsx
-msgid "Crea"
-msgstr "Create"
+#: src/app/signup/layout.tsx
+msgid "Crea un account"
+msgstr "Create an account"
 
 #: src/components/forum-posts.tsx
 msgid "Crea un nuovo argomento"
 msgstr "Create new topic"
+
+#: src/app/signup/page.tsx
+msgid "Credenziali"
+msgstr "Credentials"
 
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
@@ -313,6 +326,11 @@ msgstr "Date and time"
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Data e ora:"
 msgstr "Date and time:"
+
+#: src/app/(training)/account/school/actions.ts
+#: src/app/(training)/account/profile/actions.ts
+msgid "Dati aggiornati con successo"
+msgstr "Information updated successfully"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
@@ -356,22 +374,14 @@ msgstr "Graph editor"
 msgid "Edizione {edition}"
 msgstr "Edition {edition}"
 
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/(training)/account/delete/page.tsx
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Elimina account"
 msgstr "Delete account"
 
-#: src/app/(training)/user/[username]/edit/tabs.tsx
-msgid "Eliminazione"
-msgstr "Delete"
-
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/(training)/account/delete/page.tsx
 msgid "Eliminazione account"
 msgstr "Delete account"
-
-#: src/app/(training)/user/[username]/edit/tabs.tsx
-msgid "Email"
-msgstr "Email"
 
 #: src/lib/auth/errors.ts
 msgid "Email non trovata"
@@ -395,11 +405,11 @@ msgstr "Invalid email or password"
 msgid "Email uguale alla precedente"
 msgstr "Email is the same as before"
 
-#: src/app/(training)/(email-callback)/verify-email/actions.ts
+#: src/app/auth/callback/credential/route.ts
 msgid "Email verificata con successo!"
 msgstr "Email successfully verified!"
 
-#: src/app/(training)/(login)/login/page-client.tsx
+#: src/app/(training)/login/page-client.tsx
 msgid "Entra"
 msgstr "Log in"
 
@@ -494,22 +504,22 @@ msgstr "File too big"
 msgid "Finale"
 msgstr "Final"
 
+#: src/app/signup/page.tsx
+msgid "Fine"
+msgstr "Done"
+
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/(training)/(home)/page.tsx
 msgid "Forum"
 msgstr "Forum"
 
-#: src/app/(training)/user/[username]/edit/tabs.tsx
-msgid "Foto"
-msgstr "Picture"
-
 #. placeholder {0}: post.username
 #: src/components/forum-posts.tsx
 msgid "Foto profilo di {0}"
 msgstr "{0}'s profile picture"
 
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/(training)/account/delete/page.tsx
 msgid "Frase di conferma"
 msgstr "Confirmation phrase"
 
@@ -559,6 +569,10 @@ msgstr "Graph"
 msgid "Greedy, sorting e searching"
 msgstr "Greedy, sorting and searching"
 
+#: src/app/signup/_steps/step5.tsx
+msgid "Hai completato la registrazione! Puoi inziare a risolvere i problemi"
+msgstr "You have completed the registration! You can start solving tasks"
+
 #: src/app/algobadge/(categories)/header.tsx
 msgid "Hai raggiunto il badge di diamante!"
 msgstr "You have reached the diamond badge!"
@@ -587,6 +601,10 @@ msgstr "Learn step by step"
 msgid "Impossibile scollegare l'account"
 msgstr "Unable to unlink account"
 
+#: src/app/signup/_steps/step2.tsx
+msgid "Indietro"
+msgstr "Back"
+
 #: src/lib/algobadge.ts
 msgid "Induzione e ricorsione"
 msgstr "Induction and recursion"
@@ -603,9 +621,17 @@ msgstr "Input/output:"
 msgid "Inserisci gli username"
 msgstr "Enter the usernames"
 
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/signup/_steps/step3.tsx
+msgid "Inserisci il tuo nome e cognome e scegli un username"
+msgstr "Enter your first and last name and choose a username"
+
+#: src/app/(training)/account/delete/page.tsx
 msgid "Inserisci la frase di conferma"
 msgstr "Enter the confirmation phrase"
+
+#: src/app/signup/_steps/step1.tsx
+msgid "Inserisci la tua email e scegli una nuova password"
+msgstr "Enter your email and choose a new password"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
@@ -630,8 +656,8 @@ msgstr "Submit solution"
 msgid "Iscriviti"
 msgstr "Participate"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Istituto"
 msgstr "School"
 
@@ -674,9 +700,14 @@ msgstr "Fibonacci Games logo"
 msgid "Logo OII"
 msgstr "OII logo"
 
+#: src/app/signup/layout.tsx
 #: src/app/(training)/(home)/footer.tsx
 msgid "Logo Olimpiadi Italiane di Informatica"
 msgstr "Italian Olympiads in Informatics logo"
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Logo Outlook"
+msgstr "Outlook Logo"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Lunghezza archi"
@@ -702,24 +733,22 @@ msgstr "HM"
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Ministry of Education and Merit"
 
-#: src/app/(training)/user/[username]/edit/email/page.tsx
-#: src/app/(training)/user/[username]/edit/email/page.tsx
-msgid "Modifica email"
-msgstr "Update email"
-
-#: src/app/(training)/user/[username]/edit/password/page.tsx
-#: src/app/(training)/user/[username]/edit/password/page.tsx
+#: src/app/(training)/account/layout.tsx
+#: src/app/(training)/account/password/page.tsx
+#: src/app/(training)/account/password/page.tsx
 msgid "Modifica password"
 msgstr "Update password"
 
 #: src/app/(training)/user/[username]/page.tsx
-#: src/app/(training)/user/[username]/edit/layout.tsx
+#: src/app/(training)/account/layout.tsx
+#: src/app/(training)/account/profile/page.tsx
 msgid "Modifica profilo"
 msgstr "Update profile"
 
-#: src/app/(training)/user/[username]/edit/avatar/page.tsx
-msgid "Modifica su Gravatar"
-msgstr "Update on Gravatar"
+#: src/app/(training)/account/layout.tsx
+#: src/app/(training)/account/school/page.tsx
+msgid "Modifica scuola"
+msgstr "Update school"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Mostra tag"
@@ -801,6 +830,14 @@ msgstr "Title"
 msgid "Nome del problema"
 msgstr "Problem name"
 
+#: src/app/signup/_steps/actions.ts
+msgid "Nome non valido"
+msgstr "Invalid first name"
+
+#: src/app/(training)/login/page-client.tsx
+msgid "Non hai un account? <0>Registrati</0>"
+msgstr "Don't have an account? <0>Sign up</0>"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Non inviato"
 msgstr "Not submitted"
@@ -829,7 +866,7 @@ msgstr "Info:"
 msgid "Novizio"
 msgstr "Newbie"
 
-#: src/app/(training)/user/[username]/edit/password/page.tsx
+#: src/app/(training)/account/password/page.tsx
 msgid "Nuova password"
 msgstr "New password"
 
@@ -880,15 +917,11 @@ msgstr "Page {page}"
 msgid "Parzialmente corretto"
 msgstr "Partially correct"
 
-#: src/app/(training)/user/[username]/edit/tabs.tsx
-msgid "Password"
-msgstr "Password"
+#: src/app/(training)/login/page-client.tsx
+msgid "Password dimenticata?"
+msgstr "Forgot password?"
 
-#: src/app/(training)/(login)/login/page-client.tsx
-msgid "Password dimenticata"
-msgstr "Forgot password"
-
-#: src/app/(training)/user/[username]/edit/password/actions.ts
+#: src/app/(training)/account/password/actions.ts
 msgid "Password modificata con successo"
 msgstr "Password successfully modified"
 
@@ -913,7 +946,7 @@ msgstr "Password too weak"
 msgid "Password troppo lunga"
 msgstr "Password too long"
 
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/(training)/account/delete/page.tsx
 msgid "Per continuare, inserisci la frase di conferma:"
 msgstr "Please enter the confirmation phrase to continue:"
 
@@ -936,10 +969,6 @@ msgstr "Training website of the Fibonacci Games"
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Pre-OII"
 msgstr "Pre-OII"
-
-#: src/app/(training)/(email-callback)/verify-email/page.tsx
-msgid "Premi conferma per completare la verifica della tua email"
-msgstr "Press confirm to complete your email verification"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
@@ -980,6 +1009,7 @@ msgid "Problemi risolti"
 msgstr "Solved task"
 
 #: src/components/navbar/user-dropdown.tsx
+#: src/app/signup/page.tsx
 msgid "Profilo"
 msgstr "Profile"
 
@@ -995,8 +1025,8 @@ msgstr "Dynamic programming"
 msgid "Provider non trovato"
 msgstr "Provider not found"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Provincia"
 msgstr "Province"
 
@@ -1011,6 +1041,10 @@ msgstr "Maximum score:"
 #: src/app/(training)/user/[username]/stats.tsx
 msgid "Punti"
 msgstr "Points"
+
+#: src/app/signup/_steps/step4.tsx
+msgid "Puoi facoltativamente selezionare la tua scuola, verrà mostrata nella tua pagina di profilo"
+msgstr "You can optionally select your school, it will be shown on your profile page"
 
 #: src/app/not-found.tsx
 msgid "Questa pagina non è stata trovata 😢"
@@ -1029,22 +1063,18 @@ msgstr "This input expires <0/>."
 msgid "Recupera password"
 msgstr "Recover password"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Regione"
 msgstr "Region"
-
-#: src/app/(training)/(login)/tabs.tsx
-msgid "Registrati"
-msgstr "Sign up"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
 msgstr "Generate input"
 
-#: src/app/(training)/(login)/login/page-client.tsx
-msgid "Ricordami"
-msgstr "Remember me"
+#: src/app/signup/_steps/step2.tsx
+msgid "Rimanda email"
+msgstr "Resend email"
 
 #. placeholder {0}: tag.description
 #: src/app/(training)/tasks/[page]/filter.tsx
@@ -1081,6 +1111,10 @@ msgstr "3rd round"
 msgid "Round 4"
 msgstr "4th round"
 
+#: src/app/signup/_steps/step4.tsx
+msgid "Salta"
+msgstr "Skip"
+
 #: src/components/source-code.tsx
 #: src/components/source-code.tsx
 msgid "Scarica codice"
@@ -1099,23 +1133,23 @@ msgstr "Download input"
 msgid "Scarica output"
 msgstr "Download output"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Scegli il comune"
 msgstr "Select your city"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Scegli la provincia"
 msgstr "Select your province"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Scegli la regione"
 msgstr "Select your region"
 
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-#: src/app/(training)/(login)/signup/page-client.tsx
+#: src/app/signup/_steps/step4.tsx
+#: src/app/(training)/account/school/page.tsx
 msgid "Scegli la scuola"
 msgstr "Select your school"
 
@@ -1124,21 +1158,9 @@ msgstr "Select your school"
 msgid "Scolastiche"
 msgstr "School selections"
 
-#: src/app/(training)/user/[username]/edit/tabs.tsx
+#: src/app/signup/page.tsx
 msgid "Scuola"
 msgstr "School"
-
-#: src/app/(training)/user/[username]/edit/school/actions.ts
-msgid "Scuola cambiata con successo"
-msgstr "School successfully modified"
-
-#: src/app/(training)/user/[username]/edit/school/page.tsx
-msgid "Scuola di provenienza"
-msgstr "School"
-
-#: src/app/(training)/(login)/signup/page-client.tsx
-msgid "Scuola di provenienza (opzionale)"
-msgstr "School (optional)"
 
 #: src/app/fibonacci/page.tsx
 #: src/app/fibonacci/navbar.tsx
@@ -1319,7 +1341,7 @@ msgid "Tipo di file non valido"
 msgstr "Invalid file type"
 
 #: src/lib/auth/errors.ts
-#: src/app/(training)/(email-callback)/verify-email/actions.ts
+#: src/app/auth/callback/credential/route.ts
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Token non valido"
@@ -1356,6 +1378,7 @@ msgstr "Username not found"
 
 #: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
+#: src/app/signup/_steps/actions.ts
 msgid "Username non valido"
 msgstr "Invalid username"
 
@@ -1374,9 +1397,12 @@ msgstr "User already exists"
 #: src/lib/user.ts
 #: src/lib/user.ts
 #: src/lib/auth/errors.ts
-#: src/app/(training)/user/[username]/edit/school/actions.ts
-#: src/app/(training)/user/[username]/edit/email/actions.ts
-#: src/app/(training)/user/[username]/edit/delete/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/(training)/account/school/actions.ts
+#: src/app/(training)/account/profile/actions.ts
+#: src/app/(training)/account/delete/actions.ts
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Utente non trovato"
 msgstr "User not found"
@@ -1389,15 +1415,19 @@ msgstr "Number of people who tried it:"
 msgid "Utenti che l'hanno risolto:"
 msgstr "Number of people who solved it:"
 
-#: src/app/(training)/user/[username]/edit/password/page.tsx
+#: src/app/signup/_steps/step5.tsx
+msgid "Vai ai problemi"
+msgstr "Go to tasks"
+
+#: src/app/(training)/account/password/page.tsx
 msgid "Vecchia password"
 msgstr "Old password"
 
-#: src/app/(training)/(email-callback)/verify-email/page.tsx
+#: src/app/signup/page.tsx
 msgid "Verifica email"
-msgstr "Verifica email"
+msgstr "Verify email"
 
-#: src/app/(training)/user/[username]/edit/delete/page.tsx
+#: src/app/(training)/account/delete/page.tsx
 msgid "Voglio cancellare il mio account"
 msgstr "I want to delete my account"
 

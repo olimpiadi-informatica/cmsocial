@@ -6,36 +6,33 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
+import { updateName } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
-import { getSessionUser, verifyPassword } from "~/lib/user";
+import { getSessionUser } from "~/lib/user";
 
-export async function changeEmail(
-  password: string,
-  email: string,
+export async function updateUserProfile(
+  firstName: string | undefined,
+  lastName: string | undefined,
 ): Promise<MessageDescriptor | undefined> {
   const user = await getSessionUser();
   if (!user) return msg`Utente non trovato`;
 
-  const err = await verifyPassword(password);
-  if (err) return err;
-
-  logger.info(`Changing email from ${user.email} to ${email}`);
-
   try {
-    await auth.api.changeEmail({
+    await auth.api.updateUser({
       headers: await headers(),
       body: {
-        newEmail: email,
+        name: `${firstName} ${lastName}`,
       },
     });
+    await updateName(user.cmsId, firstName, lastName);
   } catch (err) {
     return getAuthError(err);
   }
-  revalidatePath("/", "layout"); // The profile picture might have changed
 
-  const messageId = msg`Controlla la tua casella di posta per confermare l'email.`.id;
+  revalidatePath("/", "layout");
+
+  const messageId = msg`Dati aggiornati con successo`.id;
   redirect(`/user/${user.username}?notify=${encodeURIComponent(messageId)}`);
 }

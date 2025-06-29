@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
+import { Pencil } from "lucide-react";
 
 import { DateTime } from "~/components/date";
 import { H1 } from "~/components/header";
@@ -101,7 +102,8 @@ export default async function Page({ params }: Props) {
           </div>
           {me?.username === user.username && (
             <div className="mt-auto">
-              <Link href={`/user/${user.username}/edit/password`} className="link link-info">
+              <Link href="/account/profile" className="btn btn-primary">
+                <Pencil size={20} />
                 <Trans>Modifica profilo</Trans>
               </Link>
             </div>
@@ -127,7 +129,7 @@ export default async function Page({ params }: Props) {
   );
 }
 
-function UserBadge({ role }: { role: "newbie" | "trusted" | "admin" | null }) {
+function UserBadge({ role }: { role: "unverified" | "newbie" | "trusted" | "admin" | null }) {
   switch (role) {
     case "admin":
       return (

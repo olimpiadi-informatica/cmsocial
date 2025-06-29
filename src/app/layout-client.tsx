@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import { type ReactNode, useEffect, useMemo } from "react";
+import { type ReactNode, useCallback, useEffect, useMemo } from "react";
 
 import { type Messages, setupI18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
@@ -25,16 +25,29 @@ export function LayoutClient({ locale, messages, children }: LayoutProps) {
   }, [locale, messages]);
 
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const notify = useMemo(() => searchParams.get("notify"), [searchParams]);
-  useEffect(() => {
-    if (notify) {
-      notifySuccess(i18n._(notify));
+  const removeSearchParam = useCallback(
+    (name: string) => {
       const url = new URL(window.location.href);
-      url.searchParams.delete("notify");
+      url.searchParams.delete(name);
       router.replace(url.href);
+    },
+    [router],
+  );
+
+  const searchParams = useSearchParams();
+  useEffect(() => {
+    const success = searchParams.get("notify");
+    if (success) {
+      notifySuccess(i18n._(success));
+      removeSearchParam("notify");
     }
-  }, [notify, notifySuccess, i18n, router]);
+
+    const error = searchParams.get("error");
+    if (error) {
+      notifyError(new Error(i18n._(error)));
+      removeSearchParam("error");
+    }
+  }, [searchParams, removeSearchParam, notifySuccess, notifyError, i18n]);
 
   return (
     <I18nProvider i18n={i18n}>

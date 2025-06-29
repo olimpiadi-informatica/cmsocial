@@ -13,14 +13,14 @@ const successSchema = z.object({
 });
 
 // TODO: create hook
-export async function forumLogOut(username: string) {
+export async function logOutForum(username: string) {
   const userId = await getUserId(username);
   if (userId) {
     await discourseApi("POST", `/admin/users/${userId}/log_out.json`, successSchema);
   }
 }
 
-export async function forumDeleteUser(username: string) {
+export async function deleteForumUser(username: string) {
   const userId = await getUserId(username);
   if (userId) {
     await discourseApi("PUT", `/admin/users/${userId}/anonymize.json`, successSchema);

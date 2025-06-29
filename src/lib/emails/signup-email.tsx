@@ -1,26 +1,16 @@
-import type { User } from "better-auth";
-
 import { Button } from "./button";
 
-export function VerifyEmail({
-  origin,
-  user,
-  token,
-}: {
-  origin: string;
-  user: User;
-  token: string;
-}) {
+export function SignupEmail({ origin, token }: { origin: string; token: string }) {
   return (
     <div>
-      <p>Ciao {user.name},</p>
+      <p>Ciao,</p>
       <p>grazie per esserti registrato/a su training.olinfo.it!</p>
       <p>
         Per completare la registrazione, ti chiediamo di verificare il tuo indirizzo email. Clicca
         sul pulsante qui sotto per confermare il tuo indirizzo:
       </p>
       <Button
-        url={`${origin}/verify-email?token=${encodeURIComponent(token)}`}
+        url={`${origin}/auth/callback/credential?token=${encodeURIComponent(token)}`}
         text="Verifica email"
       />
       <p>

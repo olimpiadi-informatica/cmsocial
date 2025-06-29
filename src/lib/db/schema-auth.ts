@@ -5,13 +5,11 @@ export const socialUsers = pgTable("social_users", {
   id: text("auth_id").primaryKey(),
   cmsId: integer("id").notNull(),
   name: text("name").notNull(),
-  firstName: text("first_name").notNull(),
-  lastName: text("last_name").notNull(),
-  username: text("username").unique(),
+  username: text("username").notNull().unique(),
   displayUsername: text("display_username"),
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").notNull(),
-  normalizedEmail: text("normalized_email").unique(),
+  normalizedEmail: text("normalized_email").notNull().unique(),
   image: text("image")
     .notNull()
     .generatedAlwaysAs(
@@ -19,10 +17,11 @@ export const socialUsers = pgTable("social_users", {
         sql`'https://www.gravatar.com/avatar/' || MD5(${socialUsers.email}) || '?d=identicon'`,
     ),
   institute: varchar("institute_code"),
-  role: text("role").$type<"newbie" | "trusted" | "admin">(),
+  role: text("role").$type<"unverified" | "newbie" | "trusted" | "admin">().notNull(),
   banned: boolean("banned"),
   banReason: text("ban_reason"),
   banExpires: timestamp("ban_expires"),
+  registrationStep: integer("registration_step").notNull(),
   createdAt: timestamp("registration_time").notNull(),
   updatedAt: timestamp("updated_at").notNull(),
 });

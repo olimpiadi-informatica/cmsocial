@@ -9,12 +9,10 @@ import type { User } from "better-auth";
 import { createTransport, type SendMailOptions } from "nodemailer";
 import type StreamTransport from "nodemailer/lib/stream-transport";
 
-import { ChangeEmail } from "~/lib/emails/change-email";
-
 import { DeleteAccount } from "./emails/delete-account";
 import { ResetPassword } from "./emails/reset-password";
+import { SignupEmail } from "./emails/signup-email";
 import { Template } from "./emails/template";
-import { VerifyEmail } from "./emails/verify-email";
 
 const transporter =
   process.env.NODE_ENV === "production"
@@ -70,15 +68,7 @@ export function sendVerificationEmail(data: Data) {
   return sendEmail(
     data.user.email,
     "Verifica email - training.olinfo.it",
-    <VerifyEmail origin={origin(data)} user={data.user} token={data.token} />,
-  );
-}
-
-export function sendChangeEmailVerification(data: Data & { newEmail: string }) {
-  return sendEmail(
-    data.newEmail,
-    "Cambia email - training.olinfo.it",
-    <ChangeEmail origin={origin(data)} user={data.user} token={data.token} />,
+    <SignupEmail origin={origin(data)} token={data.token} />,
   );
 }
 

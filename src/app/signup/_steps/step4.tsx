@@ -1,45 +1,39 @@
 "use client";
 
-import { use } from "react";
-
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
-import { Form, SubmitButton } from "@olinfo/react-components";
+import { Form, FormButton, SubmitButton } from "@olinfo/react-components";
+import { ArrowRight, Redo } from "lucide-react";
 
-import { H2 } from "~/components/header";
 import { LocationField } from "~/components/location-field";
 import { getCities, getProvinces, getRegions, getSchools } from "~/lib/api/location";
 
-import { changeSchool } from "./actions";
+import { step4 } from "./actions";
 
-type Props = {
-  params: Promise<{ username: string }>;
+type FormValue = {
+  region?: string;
+  province?: string;
+  city?: string;
+  institute?: string;
 };
-
-type Institute = {
-  region: string;
-  province: string;
-  city: string;
-  institute: string;
-};
-
-export default function Page({ params }: Props) {
-  const { username } = use(params);
-
+export function Step4() {
   const { _ } = useLingui();
 
-  const submit = async (data: Institute) => {
-    const err = await changeSchool(username, data.institute.trim());
+  const submit = async ({ institute }: FormValue) => {
+    const err = await step4(institute?.trim());
     if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
 
   return (
     <Form onSubmit={submit}>
-      <H2 className="mt-8">
-        <Trans>Scuola di provenienza</Trans>
-      </H2>
+      <div className="text-center text-sm text-base-content/80">
+        <Trans>
+          Puoi facoltativamente selezionare la tua scuola, verrà mostrata nella tua pagina di
+          profilo
+        </Trans>
+      </div>
       <LocationField
         label={_(msg`Regione`)}
         field="region"
@@ -74,9 +68,16 @@ export default function Page({ params }: Props) {
           fetcher={getSchools}
         />
       )}
-      <SubmitButton>
-        <Trans>Cambia scuola</Trans>
-      </SubmitButton>
+      <div className="flex justify-center gap-4">
+        <SubmitButton>
+          <ArrowRight size={20} />
+          <Trans>Continua</Trans>
+        </SubmitButton>
+        <FormButton onClick={() => submit({})}>
+          <Redo size={20} />
+          <Trans>Salta</Trans>
+        </FormButton>
+      </div>
     </Form>
   );
 }

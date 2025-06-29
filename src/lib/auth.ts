@@ -7,21 +7,13 @@ import { emailHarmony } from "better-auth-harmony";
 import { baseUrlHook } from "~/lib/auth/base-url";
 
 import { passwordHash, passwordVerify } from "./api/crypto";
-import { createParticipation, createUser, deleteUser } from "./api/registration";
 import { userExtraFields } from "./auth/extra-fields";
 import { legacyCookieHook } from "./auth/legacy-cookie";
 import { ac, roles } from "./auth/permissions";
-import type { User } from "./auth/types";
 import { username } from "./auth/username-plugin";
 import { cmsDb } from "./db";
 import * as schema from "./db/schema-auth";
-import {
-  sendChangeEmailVerification,
-  sendDeleteAccountVerification,
-  sendResetPassword,
-  sendVerificationEmail,
-} from "./email";
-import { forumDeleteUser } from "./forum/admin";
+import { sendDeleteAccountVerification, sendResetPassword, sendVerificationEmail } from "./email";
 
 export const auth = betterAuth({
   basePath: "/auth",
@@ -36,7 +28,6 @@ export const auth = betterAuth({
   emailAndPassword: {
     enabled: true,
     password: { hash: passwordHash, verify: passwordVerify },
-    requireEmailVerification: true,
     sendResetPassword,
   },
   emailVerification: {
@@ -45,17 +36,9 @@ export const auth = betterAuth({
     sendVerificationEmail,
   },
   user: {
-    changeEmail: {
-      enabled: true,
-      sendChangeEmailVerification,
-    },
     deleteUser: {
       enabled: true,
       sendDeleteAccountVerification,
-      afterDelete: async (user) => {
-        await deleteUser(user.email);
-        await forumDeleteUser((user as unknown as User).username);
-      },
     },
     additionalFields: userExtraFields,
   },
@@ -63,23 +46,11 @@ export const auth = betterAuth({
     before: baseUrlHook,
     after: legacyCookieHook,
   },
-  databaseHooks: {
-    user: {
-      create: {
-        before: async (user) => {
-          (user as unknown as User).cmsId = await createUser(user as unknown as User);
-        },
-        after: async (user) => {
-          await createParticipation(user as unknown as User);
-        },
-      },
-    },
-  },
   plugins: [
     admin({
       ac,
       roles,
-      defaultRole: "newbie",
+      defaultRole: "unverified",
     }),
     captcha({
       provider: "google-recaptcha",

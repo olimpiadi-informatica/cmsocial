@@ -21,7 +21,7 @@ export type User = {
   lastName: string;
   image: string;
   score: number;
-  role: "newbie" | "trusted" | "admin" | null;
+  role: "unverified" | "newbie" | "trusted" | "admin" | null;
   registrationTime: Date;
   institute: string | null;
 };
@@ -31,10 +31,10 @@ export const getUser = cache(async (username?: string | null): Promise<User | un
   const [user] = await cmsDb
     .select({
       id: users.id,
-      username: users.username,
+      username: socialUsers.username,
       firstName: users.firstName,
       lastName: users.lastName,
-      image: sql<string>`'https://www.gravatar.com/avatar/' || MD5(${users.email}) || '?d=identicon'`,
+      image: socialUsers.image,
       score: socialParticipations.score,
       role: socialUsers.role,
       registrationTime: socialUsers.createdAt,
@@ -110,11 +110,4 @@ function getTerryScores(username: string): Promise<UserScore[]> {
     .from(terryUserTasks)
     .innerJoin(terryTasks, eq(terryTasks.name, terryUserTasks.task))
     .where(and(eq(terryUserTasks.token, username), gt(terryUserTasks.score, 0)));
-}
-
-export async function updateUserSchool(userId: number, institute: string) {
-  await cmsDb
-    .update(socialUsers)
-    .set({ institute: institute })
-    .where(eq(socialUsers.cmsId, userId));
 }

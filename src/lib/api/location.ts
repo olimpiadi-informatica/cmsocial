@@ -16,6 +16,9 @@ async function getCsrf() {
     },
     cache: "no-store",
   });
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
   const cookies = parse(res.headers.getSetCookie());
   const csrf = cookies.find((cookie) => cookie.name === "csrftoken")?.value;
   if (!csrf) {

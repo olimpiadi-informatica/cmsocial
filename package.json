@@ -12,6 +12,7 @@
   "dependencies": {
     "@date-fns/tz": "^1.2",
     "@fireworks-js/react": "^2.10",
+    "@gravatar-com/quick-editor": "^0.8",
     "@icons-pack/react-simple-icons": "^13",
     "@libsql/client": "^0.15",
     "@lingui/core": "^5.2",
