@@ -41,7 +41,7 @@ export default async function Layout({ params, children }: Props) {
     <div className="flex grow flex-col gap-4">
       <header>
         <h1 className="text-center text-3xl font-bold">{task.title}</h1>
-        <div className="grid md:grid-cols-2 gap-x-4 justify-center max-md:text-center w-max mx-auto">
+        <div className="grid md:grid-cols-2 gap-x-4 justify-center text-center w-max mx-auto">
           <div>
             <span className="font-bold">
               <Trans>Limite di tempo:</Trans>
