@@ -76,7 +76,11 @@ export const auth = betterAuth({
     },
   },
   plugins: [
-    admin({ ac, roles }),
+    admin({
+      ac,
+      roles,
+      defaultRole: "newbie",
+    }),
     captcha({
       provider: "google-recaptcha",
       secretKey: process.env.CAPTCHA_SECRET_KEY!,
