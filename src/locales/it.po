@@ -1051,6 +1051,11 @@ msgstr "Ricordami"
 msgid "Rimuovi tag {0}"
 msgstr "Rimuovi tag {0}"
 
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+msgid "Ripetere login"
+msgstr "Ripetere login"
+
 #: src/app/(training)/(home)/page.tsx
 msgid "Risolvi tutti i problemi"
 msgstr "Risolvi tutti i problemi"
