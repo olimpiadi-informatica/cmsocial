@@ -80,7 +80,6 @@ export function sendDeleteAccountVerification(data: Data) {
   );
 }
 
-function origin(_data: Data) {
-  // return new URL(data.url).origin;
-  return "https://training.olinfo.it";
+function origin(data: Data) {
+  return new URL(data.url).origin;
 }

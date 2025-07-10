@@ -7,7 +7,8 @@ export const baseUrlHook = createAuthMiddleware((ctx) => {
   const fromRequestProto = ctx.headers?.get("x-forwarded-proto");
 
   if (fromRequest && fromRequestProto) {
-    const baseUrl = new URL(basePath, `${fromRequestProto}://${fromRequest}`);
+    // const baseUrl = new URL(basePath, `${fromRequestProto}://${fromRequest}`);
+    const baseUrl = new URL(basePath, "https://training.olinfo.it");
     ctx.context.baseURL = baseUrl.href;
     ctx.context.options.baseURL = baseUrl.origin;
   }

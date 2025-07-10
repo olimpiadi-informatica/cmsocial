@@ -134,5 +134,5 @@ export async function step4(institute: string | undefined) {
 
   revalidatePath("/", "layout");
 
-  logger.info(`User ${user} has completed the registration process.`);
+  logger.info(`User ${user.email} has completed the registration process.`);
 }
