@@ -1,7 +1,5 @@
 "use client";
 
-import { use } from "react";
-
 import { msg } from "@lingui/core/macro";
 import { useLingui } from "@lingui/react";
 import { Trans } from "@lingui/react/macro";
@@ -16,17 +14,11 @@ import { H2 } from "~/components/header";
 
 import { changePassword } from "./actions";
 
-type Props = {
-  params: Promise<{ username: string }>;
-};
-
-export default function Page({ params }: Props) {
-  const { username } = use(params);
-
+export default function Page() {
   const { _ } = useLingui();
 
   const submit = async (data: { currentPassword: string; newPassword: string }) => {
-    const err = await changePassword(username, data.currentPassword, data.newPassword);
+    const err = await changePassword(data.currentPassword, data.newPassword);
     if (err) throw new Error(_(err));
     await new Promise(() => {});
   };

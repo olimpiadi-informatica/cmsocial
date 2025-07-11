@@ -1402,6 +1402,7 @@ msgstr "User already exists"
 #: src/app/signup/_steps/actions.ts
 #: src/app/(training)/account/school/actions.ts
 #: src/app/(training)/account/profile/actions.ts
+#: src/app/(training)/account/password/actions.ts
 #: src/app/(training)/account/delete/actions.ts
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Utente non trovato"
