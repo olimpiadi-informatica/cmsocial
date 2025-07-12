@@ -11,19 +11,13 @@ import { deleteTerryUser, deleteUser } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 import { deleteForumUser } from "~/lib/forum/admin";
-import { getSessionUser, verifyPassword } from "~/lib/user";
+import { getSessionUser } from "~/lib/user";
 
-export async function deleteAccount(
-  password: string,
-  token: string | null,
-): Promise<MessageDescriptor | undefined> {
+export async function deleteAccount(token: string | null): Promise<MessageDescriptor | undefined> {
   if (!token) return msg`Token non valido`;
 
   const user = await getSessionUser();
   if (!user) return msg`Utente non trovato`;
-
-  const err = await verifyPassword(password);
-  if (err) return err;
 
   logger.warn(`Deleting user ${user.username}`);
 

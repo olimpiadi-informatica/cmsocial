@@ -102,7 +102,7 @@ export default async function Page({ params }: Props) {
           </div>
           {me?.username === user.username && (
             <div className="mt-auto">
-              <Link href="/account/profile" className="btn btn-primary">
+              <Link href="/settings/profile" className="btn btn-primary">
                 <Pencil size={20} />
                 <Trans>Modifica profilo</Trans>
               </Link>

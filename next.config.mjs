@@ -25,7 +25,7 @@ const nextConfig = {
       },
       {
         source: "/user/:username/edit(.*)",
-        destination: "/account/profile",
+        destination: "/settings/profile",
         permanent: false,
       },
       {

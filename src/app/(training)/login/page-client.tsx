@@ -6,8 +6,9 @@ import { CurrentPasswordField, Form, SubmitButton, UsernameField } from "@olinfo
 
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
+import { OauthButton } from "~/components/oauth/button";
 
-import { loginPassword } from "./actions";
+import { loginOAuth, loginPassword, loginSocial } from "./actions";
 
 export function PageClient({ redirectUrl }: { redirectUrl: string }) {
   const { _ } = useLingui();
@@ -17,6 +18,9 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
     if (err) throw new Error(_(err));
     await new Promise(() => {});
   };
+
+  const loginOAuthRedirect = (provider: string) => loginOAuth(provider, redirectUrl);
+  const loginSocialRedirect = (provider: string) => loginSocial(provider, redirectUrl);
 
   return (
     <div className="w-full max-w-sm mx-auto">
@@ -43,6 +47,14 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
           </Trans>
         </div>
       </Form>
+      <div className="divider">
+        <Trans>oppure</Trans>
+      </div>
+      <div className="flex flex-col gap-2">
+        <OauthButton provider="olimanager" type="login" onClick={loginOAuthRedirect} />
+        <OauthButton provider="google" type="login" onClick={loginSocialRedirect} />
+        <OauthButton provider="github" type="login" onClick={loginSocialRedirect} />
+      </div>
     </div>
   );
 }

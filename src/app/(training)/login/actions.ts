@@ -5,6 +5,7 @@ import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
 
 import { getRegistrationStep } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
@@ -38,6 +39,7 @@ export async function loginPassword(
           rememberMe: true,
         },
       });
+      if (!resp) return msg`Errore sconosciuto`;
       userId = resp.user.id;
     }
   } catch (err) {
@@ -51,4 +53,44 @@ export async function loginPassword(
     redirect("/signup");
   }
   redirect(redirectUrl);
+}
+
+export async function loginSocial(provider: string, redirectUrl: string) {
+  let url: string | undefined;
+  try {
+    const resp = await auth.api.signInSocial({
+      headers: await headers(),
+      body: {
+        provider,
+        callbackURL: redirectUrl,
+        newUserCallbackURL: "/signup",
+      },
+    });
+    url = resp.url;
+  } catch (err) {
+    return getAuthError(err);
+  }
+
+  if (!url) return msg`Errore durante il login`;
+  redirect(url);
+}
+
+export async function loginOAuth(providerId: string, redirectUrl: string) {
+  let url: string | undefined;
+  try {
+    const resp = await auth.api.signInWithOAuth2({
+      headers: await headers(),
+      body: {
+        providerId,
+        callbackURL: redirectUrl,
+        newUserCallbackURL: "/signup",
+      },
+    });
+    url = resp.url;
+  } catch (err) {
+    return getAuthError(err);
+  }
+
+  if (!url) return msg`Errore durante il login`;
+  redirect(url);
 }

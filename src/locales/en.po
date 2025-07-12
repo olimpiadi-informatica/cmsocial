@@ -45,6 +45,10 @@ msgstr "Log in"
 msgid "Accedi / Registrati"
 msgstr "Log in / Sign up"
 
+#: src/components/oauth/button.tsx
+msgid "Accedi con {name}"
+msgstr "Log in with {name}"
+
 #: src/app/(training)/task/[name]/submit/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 msgid "Accedi per inviare soluzioni"
@@ -55,6 +59,15 @@ msgstr "You must be logged in to submit"
 msgid "Accedi per vedere le tue sottoposizioni"
 msgstr "You must be logged in to see your submissions"
 
+#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/social/page.tsx
+msgid "Account collegati"
+msgstr "Linked accounts"
+
+#: src/app/(training)/settings/social/actions.ts
+msgid "Account collegato con successo!"
+msgstr "Account successfully linked!"
+
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Account eliminato con successo!"
 msgstr "Account successfully deleted!"
@@ -63,15 +76,19 @@ msgstr "Account successfully deleted!"
 msgid "Account già collegato"
 msgstr "Account already linked"
 
+#: src/app/(training)/settings/social/actions.ts
+msgid "Account scollegato con successo!"
+msgstr "Account successfully unlinked!"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Admin"
 msgstr "Admin"
 
-#: src/app/(training)/account/profile/page.tsx
+#: src/app/(training)/settings/profile/page.tsx
 msgid "Aggiorna dati"
 msgstr "Update information"
 
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Aggiorna scuola"
 msgstr "Update school"
 
@@ -146,13 +163,18 @@ msgstr "Make sure to call your class \"{0}\", otherwise the compilation will fai
 msgid "Attenzione:"
 msgstr "Warning:"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 msgid "Attenzione! Questa azione è irreversibile."
 msgstr "Warning! This action is irreversible."
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Attività"
 msgstr "Activities"
+
+#: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
+msgid "Autenticazione fallita"
+msgstr "Authentication failed"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Badge"
@@ -191,7 +213,7 @@ msgstr "Change language"
 msgid "Cambia password"
 msgstr "Update password"
 
-#: src/app/(training)/account/layout.tsx
+#: src/app/(training)/settings/layout.tsx
 msgid "Cancella account"
 msgstr "Delete account"
 
@@ -247,6 +269,14 @@ msgstr "Backup codes not enabled"
 msgid "Cognome non valido"
 msgstr "Invalid last name"
 
+#: src/app/(training)/settings/social/page.tsx
+msgid "Collega account"
+msgstr "Link account"
+
+#: src/components/oauth/button.tsx
+msgid "Collega account {name}"
+msgstr "Link account {name}"
+
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Come funziona l'input e l'output?"
@@ -266,7 +296,7 @@ msgid "Compilazione in corso"
 msgstr "Compiling"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Comune"
 msgstr "City"
 
@@ -284,7 +314,7 @@ msgstr "Confirm"
 msgid "Continua"
 msgstr "Continue"
 
-#: src/app/(training)/account/delete/actions.ts
+#: src/app/(training)/settings/delete/actions.ts
 msgid "Controlla la tua casella di posta per completare l'eliminazione dell'account."
 msgstr "Check your inbox to complete the account deletion."
 
@@ -327,8 +357,8 @@ msgstr "Date and time"
 msgid "Data e ora:"
 msgstr "Date and time:"
 
-#: src/app/(training)/account/school/actions.ts
-#: src/app/(training)/account/profile/actions.ts
+#: src/app/(training)/settings/school/actions.ts
+#: src/app/(training)/settings/profile/actions.ts
 msgid "Dati aggiornati con successo"
 msgstr "Information updated successfully"
 
@@ -374,14 +404,18 @@ msgstr "Graph editor"
 msgid "Edizione {edition}"
 msgstr "Edition {edition}"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Elimina account"
 msgstr "Delete account"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 msgid "Eliminazione account"
 msgstr "Delete account"
+
+#: src/lib/auth/errors.ts
+msgid "Email già esistente"
+msgstr "Email already exists"
 
 #: src/lib/auth/errors.ts
 msgid "Email non trovata"
@@ -426,6 +460,13 @@ msgstr "Wrong"
 msgid "Errore del server"
 msgstr "Server error"
 
+#: src/app/signup/_steps/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/(training)/login/actions.ts
+#: src/app/(training)/login/actions.ts
+msgid "Errore durante il login"
+msgstr "Error during login"
+
 #: src/lib/auth/errors.ts
 msgid "Errore durante il recupero dell'utente"
 msgstr "Error while retrieving user"
@@ -447,6 +488,8 @@ msgid "Errore durante la modifica dell'utente"
 msgstr "Error while updating user"
 
 #: src/lib/auth/errors.ts
+#: src/app/auth/error/route.ts
+#: src/app/auth/error/route.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
@@ -519,7 +562,7 @@ msgstr "Forum"
 msgid "Foto profilo di {0}"
 msgstr "{0}'s profile picture"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 msgid "Frase di conferma"
 msgstr "Confirmation phrase"
 
@@ -625,7 +668,7 @@ msgstr "Enter the usernames"
 msgid "Inserisci il tuo nome e cognome e scegli un username"
 msgstr "Enter your first and last name and choose a username"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 msgid "Inserisci la frase di conferma"
 msgstr "Enter the confirmation phrase"
 
@@ -657,7 +700,7 @@ msgid "Iscriviti"
 msgstr "Participate"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Istituto"
 msgstr "School"
 
@@ -733,20 +776,20 @@ msgstr "HM"
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Ministry of Education and Merit"
 
-#: src/app/(training)/account/layout.tsx
-#: src/app/(training)/account/password/page.tsx
-#: src/app/(training)/account/password/page.tsx
+#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/password/page.tsx
+#: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
 msgstr "Update password"
 
 #: src/app/(training)/user/[username]/page.tsx
-#: src/app/(training)/account/layout.tsx
-#: src/app/(training)/account/profile/page.tsx
+#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/profile/page.tsx
 msgid "Modifica profilo"
 msgstr "Update profile"
 
-#: src/app/(training)/account/layout.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Modifica scuola"
 msgstr "Update school"
 
@@ -866,7 +909,7 @@ msgstr "Info:"
 msgid "Novizio"
 msgstr "Newbie"
 
-#: src/app/(training)/account/password/page.tsx
+#: src/app/(training)/settings/password/page.tsx
 msgid "Nuova password"
 msgstr "New password"
 
@@ -885,6 +928,11 @@ msgstr "Italian Olympiads in Informatics in Teams"
 #: src/app/(training)/(home)/footer.tsx
 msgid "Olimpiadi Italiane di Informatica"
 msgstr "Italian Olympiads in Informatics"
+
+#: src/app/signup/_steps/step1.tsx
+#: src/app/(training)/login/page-client.tsx
+msgid "oppure"
+msgstr "or"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Ordinamento"
@@ -921,7 +969,7 @@ msgstr "Partially correct"
 msgid "Password dimenticata?"
 msgstr "Forgot password?"
 
-#: src/app/(training)/account/password/actions.ts
+#: src/app/(training)/settings/password/actions.ts
 msgid "Password modificata con successo"
 msgstr "Password successfully modified"
 
@@ -929,7 +977,6 @@ msgstr "Password successfully modified"
 msgid "Password modificata con successo!"
 msgstr "Password successfully changed!"
 
-#: src/lib/user.ts
 #: src/lib/auth/errors.ts
 msgid "Password non valida"
 msgstr "Invalid password"
@@ -946,7 +993,7 @@ msgstr "Password too weak"
 msgid "Password troppo lunga"
 msgstr "Password too long"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 msgid "Per continuare, inserisci la frase di conferma:"
 msgstr "Please enter the confirmation phrase to continue:"
 
@@ -1026,7 +1073,7 @@ msgid "Provider non trovato"
 msgstr "Provider not found"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Provincia"
 msgstr "Province"
 
@@ -1064,13 +1111,21 @@ msgid "Recupera password"
 msgstr "Recover password"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Regione"
 msgstr "Region"
+
+#: src/components/oauth/button.tsx
+msgid "Registrati con {name}"
+msgstr "Sign up with {name}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
 msgstr "Generate input"
+
+#: src/lib/auth/errors.ts
+msgid "Richiesta non valida"
+msgstr "Invalid request"
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Rimanda email"
@@ -1080,6 +1135,10 @@ msgstr "Resend email"
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Rimuovi tag {0}"
 msgstr "Remove tag {0}"
+
+#: src/lib/auth/errors.ts
+msgid "Ripetere autenticazione"
+msgstr "Re-authenticate"
 
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
@@ -1134,22 +1193,22 @@ msgid "Scarica output"
 msgstr "Download output"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Scegli il comune"
 msgstr "Select your city"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Scegli la provincia"
 msgstr "Select your province"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Scegli la regione"
 msgstr "Select your region"
 
 #: src/app/signup/_steps/step4.tsx
-#: src/app/(training)/account/school/page.tsx
+#: src/app/(training)/settings/school/page.tsx
 msgid "Scegli la scuola"
 msgstr "Select your school"
 
@@ -1157,6 +1216,10 @@ msgstr "Select your school"
 #: src/app/(training)/(home)/page.tsx
 msgid "Scolastiche"
 msgstr "School selections"
+
+#: src/components/oauth/button.tsx
+msgid "Scollega acount {name}"
+msgstr "Unlink account {name}"
 
 #: src/app/signup/page.tsx
 msgid "Scuola"
@@ -1402,16 +1465,14 @@ msgstr "User since <0/>"
 msgid "Utente già esistente"
 msgstr "User already exists"
 
-#: src/lib/user.ts
-#: src/lib/user.ts
 #: src/lib/auth/errors.ts
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
-#: src/app/(training)/account/school/actions.ts
-#: src/app/(training)/account/profile/actions.ts
-#: src/app/(training)/account/password/actions.ts
-#: src/app/(training)/account/delete/actions.ts
+#: src/app/(training)/settings/school/actions.ts
+#: src/app/(training)/settings/profile/actions.ts
+#: src/app/(training)/settings/password/actions.ts
+#: src/app/(training)/settings/delete/actions.ts
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Utente non trovato"
 msgstr "User not found"
@@ -1428,7 +1489,7 @@ msgstr "Number of people who solved it:"
 msgid "Vai ai problemi"
 msgstr "Go to tasks"
 
-#: src/app/(training)/account/password/page.tsx
+#: src/app/(training)/settings/password/page.tsx
 msgid "Vecchia password"
 msgstr "Old password"
 
@@ -1436,7 +1497,7 @@ msgstr "Old password"
 msgid "Verifica email"
 msgstr "Verify email"
 
-#: src/app/(training)/account/delete/page.tsx
+#: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"
 msgstr "I want to delete my account"
 
