@@ -1,4 +1,5 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { redirect } from "next/navigation";
+import type { NextRequest } from "next/server";
 
 import { msg } from "@lingui/core/macro";
 
@@ -6,18 +7,10 @@ import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 
 export async function GET(request: NextRequest): Promise<Response> {
-  const fromRequest = request.headers?.get("x-forwarded-host");
-  const fromRequestProto = request.headers?.get("x-forwarded-proto");
-
-  const url = new URL(
-    request.nextUrl.pathname + request.nextUrl.search,
-    fromRequest && fromRequestProto ? `${fromRequestProto}://${fromRequest}` : request.url,
-  );
-
   const token = request.nextUrl.searchParams.get("token");
   if (!token) {
     const messageId = msg`Token non valido`.id;
-    return NextResponse.redirect(new URL(`/?error=${encodeURIComponent(messageId)}`, url));
+    redirect(`/?error=${encodeURIComponent(messageId)}`);
   }
 
   try {
@@ -27,9 +20,9 @@ export async function GET(request: NextRequest): Promise<Response> {
     });
   } catch (err) {
     const messageId = getAuthError(err).id;
-    return NextResponse.redirect(new URL(`/?error=${encodeURIComponent(messageId)}`, url));
+    redirect(`/?error=${encodeURIComponent(messageId)}`);
   }
 
   const messageId = msg`Email verificata con successo!`.id;
-  return NextResponse.redirect(new URL(`/signup?notify=${encodeURIComponent(messageId)}`, url));
+  redirect(`/signup?notify=${encodeURIComponent(messageId)}`);
 }

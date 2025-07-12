@@ -9,7 +9,6 @@ export const baseUrlHook = createAuthMiddleware((ctx) => {
   if (fromRequest && fromRequestProto) {
     const baseUrl = new URL(basePath, `${fromRequestProto}://${fromRequest}`);
     ctx.context.baseURL = baseUrl.href;
-    ctx.context.options.baseURL = baseUrl.origin;
   }
 
   return Promise.resolve();

@@ -8,9 +8,10 @@ import { Trans } from "@lingui/react/macro";
 import { EmailField, Form, NewPasswordField, SubmitButton } from "@olinfo/react-components";
 import { ArrowRight } from "lucide-react";
 
+import { OauthButton } from "~/components/oauth/button";
 import { ReCaptcha, type ReCaptchaInner } from "~/components/recaptcha";
 
-import { step1Password } from "./actions";
+import { step1OAuth, step1Password, step1Social } from "./actions";
 
 export function Step1({ captchaKey }: { captchaKey: string }) {
   const { _ } = useLingui();
@@ -40,6 +41,14 @@ export function Step1({ captchaKey }: { captchaKey: string }) {
           <Trans>Continua</Trans>
         </SubmitButton>
       </Form>
+      <div className="divider my-8">
+        <Trans>oppure</Trans>
+      </div>
+      <div className="flex flex-col gap-2">
+        <OauthButton provider="olimanager" type="signup" onClick={step1OAuth} />
+        <OauthButton provider="google" type="signup" onClick={step1Social} />
+        <OauthButton provider="github" type="signup" onClick={step1Social} />
+      </div>
     </div>
   );
 }

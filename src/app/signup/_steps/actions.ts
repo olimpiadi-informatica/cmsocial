@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { headers } from "next/headers";
+import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
@@ -36,6 +37,46 @@ export async function step1Password(
   }
 
   logger.info(`User ${email} created`);
+}
+
+export async function step1Social(provider: string) {
+  let url: string | undefined;
+  try {
+    const resp = await auth.api.signInSocial({
+      headers: await headers(),
+      body: {
+        provider,
+        callbackURL: "/",
+        newUserCallbackURL: "/signup",
+      },
+    });
+    url = resp.url;
+  } catch (err) {
+    return getAuthError(err);
+  }
+
+  if (!url) return msg`Errore durante il login`;
+  redirect(url);
+}
+
+export async function step1OAuth(providerId: string) {
+  let url: string | undefined;
+  try {
+    const resp = await auth.api.signInWithOAuth2({
+      headers: await headers(),
+      body: {
+        providerId,
+        callbackURL: "/",
+        newUserCallbackURL: "/signup",
+      },
+    });
+    url = resp.url;
+  } catch (err) {
+    return getAuthError(err);
+  }
+
+  if (!url) return msg`Errore durante il login`;
+  redirect(url);
 }
 
 export async function step2Back() {
