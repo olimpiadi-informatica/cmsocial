@@ -44,7 +44,7 @@ export async function addTaskTag(
   taskName: string,
   tagName: string,
 ): Promise<MessageDescriptor | undefined> {
-  const canAdd = await hasPermission("tag", "remove-any");
+  const canAdd = await hasPermission("tag", "add");
   if (!canAdd) return msg`Non sei autorizzato`;
 
   await cmsDb.insert(taskTags).values({
