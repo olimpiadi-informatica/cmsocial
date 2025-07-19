@@ -4,7 +4,7 @@ import { discourseApi } from "~/lib/forum/common";
 
 const userSchema = z.object({
   user: z.object({
-    id: z.number(),
+    id: z.int(),
   }),
 });
 

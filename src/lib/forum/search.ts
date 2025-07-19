@@ -8,15 +8,15 @@ import { z } from "zod";
 import { discourseApi } from "~/lib/forum/common";
 
 const postSchema = z.object({
-  id: z.number(),
-  topic_id: z.number(),
+  id: z.int(),
+  topic_id: z.int(),
   username: z.string(),
   avatar_template: z.string(),
   blurb: z.string().transform((s) => parseEntities(s)),
 });
 
 const topicSchema = z.object({
-  id: z.number(),
+  id: z.int(),
   fancy_title: z.string().transform((s) => parseEntities(s)),
   slug: z.string(),
 });

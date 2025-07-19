@@ -24,7 +24,7 @@ async function getCsrf() {
   return csrf;
 }
 
-async function query<T>(query: string, schema: ZodType<T, any, any>): Promise<T | undefined> {
+async function query<T>(query: string, schema: ZodType<T>): Promise<T | undefined> {
   const ua = userAgent({ headers: await headers() });
   if (ua.isBot) return;
 
