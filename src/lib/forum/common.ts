@@ -1,9 +1,9 @@
-import type { ZodObject, ZodRawShape } from "zod";
+import type { ZodType } from "zod";
 
-export async function discourseApi<T, Shape extends ZodRawShape>(
+export async function discourseApi<T>(
   method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH",
   endpoint: `/${string}`,
-  schema: ZodObject<Shape, any, any, T, any>,
+  schema: ZodType<T>,
 ): Promise<T | null> {
   const headers: Record<string, string> = {
     Accept: "application/json",

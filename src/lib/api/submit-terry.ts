@@ -9,7 +9,7 @@ const alertSchema = z.object({
 });
 
 const uploadedFileSchema = z.object({
-  id: z.string().uuid(),
+  id: z.guid(),
   validation: z.object({
     alerts: z.array(alertSchema),
   }),
@@ -31,7 +31,7 @@ export async function submit(inputId: string, sourceId: string, outputId: string
   data.set("source_id", sourceId);
   data.set("output_id", outputId);
 
-  const submission = await legacyApiJson("submit", data, z.object({ id: z.string().uuid() }));
+  const submission = await legacyApiJson("submit", data, z.object({ id: z.guid() }));
   return submission.id;
 }
 
@@ -70,11 +70,7 @@ async function legacyApi(endpoint: string, body: FormData): Promise<Response> {
   return resp;
 }
 
-async function legacyApiJson<T>(
-  endpoint: string,
-  body: FormData,
-  schema: ZodType<T, any, any>,
-): Promise<T> {
+async function legacyApiJson<T>(endpoint: string, body: FormData, schema: ZodType<T>): Promise<T> {
   const resp = await legacyApi(endpoint, body);
   return schema.parse(await resp.json());
 }
