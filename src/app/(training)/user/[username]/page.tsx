@@ -3,15 +3,12 @@ import { notFound } from "next/navigation";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
-import { Pencil } from "lucide-react";
 
 import { DateTime } from "~/components/date";
 import { H1 } from "~/components/header";
-import { Link } from "~/components/link";
 import { getSchool } from "~/lib/api/location";
 import { getUser } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";
-import { getSessionUser } from "~/lib/user";
 
 import { ActivityGraph } from "./activity-graph";
 import { Stats } from "./stats";
@@ -64,7 +61,6 @@ export default async function Page({ params }: Props) {
   await loadLocale();
   const { t } = useLingui();
 
-  const me = await getSessionUser();
   const user = await getUser(username);
   if (!user) notFound();
 
@@ -100,14 +96,6 @@ export default async function Page({ params }: Props) {
               <DateTime date={user.registrationTime} dateStyle="long" timeStyle="hidden" />
             </Trans>
           </div>
-          {me?.username === user.username && (
-            <div className="mt-auto">
-              <Link href="/settings/profile" className="btn btn-primary">
-                <Pencil size={20} />
-                <Trans>Modifica profilo</Trans>
-              </Link>
-            </div>
-          )}
         </CardBody>
       </Card>
       <Card>

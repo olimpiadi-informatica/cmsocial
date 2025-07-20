@@ -59,7 +59,7 @@ msgstr "You must be logged in to submit"
 msgid "Accedi per vedere le tue sottoposizioni"
 msgstr "You must be logged in to see your submissions"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
 msgstr "Linked accounts"
@@ -213,7 +213,7 @@ msgstr "Change language"
 msgid "Cambia password"
 msgstr "Update password"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 msgid "Cancella account"
 msgstr "Delete account"
 
@@ -644,6 +644,10 @@ msgstr "Learn step by step"
 msgid "Impossibile scollegare l'account"
 msgstr "Unable to unlink account"
 
+#: src/components/navbar/user-dropdown.tsx
+msgid "Impostazioni"
+msgstr "Settings"
+
 #: src/app/signup/_steps/step2.tsx
 msgid "Indietro"
 msgstr "Back"
@@ -776,19 +780,18 @@ msgstr "HM"
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Ministry of Education and Merit"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/password/page.tsx
 #: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
 msgstr "Update password"
 
-#: src/app/(training)/user/[username]/page.tsx
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/profile/page.tsx
 msgid "Modifica profilo"
 msgstr "Update profile"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/school/page.tsx
 msgid "Modifica scuola"
 msgstr "Update school"
@@ -1239,6 +1242,10 @@ msgstr "Secondary schools"
 msgid "Segnalazioni bug"
 msgstr "Bug reports"
 
+#: src/app/(training)/settings/page.tsx
+msgid "Seleziona le impostazioni da modificare"
+msgstr "Select the settings to modify"
+
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Seleziona un tag"
 msgstr "Select a tag"
@@ -1417,6 +1424,10 @@ msgstr "Expired token"
 #: src/app/not-found.tsx
 msgid "Torna alla home"
 msgstr "Return to home"
+
+#: src/app/(training)/settings/layout-client.tsx
+msgid "Torna indietro"
+msgstr "Go back"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Totale"

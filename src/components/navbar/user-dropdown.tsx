@@ -10,7 +10,7 @@ import {
   DropdownItem,
   DropdownMenu,
 } from "@olinfo/react-components";
-import { LogOut, UserRound } from "lucide-react";
+import { LogOut, SettingsIcon, UserRound } from "lucide-react";
 
 import { Link } from "~/components/link";
 import { auth } from "~/lib/auth";
@@ -49,6 +49,11 @@ function UserDropdownInner({ user }: { user: User }) {
         <DropdownItem>
           <Link href={`/user/${user.username}`} className="flex justify-between gap-4">
             <Trans>Profilo</Trans> <UserRound size={20} />
+          </Link>
+        </DropdownItem>
+        <DropdownItem>
+          <Link href="/settings" className="flex justify-between gap-4">
+            <Trans>Impostazioni</Trans> <SettingsIcon size={20} />
           </Link>
         </DropdownItem>
         <DropdownAction action={onLogout} className="flex justify-between gap-4">

@@ -59,7 +59,7 @@ msgstr "Accedi per inviare soluzioni"
 msgid "Accedi per vedere le tue sottoposizioni"
 msgstr "Accedi per vedere le tue sottoposizioni"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
 msgstr "Account collegati"
@@ -213,7 +213,7 @@ msgstr "Cambia lingua"
 msgid "Cambia password"
 msgstr "Cambia password"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 msgid "Cancella account"
 msgstr "Cancella account"
 
@@ -644,6 +644,10 @@ msgstr "Impara gradualmente"
 msgid "Impossibile scollegare l'account"
 msgstr "Impossibile scollegare l'account"
 
+#: src/components/navbar/user-dropdown.tsx
+msgid "Impostazioni"
+msgstr "Impostazioni"
+
 #: src/app/signup/_steps/step2.tsx
 msgid "Indietro"
 msgstr "Indietro"
@@ -776,19 +780,18 @@ msgstr "Menzione"
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Ministero dell'Istruzione e del Merito"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/password/page.tsx
 #: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
 msgstr "Modifica password"
 
-#: src/app/(training)/user/[username]/page.tsx
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/profile/page.tsx
 msgid "Modifica profilo"
 msgstr "Modifica profilo"
 
-#: src/app/(training)/settings/layout.tsx
+#: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/school/page.tsx
 msgid "Modifica scuola"
 msgstr "Modifica scuola"
@@ -1239,6 +1242,10 @@ msgstr "Scuole Secondarie"
 msgid "Segnalazioni bug"
 msgstr "Segnalazioni bug"
 
+#: src/app/(training)/settings/page.tsx
+msgid "Seleziona le impostazioni da modificare"
+msgstr "Seleziona le impostazioni da modificare"
+
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Seleziona un tag"
 msgstr "Seleziona un tag"
@@ -1417,6 +1424,10 @@ msgstr "Token scaduto"
 #: src/app/not-found.tsx
 msgid "Torna alla home"
 msgstr "Torna alla home"
+
+#: src/app/(training)/settings/layout-client.tsx
+msgid "Torna indietro"
+msgstr "Torna indietro"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Totale"
