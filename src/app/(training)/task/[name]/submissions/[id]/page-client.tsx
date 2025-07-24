@@ -260,6 +260,9 @@ function Resource<T extends bigint | number>({ value, limit, unit, precision }: 
   if (value == null) return "N/A";
 
   const ratio = limit ? value / limit : 0;
+  if (ratio > 1.0) {
+    return <span className="text-error">{`> ${limit} ${unit}`}</span>;
+  }
 
   return (
     <span className={clsx(ratio > 0.98 ? "text-error" : ratio > 0.75 && "text-warning")}>
