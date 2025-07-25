@@ -7,7 +7,7 @@ import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { logger } from "better-auth";
 
-import { createParticipation, createUser, updateRole } from "~/lib/api/auth";
+import { finalizeRegistration } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 import { RegistrationStep } from "~/lib/auth/types";
@@ -93,18 +93,7 @@ export async function step3(username: string, firstName: string, lastName: strin
       },
     });
 
-    const cmsId = await createUser(username, firstName, lastName);
-    await createParticipation(cmsId);
-
-    await auth.api.updateUser({
-      headers: await headers(),
-      body: {
-        cmsId,
-        registrationStep: RegistrationStep.School,
-      },
-    });
-
-    await updateRole(user.id, "newbie");
+    await finalizeRegistration(user.id, username, firstName, lastName);
   } catch (err) {
     return getAuthError(err);
   }

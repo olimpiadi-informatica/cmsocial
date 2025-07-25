@@ -1,6 +1,6 @@
 import { eq } from "drizzle-orm";
 
-import type { RegistrationStep } from "~/lib/auth/types";
+import { RegistrationStep } from "~/lib/auth/types";
 import { cmsDb, terryDb } from "~/lib/db";
 import { participations, socialUsers, users } from "~/lib/db/schema";
 import {
@@ -11,23 +11,37 @@ import {
   terryUserTasks,
 } from "~/lib/db/schema-terry";
 
-export async function createUser(username: string, firstName: string, lastName: string) {
-  const [cmsUser] = await cmsDb
-    .insert(users)
-    .values({
-      username: username,
-      firstName: firstName,
-      lastName: lastName,
-      password: "",
-    })
-    .returning({ id: users.id });
-  return cmsUser.id;
-}
+export async function finalizeRegistration(
+  userId: string,
+  username: string,
+  firstName: string,
+  lastName: string,
+) {
+  await cmsDb.transaction(async (tx) => {
+    const [cmsUser] = await tx
+      .insert(users)
+      .values({
+        username,
+        firstName,
+        lastName,
+        password: "",
+      })
+      .returning({ id: users.id });
+    const cmsId = cmsUser.id;
 
-export async function createParticipation(userCmsId: number) {
-  await cmsDb.insert(participations).values({
-    contestId: Number(process.env.CMS_CONTEST_ID),
-    userId: userCmsId,
+    await tx.insert(participations).values({
+      contestId: Number(process.env.CMS_CONTEST_ID),
+      userId: cmsId,
+    });
+
+    await tx
+      .update(socialUsers)
+      .set({
+        cmsId,
+        role: "newbie",
+        registrationStep: RegistrationStep.School,
+      })
+      .where(eq(socialUsers.id, userId));
   });
 }
 
@@ -45,10 +59,6 @@ export async function updateName(
   lastName: string | undefined,
 ) {
   await cmsDb.update(users).set({ firstName, lastName }).where(eq(users.id, cmsId));
-}
-
-export async function updateRole(userId: string, role: "unverified" | "newbie" | "trusted") {
-  await cmsDb.update(socialUsers).set({ role }).where(eq(socialUsers.id, userId));
 }
 
 export async function deleteUser(cmsId: number) {
