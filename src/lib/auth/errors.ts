@@ -40,6 +40,8 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   TWO_FACTOR_NOT_ENABLED: msg`2FA non abilitato`,
   USERNAME_IS_ALREADY_TAKEN_PLEASE_TRY_ANOTHER: msg`Username non disponibile`,
   USERNAME_IS_INVALID: msg`Username non valido`,
+  USERNAME_IS_TOO_LONG: msg`Username troppo lungo`,
+  USERNAME_IS_TOO_SHORT: msg`Username troppo corto`,
   USER_ALREADY_EXISTS: msg`Utente già esistente`,
   USER_EMAIL_NOT_FOUND: msg`Email non trovata`,
   USER_NOT_FOUND: msg`Utente non trovato`,

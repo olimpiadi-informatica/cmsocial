@@ -1386,6 +1386,14 @@ msgstr "Invalid username"
 msgid "Username o password non validi"
 msgstr "Invalid username or password"
 
+#: src/lib/auth/errors.ts
+msgid "Username troppo corto"
+msgstr "Username too short"
+
+#: src/lib/auth/errors.ts
+msgid "Username troppo lungo"
+msgstr "Username too long"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Utente dal <0/>"
 msgstr "User since <0/>"
