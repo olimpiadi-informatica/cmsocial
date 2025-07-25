@@ -56,9 +56,11 @@ export async function deleteUser(cmsId: number) {
 }
 
 export async function deleteTerryUser(username: string) {
-  await terryDb.delete(terryIps).where(eq(terryIps.token, username));
-  await terryDb.delete(terryInputs).where(eq(terryInputs.token, username));
-  await terryDb.delete(terrySubmissions).where(eq(terrySubmissions.token, username));
-  await terryDb.delete(terryUserTasks).where(eq(terryUserTasks.token, username));
-  await terryDb.delete(terryUsers).where(eq(terryUsers.token, username));
+  await terryDb.transaction(async (tx) => {
+    await tx.delete(terrySubmissions).where(eq(terrySubmissions.token, username));
+    await tx.delete(terryUserTasks).where(eq(terryUserTasks.token, username));
+    await tx.delete(terryInputs).where(eq(terryInputs.token, username));
+    await tx.delete(terryIps).where(eq(terryIps.token, username));
+    await tx.delete(terryUsers).where(eq(terryUsers.token, username));
+  });
 }
