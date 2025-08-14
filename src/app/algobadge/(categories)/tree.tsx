@@ -125,7 +125,7 @@ function TreeNodeLocked() {
 
 function TreeEdges({ transpose }: { transpose?: boolean }) {
   return Object.entries(algobadge).map(([id, node]) => {
-    if (!node.parent) return;
+    if (!node.parent) return null;
     const parent = algobadge[node.parent];
     return (
       <line

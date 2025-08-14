@@ -72,9 +72,9 @@ export default function Page() {
     prevNodes.current = nodes;
 
     const edges: Link[] = compact(
-      rawEdges.split("\n").map((line): Link | undefined => {
+      rawEdges.split("\n").map((line): Link | null => {
         const [source, target, label] = line.split(" ");
-        if (!target || source === target) return;
+        if (!target || source === target) return null;
         return { source, target, label };
       }),
     );

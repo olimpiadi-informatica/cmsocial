@@ -17,7 +17,7 @@ export async function deleteAccount(token: string | null): Promise<MessageDescri
   if (!token) return msg`Token non valido`;
 
   const user = await getSessionUser();
-  if (!user) return msg`Utente non trovato`;
+  if (!user) return msg`Utente non autenticato`;
 
   logger.warn(`Deleting user ${user.username}`);
 

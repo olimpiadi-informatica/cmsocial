@@ -1,4 +1,5 @@
-import { createReadStream, existsSync } from "node:fs";
+import { createReadStream } from "node:fs";
+import { stat } from "node:fs/promises";
 import path from "node:path";
 import { Readable } from "node:stream";
 
@@ -52,9 +53,9 @@ export async function getFileContent(file: Omit<File, "url">) {
   );
 }
 
-export function getTerryFileContent(fileName: string): Response {
+export async function getTerryFileContent(fileName: string): Promise<Response> {
   const filePath = path.join(process.env.TERRY_FILES_PATH!, fileName);
-  if (!existsSync(filePath)) {
+  if (!(await isFile(filePath))) {
     return new Response(null, { status: 404 });
   }
   const stream = createReadStream(filePath);
@@ -64,4 +65,13 @@ export function getTerryFileContent(fileName: string): Response {
       "Content-Type": mime.getType(fileName) ?? "application/octet-stream",
     },
   });
+}
+
+async function isFile(filePath: string): Promise<boolean> {
+  try {
+    const stats = await stat(filePath);
+    return stats.isFile();
+  } catch {
+    return false;
+  }
 }

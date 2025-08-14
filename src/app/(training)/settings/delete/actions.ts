@@ -14,7 +14,7 @@ import { getSessionUser } from "~/lib/user";
 
 export async function deleteUser(): Promise<MessageDescriptor | undefined> {
   const user = await getSessionUser();
-  if (!user) return msg`Utente non trovato`;
+  if (!user) return msg`Utente non autenticato`;
 
   logger.info(`Request to delete user ${user.username}`);
 

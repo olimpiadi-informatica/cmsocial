@@ -19,7 +19,7 @@ export async function GET(request: NextRequest): Promise<Response> {
       query: { token },
     });
   } catch (err) {
-    const messageId = getAuthError(err).id;
+    const messageId = (await getAuthError(err)).id;
     redirect(`/?error=${encodeURIComponent(messageId)}`);
   }
 

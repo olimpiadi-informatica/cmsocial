@@ -26,12 +26,12 @@
         "noUnusedImports": "error",
         "noUnusedPrivateClassMembers": "error",
         "noUnusedVariables": "error",
-        "useHookAtTopLevel": "error"
+        "useHookAtTopLevel": "error",
+        "useUniqueElementIds": "off"
       },
       "nursery": {
         "noFloatingPromises": "error",
-        "noImportCycles": "error",
-        "useUniqueElementIds": "off"
+        "noImportCycles": "error"
       },
       "performance": {
         "noImgElement": "off"

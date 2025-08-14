@@ -1,7 +1,6 @@
 "use client";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { CurrentPasswordField, Form, SubmitButton, UsernameField } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -11,11 +10,11 @@ import { OauthButton } from "~/components/oauth/button";
 import { loginOAuth, loginPassword, loginSocial } from "./actions";
 
 export function PageClient({ redirectUrl }: { redirectUrl: string }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const submit = async (credential: { username: string; password: string }) => {
     const err = await loginPassword(credential.username, credential.password, redirectUrl);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
@@ -28,7 +27,7 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
         <H2>
           <Trans>Accedi</Trans>
         </H2>
-        <UsernameField field="username" />
+        <UsernameField field="username" label={t`Username / email`} />
         <CurrentPasswordField field="password" />
         <div className="mt-2 px-2 w-full text-xs">
           <Link href="/forgot-password" className="link link-info">

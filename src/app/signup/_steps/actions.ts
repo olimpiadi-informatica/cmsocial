@@ -8,7 +8,12 @@ import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { logger } from "better-auth";
 
-import { finalizeRegistration } from "~/lib/api/auth";
+import {
+  checkName,
+  checkUsername,
+  finalizeRegistration,
+  getUsernameVariants,
+} from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 import { RegistrationStep } from "~/lib/auth/types";
@@ -29,7 +34,7 @@ export async function step1Password(
       body: {
         email,
         password,
-        name: email.split("@")[0],
+        name: email?.replace(/@.*$/, ""),
       },
     });
   } catch (err) {
@@ -91,7 +96,7 @@ export async function step2Back() {
 
 export async function step2Resend() {
   const user = await getSessionUser(true);
-  if (!user) return msg`Utente non trovato`;
+  if (!user) return msg`Utente non autenticato`;
   if (user.emailVerified) {
     revalidatePath("/", "layout");
     return;
@@ -111,19 +116,21 @@ export async function step2Resend() {
   revalidatePath("/", "layout");
 }
 
-const NAME_REGEX = /^[\p{L}\s'-]{3,32}$/u;
-
 export async function step3(username: string, firstName: string, lastName: string) {
   const user = await getSessionUser(true);
-  if (!user) return msg`Utente non trovato`;
+  if (!user) return msg`Utente non autenticato`;
   if (!user.emailVerified || user.registrationStep !== RegistrationStep.Profile) {
     revalidatePath("/", "layout");
     return;
   }
 
-  if (!username) return msg`Username non valido`;
-  if (!NAME_REGEX.test(firstName)) return msg`Nome non valido`;
-  if (!NAME_REGEX.test(lastName)) return msg`Cognome non valido`;
+  const err = checkName(firstName, lastName) ?? checkUsername(username);
+  if (err) return err;
+
+  const usernameVariants = await getUsernameVariants(username);
+  if (usernameVariants.length > 0) {
+    return msg`Username non disponibile`;
+  }
 
   try {
     await auth.api.updateUser({
@@ -144,7 +151,7 @@ export async function step3(username: string, firstName: string, lastName: strin
 
 export async function step4(institute: string | undefined) {
   const user = await getSessionUser(true);
-  if (!user) return msg`Utente non trovato`;
+  if (!user) return msg`Utente non autenticato`;
   if (user.registrationStep !== RegistrationStep.School) {
     revalidatePath("/", "layout");
     return;

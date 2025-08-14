@@ -1,4 +1,5 @@
-import { eq } from "drizzle-orm";
+import { msg } from "@lingui/core/macro";
+import { eq, sql } from "drizzle-orm";
 
 import { RegistrationStep } from "~/lib/auth/types";
 import { cmsDb, terryDb } from "~/lib/db";
@@ -10,6 +11,26 @@ import {
   terryUsers,
   terryUserTasks,
 } from "~/lib/db/schema-terry";
+
+const USERNAME_REGEX = /^[\w.]{3,39}$/;
+const NAME_REGEX = /^[\p{L}\s'-]{3,32}$/u;
+
+export function checkUsername(username: string | undefined) {
+  if (!username || !USERNAME_REGEX.test(username)) return msg`Username non valido`;
+}
+
+export function checkName(firstName: string | undefined, lastName: string | undefined) {
+  if (!firstName || !NAME_REGEX.test(firstName)) return msg`Nome non valido`;
+  if (!lastName || !NAME_REGEX.test(lastName)) return msg`Cognome non valido`;
+}
+
+export async function getUsernameVariants(username: string) {
+  const users = await cmsDb
+    .select({ username: socialUsers.username })
+    .from(socialUsers)
+    .where(eq(sql`LOWER(${socialUsers.username})`, username.toLowerCase()));
+  return users.map((u) => u.username);
+}
 
 export async function finalizeRegistration(
   userId: string,

@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { logger } from "better-auth";
@@ -6,11 +8,12 @@ import { APIError } from "better-call";
 import type { auth } from "~/lib/auth";
 
 export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, MessageDescriptor> = {
-  ACCOUNT_NOT_FOUND: msg`Username non trovato`,
+  ACCESS_DENIED: msg`Accesso negato`,
+  ACCOUNT_NOT_FOUND: msg`Account non trovato`,
   ACCOUNT_NOT_LINKED: msg`Email già esistente`,
   BACKUP_CODES_NOT_ENABLED: msg`Codici di backup non abilitati`,
   COULDNT_UPDATE_YOUR_EMAIL: msg`Email non valida`,
-  CREDENTIAL_ACCOUNT_NOT_FOUND: msg`Username non trovato`,
+  CREDENTIAL_ACCOUNT_NOT_FOUND: msg`Account non trovato`,
   EMAIL_CAN_NOT_BE_UPDATED: msg`L'email non può essere modificata`,
   EMAIL_IS_THE_SAME: msg`Email uguale alla precedente`,
   EMAIL_NOT_VERIFIED: msg`Email non verificata`,
@@ -50,19 +53,29 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   USER_ALREADY_EXISTS: msg`Utente già esistente`,
   USER_EMAIL_NOT_FOUND: msg`Email non trovata`,
   USER_NOT_FOUND: msg`Utente non trovato`,
+  VALIDATION_ERROR: msg`Dati non validi`,
 };
 
-export function getAuthError(err: unknown): MessageDescriptor {
+export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
+  const isCommonError =
+    err instanceof APIError &&
+    (err.body?.code === "INVALID_EMAIL_OR_PASSWORD" ||
+      err.body?.code === "INVALID_USERNAME_OR_PASSWORD");
+
+  if (!isCommonError) {
+    const headersList = await headers();
+    logger.error(`Auth error (from ${headersList.get("referer")}):\n${err}`);
+  }
+
   if (err instanceof APIError) {
     const code = err.body?.code;
     if (code && code in authErrors) {
       return authErrors[code as keyof typeof authErrors];
     }
-    logger.error(`Auth error "${code}"`);
+    logger.error(`Missing auth code "${code}"`);
   }
   if (process.env.NODE_ENV === "development") {
     throw err;
   }
-  logger.error("Auth error", err);
   return msg`Errore sconosciuto`;
 }

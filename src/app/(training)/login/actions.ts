@@ -7,7 +7,7 @@ import { redirect } from "next/navigation";
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 
-import { getRegistrationStep } from "~/lib/api/auth";
+import { checkUsername, getRegistrationStep, getUsernameVariants } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 import { RegistrationStep } from "~/lib/auth/types";
@@ -20,7 +20,7 @@ export async function loginPassword(
   let userId: string;
 
   try {
-    if (usernameOrEmail.includes("@")) {
+    if (usernameOrEmail?.includes("@")) {
       const resp = await auth.api.signInEmail({
         headers: await headers(),
         body: {
@@ -31,10 +31,18 @@ export async function loginPassword(
       });
       userId = resp.user.id;
     } else {
+      const err = checkUsername(usernameOrEmail);
+      if (err) return err;
+
+      const usernameVariants = await getUsernameVariants(usernameOrEmail);
+      if (usernameVariants.length !== 1 && !usernameVariants.includes(usernameOrEmail)) {
+        return msg`Username non esistente`;
+      }
+
       const resp = await auth.api.signInUsername({
         headers: await headers(),
         body: {
-          username: usernameOrEmail,
+          username: usernameVariants[0],
           password,
           rememberMe: true,
         },

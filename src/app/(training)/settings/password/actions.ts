@@ -15,7 +15,7 @@ export async function changePassword(
   newPassword: string,
 ): Promise<MessageDescriptor | undefined> {
   const user = await getSessionUser();
-  if (!user) return msg`Utente non trovato`;
+  if (!user) return msg`Utente non autenticato`;
 
   try {
     await auth.api.changePassword({

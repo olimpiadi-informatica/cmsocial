@@ -83,7 +83,7 @@
     "zod": "^4.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "^2.0",
+    "@biomejs/biome": "=2.2.0",
     "@lingui/cli": "^5.2",
     "@lingui/swc-plugin": "^5.4"
   },

@@ -57,7 +57,7 @@ export async function searchForumPosts(query: string): Promise<ForumPost[]> {
   return compact(
     posts.map((post) => {
       const topic = topics?.find((topic) => topic.id === post.topic_id);
-      if (!topic) return;
+      if (!topic) return null;
 
       return {
         id: post.id,

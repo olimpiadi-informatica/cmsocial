@@ -1,7 +1,7 @@
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 
-// @ts-ignore
+// @ts-expect-error
 import { renderToStaticMarkup } from "next/dist/compiled/react-dom/server";
 import type { ReactNode } from "react";
 

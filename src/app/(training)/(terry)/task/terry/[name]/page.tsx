@@ -25,7 +25,7 @@ export default async function Page({ params }: Props) {
   const statement = task.statementPath;
   const basePath = `/files${statement.replace(/\/[^/]*$/, "")}`;
 
-  const source = await getTerryFileContent(statement).text();
+  const source = await getTerryFileContent(statement).then((r) => r.text());
 
   return (
     <div className="grid gap-4 lg:grid-cols-[1fr_18rem]">
