@@ -1,6 +1,6 @@
 import { cache } from "react";
 
-import { and, count, desc, eq } from "drizzle-orm";
+import { and, count, desc, eq, gt } from "drizzle-orm";
 
 import { cmsDb } from "~/lib/db";
 import { participations, socialParticipations, socialUsers, users } from "~/lib/db/schema";
@@ -48,6 +48,7 @@ export const getRanking = cache((page: number, pageSize: number): Promise<User[]
       and(
         eq(participations.hidden, false),
         eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
+        gt(socialParticipations.score, 0),
       ),
     )
     .orderBy(desc(socialParticipations.score))
