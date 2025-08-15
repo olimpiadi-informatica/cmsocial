@@ -12,14 +12,14 @@ export const getSessionUser = cache(
         headers: await headers(),
       })
       .catch(() => null);
+    if (!session) return;
 
-    const user = session?.user as User | undefined;
+    const user = {
+      ...session.user,
+      impersonatedBy: session.session.impersonatedBy,
+    } as unknown as User;
 
-    if (
-      !allowUnfinishedRegistration &&
-      user &&
-      user.registrationStep !== RegistrationStep.Completed
-    ) {
+    if (!allowUnfinishedRegistration && user.registrationStep !== RegistrationStep.Completed) {
       return;
     }
 
