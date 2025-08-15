@@ -10,6 +10,7 @@ export const getUserCount = cache(async (): Promise<number> => {
     .select({ count: count() })
     .from(users)
     .innerJoin(participations, eq(participations.userId, users.id))
+    .innerJoin(socialParticipations, eq(socialParticipations.id, participations.id))
     .where(
       and(
         eq(participations.hidden, false),
