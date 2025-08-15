@@ -10,43 +10,43 @@ export type Tag = {
   description: string;
 };
 
-export const getTags = cache((): Promise<Tag[]> => {
+export const getTags = cache((locale: string): Promise<Tag[]> => {
   return cmsDb
     .select({
       name: tags.name,
-      description: tags.description,
+      description: sql<string>`${tags.translations} ->> ${locale}`,
     })
     .from(tags)
-    .orderBy(tags.description);
+    .orderBy(sql<string>`${tags.translations} ->> ${locale}`);
 });
 
-export const getTechniqueTags = cache((): Promise<Tag[]> => {
+export const getTechniqueTags = cache((locale: string): Promise<Tag[]> => {
   return cmsDb
     .select({
       name: tags.name,
-      description: tags.description,
+      description: sql<string>`${tags.translations} ->> ${locale}`,
     })
     .from(tags)
     .where(eq(tags.isTechnique, true))
-    .orderBy(tags.description);
+    .orderBy(sql<string>`${tags.translations} ->> ${locale}`);
 });
 
-export const getOiiYearTags = cache((): Promise<Tag[]> => {
+export const getOiiYearTags = cache((locale: string): Promise<Tag[]> => {
   return cmsDb
     .select({
       name: tags.name,
-      description: tags.description,
+      description: sql<string>`${tags.translations} ->> ${locale}`,
     })
     .from(tags)
     .where(and(eq(tags.isEvent, true), like(tags.name, "ioi20%")))
     .orderBy(desc(tags.name));
 });
 
-export const getOisYearTags = cache((): Promise<Tag[]> => {
+export const getOisYearTags = cache((locale: string): Promise<Tag[]> => {
   return cmsDb
     .select({
       name: tags.name,
-      description: tags.description,
+      description: sql<string>`${tags.translations} ->> ${locale}`,
     })
     .from(tags)
     .where(and(eq(tags.isEvent, true), like(tags.name, "ois_%"), notLike(tags.name, "ois-%")))

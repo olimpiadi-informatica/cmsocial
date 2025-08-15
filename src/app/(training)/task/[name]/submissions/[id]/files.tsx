@@ -26,7 +26,9 @@ export async function SubmissionFiles({ id, language }: { id: number; language: 
 
   return (
     <>
-      <H3 className="mb-2 mt-6">File</H3>
+      <H3 className="mb-2 mt-6">
+        <Trans>File</Trans>
+      </H3>
       <Menu>
         {files.map((file) => (
           <li key={file.name}>

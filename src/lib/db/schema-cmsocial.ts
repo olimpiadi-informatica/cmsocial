@@ -3,6 +3,7 @@ import {
   date,
   doublePrecision,
   integer,
+  jsonb,
   pgTable,
   serial,
   varchar,
@@ -26,7 +27,7 @@ export const socialTasks = pgTable("social_tasks", {
 export const tags = pgTable("tags", {
   id: serial().primaryKey(),
   name: varchar().notNull(),
-  description: varchar().notNull(),
+  translations: jsonb("translations").$type<Record<string, string>>().notNull(),
   isTechnique: boolean("is_technique").notNull(),
   isEvent: boolean("is_event").notNull(),
 });

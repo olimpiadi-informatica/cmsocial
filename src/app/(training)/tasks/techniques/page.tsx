@@ -7,9 +7,9 @@ import { getTechniqueTags } from "~/lib/api/tags";
 import { loadLocale } from "~/lib/locale";
 
 export default async function Page() {
-  await loadLocale();
+  const i18n = await loadLocale();
 
-  const tags = await getTechniqueTags();
+  const tags = await getTechniqueTags(i18n.locale);
 
   return (
     <>

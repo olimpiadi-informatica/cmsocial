@@ -20,11 +20,20 @@ export function LocaleDropdown() {
         <ChevronDown size={18} strokeWidth={2.5} />
       </DropdownButton>
       <DropdownMenu>
-        <LocaleItem lang="it">
+        <LocaleItem lang="it-IT">
           <Flag locale="it" /> Italiano
         </LocaleItem>
-        <LocaleItem lang="en">
-          <Flag locale="en" /> English
+        <LocaleItem lang="en-GB">
+          <Flag locale="gb" /> English
+        </LocaleItem>
+        <LocaleItem lang="de-DE">
+          <Flag locale="de" /> Deutsch (beta)
+        </LocaleItem>
+        <LocaleItem lang="es-ES">
+          <Flag locale="es" /> Español (beta)
+        </LocaleItem>
+        <LocaleItem lang="fr-FR">
+          <Flag locale="fr" /> Français (beta)
         </LocaleItem>
       </DropdownMenu>
     </Dropdown>

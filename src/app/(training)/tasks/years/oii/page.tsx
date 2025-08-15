@@ -6,12 +6,12 @@ import { getSessionUser } from "~/lib/user";
 import { OiiTable } from "./table";
 
 export default async function Page() {
-  await loadLocale();
+  const i18n = await loadLocale();
 
   const user = await getSessionUser();
 
   const [tags, tasks] = await Promise.all([
-    getOiiYearTags(),
+    getOiiYearTags(i18n.locale),
     getTasksByEvents(user?.cmsId, user?.username, ["territoriali", "pre-oii", "nazionali"]),
   ]);
 

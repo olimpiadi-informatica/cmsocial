@@ -5,6 +5,7 @@ import { compact, uniq } from "lodash-es";
 
 import { getTechniqueTags } from "~/lib/api/tags";
 import { getTaskCount, getTaskList, type TaskListOptions } from "~/lib/api/tasks";
+import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
@@ -34,6 +35,7 @@ export default async function Page({ params, searchParams }: Params) {
 
   if (!Number.isInteger(page) || page < 1) notFound();
 
+  const i18n = await loadLocale();
   const user = await getSessionUser();
 
   const options: TaskListOptions = {
@@ -46,7 +48,7 @@ export default async function Page({ params, searchParams }: Params) {
   const [taskList, taskCount, allTags] = await Promise.all([
     getTaskList(options, user?.cmsId, page, pageSize),
     getTaskCount(options, user?.cmsId),
-    getTechniqueTags(),
+    getTechniqueTags(i18n.locale),
   ]);
 
   const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);

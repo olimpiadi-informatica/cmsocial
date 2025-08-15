@@ -6,32 +6,36 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: it\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: \n"
 "X-Generator: Poedit 3.4.4\n"
 
+#: src/app/algobadge/bulk/table.tsx
+msgid "(username non valido)"
+msgstr "(nombre de usuario inválido)"
+
 #: src/app/algobadge/bulk/summary-badges.tsx
 msgid "{num} categorie"
-msgstr "{num} categorie"
+msgstr "{num} categorías"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "<0>Memoria utilizzata</0>:"
-msgstr "<0>Memoria utilizzata</0>:"
+msgstr "<0>Memoria utilizada</0>:"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
-msgstr "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
+msgstr "<0>Portal de entrenamiento de las</0> <1><2>Olimpiadas</2> <3>Italianas de</3> <4>Informática</4></1>"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "<0>Tempo di compilazione</0>:"
-msgstr "<0>Tempo di compilazione</0>:"
+msgstr "<0>Tiempo de compilación</0>:"
 
 #: src/lib/auth/errors.ts
 msgid "2FA non abilitato"
-msgstr "2FA non abilitato"
+msgstr "2FA no habilitado"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
@@ -39,55 +43,55 @@ msgstr "2FA non abilitato"
 #: src/app/(training)/task/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi"
-msgstr "Accedi"
+msgstr "Iniciar sesión"
 
 #: src/components/navbar/login-button.tsx
 msgid "Accedi / Registrati"
-msgstr "Accedi / Registrati"
+msgstr "Iniciar sesión / Registrarse"
 
 #: src/components/oauth/button.tsx
 msgid "Accedi con {name}"
-msgstr "Accedi con {name}"
+msgstr "Iniciar sesión con {name}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi per inviare soluzioni"
-msgstr "Accedi per inviare soluzioni"
+msgstr "Inicia sesión para enviar soluciones"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
 msgid "Accedi per vedere le tue sottoposizioni"
-msgstr "Accedi per vedere le tue sottoposizioni"
+msgstr "Inicia sesión para ver tus envíos"
 
 #: src/lib/auth/errors.ts
 msgid "Accesso negato"
-msgstr "Accesso negato"
+msgstr "Acceso denegado"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
-msgstr "Account collegati"
+msgstr "Cuentas vinculadas"
 
 #: src/app/(training)/settings/social/actions.ts
 msgid "Account collegato con successo!"
-msgstr "Account collegato con successo!"
+msgstr "¡Cuenta vinculada con éxito!"
 
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 msgid "Account eliminato con successo!"
-msgstr "Account eliminato con successo!"
+msgstr "¡Cuenta eliminada con éxito!"
 
 #: src/lib/auth/errors.ts
 msgid "Account già collegato"
-msgstr "Account già collegato"
+msgstr "Cuenta ya vinculada"
 
 #: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Account non trovato"
-msgstr "Account non trovato"
+msgstr "Cuenta no encontrada"
 
 #: src/app/(training)/settings/social/actions.ts
 msgid "Account scollegato con successo!"
-msgstr "Account scollegato con successo!"
+msgstr "¡Cuenta desvinculada con éxito!"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Admin"
@@ -95,30 +99,30 @@ msgstr "Admin"
 
 #: src/app/(training)/settings/profile/page.tsx
 msgid "Aggiorna dati"
-msgstr "Aggiorna dati"
+msgstr "Actualizar datos"
 
 #: src/app/(training)/settings/school/page.tsx
 msgid "Aggiorna scuola"
-msgstr "Aggiorna scuola"
+msgstr "Actualizar escuela"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Aggiungi"
-msgstr "Aggiungi"
+msgstr "Añadir"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Aggiungi tag"
-msgstr "Aggiungi tag"
+msgstr "Añadir etiqueta"
 
 #. placeholder {0}: tag.description
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Aggiungi tag {0}"
-msgstr "Aggiungi tag {0}"
+msgstr "Añadir etiqueta {0}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Aiuto"
-msgstr "Aiuto"
+msgstr "Ayuda"
 
 #: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
@@ -128,271 +132,271 @@ msgstr "Algobadge"
 #: src/app/(training)/task/[name]/attachments/page.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Allegati"
-msgstr "Allegati"
+msgstr "Archivos adjuntos"
 
 #: src/app/fibonacci/page.tsx
 msgid "Allenati per i Giochi di Fibonacci risolvendo gli esercizi degli anni passati."
-msgstr "Allenati per i Giochi di Fibonacci risolvendo gli esercizi degli anni passati."
+msgstr "Entrena para los Juegos de Fibonacci resolviendo los ejercicios de años anteriores."
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Altre gare"
-msgstr "Altre gare"
+msgstr "Otras competiciones"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Altre Risorse"
-msgstr "Altre Risorse"
+msgstr "Otros Recursos"
 
 #: src/app/(training)/tasks/years/oii/table.tsx
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Anno"
-msgstr "Anno"
+msgstr "Año"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Anziano"
-msgstr "Anziano"
+msgstr "Veterano"
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Apri Gmail"
-msgstr "Apri Gmail"
+msgstr "Abrir Gmail"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Archi del grafo"
-msgstr "Archi del grafo"
+msgstr "Arcos del grafo"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Argento"
-msgstr "Argento"
+msgstr "Plata"
 
 #. placeholder {0}: task.submissionFormat[0].replace(".%l", "")
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Assicurati di chiamare la tua classe \"{0}\", altrimenti la compilazione non andrà a buon fine."
-msgstr "Assicurati di chiamare la tua classe \"{0}\", altrimenti la compilazione non andrà a buon fine."
+msgstr "Asegúrate de llamar a tu clase \"{0}\", de lo contrario la compilación fallará."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Attenzione:"
-msgstr "Attenzione:"
+msgstr "Advertencia:"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Attenzione! Questa azione è irreversibile."
-msgstr "Attenzione! Questa azione è irreversibile."
+msgstr "¡Atención! Esta acción es irreversible."
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Attività"
-msgstr "Attività"
+msgstr "Actividad"
 
 #: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Autenticazione fallita"
-msgstr "Autenticazione fallita"
+msgstr "Autenticación fallida"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Badge"
-msgstr "Badge"
+msgstr "Insignia"
 
 #: src/app/fibonacci/page.tsx
 msgid "Benvenuto nella piattaforma ufficiale di allenamento dei Giochi di Fibonacci!"
-msgstr "Benvenuto nella piattaforma ufficiale di allenamento dei Giochi di Fibonacci!"
+msgstr "¡Bienvenido a la plataforma oficial de entrenamiento de los Juegos de Fibonacci!"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Benvenuto nella piattaforma ufficiale di allenamento per le OII! Qui avrai accesso a numerosi problemi ai quali potrai inviare delle soluzioni scritte in un linguaggio di programmazione a tua scelta."
-msgstr "Benvenuto nella piattaforma ufficiale di allenamento per le OII! Qui avrai accesso a numerosi problemi ai quali potrai inviare delle soluzioni scritte in un linguaggio di programmazione a tua scelta."
+msgstr "¡Bienvenido a la plataforma oficial de entrenamiento para las OII! Aquí tendrás acceso a numerosos problemas a los que podrás enviar soluciones escritas en un lenguaje de programación de tu elección."
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Bloccato"
-msgstr "Bloccato"
+msgstr "Bloqueado"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Bronzo"
-msgstr "Bronzo"
+msgstr "Bronce"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Browser non supportato. Usa Chrome o Edge."
-msgstr "Browser non supportato. Usa Chrome o Edge."
+msgstr "Navegador no compatible. Usa Chrome o Edge."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cambia input"
-msgstr "Cambia input"
+msgstr "Cambiar entrada"
 
 #: src/components/navbar/locale-dropdown.tsx
 msgid "Cambia lingua"
-msgstr "Cambia lingua"
+msgstr "Cambiar idioma"
 
 #: src/app/(training)/(email-callback)/reset-password/page.tsx
 #: src/app/(training)/forgot-password/page-client.tsx
 msgid "Cambia password"
-msgstr "Cambia password"
+msgstr "Cambiar contraseña"
 
 #: src/app/(training)/settings/layout-client.tsx
 msgid "Cancella account"
-msgstr "Cancella account"
+msgstr "Eliminar cuenta"
 
 #: src/app/(training)/forgot-password/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Captcha non valido"
-msgstr "Captcha non valido"
+msgstr "Captcha inválido"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Caricamento"
-msgstr "Caricamento"
+msgstr "Cargando"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Caricato il:"
-msgstr "Caricato il:"
+msgstr "Cargado el:"
 
 #: src/app/algobadge/bulk/layout.tsx
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Categorie"
-msgstr "Categorie"
+msgstr "Categorías"
 
 #: src/components/forum-posts.tsx
 msgid "Cerca altri argomenti"
-msgstr "Cerca altri argomenti"
+msgstr "Buscar otros temas"
 
 #: src/app/(training)/navbar.tsx
 msgid "Classifica"
-msgstr "Classifica"
+msgstr "Clasificación"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Classifiche OII"
-msgstr "Classifiche OII"
+msgstr "Clasificaciones OII"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Classifiche OIS"
-msgstr "Classifiche OIS"
+msgstr "Clasificaciones OIS"
 
 #: src/lib/auth/errors.ts
 msgid "Codice di backup non valido"
-msgstr "Codice di backup non valido"
+msgstr "Código de respaldo inválido"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/files.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Codice sorgente"
-msgstr "Codice sorgente"
+msgstr "Código fuente"
 
 #: src/lib/auth/errors.ts
 msgid "Codici di backup non abilitati"
-msgstr "Codici di backup non abilitati"
+msgstr "Códigos de respaldo no habilitados"
 
 #: src/lib/api/auth.ts
 msgid "Cognome non valido"
-msgstr "Cognome non valido"
+msgstr "Apellido inválido"
 
 #: src/app/(training)/settings/social/page.tsx
 msgid "Collega account"
-msgstr "Collega account"
+msgstr "Vincular cuenta"
 
 #: src/components/oauth/button.tsx
 msgid "Collega account {name}"
-msgstr "Collega account {name}"
+msgstr "Vincular cuenta {name}"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Come funziona l'input e l'output?"
-msgstr "Come funziona l'input e l'output?"
+msgstr "¿Cómo funciona la entrada y la salida?"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Compilazione"
-msgstr "Compilazione"
+msgstr "Compilación"
 
 #: src/components/outcome.tsx
 msgid "Compilazione fallita"
-msgstr "Compilazione fallita"
+msgstr "Compilación fallida"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/components/outcome.tsx
 msgid "Compilazione in corso"
-msgstr "Compilazione in corso"
+msgstr "Compilando"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Comune"
-msgstr "Comune"
+msgstr "Municipio"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
-msgstr "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
+msgstr "Con Algobadge te guiaremos a través de una cuidadosa selección de tareas para resolver, ordenadas por dificultad creciente, que te permitirán explorar nuevas técnicas algorítmicas de forma gradual y eficaz."
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
-msgstr "Conferma"
+msgstr "Confirmar"
 
 #: src/app/signup/_steps/step1.tsx
 #: src/app/signup/_steps/step3.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Continua"
-msgstr "Continua"
+msgstr "Continuar"
 
 #: src/app/(training)/settings/delete/actions.ts
 msgid "Controlla la tua casella di posta per completare l'eliminazione dell'account."
-msgstr "Controlla la tua casella di posta per completare l'eliminazione dell'account."
+msgstr "Revisa tu bandeja de entrada para completar la eliminación de la cuenta."
 
 #: src/app/(training)/forgot-password/actions.ts
 msgid "Controlla la tua casella di posta per recuperare la password."
-msgstr "Controlla la tua casella di posta per recuperare la password."
+msgstr "Revisa tu bandeja de entrada para recuperar la contraseña."
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Controlla la tua casella di posta per verificare l'account"
-msgstr "Controlla la tua casella di posta per verificare l'account"
+msgstr "Revisa tu bandeja de entrada para verificar la cuenta"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Corretto"
-msgstr "Corretto"
+msgstr "Correcto"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cosa devo inviare?"
-msgstr "Cosa devo inviare?"
+msgstr "¿Qué debo enviar?"
 
 #: src/app/signup/layout.tsx
 msgid "Crea un account"
-msgstr "Crea un account"
+msgstr "Crear una cuenta"
 
 #: src/components/forum-posts.tsx
 msgid "Crea un nuovo argomento"
-msgstr "Crea un nuovo argomento"
+msgstr "Crear un nuevo tema"
 
 #: src/app/signup/page.tsx
 msgid "Credenziali"
-msgstr "Credenziali"
+msgstr "Credenciales"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
 msgid "Data e ora"
-msgstr "Data e ora"
+msgstr "Fecha y hora"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Data e ora:"
-msgstr "Data e ora:"
+msgstr "Fecha y hora:"
 
 #: src/app/(training)/settings/profile/actions.ts
 #: src/app/(training)/settings/school/actions.ts
 msgid "Dati aggiornati con successo"
-msgstr "Dati aggiornati con successo"
+msgstr "Datos actualizados con éxito"
 
 #: src/lib/auth/errors.ts
 msgid "Dati non validi"
-msgstr "Dati non validi"
+msgstr "Datos inválidos"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Dettagli"
-msgstr "Dettagli"
+msgstr "Detalles"
 
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Devi inviare i seguenti file:"
-msgstr "Devi inviare i seguenti file:"
+msgstr "Debes enviar los siguientes archivos:"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Devi usare HTTPS per scaricare il file."
-msgstr "Devi usare HTTPS per scaricare il file."
+msgstr "Debes usar HTTPS para descargar el archivo."
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Di tendenza"
-msgstr "Di tendenza"
+msgstr "Tendencias"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Diamante"
@@ -400,105 +404,105 @@ msgstr "Diamante"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Dimensione nodi"
-msgstr "Dimensione nodi"
+msgstr "Tamaño de los nodos"
 
 #: src/app/(training)/(terry)/task/terry/[name]/help/page.tsx
 #: src/app/(training)/task/[name]/help/page.tsx
 msgid "Discussioni del forum"
-msgstr "Discussioni del forum"
+msgstr "Discusiones del foro"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
-msgstr "Editor di grafi"
+msgstr "Editor de grafos"
 
 #: src/app/(training)/scolastiche/page.tsx
 #: src/app/fibonacci/primarie/page.tsx
 #: src/app/fibonacci/secondarie/page.tsx
 msgid "Edizione {edition}"
-msgstr "Edizione {edition}"
+msgstr "Edición {edition}"
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Elimina account"
-msgstr "Elimina account"
+msgstr "Eliminar cuenta"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Eliminazione account"
-msgstr "Eliminazione account"
+msgstr "Eliminación de cuenta"
 
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
-msgstr "Email già esistente"
+msgstr "El correo electrónico ya existe"
 
 #: src/lib/auth/errors.ts
 msgid "Email non trovata"
-msgstr "Email non trovata"
+msgstr "Correo electrónico no encontrado"
 
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
 #: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email non valida"
-msgstr "Email non valida"
+msgstr "Correo electrónico inválido"
 
 #: src/lib/auth/errors.ts
 msgid "Email non verificata"
-msgstr "Email non verificata"
+msgstr "Correo electrónico no verificado"
 
 #: src/lib/auth/errors.ts
 msgid "Email o password non validi"
-msgstr "Email o password non validi"
+msgstr "Correo electrónico o contraseña no válidos"
 
 #: src/lib/auth/errors.ts
 msgid "Email uguale alla precedente"
-msgstr "Email uguale alla precedente"
+msgstr "Correo electrónico igual al anterior"
 
 #: src/app/auth/callback/credential/route.ts
 msgid "Email verificata con successo!"
-msgstr "Email verificata con successo!"
+msgstr "¡Correo electrónico verificado con éxito!"
 
 #: src/app/(training)/login/page-client.tsx
 msgid "Entra"
-msgstr "Entra"
+msgstr "Entrar"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Entra nella community"
-msgstr "Entra nella community"
+msgstr "Únete a la comunidad"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Errato"
-msgstr "Errato"
+msgstr "Incorrecto"
 
 #: src/components/outcome.tsx
 msgid "Errore del server"
-msgstr "Errore del server"
+msgstr "Error del servidor"
 
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/login/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Errore durante il login"
-msgstr "Errore durante il login"
+msgstr "Error durante el inicio de sesión"
 
 #: src/lib/auth/errors.ts
 msgid "Errore durante il recupero dell'utente"
-msgstr "Errore durante il recupero dell'utente"
+msgstr "Error al recuperar el usuario"
 
 #: src/lib/auth/errors.ts
 msgid "Errore durante il recupero della sessione"
-msgstr "Errore durante il recupero della sessione"
+msgstr "Error al recuperar la sesión"
 
 #: src/lib/auth/errors.ts
 msgid "Errore durante la creazione dell'utente"
-msgstr "Errore durante la creazione dell'utente"
+msgstr "Error al crear el usuario"
 
 #: src/lib/auth/errors.ts
 msgid "Errore durante la creazione della sessione"
-msgstr "Errore durante la creazione della sessione"
+msgstr "Error al crear la sesión"
 
 #: src/lib/auth/errors.ts
 msgid "Errore durante la modifica dell'utente"
-msgstr "Errore durante la modifica dell'utente"
+msgstr "Error al modificar el usuario"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
@@ -510,116 +514,120 @@ msgstr "Errore durante la modifica dell'utente"
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
 msgid "Errore sconosciuto"
-msgstr "Errore sconosciuto"
+msgstr "Error desconocido"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Errore:"
-msgstr "Errore:"
+msgstr "Error:"
 
 #: src/components/navbar/user-dropdown.tsx
 msgid "Esci"
-msgstr "Esci"
+msgstr "Cerrar sesión"
 
 #: src/components/outcome.tsx
 msgid "Esecuzione in corso"
-msgstr "Esecuzione in corso"
+msgstr "Ejecutando"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
 msgid "Esito"
-msgstr "Esito"
+msgstr "Resultado"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Esito della compilazione:"
-msgstr "Esito della compilazione:"
+msgstr "Resultado de la compilación:"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Esito:"
-msgstr "Esito:"
+msgstr "Resultado:"
+
+#: src/app/(training)/task/[name]/submissions/[id]/files.tsx
+msgid "File"
+msgstr "Archivo"
 
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File \"{output}\" mancante"
-msgstr "File \"{output}\" mancante"
+msgstr "Falta el archivo \"{output}\""
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File di output"
-msgstr "File di output"
+msgstr "Archivo de salida"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File sorgente"
-msgstr "File sorgente"
+msgstr "Archivo fuente"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "File troppo grande"
-msgstr "File troppo grande"
+msgstr "Archivo demasiado grande"
 
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Finale"
-msgstr "Finale"
+msgstr "Final"
 
 #: src/app/signup/page.tsx
 msgid "Fine"
-msgstr "Fine"
+msgstr "Fin"
 
 #: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Forum"
-msgstr "Forum"
+msgstr "Foro"
 
 #. placeholder {0}: post.username
 #: src/components/forum-posts.tsx
 msgid "Foto profilo di {0}"
-msgstr "Foto profilo di {0}"
+msgstr "Foto de perfil de {0}"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Frase di conferma"
-msgstr "Frase di conferma"
+msgstr "Frase de confirmación"
 
 #: src/lib/algobadge.ts
 msgid "Funzioni di Libreria"
-msgstr "Funzioni di Libreria"
+msgstr "Funciones de Librería"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Gara di allenamento Istituto Roiti Ferrara"
-msgstr "Gara di allenamento Istituto Roiti Ferrara"
+msgstr "Competición de entrenamiento Instituto Roiti Ferrara"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Gara di Allenamento Tor Vergata <0>(GATOR)</0>"
-msgstr "Gara di Allenamento Tor Vergata <0>(GATOR)</0>"
+msgstr "Competición de Entrenamiento Tor Vergata <0>(GATOR)</0>"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Gare a squadre <0>(OIS)</0>"
-msgstr "Gare a squadre <0>(OIS)</0>"
+msgstr "Competiciones por equipos <0>(OIS)</0>"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Gare ufficiali"
-msgstr "Gare ufficiali"
+msgstr "Competiciones oficiales"
 
 #: src/lib/api/submit-terry.ts
 msgid "Generare nuovo input"
-msgstr "Generare nuovo input"
+msgstr "Generar nueva entrada"
 
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Giochi di Fibonacci"
-msgstr "Giochi di Fibonacci"
+msgstr "Juegos de Fibonacci"
 
 #: src/app/fibonacci/primarie/page.tsx
 msgid "Giochi di Fibonacci - Scuole primarie"
-msgstr "Giochi di Fibonacci - Scuole primarie"
+msgstr "Juegos de Fibonacci - Escuelas primarias"
 
 #: src/app/fibonacci/secondarie/page.tsx
 msgid "Giochi di Fibonacci - Scuole secondarie"
-msgstr "Giochi di Fibonacci - Scuole secondarie"
+msgstr "Juegos de Fibonacci - Escuelas secundarias"
 
 #: src/lib/algobadge.ts
 msgid "Grafi"
-msgstr "Grafi"
+msgstr "Grafos"
 
 #: src/app/(training)/tools/graph/page.tsx
 #: src/app/(training)/tools/graph/page.tsx
@@ -628,22 +636,22 @@ msgstr "Grafo"
 
 #: src/lib/algobadge.ts
 msgid "Greedy, sorting e searching"
-msgstr "Greedy, sorting e searching"
+msgstr "Greedy, ordenamiento y búsqueda"
 
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
-msgstr "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
+msgstr "¡Has completado el registro! Puedes empezar a resolver problemas"
 
 #: src/app/algobadge/(categories)/header.tsx
 msgid "Hai raggiunto il badge di diamante!"
-msgstr "Hai raggiunto il badge di diamante!"
+msgstr "¡Has alcanzado la insignia de diamante!"
 
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 #: src/app/algobadge/bulk/layout.tsx
 #: src/app/fibonacci/navbar.tsx
 msgid "Home"
-msgstr "Home"
+msgstr "Inicio"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
@@ -652,59 +660,59 @@ msgstr "ID"
 
 #: src/lib/auth/errors.ts
 msgid "ID token non supportato"
-msgstr "ID token non supportato"
+msgstr "Token de ID no soportado"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Impara gradualmente"
-msgstr "Impara gradualmente"
+msgstr "Aprende gradualmente"
 
 #: src/lib/auth/errors.ts
 msgid "Impossibile scollegare l'account"
-msgstr "Impossibile scollegare l'account"
+msgstr "No se puede desvincular la cuenta"
 
 #: src/components/navbar/user-dropdown.tsx
 msgid "Impostazioni"
-msgstr "Impostazioni"
+msgstr "Configuración"
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Indietro"
-msgstr "Indietro"
+msgstr "Atrás"
 
 #: src/lib/algobadge.ts
 msgid "Induzione e ricorsione"
-msgstr "Induzione e ricorsione"
+msgstr "Inducción y recursión"
 
 #: src/app/fibonacci/page.tsx
 msgid "Inizia ad allenarti"
-msgstr "Inizia ad allenarti"
+msgstr "Empieza a entrenar"
 
 #: src/lib/api/submit-terry.ts
 msgid "Input già generato"
-msgstr "Input già generato"
+msgstr "Entrada ya generada"
 
 #: src/lib/api/submit-terry.ts
 msgid "Input scaduto"
-msgstr "Input scaduto"
+msgstr "Entrada caducada"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Input/output:"
-msgstr "Input/output:"
+msgstr "Entrada/salida:"
 
 #: src/app/algobadge/bulk/page.tsx
 msgid "Inserisci gli username"
-msgstr "Inserisci gli username"
+msgstr "Introduce los nombres de usuario"
 
 #: src/app/signup/_steps/step3.tsx
 msgid "Inserisci il tuo nome e cognome e scegli un username"
-msgstr "Inserisci il tuo nome e cognome e scegli un username"
+msgstr "Introduce tu nombre y apellido y elige un nombre de usuario"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Inserisci la frase di conferma"
-msgstr "Inserisci la frase di conferma"
+msgstr "Introduce la frase de confirmación"
 
 #: src/app/signup/_steps/step1.tsx
 msgid "Inserisci la tua email e scegli una nuova password"
-msgstr "Inserisci la tua email e scegli una nuova password"
+msgstr "Introduce tu correo electrónico y elige una nueva contraseña"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
@@ -712,62 +720,62 @@ msgstr "Inserisci la tua email e scegli una nuova password"
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Invia"
-msgstr "Invia"
+msgstr "Enviar"
 
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Invia output"
-msgstr "Invia output"
+msgstr "Enviar salida"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Invia soluzione"
-msgstr "Invia soluzione"
+msgstr "Enviar solución"
 
 #: src/app/fibonacci/page.tsx
 msgid "Iscriviti"
-msgstr "Iscriviti"
+msgstr "Inscríbete"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Istituto"
-msgstr "Istituto"
+msgstr "Instituto"
 
 #: src/lib/auth/errors.ts
 msgid "L'email non può essere modificata"
-msgstr "L'email non può essere modificata"
+msgstr "El correo electrónico no se puede modificar"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "La vasta scelta di problemi presenti nel sito ti permetterà di prepararti al meglio per ogni fase delle Olimpiadi, partendo dalla fase scolastica fino ad arrivare alla finale nazionale."
-msgstr "La vasta scelta di problemi presenti nel sito ti permetterà di prepararti al meglio per ogni fase delle Olimpiadi, partendo dalla fase scolastica fino ad arrivare alla finale nazionale."
+msgstr "La amplia variedad de problemas presentes en el sitio te permitirá prepararte de la mejor manera para cada fase de las Olimpiadas, desde la fase escolar hasta la final nacional."
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Leggi la wiki"
-msgstr "Leggi la wiki"
+msgstr "Leer la wiki"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Limite di memoria:"
-msgstr "Limite di memoria:"
+msgstr "Límite de memoria:"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Limite di tempo:"
-msgstr "Limite di tempo:"
+msgstr "Límite de tiempo:"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Linguaggio"
-msgstr "Linguaggio"
+msgstr "Lenguaje"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Linguaggio:"
-msgstr "Linguaggio:"
+msgstr "Lenguaje:"
 
 #: src/app/fibonacci/navbar.tsx
 msgid "Logo Giochi di Fibonacci"
-msgstr "Logo Giochi di Fibonacci"
+msgstr "Logo de los Juegos de Fibonacci"
 
 #: src/app/(training)/navbar.tsx
 msgid "Logo OII"
@@ -776,19 +784,19 @@ msgstr "Logo OII"
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/signup/layout.tsx
 msgid "Logo Olimpiadi Italiane di Informatica"
-msgstr "Logo Olimpiadi Italiane di Informatica"
+msgstr "Logo Olimpiadas Italianas de Informática"
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Logo Outlook"
-msgstr "Logo Outlook"
+msgstr "Logo de Outlook"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Lunghezza archi"
-msgstr "Lunghezza archi"
+msgstr "Longitud de los arcos"
 
 #: src/lib/algobadge.ts
 msgid "Matematica"
-msgstr "Matematica"
+msgstr "Matemáticas"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria"
@@ -796,123 +804,124 @@ msgstr "Memoria"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria utilizzata durante la fase di compilazione che precede l'esecuzione. Non è vincolata dal limite di memoria del problema e non influenza il punteggio."
-msgstr "Memoria utilizzata durante la fase di compilazione che precede l'esecuzione. Non è vincolata dal limite di memoria del problema e non influenza il punteggio."
+msgstr "Memoria utilizada durante la fase de compilación que precede a la ejecución. No está limitada por el límite de memoria del problema y no afecta la puntuación."
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Menzione"
-msgstr "Menzione"
+msgstr "Mención"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Ministero dell'Istruzione e del Merito"
-msgstr "Ministero dell'Istruzione e del Merito"
+msgstr "Ministerio de Educación y Mérito"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/password/page.tsx
 #: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
-msgstr "Modifica password"
+msgstr "Modificar contraseña"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/profile/page.tsx
 msgid "Modifica profilo"
-msgstr "Modifica profilo"
+msgstr "Editar perfil"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/school/page.tsx
 msgid "Modifica scuola"
-msgstr "Modifica scuola"
+msgstr "Modificar escuela"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Mostra tag"
-msgstr "Mostra tag"
+msgstr "Mostrar etiquetas"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Nascondi risolti"
-msgstr "Nascondi risolti"
+msgstr "Ocultar resueltos"
 
+#: src/app/(training)/tasks/events/page.tsx
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Nazionali"
-msgstr "Nazionali"
+msgstr "Nacionales"
 
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Nazionali e altre gare"
-msgstr "Nazionali e altre gare"
+msgstr "Nacionales y otras competiciones"
 
 #: src/app/(training)/navbar.tsx
 msgid "Nazionali e OIS"
-msgstr "Nazionali e OIS"
+msgstr "Nacionales y OIS"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Nazionali, OIS e altre gare"
-msgstr "Nazionali, OIS e altre gare"
+msgstr "Nacionales, OIS y otras competiciones"
 
 #: src/app/fibonacci/page.tsx
 msgid "Nel sito ufficiale potrai trovare il regolamento, il calendario e le modalità di iscrizione."
-msgstr "Nel sito ufficiale potrai trovare il regolamento, il calendario e le modalità di iscrizione."
+msgstr "En el sitio oficial podrás encontrar el reglamento, el calendario y las modalidades de inscripción."
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Nella wiki ufficiale troverai spiegazioni dettagliate e soluzioni di problemi passati, oltre che a tutorial approfonditi su tecniche algoritmiche avanzate."
-msgstr "Nella wiki ufficiale troverai spiegazioni dettagliate e soluzioni di problemi passati, oltre che a tutorial approfonditi su tecniche algoritmiche avanzate."
+msgstr "En la wiki oficial encontrarás explicaciones detalladas y soluciones de problemas pasados, así como tutoriales avanzados sobre técnicas algorítmicas."
 
 #: src/app/(training)/task/[name]/attachments/page.tsx
 msgid "Nessun allegato"
-msgstr "Nessun allegato"
+msgstr "Ningún archivo adjunto"
 
 #: src/components/forum-posts.tsx
 msgid "Nessun post trovato."
-msgstr "Nessun post trovato."
+msgstr "No se encontraron publicaciones."
 
 #: src/app/(training)/user/[username]/task-scores.tsx
 msgid "Nessun problema risolto"
-msgstr "Nessun problema risolto"
+msgstr "Ningún problema resuelto"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
 msgid "Nessun problema trovato"
-msgstr "Nessun problema trovato"
+msgstr "No se encontró ningún problema"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Nessun tag"
-msgstr "Nessun tag"
+msgstr "Ninguna etiqueta"
 
 #: src/app/(training)/ranking/[page]/page.tsx
 msgid "Nessun utente trovato"
-msgstr "Nessun utente trovato"
+msgstr "Ningún usuario encontrado"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Nessuna soluzione"
-msgstr "Nessuna soluzione"
+msgstr "Ninguna solución"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
 msgid "Nessuna sottoposizione inviata"
-msgstr "Nessuna sottoposizione inviata"
+msgstr "Ningún envío realizado"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Nessuno"
-msgstr "Nessuno"
+msgstr "Ninguno"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Nome"
-msgstr "Nome"
+msgstr "Nombre"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Nome del problema"
-msgstr "Nome del problema"
+msgstr "Nombre del problema"
 
 #: src/lib/api/auth.ts
 msgid "Nome non valido"
-msgstr "Nome non valido"
+msgstr "Nombre inválido"
 
 #: src/app/(training)/login/page-client.tsx
 msgid "Non hai un account? <0>Registrati</0>"
-msgstr "Non hai un account? <0>Registrati</0>"
+msgstr "¿No tienes una cuenta? <0>Regístrate</0>"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Non inviato"
-msgstr "Non inviato"
+msgstr "No enviado"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
@@ -924,23 +933,27 @@ msgstr "Non inviato"
 #: src/lib/api/task-tags.ts
 #: src/lib/api/task-tags.ts
 msgid "Non sei autorizzato"
-msgstr "Non sei autorizzato"
+msgstr "No estás autorizado"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Non valido"
-msgstr "Non valido"
+msgstr "Inválido"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Nota:"
 msgstr "Nota:"
 
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Note:"
+msgstr "Notas:"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Novizio"
-msgstr "Novizio"
+msgstr "Novato"
 
 #: src/app/(training)/settings/password/page.tsx
 msgid "Nuova password"
-msgstr "Nuova password"
+msgstr "Nueva contraseña"
 
 #: src/app/(training)/tasks/years/layout.tsx
 msgid "OII"
@@ -952,20 +965,20 @@ msgstr "OIS"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Olimpiadi di Informatica a Squadre"
-msgstr "Olimpiadi di Informatica a Squadre"
+msgstr "Olimpiadas de Informática por Equipos"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Olimpiadi Italiane di Informatica"
-msgstr "Olimpiadi Italiane di Informatica"
+msgstr "Olimpiadas Italianas de Informática"
 
 #: src/app/(training)/login/page-client.tsx
 #: src/app/signup/_steps/step1.tsx
 msgid "oppure"
-msgstr "oppure"
+msgstr "o"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Ordinamento"
-msgstr "Ordinamento"
+msgstr "Ordenamiento"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Oro"
@@ -973,74 +986,74 @@ msgstr "Oro"
 
 #: src/lib/auth/errors.ts
 msgid "OTP non abilitato"
-msgstr "OTP non abilitato"
+msgstr "OTP no habilitado"
 
 #: src/lib/auth/errors.ts
 msgid "OTP scaduto"
-msgstr "OTP scaduto"
+msgstr "OTP caducado"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Ottieni input"
-msgstr "Ottieni input"
+msgstr "Obtener entrada"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
 #: src/components/pagination.tsx
 msgid "Pagina {page}"
-msgstr "Pagina {page}"
+msgstr "Página {page}"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Parzialmente corretto"
-msgstr "Parzialmente corretto"
+msgstr "Parcialmente correcto"
 
 #: src/app/(training)/login/page-client.tsx
 msgid "Password dimenticata?"
-msgstr "Password dimenticata?"
+msgstr "¿Olvidaste tu contraseña?"
 
 #: src/app/(training)/settings/password/actions.ts
 msgid "Password modificata con successo"
-msgstr "Password modificata con successo"
+msgstr "Contraseña modificada con éxito"
 
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
 msgid "Password modificata con successo!"
-msgstr "Password modificata con successo!"
+msgstr "¡Contraseña modificada con éxito!"
 
 #: src/lib/auth/errors.ts
 msgid "Password non valida"
-msgstr "Password non valida"
+msgstr "Contraseña inválida"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo corta"
-msgstr "Password troppo corta"
+msgstr "Contraseña demasiado corta"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo debole"
-msgstr "Password troppo debole"
+msgstr "Contraseña demasiado débil"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"
-msgstr "Password troppo lunga"
+msgstr "Contraseña demasiado larga"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Per continuare, inserisci la frase di conferma:"
-msgstr "Per continuare, inserisci la frase di conferma:"
+msgstr "Para continuar, introduce la frase de confirmación:"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Più difficili"
-msgstr "Più difficili"
+msgstr "Más difíciles"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Più facili"
-msgstr "Più facili"
+msgstr "Más fáciles"
 
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Più recenti"
-msgstr "Più recenti"
+msgstr "Más recientes"
 
 #: src/app/fibonacci/page.tsx
 msgid "Portale di allenamento dei Giochi di Fibonacci"
-msgstr "Portale di allenamento dei Giochi di Fibonacci"
+msgstr "Portal de entrenamiento de los Juegos de Fibonacci"
 
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Pre-OII"
@@ -1048,58 +1061,58 @@ msgstr "Pre-OII"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
-msgstr "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
+msgstr "Preséntate a otros aspirantes olímpicos en el foro de la plataforma, discute problemas, resuelve todas tus dudas sobre: ​​constructos básicos de tu lenguaje de programación, algoritmos y estructuras de datos de la biblioteca, técnicas algorítmicas y mucho más."
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
-msgstr "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
+msgstr "Probablemente te equivocaste al seleccionar el lenguaje, de lo contrario te sugerimos que dejes de usar Pascal y aprendas un lenguaje más moderno."
 
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Problemi"
-msgstr "Problemi"
+msgstr "Problemas"
 
 #: src/lib/algobadge.ts
 msgid "Problemi introduttivi"
-msgstr "Problemi introduttivi"
+msgstr "Problemas introductorios"
 
 #: src/app/(training)/navbar.tsx
 #: src/app/(training)/tasks/years/layout.tsx
 msgid "Problemi per anno"
-msgstr "Problemi per anno"
+msgstr "Problemas por año"
 
 #: src/app/(training)/navbar.tsx
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Problemi per gara"
-msgstr "Problemi per gara"
+msgstr "Problemas por competición"
 
 #: src/app/(training)/navbar.tsx
 #: src/app/(training)/tasks/techniques/page.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Problemi per tecnica"
-msgstr "Problemi per tecnica"
+msgstr "Problemas por técnica"
 
 #: src/app/(training)/user/[username]/page.tsx
 #: src/app/(training)/user/[username]/stats.tsx
 msgid "Problemi risolti"
-msgstr "Problemi risolti"
+msgstr "Problemas resueltos"
 
 #: src/app/signup/page.tsx
 #: src/components/navbar/user-dropdown.tsx
 msgid "Profilo"
-msgstr "Profilo"
+msgstr "Perfil"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Profilo di {username}"
-msgstr "Profilo di {username}"
+msgstr "Perfil de {username}"
 
 #: src/lib/algobadge.ts
 msgid "Programmazione dinamica"
-msgstr "Programmazione dinamica"
+msgstr "Programación dinámica"
 
 #: src/lib/auth/errors.ts
 msgid "Provider non trovato"
-msgstr "Provider non trovato"
+msgstr "Proveedor no encontrado"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
@@ -1108,214 +1121,215 @@ msgstr "Provincia"
 
 #: src/lib/language.ts
 msgid "Pseudocodice"
-msgstr "Pseudocodice"
+msgstr "Pseudocódigo"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Punteggio massimo:"
-msgstr "Punteggio massimo:"
+msgstr "Puntuación máxima:"
 
 #: src/app/(training)/user/[username]/stats.tsx
 msgid "Punti"
-msgstr "Punti"
+msgstr "Puntos"
 
 #: src/app/signup/_steps/step4.tsx
 msgid "Puoi facoltativamente selezionare la tua scuola, verrà mostrata nella tua pagina di profilo"
-msgstr "Puoi facoltativamente selezionare la tua scuola, verrà mostrata nella tua pagina di profilo"
+msgstr "Opcionalmente, puedes seleccionar tu escuela, que se mostrará en tu página de perfil"
 
 #: src/app/not-found.tsx
 msgid "Questa pagina non è stata trovata 😢"
-msgstr "Questa pagina non è stata trovata 😢"
+msgstr "Esta página no fue encontrada 😢"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Questo input è scaduto."
-msgstr "Questo input è scaduto."
+msgstr "Esta entrada ha caducado."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Questo input scade <0/>."
-msgstr "Questo input scade <0/>."
+msgstr "Esta entrada caduca <0/>."
 
 #: src/app/(training)/(email-callback)/reset-password/page.tsx
 #: src/app/(training)/forgot-password/page-client.tsx
 msgid "Recupera password"
-msgstr "Recupera password"
+msgstr "Recuperar contraseña"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Regione"
-msgstr "Regione"
+msgstr "Región"
 
 #: src/components/oauth/button.tsx
 msgid "Registrati con {name}"
-msgstr "Registrati con {name}"
+msgstr "Registrarse con {name}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
-msgstr "Richiedi input"
+msgstr "Solicitar entrada"
 
 #: src/lib/auth/errors.ts
 msgid "Richiesta non valida"
-msgstr "Richiesta non valida"
+msgstr "Solicitud inválida"
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Rimanda email"
-msgstr "Rimanda email"
+msgstr "Reenviar correo electrónico"
 
 #. placeholder {0}: tag.description
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Rimuovi tag {0}"
-msgstr "Rimuovi tag {0}"
+msgstr "Eliminar etiqueta {0}"
 
 #: src/lib/auth/errors.ts
 msgid "Ripetere autenticazione"
-msgstr "Ripetere autenticazione"
+msgstr "Volver a autenticarse"
 
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 msgid "Ripetere login"
-msgstr "Ripetere login"
+msgstr "Volver a iniciar sesión"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Risolvi tutti i problemi"
-msgstr "Risolvi tutti i problemi"
+msgstr "Resuelve todos los problemas"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Risultato"
-msgstr "Risultato"
+msgstr "Resultado"
 
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Round 1"
-msgstr "Round 1"
+msgstr "Ronda 1"
 
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Round 2"
-msgstr "Round 2"
+msgstr "Ronda 2"
 
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Round 3"
-msgstr "Round 3"
+msgstr "Ronda 3"
 
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Round 4"
-msgstr "Round 4"
+msgstr "Ronda 4"
 
 #: src/app/signup/_steps/step4.tsx
 msgid "Salta"
-msgstr "Salta"
+msgstr "Saltar"
 
 #: src/components/source-code.tsx
 #: src/components/source-code.tsx
 msgid "Scarica codice"
-msgstr "Scarica codice"
+msgstr "Descargar código"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Scarica dati"
-msgstr "Scarica dati"
+msgstr "Descargar datos"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Scarica input"
-msgstr "Scarica input"
+msgstr "Descargar entrada"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Scarica output"
-msgstr "Scarica output"
+msgstr "Descargar salida"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Scegli il comune"
-msgstr "Scegli il comune"
+msgstr "Elige el municipio"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Scegli la provincia"
-msgstr "Scegli la provincia"
+msgstr "Elige la provincia"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Scegli la regione"
-msgstr "Scegli la regione"
+msgstr "Elige la región"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
 msgid "Scegli la scuola"
-msgstr "Scegli la scuola"
+msgstr "Elige la escuela"
 
 #: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/events/page.tsx
 msgid "Scolastiche"
-msgstr "Scolastiche"
+msgstr "Escolares"
 
 #: src/components/oauth/button.tsx
 msgid "Scollega account {name}"
-msgstr "Scollega account {name}"
+msgstr "Desvincular cuenta {name}"
 
 #: src/app/signup/page.tsx
 msgid "Scuola"
-msgstr "Scuola"
+msgstr "Escuela"
 
 #: src/app/fibonacci/navbar.tsx
 #: src/app/fibonacci/page.tsx
 msgid "Scuole Primarie"
-msgstr "Scuole Primarie"
+msgstr "Escuelas Primarias"
 
 #: src/app/fibonacci/navbar.tsx
 #: src/app/fibonacci/page.tsx
 msgid "Scuole Secondarie"
-msgstr "Scuole Secondarie"
+msgstr "Escuelas Secundarias"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Segnalazioni bug"
-msgstr "Segnalazioni bug"
+msgstr "Informes de errores"
 
 #: src/app/(training)/settings/page.tsx
 msgid "Seleziona le impostazioni da modificare"
-msgstr "Seleziona le impostazioni da modificare"
+msgstr "Selecciona la configuración a modificar"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Seleziona un tag"
-msgstr "Seleziona un tag"
+msgstr "Selecciona una etiqueta"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Selezione SWERC dell'Università degli Studi di Milano"
-msgstr "Selezione SWERC dell'Università degli Studi di Milano"
+msgstr "Selección SWERC de la Universidad de Milán"
 
 #: src/app/(training)/scolastiche/page.tsx
 msgid "Selezioni scolastiche"
-msgstr "Selezioni scolastiche"
+msgstr "Selecciones escolares"
 
 #: src/lib/auth/errors.ts
 msgid "Sessione scaduta"
-msgstr "Sessione scaduta"
+msgstr "Sesión caducada"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Siti ufficiali"
-msgstr "Siti ufficiali"
+msgstr "Sitios oficiales"
 
 #: src/app/fibonacci/page.tsx
 msgid "Sito ufficiale"
-msgstr "Sito ufficiale"
+msgstr "Sitio oficial"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni corrette:"
-msgstr "Soluzioni corrette:"
+msgstr "Soluciones correctas:"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni inviate:"
-msgstr "Soluzioni inviate:"
+msgstr "Soluciones enviadas:"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni più veloci"
-msgstr "Soluzioni più veloci"
+msgstr "Soluciones más rápidas"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Sottoposizione"
-msgstr "Sottoposizione"
+msgstr "Envío"
 
 #. placeholder {0}: submission.id
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Sottoposizione {0}"
-msgstr "Sottoposizione {0}"
+msgstr "Envío {0}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
@@ -1325,186 +1339,199 @@ msgstr "Sottoposizione {0}"
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/user/[username]/stats.tsx
 msgid "Sottoposizioni"
-msgstr "Sottoposizioni"
+msgstr "Envíos"
 
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 msgid "Sottoposizioni troppo frequenti"
-msgstr "Sottoposizioni troppo frequenti"
+msgstr "Envíos demasiado frecuentes"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Standard error:"
+msgstr "Error estándar:"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Standard output:"
+msgstr "Salida estándar:"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Statistiche"
-msgstr "Statistiche"
+msgstr "Estadísticas"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Statistiche generali"
-msgstr "Statistiche generali"
+msgstr "Estadísticas generales"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Stato server"
-msgstr "Stato server"
+msgstr "Estado del servidor"
 
 #: src/lib/algobadge.ts
 msgid "Strutture dati"
-msgstr "Strutture dati"
+msgstr "Estructuras de datos"
 
 #. placeholder {0}: subtask.idx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Subtask {0}"
-msgstr "Subtask {0}"
+msgstr "Subtarea {0}"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 #: src/app/(training)/tasks/[page]/filter.tsx
 msgid "Tag"
-msgstr "Tag"
+msgstr "Etiqueta"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag aggiunto con successo"
-msgstr "Tag aggiunto con successo"
+msgstr "Etiqueta añadida con éxito"
 
 #: src/lib/api/task-tags.ts
 msgid "Tag non trovato"
-msgstr "Tag non trovato"
+msgstr "Etiqueta no encontrada"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag rimosso con successo"
-msgstr "Tag rimosso con successo"
+msgstr "Etiqueta eliminada con éxito"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tags"
-msgstr "Tag"
+msgstr "Etiquetas"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Tempo"
-msgstr "Tempo"
+msgstr "Tiempo"
 
 #: src/app/(training)/user/[username]/stats.tsx
 msgid "Tempo di esecuzione"
-msgstr "Tempo di esecuzione"
+msgstr "Tiempo de ejecución"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Tempo impiegato dalla fase di compilazione che precede l'esecuzione. Non è vincolato dal limite di tempo del problema e non influenza il punteggio."
-msgstr "Tempo impiegato dalla fase di compilazione che precede l'esecuzione. Non è vincolato dal limite di tempo del problema e non influenza il punteggio."
+msgstr "Tiempo empleado por la fase de compilación que precede a la ejecución. No está limitado por el tiempo del problema y no influye en la puntuación."
 
 #: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/(training)/tasks/years/oii/table.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Territoriali"
-msgstr "Territoriali"
+msgstr "Territoriales"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Territoriali <0>(nuovo formato)</0>"
-msgstr "Territoriali <0>(nuovo formato)</0>"
+msgstr "Territoriales <0>(nuevo formato)</0>"
 
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Territoriali <0>(vecchio formato)</0>"
-msgstr "Territoriali <0>(vecchio formato)</0>"
+msgstr "Territoriales <0>(formato antiguo)</0>"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Testcase"
-msgstr "Testcase"
+msgstr "Caso de prueba"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Testcases"
-msgstr "Testcases"
+msgstr "Casos de prueba"
 
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Testo"
-msgstr "Testo"
+msgstr "Texto"
 
 #: src/components/statement/pdf.tsx
 msgid "Testo del problema"
-msgstr "Testo del problema"
+msgstr "Texto del problema"
 
 #: src/lib/language.ts
 msgid "Testo semplice"
-msgstr "Testo semplice"
+msgstr "Texto simple"
 
 #: src/app/algobadge/(categories)/header.tsx
 msgid "Ti mancano {needed} punti al badge successivo!"
-msgstr "Ti mancano {needed} punti al badge successivo!"
+msgstr "¡Te faltan {needed} puntos para la próxima insignia!"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Tipo di file non valido"
-msgstr "Tipo di file non valido"
+msgstr "Tipo de archivo inválido"
 
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
 #: src/app/auth/callback/credential/route.ts
 #: src/lib/auth/errors.ts
 msgid "Token non valido"
-msgstr "Token non valido"
+msgstr "Token inválido"
 
 #: src/lib/auth/errors.ts
 msgid "Token scaduto"
-msgstr "Token scaduto"
+msgstr "Token caducado"
 
 #: src/app/not-found.tsx
 msgid "Torna alla home"
-msgstr "Torna alla home"
+msgstr "Volver a la página de inicio"
 
 #: src/app/(training)/settings/layout-client.tsx
 msgid "Torna indietro"
-msgstr "Torna indietro"
+msgstr "Volver"
 
 #: src/app/algobadge/bulk/summary.tsx
+#: src/app/algobadge/bulk/table.tsx
 msgid "Totale"
-msgstr "Totale"
+msgstr "Total"
 
 #: src/lib/auth/errors.ts
 msgid "TOTP non abilitato"
-msgstr "TOTP non abilitato"
+msgstr "TOTP no habilitado"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Traduzioni:"
-msgstr "Traduzioni:"
+msgstr "Traducciones:"
+
+#: src/app/algobadge/bulk/table.tsx
+msgid "Username"
+msgstr "Nombre de usuario"
 
 #: src/app/(training)/login/page-client.tsx
 msgid "Username / email"
-msgstr "Username / email"
+msgstr "Nombre de usuario / correo electrónico"
 
 #: src/app/signup/_steps/actions.ts
 #: src/lib/auth/errors.ts
 msgid "Username non disponibile"
-msgstr "Username non disponibile"
+msgstr "Nombre de usuario no disponible"
 
 #: src/app/(training)/login/actions.ts
 msgid "Username non esistente"
-msgstr "Username non esistente"
+msgstr "Nombre de usuario no existente"
 
 #: src/lib/api/auth.ts
 #: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Username non valido"
-msgstr "Username non valido"
+msgstr "Nombre de usuario inválido"
 
 #: src/lib/auth/errors.ts
 msgid "Username o password non validi"
-msgstr "Username o password non validi"
+msgstr "Nombre de usuario o contraseña no válidos"
 
 #: src/lib/auth/errors.ts
 msgid "Username troppo corto"
-msgstr "Username troppo corto"
+msgstr "Nombre de usuario demasiado corto"
 
 #: src/lib/auth/errors.ts
 msgid "Username troppo lungo"
-msgstr "Username troppo lungo"
+msgstr "Nombre de usuario demasiado largo"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Utente dal <0/>"
-msgstr "Utente dal <0/>"
+msgstr "Usuario desde <0/>"
 
 #: src/lib/auth/errors.ts
 msgid "Utente già esistente"
-msgstr "Utente già esistente"
+msgstr "Usuario ya existente"
 
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
 #: src/app/(training)/settings/delete/actions.ts
@@ -1516,35 +1543,35 @@ msgstr "Utente già esistente"
 #: src/app/signup/_steps/actions.ts
 #: src/lib/api/submit-terry.ts
 msgid "Utente non autenticato"
-msgstr "Utente non autenticato"
+msgstr "Usuario no autenticado"
 
 #: src/lib/auth/errors.ts
 msgid "Utente non trovato"
-msgstr "Utente non trovato"
+msgstr "Usuario no encontrado"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Utenti che l'hanno provato:"
-msgstr "Utenti che l'hanno provato:"
+msgstr "Usuarios que lo han intentado:"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Utenti che l'hanno risolto:"
-msgstr "Utenti che l'hanno risolto:"
+msgstr "Usuarios que lo han resuelto:"
 
 #: src/app/signup/_steps/step5.tsx
 msgid "Vai ai problemi"
-msgstr "Vai ai problemi"
+msgstr "Ir a los problemas"
 
 #: src/app/(training)/settings/password/page.tsx
 msgid "Vecchia password"
-msgstr "Vecchia password"
+msgstr "Contraseña antigua"
 
 #: src/app/signup/page.tsx
 msgid "Verifica email"
-msgstr "Verifica email"
+msgstr "Verificar correo electrónico"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"
-msgstr "Voglio cancellare il mio account"
+msgstr "Quiero eliminar mi cuenta"
 
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/(home)/page.tsx

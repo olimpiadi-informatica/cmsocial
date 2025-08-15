@@ -16,7 +16,7 @@ export default async function Page({ params }: Props) {
   const i18n = await loadLocale();
   const { name } = await params;
 
-  const statement = await getTaskStatement(name, i18n.locale);
+  const statement = await getTaskStatement(name, i18n.locale.replace(/-.*$/, ""));
   if (!statement) notFound();
 
   return (

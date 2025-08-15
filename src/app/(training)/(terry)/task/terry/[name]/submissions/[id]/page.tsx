@@ -64,7 +64,9 @@ export default async function Page({ params }: Props) {
         </li>
         {submission.alerts.length > 0 && (
           <li>
-            <div className="mb-1 font-bold">Note:</div>
+            <div className="mb-1 font-bold">
+              <Trans>Note:</Trans>
+            </div>
             <div className="rounded-xl border border-base-content/10 bg-base-100 p-2 whitespace-pre-line text-xs">
               {submission.alerts.map((alert, i) => (
                 <div key={i}>

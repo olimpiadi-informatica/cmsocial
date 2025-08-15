@@ -2,6 +2,7 @@ import { range } from "lodash-es";
 
 import { getTags } from "~/lib/api/tags";
 import { getTaskTags } from "~/lib/api/task-tags";
+import { loadLocale } from "~/lib/locale";
 import { getSessionUser, hasPermission } from "~/lib/user";
 
 import { PageClient } from "./page-client";
@@ -12,11 +13,12 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { name } = await params;
+  const i18n = await loadLocale();
 
   const sessionUser = await getSessionUser();
   const [taskTags, allTags, canAddTag] = await Promise.all([
-    getTaskTags(name, sessionUser?.cmsId),
-    getTags(),
+    getTaskTags(name, sessionUser?.cmsId, i18n.locale),
+    getTags(i18n.locale),
     hasPermission("tag", "add"),
   ]);
 

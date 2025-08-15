@@ -18,7 +18,9 @@ export default async function Page() {
       </H2>
       <Menu>
         <li>
-          <Link href="/scolastiche">Scolastiche</Link>
+          <Link href="/scolastiche">
+            <Trans>Scolastiche</Trans>
+          </Link>
         </li>
         <li>
           <Link href="/tasks/1?tag=territoriali">
@@ -38,7 +40,9 @@ export default async function Page() {
           <Link href="/tasks/1?tag=pre-oii">Pre-OII</Link>
         </li>
         <li>
-          <Link href="/tasks/1?tag=nazionali">Nazionali</Link>
+          <Link href="/tasks/1?tag=nazionali">
+            <Trans>Nazionali</Trans>
+          </Link>
         </li>
         <li>
           <Link href="/tasks/1?tag=ois">
@@ -71,7 +75,7 @@ export default async function Page() {
         </li>
         <li>
           <Link href="/tasks/1?tag=abc">
-            Algoritmi Bergamo Contest <span className="text-base-content/60">(ABC)</span>
+            Algorithm Bergamo Contest <span className="text-base-content/60">(ABC)</span>
           </Link>
         </li>
         <li>

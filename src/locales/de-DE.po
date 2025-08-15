@@ -1,0 +1,1579 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-07-08 13:38+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 3.4.4\n"
+
+#: src/app/algobadge/bulk/table.tsx
+msgid "(username non valido)"
+msgstr "(ungültiger Benutzername)"
+
+#: src/app/algobadge/bulk/summary-badges.tsx
+msgid "{num} categorie"
+msgstr "{num} Kategorien"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "<0>Memoria utilizzata</0>:"
+msgstr "<0>Genutzter Speicher</0>:"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
+msgstr "<0>Trainingsportal der</0> <1><2>Italienischen</2> <3>Informatik-</3><4>Olympiade</4></1>"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "<0>Tempo di compilazione</0>:"
+msgstr "<0>Kompilierungszeit</0>:"
+
+#: src/lib/auth/errors.ts
+msgid "2FA non abilitato"
+msgstr "2FA nicht aktiviert"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
+#: src/app/(training)/login/page-client.tsx
+#: src/app/(training)/task/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submit/page.tsx
+msgid "Accedi"
+msgstr "Anmelden"
+
+#: src/components/navbar/login-button.tsx
+msgid "Accedi / Registrati"
+msgstr "Anmelden / Registrieren"
+
+#: src/components/oauth/button.tsx
+msgid "Accedi con {name}"
+msgstr "Anmelden mit {name}"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
+#: src/app/(training)/task/[name]/submit/page.tsx
+msgid "Accedi per inviare soluzioni"
+msgstr "Melde dich an, um Lösungen einzureichen"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submissions/page.tsx
+msgid "Accedi per vedere le tue sottoposizioni"
+msgstr "Melde dich an, um deine Einreichungen zu sehen"
+
+#: src/lib/auth/errors.ts
+msgid "Accesso negato"
+msgstr "Zugriff verweigert"
+
+#: src/app/(training)/settings/layout-client.tsx
+#: src/app/(training)/settings/social/page.tsx
+msgid "Account collegati"
+msgstr "Verknüpfte Konten"
+
+#: src/app/(training)/settings/social/actions.ts
+msgid "Account collegato con successo!"
+msgstr "Konto erfolgreich verknüpft!"
+
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
+msgid "Account eliminato con successo!"
+msgstr "Konto erfolgreich gelöscht!"
+
+#: src/lib/auth/errors.ts
+msgid "Account già collegato"
+msgstr "Konto bereits verknüpft"
+
+#: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
+msgid "Account non trovato"
+msgstr "Konto nicht gefunden"
+
+#: src/app/(training)/settings/social/actions.ts
+msgid "Account scollegato con successo!"
+msgstr "Konto erfolgreich getrennt!"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Admin"
+msgstr "Admin"
+
+#: src/app/(training)/settings/profile/page.tsx
+msgid "Aggiorna dati"
+msgstr "Daten aktualisieren"
+
+#: src/app/(training)/settings/school/page.tsx
+msgid "Aggiorna scuola"
+msgstr "Schule aktualisieren"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Aggiungi"
+msgstr "Hinzufügen"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Aggiungi tag"
+msgstr "Tag hinzufügen"
+
+#. placeholder {0}: tag.description
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Aggiungi tag {0}"
+msgstr "Tag {0} hinzufügen"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Aiuto"
+msgstr "Hilfe"
+
+#: src/app/(training)/(home)/page.tsx
+#: src/app/(training)/navbar.tsx
+msgid "Algobadge"
+msgstr "Algobadge"
+
+#: src/app/(training)/task/[name]/attachments/page.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Allegati"
+msgstr "Anhänge"
+
+#: src/app/fibonacci/page.tsx
+msgid "Allenati per i Giochi di Fibonacci risolvendo gli esercizi degli anni passati."
+msgstr "Trainiere für die Fibonacci-Spiele, indem du die Aufgaben der vergangenen Jahre löst."
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Altre gare"
+msgstr "Andere Wettbewerbe"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Altre Risorse"
+msgstr "Weitere Ressourcen"
+
+#: src/app/(training)/tasks/years/oii/table.tsx
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Anno"
+msgstr "Jahr"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Anziano"
+msgstr "Senior"
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Apri Gmail"
+msgstr "Gmail öffnen"
+
+#: src/app/(training)/tools/graph/page.tsx
+msgid "Archi del grafo"
+msgstr "Graphenkanten"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Argento"
+msgstr "Silber"
+
+#. placeholder {0}: task.submissionFormat[0].replace(".%l", "")
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "Assicurati di chiamare la tua classe \"{0}\", altrimenti la compilazione non andrà a buon fine."
+msgstr "Stelle sicher, dass deine Klasse \"{0}\" heißt, sonst schlägt die Kompilierung fehl."
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Attenzione:"
+msgstr "Achtung:"
+
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Attenzione! Questa azione è irreversibile."
+msgstr "Achtung! Diese Aktion ist irreversibel."
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Attività"
+msgstr "Aktivität"
+
+#: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
+msgid "Autenticazione fallita"
+msgstr "Authentifizierung fehlgeschlagen"
+
+#: src/app/algobadge/bulk/summary.tsx
+msgid "Badge"
+msgstr "Abzeichen"
+
+#: src/app/fibonacci/page.tsx
+msgid "Benvenuto nella piattaforma ufficiale di allenamento dei Giochi di Fibonacci!"
+msgstr "Willkommen auf der offiziellen Trainingsplattform der Fibonacci-Spiele!"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Benvenuto nella piattaforma ufficiale di allenamento per le OII! Qui avrai accesso a numerosi problemi ai quali potrai inviare delle soluzioni scritte in un linguaggio di programmazione a tua scelta."
+msgstr "Willkommen auf der offiziellen Trainingsplattform für die OII! Hier hast du Zugang zu zahlreichen Problemen, für die du Lösungen in einer Programmiersprache deiner Wahl einreichen kannst."
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Bloccato"
+msgstr "Gesperrt"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Bronzo"
+msgstr "Bronze"
+
+#: src/app/algobadge/bulk/summary.tsx
+msgid "Browser non supportato. Usa Chrome o Edge."
+msgstr "Browser wird nicht unterstützt. Verwende Chrome oder Edge."
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Cambia input"
+msgstr "Eingabe ändern"
+
+#: src/components/navbar/locale-dropdown.tsx
+msgid "Cambia lingua"
+msgstr "Sprache ändern"
+
+#: src/app/(training)/(email-callback)/reset-password/page.tsx
+#: src/app/(training)/forgot-password/page-client.tsx
+msgid "Cambia password"
+msgstr "Passwort ändern"
+
+#: src/app/(training)/settings/layout-client.tsx
+msgid "Cancella account"
+msgstr "Konto löschen"
+
+#: src/app/(training)/forgot-password/actions.ts
+#: src/app/signup/_steps/actions.ts
+msgid "Captcha non valido"
+msgstr "Ungültiges Captcha"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Caricamento"
+msgstr "Laden"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Caricato il:"
+msgstr "Hochgeladen am:"
+
+#: src/app/algobadge/bulk/layout.tsx
+#: src/app/algobadge/bulk/summary.tsx
+msgid "Categorie"
+msgstr "Kategorien"
+
+#: src/components/forum-posts.tsx
+msgid "Cerca altri argomenti"
+msgstr "Andere Themen suchen"
+
+#: src/app/(training)/navbar.tsx
+msgid "Classifica"
+msgstr "Rangliste"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Classifiche OII"
+msgstr "OII-Ranglisten"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Classifiche OIS"
+msgstr "OIS-Ranglisten"
+
+#: src/lib/auth/errors.ts
+msgid "Codice di backup non valido"
+msgstr "Ungültiger Backup-Code"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/files.tsx
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "Codice sorgente"
+msgstr "Quellcode"
+
+#: src/lib/auth/errors.ts
+msgid "Codici di backup non abilitati"
+msgstr "Backup-Codes nicht aktiviert"
+
+#: src/lib/api/auth.ts
+msgid "Cognome non valido"
+msgstr "Ungültiger Nachname"
+
+#: src/app/(training)/settings/social/page.tsx
+msgid "Collega account"
+msgstr "Konto verknüpfen"
+
+#: src/components/oauth/button.tsx
+msgid "Collega account {name}"
+msgstr "Konto {name} verknüpfen"
+
+#: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+msgid "Come funziona l'input e l'output?"
+msgstr "Wie funktionieren Eingabe und Ausgabe?"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Compilazione"
+msgstr "Kompilierung"
+
+#: src/components/outcome.tsx
+msgid "Compilazione fallita"
+msgstr "Kompilierung fehlgeschlagen"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+#: src/components/outcome.tsx
+msgid "Compilazione in corso"
+msgstr "Kompilierung läuft"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Comune"
+msgstr "Gemeinde"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
+msgstr "Mit Algobadge führen wir dich durch eine sorgfältig ausgewählte Reihe von Aufgaben, die nach steigendem Schwierigkeitsgrad geordnet sind und es dir ermöglichen, neue algorithmische Techniken schrittweise und effektiv zu erkunden."
+
+#: src/app/(training)/(email-callback)/delete-account/page-client.tsx
+msgid "Conferma"
+msgstr "Bestätigen"
+
+#: src/app/signup/_steps/step1.tsx
+#: src/app/signup/_steps/step3.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Continua"
+msgstr "Weiter"
+
+#: src/app/(training)/settings/delete/actions.ts
+msgid "Controlla la tua casella di posta per completare l'eliminazione dell'account."
+msgstr "Überprüfe deinen Posteingang, um die Kontolöschung abzuschließen."
+
+#: src/app/(training)/forgot-password/actions.ts
+msgid "Controlla la tua casella di posta per recuperare la password."
+msgstr "Überprüfe deinen Posteingang, um dein Passwort zurückzusetzen."
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Controlla la tua casella di posta per verificare l'account"
+msgstr "Überprüfe deinen Posteingang, um das Konto zu verifizieren"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Corretto"
+msgstr "Korrekt"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Cosa devo inviare?"
+msgstr "Was soll ich einreichen?"
+
+#: src/app/signup/layout.tsx
+msgid "Crea un account"
+msgstr "Ein Konto erstellen"
+
+#: src/components/forum-posts.tsx
+msgid "Crea un nuovo argomento"
+msgstr "Neues Thema erstellen"
+
+#: src/app/signup/page.tsx
+msgid "Credenziali"
+msgstr "Anmeldedaten"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submissions/page-client.tsx
+msgid "Data e ora"
+msgstr "Datum und Uhrzeit"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Data e ora:"
+msgstr "Datum und Uhrzeit:"
+
+#: src/app/(training)/settings/profile/actions.ts
+#: src/app/(training)/settings/school/actions.ts
+msgid "Dati aggiornati con successo"
+msgstr "Daten erfolgreich aktualisiert"
+
+#: src/lib/auth/errors.ts
+msgid "Dati non validi"
+msgstr "Ungültige Daten"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Dettagli"
+msgstr "Details"
+
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+msgid "Devi inviare i seguenti file:"
+msgstr "Du musst die folgenden Dateien einreichen:"
+
+#: src/app/algobadge/bulk/summary.tsx
+msgid "Devi usare HTTPS per scaricare il file."
+msgstr "Du musst HTTPS verwenden, um die Datei herunterzuladen."
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Di tendenza"
+msgstr "Im Trend"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Diamante"
+msgstr "Diamant"
+
+#: src/app/(training)/tools/graph/page.tsx
+msgid "Dimensione nodi"
+msgstr "Knotengröße"
+
+#: src/app/(training)/(terry)/task/terry/[name]/help/page.tsx
+#: src/app/(training)/task/[name]/help/page.tsx
+msgid "Discussioni del forum"
+msgstr "Forum-Diskussionen"
+
+#: src/app/(training)/tools/graph/page.tsx
+msgid "Editor di grafi"
+msgstr "Graphen-Editor"
+
+#: src/app/(training)/scolastiche/page.tsx
+#: src/app/fibonacci/primarie/page.tsx
+#: src/app/fibonacci/secondarie/page.tsx
+msgid "Edizione {edition}"
+msgstr "Ausgabe {edition}"
+
+#: src/app/(training)/(email-callback)/delete-account/page-client.tsx
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Elimina account"
+msgstr "Konto löschen"
+
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Eliminazione account"
+msgstr "Konto löschen"
+
+#: src/lib/auth/errors.ts
+msgid "Email già esistente"
+msgstr "E-Mail existiert bereits"
+
+#: src/lib/auth/errors.ts
+msgid "Email non trovata"
+msgstr "E-Mail nicht gefunden"
+
+#: src/app/(training)/(email-callback)/reset-password/actions.ts
+#: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
+msgid "Email non valida"
+msgstr "Ungültige E-Mail"
+
+#: src/lib/auth/errors.ts
+msgid "Email non verificata"
+msgstr "E-Mail nicht verifiziert"
+
+#: src/lib/auth/errors.ts
+msgid "Email o password non validi"
+msgstr "Ungültige E-Mail oder Passwort"
+
+#: src/lib/auth/errors.ts
+msgid "Email uguale alla precedente"
+msgstr "E-Mail ist dieselbe wie die vorherige"
+
+#: src/app/auth/callback/credential/route.ts
+msgid "Email verificata con successo!"
+msgstr "E-Mail erfolgreich verifiziert!"
+
+#: src/app/(training)/login/page-client.tsx
+msgid "Entra"
+msgstr "Anmelden"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Entra nella community"
+msgstr "Tritt der Community bei"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Errato"
+msgstr "Fehlerhaft"
+
+#: src/components/outcome.tsx
+msgid "Errore del server"
+msgstr "Serverfehler"
+
+#: src/app/(training)/login/actions.ts
+#: src/app/(training)/login/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/signup/_steps/actions.ts
+msgid "Errore durante il login"
+msgstr "Fehler beim Anmelden"
+
+#: src/lib/auth/errors.ts
+msgid "Errore durante il recupero dell'utente"
+msgstr "Fehler beim Abrufen des Benutzers"
+
+#: src/lib/auth/errors.ts
+msgid "Errore durante il recupero della sessione"
+msgstr "Fehler beim Abrufen der Sitzung"
+
+#: src/lib/auth/errors.ts
+msgid "Errore durante la creazione dell'utente"
+msgstr "Fehler beim Erstellen des Benutzers"
+
+#: src/lib/auth/errors.ts
+msgid "Errore durante la creazione della sessione"
+msgstr "Fehler beim Erstellen der Sitzung"
+
+#: src/lib/auth/errors.ts
+msgid "Errore durante la modifica dell'utente"
+msgstr "Fehler beim Ändern des Benutzers"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
+#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
+#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
+#: src/app/(training)/login/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/auth/error/route.ts
+#: src/lib/api/submit-terry.ts
+#: src/lib/auth/errors.ts
+msgid "Errore sconosciuto"
+msgstr "Unbekannter Fehler"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Errore:"
+msgstr "Fehler:"
+
+#: src/components/navbar/user-dropdown.tsx
+msgid "Esci"
+msgstr "Abmelden"
+
+#: src/components/outcome.tsx
+msgid "Esecuzione in corso"
+msgstr "Ausführung läuft"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submissions/page-client.tsx
+msgid "Esito"
+msgstr "Ergebnis"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Esito della compilazione:"
+msgstr "Kompilierungsergebnis:"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Esito:"
+msgstr "Ergebnis:"
+
+#: src/app/(training)/task/[name]/submissions/[id]/files.tsx
+msgid "File"
+msgstr "Datei"
+
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+msgid "File \"{output}\" mancante"
+msgstr "Datei \"{output}\" fehlt"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+msgid "File di output"
+msgstr "Ausgabedatei"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "File sorgente"
+msgstr "Quelldatei"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "File troppo grande"
+msgstr "Datei zu groß"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Finale"
+msgstr "Finale"
+
+#: src/app/signup/page.tsx
+msgid "Fine"
+msgstr "Ende"
+
+#: src/app/(training)/(home)/page.tsx
+#: src/app/(training)/navbar.tsx
+#: src/app/algobadge/(categories)/navbar.tsx
+msgid "Forum"
+msgstr "Forum"
+
+#. placeholder {0}: post.username
+#: src/components/forum-posts.tsx
+msgid "Foto profilo di {0}"
+msgstr "Profilbild von {0}"
+
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Frase di conferma"
+msgstr "Bestätigungssatz"
+
+#: src/lib/algobadge.ts
+msgid "Funzioni di Libreria"
+msgstr "Bibliotheksfunktionen"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Gara di allenamento Istituto Roiti Ferrara"
+msgstr "Trainingswettbewerb Istituto Roiti Ferrara"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Gara di Allenamento Tor Vergata <0>(GATOR)</0>"
+msgstr "Tor Vergata Trainingswettbewerb <0>(GATOR)</0>"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Gare a squadre <0>(OIS)</0>"
+msgstr "Teamwettbewerbe <0>(OIS)</0>"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Gare ufficiali"
+msgstr "Offizielle Wettbewerbe"
+
+#: src/lib/api/submit-terry.ts
+msgid "Generare nuovo input"
+msgstr "Neue Eingabe generieren"
+
+#: src/app/(training)/(home)/footer.tsx
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Giochi di Fibonacci"
+msgstr "Fibonacci-Spiele"
+
+#: src/app/fibonacci/primarie/page.tsx
+msgid "Giochi di Fibonacci - Scuole primarie"
+msgstr "Fibonacci-Spiele - Grundschulen"
+
+#: src/app/fibonacci/secondarie/page.tsx
+msgid "Giochi di Fibonacci - Scuole secondarie"
+msgstr "Fibonacci-Spiele - Sekundarschulen"
+
+#: src/lib/algobadge.ts
+msgid "Grafi"
+msgstr "Graphen"
+
+#: src/app/(training)/tools/graph/page.tsx
+#: src/app/(training)/tools/graph/page.tsx
+msgid "Grafo"
+msgstr "Graph"
+
+#: src/lib/algobadge.ts
+msgid "Greedy, sorting e searching"
+msgstr "Greedy, Sortieren und Suchen"
+
+#: src/app/signup/_steps/step5.tsx
+msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
+msgstr "Du hast die Registrierung abgeschlossen! Du kannst jetzt Probleme lösen"
+
+#: src/app/algobadge/(categories)/header.tsx
+msgid "Hai raggiunto il badge di diamante!"
+msgstr "Du hast das Diamant-Abzeichen erreicht!"
+
+#: src/app/(training)/navbar.tsx
+#: src/app/algobadge/(categories)/navbar.tsx
+#: src/app/algobadge/bulk/layout.tsx
+#: src/app/fibonacci/navbar.tsx
+msgid "Home"
+msgstr "Startseite"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submissions/page-client.tsx
+msgid "ID"
+msgstr "ID"
+
+#: src/lib/auth/errors.ts
+msgid "ID token non supportato"
+msgstr "ID-Token nicht unterstützt"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Impara gradualmente"
+msgstr "Schrittweise lernen"
+
+#: src/lib/auth/errors.ts
+msgid "Impossibile scollegare l'account"
+msgstr "Konto konnte nicht getrennt werden"
+
+#: src/components/navbar/user-dropdown.tsx
+msgid "Impostazioni"
+msgstr "Einstellungen"
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Indietro"
+msgstr "Zurück"
+
+#: src/lib/algobadge.ts
+msgid "Induzione e ricorsione"
+msgstr "Induktion und Rekursion"
+
+#: src/app/fibonacci/page.tsx
+msgid "Inizia ad allenarti"
+msgstr "Beginne mit dem Training"
+
+#: src/lib/api/submit-terry.ts
+msgid "Input già generato"
+msgstr "Eingabe bereits generiert"
+
+#: src/lib/api/submit-terry.ts
+msgid "Input scaduto"
+msgstr "Eingabe abgelaufen"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Input/output:"
+msgstr "Eingabe/Ausgabe:"
+
+#: src/app/algobadge/bulk/page.tsx
+msgid "Inserisci gli username"
+msgstr "Benutzernamen eingeben"
+
+#: src/app/signup/_steps/step3.tsx
+msgid "Inserisci il tuo nome e cognome e scegli un username"
+msgstr "Gib deinen Vor- und Nachnamen ein und wähle einen Benutzernamen"
+
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Inserisci la frase di conferma"
+msgstr "Gib den Bestätigungssatz ein"
+
+#: src/app/signup/_steps/step1.tsx
+msgid "Inserisci la tua email e scegli una nuova password"
+msgstr "Gib deine E-Mail-Adresse ein und wähle ein neues Passwort"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Invia"
+msgstr "Senden"
+
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+msgid "Invia output"
+msgstr "Ausgabe senden"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
+#: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/task/[name]/submit/page.tsx
+msgid "Invia soluzione"
+msgstr "Lösung einreichen"
+
+#: src/app/fibonacci/page.tsx
+msgid "Iscriviti"
+msgstr "Registrieren"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Istituto"
+msgstr "Institut"
+
+#: src/lib/auth/errors.ts
+msgid "L'email non può essere modificata"
+msgstr "Die E-Mail kann nicht geändert werden"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "La vasta scelta di problemi presenti nel sito ti permetterà di prepararti al meglio per ogni fase delle Olimpiadi, partendo dalla fase scolastica fino ad arrivare alla finale nazionale."
+msgstr "Die große Auswahl an Problemen auf der Website ermöglicht es dir, dich optimal auf jede Phase der Olympiade vorzubereiten, von der Schulphase bis zum nationalen Finale."
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Leggi la wiki"
+msgstr "Wiki lesen"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Limite di memoria:"
+msgstr "Speicherlimit:"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Limite di tempo:"
+msgstr "Zeitlimit:"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submissions/page-client.tsx
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "Linguaggio"
+msgstr "Sprache"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Linguaggio:"
+msgstr "Sprache:"
+
+#: src/app/fibonacci/navbar.tsx
+msgid "Logo Giochi di Fibonacci"
+msgstr "Fibonacci-Spiele Logo"
+
+#: src/app/(training)/navbar.tsx
+msgid "Logo OII"
+msgstr "OII Logo"
+
+#: src/app/(training)/(home)/footer.tsx
+#: src/app/signup/layout.tsx
+msgid "Logo Olimpiadi Italiane di Informatica"
+msgstr "Logo der italienischen Informatik-Olympiade"
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Logo Outlook"
+msgstr "Outlook Logo"
+
+#: src/app/(training)/tools/graph/page.tsx
+msgid "Lunghezza archi"
+msgstr "Kantenlänge"
+
+#: src/lib/algobadge.ts
+msgid "Matematica"
+msgstr "Mathematik"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Memoria"
+msgstr "Speicher"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Memoria utilizzata durante la fase di compilazione che precede l'esecuzione. Non è vincolata dal limite di memoria del problema e non influenza il punteggio."
+msgstr "Genutzter Speicher während der Kompilierungsphase vor der Ausführung. Ist nicht an das Speicherlimit des Problems gebunden und beeinflusst die Punktzahl nicht."
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Menzione"
+msgstr "Erwähnung"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Ministero dell'Istruzione e del Merito"
+msgstr "Ministerium für Bildung und Verdienste"
+
+#: src/app/(training)/settings/layout-client.tsx
+#: src/app/(training)/settings/password/page.tsx
+#: src/app/(training)/settings/password/page.tsx
+msgid "Modifica password"
+msgstr "Passwort ändern"
+
+#: src/app/(training)/settings/layout-client.tsx
+#: src/app/(training)/settings/profile/page.tsx
+msgid "Modifica profilo"
+msgstr "Profil bearbeiten"
+
+#: src/app/(training)/settings/layout-client.tsx
+#: src/app/(training)/settings/school/page.tsx
+msgid "Modifica scuola"
+msgstr "Schule bearbeiten"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Mostra tag"
+msgstr "Tags anzeigen"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Nascondi risolti"
+msgstr "Gelöste verbergen"
+
+#: src/app/(training)/tasks/events/page.tsx
+#: src/app/(training)/tasks/years/oii/table.tsx
+msgid "Nazionali"
+msgstr "Nationale"
+
+#: src/app/algobadge/(categories)/navbar.tsx
+msgid "Nazionali e altre gare"
+msgstr "Nationale und andere Wettbewerbe"
+
+#: src/app/(training)/navbar.tsx
+msgid "Nazionali e OIS"
+msgstr "Nationale und OIS"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Nazionali, OIS e altre gare"
+msgstr "Nationale, OIS und andere Wettbewerbe"
+
+#: src/app/fibonacci/page.tsx
+msgid "Nel sito ufficiale potrai trovare il regolamento, il calendario e le modalità di iscrizione."
+msgstr "Auf der offiziellen Website findest du die Regeln, den Kalender und die Anmeldemodalitäten."
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Nella wiki ufficiale troverai spiegazioni dettagliate e soluzioni di problemi passati, oltre che a tutorial approfonditi su tecniche algoritmiche avanzate."
+msgstr "Im offiziellen Wiki findest du detaillierte Erklärungen und Lösungen vergangener Probleme sowie umfassende Tutorials zu fortgeschrittenen algorithmischen Techniken."
+
+#: src/app/(training)/task/[name]/attachments/page.tsx
+msgid "Nessun allegato"
+msgstr "Keine Anhänge"
+
+#: src/components/forum-posts.tsx
+msgid "Nessun post trovato."
+msgstr "Keine Beiträge gefunden."
+
+#: src/app/(training)/user/[username]/task-scores.tsx
+msgid "Nessun problema risolto"
+msgstr "Keine Probleme gelöst"
+
+#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/page-client.tsx
+msgid "Nessun problema trovato"
+msgstr "Keine Probleme gefunden"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Nessun tag"
+msgstr "Keine Tags"
+
+#: src/app/(training)/ranking/[page]/page.tsx
+msgid "Nessun utente trovato"
+msgstr "Kein Benutzer gefunden"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Nessuna soluzione"
+msgstr "Keine Lösung"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/submissions/page-client.tsx
+msgid "Nessuna sottoposizione inviata"
+msgstr "Keine Einreichung gesendet"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Nessuno"
+msgstr "Keiner"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Nome"
+msgstr "Name"
+
+#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Nome del problema"
+msgstr "Problemname"
+
+#: src/lib/api/auth.ts
+msgid "Nome non valido"
+msgstr "Ungültiger Name"
+
+#: src/app/(training)/login/page-client.tsx
+msgid "Non hai un account? <0>Registrati</0>"
+msgstr "Hast du kein Konto? <0>Registriere dich</0>"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Non inviato"
+msgstr "Nicht gesendet"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
+#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
+#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/tags/actions.ts
+#: src/app/(training)/task/[name]/tags/actions.ts
+#: src/lib/api/task-tags.ts
+#: src/lib/api/task-tags.ts
+msgid "Non sei autorizzato"
+msgstr "Du bist nicht autorisiert"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Non valido"
+msgstr "Ungültig"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Nota:"
+msgstr "Hinweis:"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Note:"
+msgstr "Notizen:"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Novizio"
+msgstr "Anfänger"
+
+#: src/app/(training)/settings/password/page.tsx
+msgid "Nuova password"
+msgstr "Neues Passwort"
+
+#: src/app/(training)/tasks/years/layout.tsx
+msgid "OII"
+msgstr "OII"
+
+#: src/app/(training)/tasks/years/layout.tsx
+msgid "OIS"
+msgstr "OIS"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Olimpiadi di Informatica a Squadre"
+msgstr "Italienische Mannschaftsinformatik-Olympiade"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Olimpiadi Italiane di Informatica"
+msgstr "Italienische Informatik-Olympiade"
+
+#: src/app/(training)/login/page-client.tsx
+#: src/app/signup/_steps/step1.tsx
+msgid "oppure"
+msgstr "oder"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Ordinamento"
+msgstr "Sortierung"
+
+#: src/app/algobadge/bulk/common.ts
+msgid "Oro"
+msgstr "Gold"
+
+#: src/lib/auth/errors.ts
+msgid "OTP non abilitato"
+msgstr "OTP nicht aktiviert"
+
+#: src/lib/auth/errors.ts
+msgid "OTP scaduto"
+msgstr "OTP abgelaufen"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Ottieni input"
+msgstr "Eingabe erhalten"
+
+#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/ranking/[page]/page.tsx
+#: src/app/(training)/tasks/[page]/page-client.tsx
+#: src/components/pagination.tsx
+msgid "Pagina {page}"
+msgstr "Seite {page}"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Parzialmente corretto"
+msgstr "Teilweise korrekt"
+
+#: src/app/(training)/login/page-client.tsx
+msgid "Password dimenticata?"
+msgstr "Passwort vergessen?"
+
+#: src/app/(training)/settings/password/actions.ts
+msgid "Password modificata con successo"
+msgstr "Passwort erfolgreich geändert"
+
+#: src/app/(training)/(email-callback)/reset-password/actions.ts
+msgid "Password modificata con successo!"
+msgstr "Passwort erfolgreich geändert!"
+
+#: src/lib/auth/errors.ts
+msgid "Password non valida"
+msgstr "Ungültiges Passwort"
+
+#: src/lib/auth/errors.ts
+msgid "Password troppo corta"
+msgstr "Passwort zu kurz"
+
+#: src/lib/auth/errors.ts
+msgid "Password troppo debole"
+msgstr "Passwort zu schwach"
+
+#: src/lib/auth/errors.ts
+msgid "Password troppo lunga"
+msgstr "Passwort zu lang"
+
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Per continuare, inserisci la frase di conferma:"
+msgstr "Um fortzufahren, gib den Bestätigungssatz ein:"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Più difficili"
+msgstr "Schwierigste"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Più facili"
+msgstr "Leichteste"
+
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Più recenti"
+msgstr "Neueste"
+
+#: src/app/fibonacci/page.tsx
+msgid "Portale di allenamento dei Giochi di Fibonacci"
+msgstr "Trainingsportal der Fibonacci-Spiele"
+
+#: src/app/(training)/tasks/years/oii/table.tsx
+msgid "Pre-OII"
+msgstr "Vor-OII"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
+msgstr "Stelle dich anderen angehenden Olympioniken im Forum der Plattform vor, diskutiere Probleme, löse alle deine Zweifel an: grundlegenden Konstrukten deiner Programmiersprache, Algorithmen und Bibliotheksdatenstrukturen, algorithmischen Techniken und vielem mehr!"
+
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
+msgstr "Du hast wahrscheinlich die falsche Sprache ausgewählt, ansonsten empfehlen wir dir, Pascal nicht mehr zu verwenden und eine modernere Sprache zu lernen."
+
+#: src/app/(training)/navbar.tsx
+#: src/app/algobadge/(categories)/navbar.tsx
+msgid "Problemi"
+msgstr "Probleme"
+
+#: src/lib/algobadge.ts
+msgid "Problemi introduttivi"
+msgstr "Einführende Probleme"
+
+#: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/years/layout.tsx
+msgid "Problemi per anno"
+msgstr "Probleme pro Jahr"
+
+#: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Problemi per gara"
+msgstr "Probleme pro Wettbewerb"
+
+#: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/techniques/page.tsx
+#: src/app/algobadge/(categories)/navbar.tsx
+msgid "Problemi per tecnica"
+msgstr "Probleme nach Technik"
+
+#: src/app/(training)/user/[username]/page.tsx
+#: src/app/(training)/user/[username]/stats.tsx
+msgid "Problemi risolti"
+msgstr "Gelöste Probleme"
+
+#: src/app/signup/page.tsx
+#: src/components/navbar/user-dropdown.tsx
+msgid "Profilo"
+msgstr "Profil"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Profilo di {username}"
+msgstr "Profil von {username}"
+
+#: src/lib/algobadge.ts
+msgid "Programmazione dinamica"
+msgstr "Dynamische Programmierung"
+
+#: src/lib/auth/errors.ts
+msgid "Provider non trovato"
+msgstr "Provider nicht gefunden"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Provincia"
+msgstr "Provinz"
+
+#: src/lib/language.ts
+msgid "Pseudocodice"
+msgstr "Pseudocode"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Punteggio massimo:"
+msgstr "Maximale Punktzahl:"
+
+#: src/app/(training)/user/[username]/stats.tsx
+msgid "Punti"
+msgstr "Punkte"
+
+#: src/app/signup/_steps/step4.tsx
+msgid "Puoi facoltativamente selezionare la tua scuola, verrà mostrata nella tua pagina di profilo"
+msgstr "Du kannst optional deine Schule auswählen, sie wird auf deiner Profilseite angezeigt"
+
+#: src/app/not-found.tsx
+msgid "Questa pagina non è stata trovata 😢"
+msgstr "Diese Seite wurde nicht gefunden 😢"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Questo input è scaduto."
+msgstr "Diese Eingabe ist abgelaufen."
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Questo input scade <0/>."
+msgstr "Diese Eingabe läuft in <0/> ab."
+
+#: src/app/(training)/(email-callback)/reset-password/page.tsx
+#: src/app/(training)/forgot-password/page-client.tsx
+msgid "Recupera password"
+msgstr "Passwort wiederherstellen"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Regione"
+msgstr "Region"
+
+#: src/components/oauth/button.tsx
+msgid "Registrati con {name}"
+msgstr "Registrieren mit {name}"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Richiedi input"
+msgstr "Eingabe anfordern"
+
+#: src/lib/auth/errors.ts
+msgid "Richiesta non valida"
+msgstr "Ungültige Anfrage"
+
+#: src/app/signup/_steps/step2.tsx
+msgid "Rimanda email"
+msgstr "E-Mail erneut senden"
+
+#. placeholder {0}: tag.description
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Rimuovi tag {0}"
+msgstr "Tag {0} entfernen"
+
+#: src/lib/auth/errors.ts
+msgid "Ripetere autenticazione"
+msgstr "Authentifizierung wiederholen"
+
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+msgid "Ripetere login"
+msgstr "Anmeldung wiederholen"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Risolvi tutti i problemi"
+msgstr "Löse alle Probleme"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Risultato"
+msgstr "Ergebnis"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 1"
+msgstr "Runde 1"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 2"
+msgstr "Runde 2"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 3"
+msgstr "Runde 3"
+
+#: src/app/(training)/tasks/years/ois/table.tsx
+msgid "Round 4"
+msgstr "Runde 4"
+
+#: src/app/signup/_steps/step4.tsx
+msgid "Salta"
+msgstr "Überspringen"
+
+#: src/components/source-code.tsx
+#: src/components/source-code.tsx
+msgid "Scarica codice"
+msgstr "Code herunterladen"
+
+#: src/app/algobadge/bulk/summary.tsx
+msgid "Scarica dati"
+msgstr "Daten herunterladen"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+msgid "Scarica input"
+msgstr "Eingabe herunterladen"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Scarica output"
+msgstr "Ausgabe herunterladen"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Scegli il comune"
+msgstr "Wähle die Gemeinde"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Scegli la provincia"
+msgstr "Wähle die Provinz"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Scegli la regione"
+msgstr "Wähle die Region"
+
+#: src/app/(training)/settings/school/page.tsx
+#: src/app/signup/_steps/step4.tsx
+msgid "Scegli la scuola"
+msgstr "Wähle die Schule"
+
+#: src/app/(training)/(home)/page.tsx
+#: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Scolastiche"
+msgstr "Schulisch"
+
+#: src/components/oauth/button.tsx
+msgid "Scollega account {name}"
+msgstr "Konto {name} trennen"
+
+#: src/app/signup/page.tsx
+msgid "Scuola"
+msgstr "Schule"
+
+#: src/app/fibonacci/navbar.tsx
+#: src/app/fibonacci/page.tsx
+msgid "Scuole Primarie"
+msgstr "Grundschulen"
+
+#: src/app/fibonacci/navbar.tsx
+#: src/app/fibonacci/page.tsx
+msgid "Scuole Secondarie"
+msgstr "Sekundarschulen"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Segnalazioni bug"
+msgstr "Fehlerberichte"
+
+#: src/app/(training)/settings/page.tsx
+msgid "Seleziona le impostazioni da modificare"
+msgstr "Wähle die zu ändernden Einstellungen"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Seleziona un tag"
+msgstr "Wähle einen Tag"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Selezione SWERC dell'Università degli Studi di Milano"
+msgstr "SWERC-Auswahl der Universität Mailand"
+
+#: src/app/(training)/scolastiche/page.tsx
+msgid "Selezioni scolastiche"
+msgstr "Schulauswahlen"
+
+#: src/lib/auth/errors.ts
+msgid "Sessione scaduta"
+msgstr "Sitzung abgelaufen"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Siti ufficiali"
+msgstr "Offizielle Websites"
+
+#: src/app/fibonacci/page.tsx
+msgid "Sito ufficiale"
+msgstr "Offizielle Website"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Soluzioni corrette:"
+msgstr "Korrekte Lösungen:"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Soluzioni inviate:"
+msgstr "Gesendete Lösungen:"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Soluzioni più veloci"
+msgstr "Schnellste Lösungen"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Sottoposizione"
+msgstr "Einreichung"
+
+#. placeholder {0}: submission.id
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Sottoposizione {0}"
+msgstr "Einreichung {0}"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/submissions/page-client.tsx
+#: src/app/(training)/task/[name]/submissions/page.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+#: src/app/(training)/user/[username]/stats.tsx
+msgid "Sottoposizioni"
+msgstr "Einreichungen"
+
+#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/app/(training)/task/[name]/submit/actions.ts
+msgid "Sottoposizioni troppo frequenti"
+msgstr "Zu häufige Einreichungen"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Standard error:"
+msgstr "Standardfehler:"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Standard output:"
+msgstr "Standardausgabe:"
+
+#: src/app/(training)/task/[name]/tabs.tsx
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Statistiche"
+msgstr "Statistiken"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Statistiche generali"
+msgstr "Allgemeine Statistiken"
+
+#: src/app/(training)/(home)/footer.tsx
+msgid "Stato server"
+msgstr "Serverstatus"
+
+#: src/lib/algobadge.ts
+msgid "Strutture dati"
+msgstr "Datenstrukturen"
+
+#. placeholder {0}: subtask.idx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Subtask {0}"
+msgstr "Unteraufgabe {0}"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/tasks/[page]/filter.tsx
+msgid "Tag"
+msgstr "Tag"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Tag aggiunto con successo"
+msgstr "Tag erfolgreich hinzugefügt"
+
+#: src/lib/api/task-tags.ts
+msgid "Tag non trovato"
+msgstr "Tag nicht gefunden"
+
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Tag rimosso con successo"
+msgstr "Tag erfolgreich entfernt"
+
+#: src/app/(training)/task/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tags/page-client.tsx
+msgid "Tags"
+msgstr "Tags"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Tempo"
+msgstr "Zeit"
+
+#: src/app/(training)/user/[username]/stats.tsx
+msgid "Tempo di esecuzione"
+msgstr "Ausführungszeit"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Tempo impiegato dalla fase di compilazione che precede l'esecuzione. Non è vincolato dal limite di tempo del problema e non influenza il punteggio."
+msgstr "Zeit, die während der Kompilierungsphase vor der Ausführung benötigt wird. Ist nicht an das Zeitlimit des Problems gebunden und beeinflusst die Punktzahl nicht."
+
+#: src/app/(training)/(home)/page.tsx
+#: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/years/oii/table.tsx
+#: src/app/algobadge/(categories)/navbar.tsx
+msgid "Territoriali"
+msgstr "Territorial"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Territoriali <0>(nuovo formato)</0>"
+msgstr "Territorial <0>(neues Format)</0>"
+
+#: src/app/(training)/tasks/events/page.tsx
+msgid "Territoriali <0>(vecchio formato)</0>"
+msgstr "Territorial <0>(altes Format)</0>"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Testcase"
+msgstr "Testfall"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Testcases"
+msgstr "Testfälle"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Testo"
+msgstr "Text"
+
+#: src/components/statement/pdf.tsx
+msgid "Testo del problema"
+msgstr "Problemtext"
+
+#: src/lib/language.ts
+msgid "Testo semplice"
+msgstr "Klartext"
+
+#: src/app/algobadge/(categories)/header.tsx
+msgid "Ti mancano {needed} punti al badge successivo!"
+msgstr "Dir fehlen {needed} Punkte bis zum nächsten Abzeichen!"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "Tipo di file non valido"
+msgstr "Ungültiger Dateityp"
+
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
+#: src/app/(training)/(email-callback)/reset-password/actions.ts
+#: src/app/auth/callback/credential/route.ts
+#: src/lib/auth/errors.ts
+msgid "Token non valido"
+msgstr "Ungültiges Token"
+
+#: src/lib/auth/errors.ts
+msgid "Token scaduto"
+msgstr "Token abgelaufen"
+
+#: src/app/not-found.tsx
+msgid "Torna alla home"
+msgstr "Zurück zur Startseite"
+
+#: src/app/(training)/settings/layout-client.tsx
+msgid "Torna indietro"
+msgstr "Zurück"
+
+#: src/app/algobadge/bulk/summary.tsx
+#: src/app/algobadge/bulk/table.tsx
+msgid "Totale"
+msgstr "Gesamt"
+
+#: src/lib/auth/errors.ts
+msgid "TOTP non abilitato"
+msgstr "TOTP nicht aktiviert"
+
+#: src/app/(training)/task/[name]/layout.tsx
+msgid "Traduzioni:"
+msgstr "Übersetzungen:"
+
+#: src/app/algobadge/bulk/table.tsx
+msgid "Username"
+msgstr "Benutzername"
+
+#: src/app/(training)/login/page-client.tsx
+msgid "Username / email"
+msgstr "Benutzername / E-Mail"
+
+#: src/app/signup/_steps/actions.ts
+#: src/lib/auth/errors.ts
+msgid "Username non disponibile"
+msgstr "Benutzername nicht verfügbar"
+
+#: src/app/(training)/login/actions.ts
+msgid "Username non esistente"
+msgstr "Benutzername nicht existent"
+
+#: src/lib/api/auth.ts
+#: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
+msgid "Username non valido"
+msgstr "Ungültiger Benutzername"
+
+#: src/lib/auth/errors.ts
+msgid "Username o password non validi"
+msgstr "Ungültiger Benutzername oder Passwort"
+
+#: src/lib/auth/errors.ts
+msgid "Username troppo corto"
+msgstr "Benutzername zu kurz"
+
+#: src/lib/auth/errors.ts
+msgid "Username troppo lungo"
+msgstr "Benutzername zu lang"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Utente dal <0/>"
+msgstr "Benutzer seit <0/>"
+
+#: src/lib/auth/errors.ts
+msgid "Utente già esistente"
+msgstr "Benutzer existiert bereits"
+
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
+#: src/app/(training)/settings/delete/actions.ts
+#: src/app/(training)/settings/password/actions.ts
+#: src/app/(training)/settings/profile/actions.ts
+#: src/app/(training)/settings/school/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/app/signup/_steps/actions.ts
+#: src/lib/api/submit-terry.ts
+msgid "Utente non autenticato"
+msgstr "Benutzer nicht authentifiziert"
+
+#: src/lib/auth/errors.ts
+msgid "Utente non trovato"
+msgstr "Benutzer nicht gefunden"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Utenti che l'hanno provato:"
+msgstr "Benutzer, die es versucht haben:"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Utenti che l'hanno risolto:"
+msgstr "Benutzer, die es gelöst haben:"
+
+#: src/app/signup/_steps/step5.tsx
+msgid "Vai ai problemi"
+msgstr "Gehe zu den Problemen"
+
+#: src/app/(training)/settings/password/page.tsx
+msgid "Vecchia password"
+msgstr "Altes Passwort"
+
+#: src/app/signup/page.tsx
+msgid "Verifica email"
+msgstr "E-Mail verifizieren"
+
+#: src/app/(training)/settings/delete/page.tsx
+msgid "Voglio cancellare il mio account"
+msgstr "Ich möchte mein Konto löschen"
+
+#: src/app/(training)/(home)/footer.tsx
+#: src/app/(training)/(home)/page.tsx
+msgid "Wiki"
+msgstr "Wiki"

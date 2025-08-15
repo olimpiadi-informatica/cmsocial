@@ -17,13 +17,13 @@ export type TaskTag = {
 };
 
 export const getTaskTags = cache(
-  async (taskName: string, userId: number | undefined): Promise<TaskTag[]> => {
+  async (taskName: string, userId: number | undefined, locale: string): Promise<TaskTag[]> => {
     const canRemoveAny = await hasPermission("tag", "remove-any");
 
     return cmsDb
       .select({
         name: tags.name,
-        description: tags.description,
+        description: sql<string>`${tags.translations} ->> ${locale}`,
         isEvent: tags.isEvent,
         canDelete: canRemoveAny
           ? sql<boolean>`true`
@@ -35,7 +35,7 @@ export const getTaskTags = cache(
       .innerJoin(taskTags, eq(taskTags.tagId, tags.id))
       .innerJoin(tasks, eq(tasks.id, taskTags.taskId))
       .where(eq(tasks.name, taskName))
-      .orderBy(desc(tags.isEvent), asc(tags.description));
+      .orderBy(desc(tags.isEvent), asc(sql<string>`${tags.translations} ->> ${locale}`));
   },
 );
 
