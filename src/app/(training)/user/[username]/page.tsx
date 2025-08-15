@@ -9,8 +9,10 @@ import { H1 } from "~/components/header";
 import { getSchool } from "~/lib/api/location";
 import { getUser } from "~/lib/api/user";
 import { loadLocale } from "~/lib/locale";
+import { hasPermission } from "~/lib/user";
 
 import { ActivityGraph } from "./activity-graph";
+import { ImpersonateButton } from "./impersonate";
 import { Stats } from "./stats";
 import { TaskScores } from "./task-scores";
 
@@ -66,6 +68,8 @@ export default async function Page({ params }: Props) {
 
   const school = await getSchool(user.institute).catch(() => undefined);
 
+  const canImpersonate = await hasPermission("user", "impersonate");
+
   return (
     <div className="flex flex-col gap-4">
       <H1 className="sr-only">
@@ -96,6 +100,11 @@ export default async function Page({ params }: Props) {
               <DateTime date={user.registrationTime} dateStyle="long" timeStyle="hidden" />
             </Trans>
           </div>
+          {canImpersonate && (
+            <div className="mt-auto">
+              <ImpersonateButton user={user} />
+            </div>
+          )}
         </CardBody>
       </Card>
       <Card>

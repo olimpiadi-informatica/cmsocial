@@ -519,7 +519,7 @@ msgstr "Unknown error"
 msgid "Errore:"
 msgstr "Error:"
 
-#: src/components/navbar/user-dropdown.tsx
+#: src/components/navbar/logout-button.tsx
 msgid "Esci"
 msgstr "Log out"
 
@@ -660,6 +660,10 @@ msgstr "ID token not supported"
 #: src/app/(training)/(home)/page.tsx
 msgid "Impara gradualmente"
 msgstr "Learn step by step"
+
+#: src/app/(training)/user/[username]/impersonate.tsx
+msgid "Impersonifica"
+msgstr "Impersonate"
 
 #: src/lib/auth/errors.ts
 msgid "Impossibile scollegare l'account"

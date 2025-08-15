@@ -15,7 +15,8 @@ import {
 import { terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
 
 export type User = {
-  id: number;
+  id: string;
+  cmsId: number;
   username: string;
   firstName: string;
   lastName: string;
@@ -30,7 +31,8 @@ export const getUser = cache(async (username?: string | null): Promise<User | un
   if (!username) return;
   const [user] = await cmsDb
     .select({
-      id: users.id,
+      id: socialUsers.id,
+      cmsId: users.id,
       username: socialUsers.username,
       firstName: users.firstName,
       lastName: users.lastName,
