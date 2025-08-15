@@ -137,13 +137,17 @@ export function PageClient({ submission, children }: Props) {
         </li>
         {submission.compilationStdout && (
           <li>
-            <div className="mb-1 font-bold">Standard output:</div>
+            <div className="mb-1 font-bold">
+              <Trans>Standard output:</Trans>
+            </div>
             <CompilationOutput>{submission.compilationStdout}</CompilationOutput>
           </li>
         )}
         {submission.compilationStderr && (
           <li>
-            <div className="mb-1 font-bold">Standard error:</div>
+            <div className="mb-1 font-bold">
+              <Trans>Standard error:</Trans>
+            </div>
             <CompilationOutput>{submission.compilationStderr}</CompilationOutput>
           </li>
         )}

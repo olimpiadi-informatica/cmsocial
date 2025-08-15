@@ -13,6 +13,10 @@ msgstr ""
 "Plural-Forms: \n"
 "X-Generator: Poedit 3.4.4\n"
 
+#: src/app/algobadge/bulk/table.tsx
+msgid "(username non valido)"
+msgstr "(username non valido)"
+
 #: src/app/algobadge/bulk/summary-badges.tsx
 msgid "{num} categorie"
 msgstr "{num} categorie"
@@ -537,6 +541,10 @@ msgstr "Esito della compilazione:"
 msgid "Esito:"
 msgstr "Esito:"
 
+#: src/app/(training)/task/[name]/submissions/[id]/files.tsx
+msgid "File"
+msgstr "File"
+
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File \"{output}\" mancante"
 msgstr "File \"{output}\" mancante"
@@ -817,6 +825,7 @@ msgstr "Mostra tag"
 msgid "Nascondi risolti"
 msgstr "Nascondi risolti"
 
+#: src/app/(training)/tasks/events/page.tsx
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Nazionali"
 msgstr "Nazionali"
@@ -920,6 +929,10 @@ msgstr "Non valido"
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Nota:"
 msgstr "Nota:"
+
+#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
+msgid "Note:"
+msgstr "Note:"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Novizio"
@@ -1230,6 +1243,7 @@ msgstr "Scegli la scuola"
 
 #: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
+#: src/app/(training)/tasks/events/page.tsx
 msgid "Scolastiche"
 msgstr "Scolastiche"
 
@@ -1318,6 +1332,14 @@ msgstr "Sottoposizioni"
 #: src/app/(training)/task/[name]/submit/actions.ts
 msgid "Sottoposizioni troppo frequenti"
 msgstr "Sottoposizioni troppo frequenti"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Standard error:"
+msgstr "Standard error:"
+
+#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
+msgid "Standard output:"
+msgstr "Standard output:"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/user/[username]/page.tsx
@@ -1443,6 +1465,7 @@ msgid "Torna indietro"
 msgstr "Torna indietro"
 
 #: src/app/algobadge/bulk/summary.tsx
+#: src/app/algobadge/bulk/table.tsx
 msgid "Totale"
 msgstr "Totale"
 
@@ -1453,6 +1476,10 @@ msgstr "TOTP non abilitato"
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Traduzioni:"
 msgstr "Traduzioni:"
+
+#: src/app/algobadge/bulk/table.tsx
+msgid "Username"
+msgstr "Username"
 
 #: src/app/(training)/login/page-client.tsx
 msgid "Username / email"

@@ -1,7 +1,7 @@
 /** @type {import('@lingui/conf').LinguiConfig} */
 const config = {
-  locales: ["it", "en"],
-  sourceLocale: "it",
+  locales: ["it-IT", "en-GB", "de-DE", "es-ES", "fr-FR"],
+  sourceLocale: "it-IT",
   catalogs: [
     {
       path: "src/locales/{locale}",

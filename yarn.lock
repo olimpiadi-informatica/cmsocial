@@ -4168,6 +4168,11 @@ reselect@5.1.1, reselect@^5.1.0:
   resolved "https://registry.yarnpkg.com/reselect/-/reselect-5.1.1.tgz#c766b1eb5d558291e5e550298adb0becc24bb72e"
   integrity sha512-K/BG6eIky/SBpzfHZv/dd+9JBFiS4SWV7FIujVyJRux6e45+73RaUHXLmIR1f7WOMaQ0U1km6qwklRQxpJJY0w==
 
+resolve-accept-language@^3.1:
+  version "3.1.12"
+  resolved "https://registry.yarnpkg.com/resolve-accept-language/-/resolve-accept-language-3.1.12.tgz#ac7a19db06c71cafe97189941e1ae1190fd1596a"
+  integrity sha512-ZzqMB26SGERN8/DS77HOTbC8nL6/JK8btqt1DMkeFwv3wjp16vXkKS3fwqTCePqc/XE3lg2kQ54h3FzqLpm8ww==
+
 resolve-from@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-4.0.0.tgz#4abcd852ad32dd7baabfe9b40e00a36db5f392e6"

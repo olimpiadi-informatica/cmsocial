@@ -1,3 +1,4 @@
+import { Trans } from "@lingui/react/macro";
 import { Medal } from "lucide-react";
 
 import { Link } from "~/components/link";
@@ -20,8 +21,12 @@ export function UsersTable({ users }: { users: UserBadge[] }) {
 function TableHeaders() {
   return (
     <>
-      <div>Username</div>
-      <div>totale</div>
+      <div>
+        <Trans>Username</Trans>
+      </div>
+      <div>
+        <Trans>Totale</Trans>
+      </div>
       {Object.keys(algobadge).map((id) => (
         <div key={id}>{id}</div>
       ))}
@@ -43,7 +48,10 @@ function TableRow({ item: user }: { item: UserBadge }) {
           {user.username}
         </Link>
         {user.totalBadge === BadgeExtra.Invalid && (
-          <span className="text-sm text-error"> (username non valido)</span>
+          <span className="text-sm text-error">
+            {" "}
+            <Trans>(username non valido)</Trans>
+          </span>
         )}
         {user.name && <span className="text-sm text-base-content/80"> ({user.name})</span>}
       </div>

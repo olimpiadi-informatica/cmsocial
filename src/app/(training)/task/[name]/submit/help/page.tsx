@@ -1,7 +1,10 @@
 import { getTask } from "~/lib/api/task";
 import { loadLocale } from "~/lib/locale";
 
+import { HelpDe } from "./de";
 import { HelpEn } from "./en";
+import { HelpEs } from "./es";
+import { HelpFr } from "./fr";
 import { HelpIt } from "./it";
 
 type Props = {
@@ -17,8 +20,11 @@ export default async function Page({ params }: Props) {
 
   return (
     <>
-      {i18n.locale === "it" && <HelpIt io={task.io} taskType={task.taskType} />}
-      {i18n.locale === "en" && <HelpEn io={task.io} taskType={task.taskType} />}
+      {i18n.locale === "it-IT" && <HelpIt io={task.io} taskType={task.taskType} />}
+      {i18n.locale === "en-GB" && <HelpEn io={task.io} taskType={task.taskType} />}
+      {i18n.locale === "de-DE" && <HelpDe io={task.io} taskType={task.taskType} />}
+      {i18n.locale === "es-ES" && <HelpEs io={task.io} taskType={task.taskType} />}
+      {i18n.locale === "fr-FR" && <HelpFr io={task.io} taskType={task.taskType} />}
     </>
   );
 }
