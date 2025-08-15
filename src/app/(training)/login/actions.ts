@@ -42,7 +42,7 @@ export async function loginPassword(
       const resp = await auth.api.signInUsername({
         headers: await headers(),
         body: {
-          username: usernameVariants[0],
+          username: usernameVariants.length === 1 ? usernameVariants[0] : usernameOrEmail,
           password,
           rememberMe: true,
         },
