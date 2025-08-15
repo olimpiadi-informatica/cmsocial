@@ -520,7 +520,7 @@ msgstr "Erreur inconnue"
 msgid "Errore:"
 msgstr "Erreur :"
 
-#: src/components/navbar/user-dropdown.tsx
+#: src/components/navbar/logout-button.tsx
 msgid "Esci"
 msgstr "Se déconnecter"
 
@@ -665,6 +665,10 @@ msgstr "Jeton d'identification non pris en charge"
 #: src/app/(training)/(home)/page.tsx
 msgid "Impara gradualmente"
 msgstr "Apprenez progressivement"
+
+#: src/app/(training)/user/[username]/impersonate.tsx
+msgid "Impersonifica"
+msgstr "Impersonnifier"
 
 #: src/lib/auth/errors.ts
 msgid "Impossibile scollegare l'account"

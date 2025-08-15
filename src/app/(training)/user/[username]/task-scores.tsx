@@ -6,7 +6,7 @@ import { getUserScores, type User } from "~/lib/api/user";
 export async function TaskScores({ user }: { user: User }) {
   const { t } = useLingui();
 
-  const scores = await getUserScores(user.id, user.username);
+  const scores = await getUserScores(user.cmsId, user.username);
 
   return (
     <div className="sm:columns-2 md:columns-3 lg:columns-4">

@@ -6,9 +6,9 @@ import { getSolvedCount, getSubmissionCount, getTotalEvaluationTime } from "~/li
 
 export async function Stats({ user }: { user: User }) {
   const [solved, submissions, totalTime] = await Promise.all([
-    getSolvedCount(user.id, user.username),
-    getSubmissionCount(user.id, user.username),
-    getTotalEvaluationTime(user.id),
+    getSolvedCount(user.cmsId, user.username),
+    getSubmissionCount(user.cmsId, user.username),
+    getTotalEvaluationTime(user.cmsId),
   ]);
 
   return (

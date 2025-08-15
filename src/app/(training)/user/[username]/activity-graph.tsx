@@ -28,7 +28,7 @@ export async function ActivityGraph({ user }: { user: User }) {
   const from = startOfWeek(subYears(to, 1), { locale: { options: { weekStartsOn: 1 } } });
   const dates = eachDayOfInterval({ start: from, end: to });
 
-  const count = await getSubmissionCountByDate(user.id, user.username, from, to, TZ);
+  const count = await getSubmissionCountByDate(user.cmsId, user.username, from, to, TZ);
 
   const colors = [
     "bg-base-300",
