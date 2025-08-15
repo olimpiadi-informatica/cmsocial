@@ -27,7 +27,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   INVALID_BACKUP_CODE: msg`Codice di backup non valido`,
   INVALID_CODE: msg`Autenticazione fallita`,
   INVALID_EMAIL: msg`Email non valida`,
-  INVALID_EMAIL_OR_PASSWORD: msg`Email o password non valide`,
+  INVALID_EMAIL_OR_PASSWORD: msg`Email o password non validi`,
   INVALID_PASSWORD: msg`Password non valida`,
   INVALID_TOKEN: msg`Token non valido`,
   INVALID_USERNAME: msg`Username non valido`,

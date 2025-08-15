@@ -2,9 +2,7 @@
 
 import { useEffect, useReducer } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Button, Form, SingleFileField, SubmitButton, useIsAfter } from "@olinfo/react-components";
 import { addSeconds } from "date-fns";
 import { isString } from "lodash-es";
@@ -24,7 +22,7 @@ type Props = {
 };
 
 export function PageClient({ task, input }: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const expiryDate =
     input && task.submissionTimeout ? addSeconds(input.date, task.submissionTimeout) : undefined;
@@ -33,32 +31,32 @@ export function PageClient({ task, input }: Props) {
   const validateSource = (file: File) => {
     const lang = fileLanguage(file.name);
     if (!lang || lang === Language.Plain) {
-      return _(msg`Tipo di file non valido`);
+      return t`Tipo di file non valido`;
     }
     const sizeLimit = lang === Language.Scratch ? 1_000_000 : 100_000;
     if (file.size > sizeLimit) {
-      return _(msg`File troppo grande`);
+      return t`File troppo grande`;
     }
   };
 
   const validateOutput = (file: File) => {
     if (file.type !== "text/plain") {
-      return _(msg`Tipo di file non valido`);
+      return t`Tipo di file non valido`;
     }
     if (file.size > 1_000_000) {
-      return _(msg`File troppo grande`);
+      return t`File troppo grande`;
     }
   };
 
   const onRequestInput = async () => {
     const err = await requestInput(task.name);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
   const onChangeInput = async () => {
     const err = await changeInput(input!.id);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
@@ -69,7 +67,7 @@ export function PageClient({ task, input }: Props) {
     output.append("file", data.output);
 
     const err = await uploadAndSubmit(task.name, input!.id, source, output);
-    if (err) throw new Error(isString(err) ? err : _(err));
+    if (err) throw new Error(isString(err) ? err : t(err));
     await new Promise(() => {});
   };
 
@@ -111,8 +109,8 @@ export function PageClient({ task, input }: Props) {
         <H2>
           <Trans>Invia soluzione</Trans>
         </H2>
-        <SingleFileField field="source" label={_(msg`File sorgente`)} validate={validateSource} />
-        <SingleFileField field="output" label={_(msg`File di output`)} validate={validateOutput} />
+        <SingleFileField field="source" label={t`File sorgente`} validate={validateSource} />
+        <SingleFileField field="output" label={t`File di output`} validate={validateOutput} />
         <SubmitButton icon={Send}>
           <Trans>Invia</Trans>
         </SubmitButton>

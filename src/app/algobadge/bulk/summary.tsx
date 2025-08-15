@@ -1,6 +1,4 @@
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Card } from "@olinfo/react-components";
 import { mapValues } from "lodash-es";
 
@@ -10,13 +8,13 @@ import { SummaryCategories } from "./summary-categories";
 import { SummaryTotal } from "./summary-total";
 
 export function Summary({ users }: { users: UserBadge[] }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const download = async () => {
     const userBadges = users.map((user) => ({
       username: user.username,
-      total: _(badgeName[user.totalBadge]),
-      ...mapValues(user.badges, ({ badge }) => _(badgeName[badge])),
+      total: t(badgeName[user.totalBadge]),
+      ...mapValues(user.badges, ({ badge }) => t(badgeName[badge])),
     }));
 
     try {
@@ -27,8 +25,8 @@ export function Summary({ users }: { users: UserBadge[] }) {
     } catch (err) {
       throw new Error(
         window.location.protocol !== "https:" && window.location.hostname !== "localhost"
-          ? _(msg`Devi usare HTTPS per scaricare il file.`)
-          : _(msg`Browser non supportato. Usa Chrome o Edge.`),
+          ? t`Devi usare HTTPS per scaricare il file.`
+          : t`Browser non supportato. Usa Chrome o Edge.`,
         { cause: err },
       );
     }

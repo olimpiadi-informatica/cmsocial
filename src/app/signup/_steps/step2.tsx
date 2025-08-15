@@ -1,8 +1,6 @@
 "use client";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Button, CardActions } from "@olinfo/react-components";
 import { RotateCcw, Undo } from "lucide-react";
 
@@ -10,17 +8,17 @@ import { step2Back, step2Resend } from "./actions";
 import gmail from "./gmail.svg";
 
 export function Step2() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const back = async () => {
     const err = await step2Back();
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
   const resend = async () => {
     const err = await step2Resend();
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
   };
 
   return (
@@ -45,7 +43,7 @@ export function Step2() {
             width={gmail.width}
             height={gmail.height}
             className="size-5"
-            alt={_(msg`Logo Outlook`)}
+            alt={t`Logo Outlook`}
           />
           <Trans>Apri Gmail</Trans>
         </a>

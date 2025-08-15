@@ -445,8 +445,8 @@ msgid "Email non verificata"
 msgstr "Email non verificata"
 
 #: src/lib/auth/errors.ts
-msgid "Email o password non valide"
-msgstr "Email o password non valide"
+msgid "Email o password non validi"
+msgstr "Email o password non validi"
 
 #: src/lib/auth/errors.ts
 msgid "Email uguale alla precedente"
@@ -626,8 +626,8 @@ msgid "Greedy, sorting e searching"
 msgstr "Greedy, sorting e searching"
 
 #: src/app/signup/_steps/step5.tsx
-msgid "Hai completato la registrazione! Puoi inziare a risolvere i problemi"
-msgstr "Hai completato la registrazione! Puoi inziare a risolvere i problemi"
+msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
+msgstr "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 
 #: src/app/algobadge/(categories)/header.tsx
 msgid "Hai raggiunto il badge di diamante!"
@@ -1234,8 +1234,8 @@ msgid "Scolastiche"
 msgstr "Scolastiche"
 
 #: src/components/oauth/button.tsx
-msgid "Scollega acount {name}"
-msgstr "Scollega acount {name}"
+msgid "Scollega account {name}"
+msgstr "Scollega account {name}"
 
 #: src/app/signup/page.tsx
 msgid "Scuola"
@@ -1284,16 +1284,16 @@ msgid "Sito ufficiale"
 msgstr "Sito ufficiale"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
-msgid "Soluzione più veloci"
-msgstr "Soluzione più veloci"
-
-#: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni corrette:"
 msgstr "Soluzioni corrette:"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni inviate:"
 msgstr "Soluzioni inviate:"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Soluzioni più veloci"
+msgstr "Soluzioni più veloci"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Sottoposizione"

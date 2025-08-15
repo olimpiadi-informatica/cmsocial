@@ -1,8 +1,6 @@
 "use client";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, SubmitButton } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -19,11 +17,11 @@ type Institute = {
 };
 
 export default function Page() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const submit = async (data: Institute) => {
     const err = await updateSchool(data.institute.trim());
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
@@ -33,35 +31,35 @@ export default function Page() {
         <Trans>Modifica scuola</Trans>
       </H2>
       <LocationField
-        label={_(msg`Regione`)}
+        label={t`Regione`}
         field="region"
-        placeholder={_(msg`Scegli la regione`)}
+        placeholder={t`Scegli la regione`}
         id="Italy"
         fetcher={getRegions}
       />
       {({ region }) => (
         <LocationField
-          label={_(msg`Provincia`)}
+          label={t`Provincia`}
           field="province"
-          placeholder={_(msg`Scegli la provincia`)}
+          placeholder={t`Scegli la provincia`}
           id={region}
           fetcher={getProvinces}
         />
       )}
       {({ province }) => (
         <LocationField
-          label={_(msg`Comune`)}
+          label={t`Comune`}
           field="city"
-          placeholder={_(msg`Scegli il comune`)}
+          placeholder={t`Scegli il comune`}
           id={province}
           fetcher={getCities}
         />
       )}
       {({ city }) => (
         <LocationField
-          label={_(msg`Istituto`)}
+          label={t`Istituto`}
           field="institute"
-          placeholder={_(msg`Scegli la scuola`)}
+          placeholder={t`Scegli la scuola`}
           id={city}
           fetcher={getSchools}
         />

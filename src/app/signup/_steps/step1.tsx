@@ -3,8 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { EmailField, Form, NewPasswordField, SubmitButton } from "@olinfo/react-components";
 import { ArrowRight } from "lucide-react";
 
@@ -14,13 +13,13 @@ import { ReCaptcha, type ReCaptchaInner } from "~/components/recaptcha";
 import { step1OAuth, step1Password, step1Social } from "./actions";
 
 export function Step1({ captchaKey }: { captchaKey: string }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
   const router = useRouter();
   const captchaRef = useRef<ReCaptchaInner>(null);
 
   const submit = async (user: { email: string; password: string }) => {
     const err = await step1Password(user.email, user.password, captchaRef.current?.getValue());
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     router.refresh();
     await new Promise(() => {});
   };

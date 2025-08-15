@@ -1,8 +1,7 @@
 import { notFound, redirect } from "next/navigation";
 import { Fragment, type ReactNode } from "react";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
 import { Check, FileInput, FileOutput, X } from "lucide-react";
 
@@ -24,7 +23,7 @@ export default async function Page({ params }: Props) {
   const { name: taskName, id } = await params;
 
   await loadLocale();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const user = await getSessionUser();
   if (!user) {
@@ -55,7 +54,7 @@ export default async function Page({ params }: Props) {
           <span className="font-bold">
             <Trans>Linguaggio:</Trans>
           </span>{" "}
-          {fileLanguageName(submission.source, _)}
+          {fileLanguageName(submission.source, t)}
         </li>
         <li>
           <span className="font-bold">

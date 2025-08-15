@@ -10,7 +10,7 @@ export function Step5() {
   return (
     <>
       <div className="text-center">
-        <Trans>Hai completato la registrazione! Puoi inziare a risolvere i problemi</Trans>
+        <Trans>Hai completato la registrazione! Puoi iniziare a risolvere i problemi</Trans>
       </div>
       <CardActions>
         <Link href="/tasks/1?order=easiest" className="btn btn-primary">

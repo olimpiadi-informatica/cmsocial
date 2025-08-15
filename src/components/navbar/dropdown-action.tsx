@@ -3,7 +3,7 @@
 import { type ReactNode, useCallback } from "react";
 
 import type { MessageDescriptor } from "@lingui/core";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { DropdownItem } from "@olinfo/react-components";
 import clsx from "clsx";
 
@@ -15,12 +15,12 @@ type Props = {
 };
 
 export function DropdownAction({ action, className, active, children }: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const onClick = useCallback(async () => {
     const err = await action();
-    if (err) throw new Error(_(err));
-  }, [action, _]);
+    if (err) throw new Error(t(err));
+  }, [action, t]);
 
   return (
     <DropdownItem>

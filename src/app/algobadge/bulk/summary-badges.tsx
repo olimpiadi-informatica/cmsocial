@@ -1,7 +1,6 @@
 import { useMemo } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { omitBy, pull, range } from "lodash-es";
 import {
   Bar,
@@ -25,7 +24,7 @@ type Data = DataEntry[];
 const filteredBadges = [Badge.Honorable, Badge.Bronze, Badge.Silver, Badge.Gold, Badge.Diamond];
 
 export function SummaryBadges({ users }: { users: UserBadge[] }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const numCategories = Object.keys(algobadge).length;
 
@@ -69,14 +68,14 @@ export function SummaryBadges({ users }: { users: UserBadge[] }) {
           dataKey="name"
           axisLine={false}
           tickLine={false}
-          tickFormatter={(badge) => `≥${_(badgeName[badge as Badge])}`}
+          tickFormatter={(badge) => `≥${t(badgeName[badge as Badge])}`}
         />
         <YAxis tickLine={false} axisLine={false} />
         <CartesianGrid vertical={false} stroke="oklch(var(--bc) / 0.1)" />
         <Tooltip
           cursor={{ fill: "oklch(var(--bc) / 0.1)" }}
           content={TooltipContent}
-          formatter={(value, num) => [value, _(msg`${num} categorie`)]}
+          formatter={(value, num) => [value, t`${num} categorie`]}
         />
         {range(numCategories + 1).map((i) => (
           <Bar

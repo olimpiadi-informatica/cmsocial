@@ -1,5 +1,4 @@
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 
 import { DateTime } from "~/components/date";
@@ -19,7 +18,7 @@ export default async function Page({ params }: Props) {
   const { name: taskName } = await params;
 
   await loadLocale();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const user = await getSessionUser();
   if (!user) {
@@ -71,7 +70,7 @@ export default async function Page({ params }: Props) {
                 href={`/task/terry/${taskName}/submissions/${sub.id}`}
                 className="col-span-4 grid grid-cols-subgrid text-nowrap">
                 <div className="mr-1">{sub.id.split("-")[0]}</div>
-                <div>{fileLanguageName(sub.source, _)}</div>
+                <div>{fileLanguageName(sub.source, t)}</div>
                 <div>
                   <DateTime date={sub.date} />
                 </div>

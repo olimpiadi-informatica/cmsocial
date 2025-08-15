@@ -5,8 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, SelectField, SingleFileField, SubmitButton } from "@olinfo/react-components";
 import clsx from "clsx";
 import { mapValues } from "lodash-es";
@@ -31,25 +30,25 @@ export function SubmitBatch({
   task: Task;
   languages: Record<string, Language>;
 }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const langMessage = (lang?: string) => {
     switch (languages[lang ?? ""]) {
       case Language.Pascal:
-        return _(
+        return t(
           msg`Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno.`,
         );
       case Language.Java:
-        return _(
+        return t(
           msg`Assicurati di chiamare la tua classe "${task.submissionFormat[0].replace(".%l", "")}", altrimenti la compilazione non andrà a buon fine.`,
         );
     }
   };
 
   const validateFile = (file: File) => {
-    if (file.size > 100_000) return _(msg`File troppo grande`);
+    if (file.size > 100_000) return t`File troppo grande`;
     if (!Object.values(languages).includes(fileLanguage(file.name)!)) {
-      return _(msg`Tipo di file non valido`);
+      return t`Tipo di file non valido`;
     }
   };
 
@@ -59,7 +58,7 @@ export function SubmitBatch({
     files.append(task.submissionFormat[0], isSubmitPage ? (editorValue ?? "") : value.src);
 
     const err = await submitBatch(task.name, value.lang, files);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
@@ -80,12 +79,12 @@ export function SubmitBatch({
         )}>
         <SelectField
           field="lang"
-          label={_(msg`Linguaggio`)}
+          label={t`Linguaggio`}
           options={mapValues(languages, (_, lang) => lang)}
         />
         <SingleFileField
           field="src"
-          label={_(msg`Codice sorgente`)}
+          label={t`Codice sorgente`}
           validate={validateFile}
           optional={isSubmitPage}
         />

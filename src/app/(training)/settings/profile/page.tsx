@@ -1,7 +1,6 @@
 "use client";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { FirstNameField, Form, LastNameField, SubmitButton } from "@olinfo/react-components";
 
 import { H2 } from "~/components/header";
@@ -9,11 +8,11 @@ import { H2 } from "~/components/header";
 import { updateUserProfile } from "./actions";
 
 export default function Page() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const submit = async (data: { firstName: string; lastName: string }) => {
     const err = await updateUserProfile(data.firstName, data.lastName);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 

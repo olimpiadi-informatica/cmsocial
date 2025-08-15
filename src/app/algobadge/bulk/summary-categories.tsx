@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { mapValues, omitBy, pull } from "lodash-es";
 import {
   Bar,
@@ -22,7 +22,7 @@ type DataEntry = { name: CategoryId } & { [key in ExtendedBadge]?: number };
 type Data = DataEntry[];
 
 export function SummaryCategories({ users }: { users: UserBadge[] }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const data = useMemo((): Data => {
     const badges = mapValues(
@@ -59,7 +59,7 @@ export function SummaryCategories({ users }: { users: UserBadge[] }) {
         <Tooltip
           cursor={{ fill: "oklch(var(--bc) / 0.1)" }}
           content={TooltipContent}
-          formatter={(value, badge) => [value, _(badgeName[badge as unknown as ExtendedBadge])]}
+          formatter={(value, badge) => [value, t(badgeName[badge as unknown as ExtendedBadge])]}
         />
         {badgeTypes.map((badge) => (
           <Bar

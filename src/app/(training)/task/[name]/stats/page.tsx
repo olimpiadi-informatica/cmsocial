@@ -63,7 +63,7 @@ export default async function Page({ params }: Props) {
         </li>
       </ul>
       <H2 className="mb-2 mt-8">
-        <Trans>Soluzione più veloci</Trans>
+        <Trans>Soluzioni più veloci</Trans>
       </H2>
       <Menu fallback={t`Nessuna soluzione`}>
         {stats.topUsers.map((user, i) => (

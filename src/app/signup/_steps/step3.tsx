@@ -1,7 +1,6 @@
 "use client";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   FirstNameField,
   Form,
@@ -14,11 +13,11 @@ import { ArrowRight } from "lucide-react";
 import { step3 } from "./actions";
 
 export function Step3() {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const submit = async (user: { username: string; firstName: string; lastName: string }) => {
     const err = await step3(user.username, user.firstName, user.lastName);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 

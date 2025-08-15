@@ -5,8 +5,7 @@ import type { StaticImageData } from "next/image";
 
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import type { MessageDescriptor } from "@lingui/core";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { useNotifications } from "@olinfo/react-components";
 import clsx from "clsx";
 
@@ -28,12 +27,12 @@ type Props = {
 
 export function OauthButton({ provider, onClick, disabled, type }: Props) {
   const { notifyError } = useNotifications();
-  const { _ } = useLingui();
+  const { t } = useLingui();
   const name = providerName(provider);
 
   const login = async () => {
     const err = await onClick(provider.toLowerCase());
-    if (err) notifyError(new Error(_(err)));
+    if (err) notifyError(new Error(t(err)));
   };
 
   return (
@@ -55,7 +54,7 @@ export function OauthButton({ provider, onClick, disabled, type }: Props) {
         {type === "login" && <Trans>Accedi con {name}</Trans>}
         {type === "signup" && <Trans>Registrati con {name}</Trans>}
         {type === "link" && <Trans>Collega account {name}</Trans>}
-        {type === "unlink" && <Trans>Scollega acount {name}</Trans>}
+        {type === "unlink" && <Trans>Scollega account {name}</Trans>}
       </div>
     </button>
   );

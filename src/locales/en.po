@@ -445,7 +445,7 @@ msgid "Email non verificata"
 msgstr "Email not verified"
 
 #: src/lib/auth/errors.ts
-msgid "Email o password non valide"
+msgid "Email o password non validi"
 msgstr "Invalid email or password"
 
 #: src/lib/auth/errors.ts
@@ -626,7 +626,7 @@ msgid "Greedy, sorting e searching"
 msgstr "Greedy, sorting and searching"
 
 #: src/app/signup/_steps/step5.tsx
-msgid "Hai completato la registrazione! Puoi inziare a risolvere i problemi"
+msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 msgstr "You have completed the registration! You can start solving tasks"
 
 #: src/app/algobadge/(categories)/header.tsx
@@ -835,7 +835,7 @@ msgstr "Nationals, OIS & more"
 
 #: src/app/fibonacci/page.tsx
 msgid "Nel sito ufficiale potrai trovare il regolamento, il calendario e le modalità di iscrizione."
-msgstr "In the official website you will find the rules, the calendar and how to participate."
+msgstr "On the official website you will find the rules, the calendar and how to participate."
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Nella wiki ufficiale troverai spiegazioni dettagliate e soluzioni di problemi passati, oltre che a tutorial approfonditi su tecniche algoritmiche avanzate."
@@ -851,16 +851,16 @@ msgstr "No posts found."
 
 #: src/app/(training)/user/[username]/task-scores.tsx
 msgid "Nessun problema risolto"
-msgstr "No task solved"
+msgstr "No tasks solved"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
 msgid "Nessun problema trovato"
-msgstr "No task found"
+msgstr "No tasks found"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Nessun tag"
-msgstr "No tag"
+msgstr "No tags"
 
 #: src/app/(training)/ranking/[page]/page.tsx
 msgid "Nessun utente trovato"
@@ -1035,7 +1035,7 @@ msgstr "Pre-OII"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
-msgstr "Introduce yourself to other students, discuss the tasks, clear up your doubts on: basic constructs of you programming language, algorithms and data structures, libraries, algorithm techniques, and much more!"
+msgstr "Introduce yourself to other students, discuss the tasks, clear up your doubts on: basic constructs of your programming language, algorithms and data structures, libraries, algorithm techniques, and much more!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
@@ -1069,7 +1069,7 @@ msgstr "Tasks by technique"
 #: src/app/(training)/user/[username]/page.tsx
 #: src/app/(training)/user/[username]/stats.tsx
 msgid "Problemi risolti"
-msgstr "Solved task"
+msgstr "Solved tasks"
 
 #: src/app/signup/page.tsx
 #: src/components/navbar/user-dropdown.tsx
@@ -1234,7 +1234,7 @@ msgid "Scolastiche"
 msgstr "School selections"
 
 #: src/components/oauth/button.tsx
-msgid "Scollega acount {name}"
+msgid "Scollega account {name}"
 msgstr "Unlink account {name}"
 
 #: src/app/signup/page.tsx
@@ -1284,16 +1284,16 @@ msgid "Sito ufficiale"
 msgstr "Official website"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
-msgid "Soluzione più veloci"
-msgstr "Fastest solutions"
-
-#: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni corrette:"
 msgstr "Correct solutions:"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni inviate:"
 msgstr "Submitted solutions:"
+
+#: src/app/(training)/task/[name]/stats/page.tsx
+msgid "Soluzioni più veloci"
+msgstr "Fastest solutions"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Sottoposizione"

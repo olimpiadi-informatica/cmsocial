@@ -2,8 +2,7 @@
 
 import { useRef } from "react";
 
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import { EmailField, Form, SubmitButton } from "@olinfo/react-components";
 
 import { H1 } from "~/components/header";
@@ -12,13 +11,13 @@ import { ReCaptcha, type ReCaptchaInner } from "~/components/recaptcha";
 import { recoverPassword } from "./actions";
 
 export function PageClient({ captchaKey }: { captchaKey: string }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
   const captchaRef = useRef<ReCaptchaInner>(null);
 
   const submit = async (recover: { email: string }) => {
     const err = await recoverPassword(recover.email, captchaRef.current?.getValue());
     if (err) {
-      throw new Error(_(err));
+      throw new Error(t(err));
     }
 
     await new Promise(() => {});

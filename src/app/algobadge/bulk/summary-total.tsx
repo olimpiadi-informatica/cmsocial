@@ -1,13 +1,13 @@
 import { useMemo } from "react";
 
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 
 import { badgeColor, badgeName, badgeTypes, type ExtendedBadge, type UserBadge } from "./common";
 import { TooltipContent } from "./tooltip";
 
 export function SummaryTotal({ users }: { users: UserBadge[] }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const data = useMemo(() => {
     const badges = Object.fromEntries(
@@ -40,7 +40,7 @@ export function SummaryTotal({ users }: { users: UserBadge[] }) {
         </Pie>
         <Tooltip
           content={TooltipContent}
-          formatter={(value, badge) => [value, _(badgeName[badge as unknown as ExtendedBadge])]}
+          formatter={(value, badge) => [value, t(badgeName[badge as unknown as ExtendedBadge])]}
         />
       </PieChart>
     </ResponsiveContainer>

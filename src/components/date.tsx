@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 
 const DateTimeWithLocale = dynamic(
   () => import("@olinfo/react-components").then((m) => m.DateTime),

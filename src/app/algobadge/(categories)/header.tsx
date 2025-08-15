@@ -1,5 +1,4 @@
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
+import { useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
 import { round } from "lodash-es";
 import {
@@ -28,7 +27,7 @@ import {
 import style from "./header.module.css";
 
 export function Header({ category, badge }: { category: Category; badge?: CategoryBadge }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const maxScore = badge?.maxScore ?? 0;
   const score = badge?.badge === Badge.Locked ? 0 : (badge?.score ?? 0);
@@ -39,7 +38,7 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
 
   return (
     <>
-      <h1>{_(category.title)}</h1>
+      <h1>{t(category.title)}</h1>
       <div className="flex flex-wrap justify-center gap-4 px-4 pb-8">
         {category.tasks.map((task) => {
           const url = task.terry ? `/task/terry/${task.name}` : `/task/${task.name}`;
@@ -72,8 +71,8 @@ export function Header({ category, badge }: { category: Category; badge?: Catego
           className="h-6 w-full tooltip tooltip-bottom before:max-w-96 before:text-lg before:rounded-lg [--tooltip-tail:0.5rem]"
           data-tip={
             needed === undefined
-              ? _(msg`Hai raggiunto il badge di diamante!`)
-              : _(msg`Ti mancano ${needed} punti al badge successivo!`)
+              ? t`Hai raggiunto il badge di diamante!`
+              : t`Ti mancano ${needed} punti al badge successivo!`
           }>
           <div className="size-full overflow-hidden rounded-full bg-base-content/20">
             {badge && (

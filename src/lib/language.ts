@@ -1,4 +1,4 @@
-import type { I18n } from "@lingui/core";
+import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 
 export enum Language {
@@ -92,7 +92,7 @@ export function fileLanguage(fileName: string) {
   }
 }
 
-export function fileLanguageName(fileName: string, _: I18n["_"]) {
+export function fileLanguageName(fileName: string, _: (descriptor: MessageDescriptor) => string) {
   const lang = fileLanguage(fileName);
   switch (lang) {
     case Language.C:

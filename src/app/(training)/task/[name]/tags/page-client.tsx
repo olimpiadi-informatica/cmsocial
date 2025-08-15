@@ -3,9 +3,7 @@
 import { useParams, usePathname } from "next/navigation";
 import { forwardRef, type MouseEvent, type Ref, type RefObject, useRef, useState } from "react";
 
-import { msg } from "@lingui/core/macro";
-import { useLingui } from "@lingui/react";
-import { Trans } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import {
   Button,
   Form,
@@ -32,7 +30,7 @@ type Props = {
 };
 
 export function PageClient({ taskTags, allTags, canAddTag, tagPlaceholders }: Props) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const modalRef = useRef<HTMLDialogElement>(null);
 
@@ -43,7 +41,7 @@ export function PageClient({ taskTags, allTags, canAddTag, tagPlaceholders }: Pr
       <H2 className="mb-2">
         <Trans>Tags</Trans>
       </H2>
-      <Menu fallback={_(msg`Nessun tag`)}>
+      <Menu fallback={t`Nessun tag`}>
         {taskTags.map((tag, i) => (
           <li key={tag.name}>
             {tag.canDelete || tag.isEvent ? (
@@ -72,13 +70,13 @@ export function PageClient({ taskTags, allTags, canAddTag, tagPlaceholders }: Pr
 function BaseTag({ tag }: { tag: TaskTag }) {
   const { name: taskName } = useParams();
   const { notifySuccess } = useNotifications();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const remove = async (e: MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     const err = await removeTag(taskName as string, tag.name);
-    if (err) throw new Error(_(err));
-    notifySuccess(_(msg`Tag rimosso con successo`));
+    if (err) throw new Error(t(err));
+    notifySuccess(t`Tag rimosso con successo`);
   };
 
   return (
@@ -94,14 +92,14 @@ function BaseTag({ tag }: { tag: TaskTag }) {
 }
 
 function HiddenTag({ tag, placeholder }: { tag: TaskTag; placeholder: string }) {
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const [shown, setShown] = useState(false);
 
   if (shown) return <BaseTag tag={tag} />;
 
   return (
-    <button onClick={() => setShown(true)} aria-label={_(msg`Mostra tag`)} type="button">
+    <button onClick={() => setShown(true)} aria-label={t`Mostra tag`} type="button">
       <div className="blur-sm" aria-hidden={true}>
         {placeholder}
       </div>
@@ -118,24 +116,24 @@ const AddTagModal = forwardRef(function AddTagModal(
 ) {
   const { name: taskName } = useParams();
   const { notifySuccess } = useNotifications();
-  const { _ } = useLingui();
+  const { t } = useLingui();
 
   const options = Object.fromEntries(tags.map((tag) => [tag.name, tag.description]));
 
   const submit = async (data: { tag: string }) => {
     const err = await addTag(taskName as string, data.tag);
-    if (err) throw new Error(_(err));
+    if (err) throw new Error(t(err));
     (ref as RefObject<HTMLDialogElement>).current?.close();
-    notifySuccess(_(msg`Tag aggiunto con successo`));
+    notifySuccess(t`Tag aggiunto con successo`);
   };
 
   return (
-    <Modal ref={ref} title={_(msg`Aggiungi tag`)}>
+    <Modal ref={ref} title={t`Aggiungi tag`}>
       <Form onSubmit={submit} className="!max-w-none">
         <SelectField
           field="tag"
-          label={_(msg`Tag`)}
-          placeholder={_(msg`Seleziona un tag`)}
+          label={t`Tag`}
+          placeholder={t`Seleziona un tag`}
           options={options}
         />
         <SubmitButton>
