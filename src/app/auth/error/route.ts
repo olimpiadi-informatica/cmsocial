@@ -13,7 +13,7 @@ export function GET(request: NextRequest): Promise<Response> {
 
   let messageId = msg`Errore sconosciuto`;
 
-  const code = request.nextUrl.searchParams.get("error")?.toLowerCase();
+  const code = request.nextUrl.searchParams.get("error")?.toUpperCase();
   if (!code) {
     logger.error(`Missing auth error code ${request.nextUrl.searchParams}`);
   } else if (code in authErrors) {
