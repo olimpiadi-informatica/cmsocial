@@ -14,6 +14,7 @@ export const getUserCount = cache(async (): Promise<number> => {
       and(
         eq(participations.hidden, false),
         eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
+        gt(socialParticipations.score, 0),
       ),
     );
   return res.count;
