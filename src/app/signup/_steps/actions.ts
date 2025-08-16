@@ -51,8 +51,7 @@ export async function step1Social(provider: string) {
       headers: await headers(),
       body: {
         provider,
-        callbackURL: "/",
-        newUserCallbackURL: "/signup",
+        callbackURL: "/auth/success",
       },
     });
     url = resp.url;
@@ -71,8 +70,7 @@ export async function step1OAuth(providerId: string) {
       headers: await headers(),
       body: {
         providerId,
-        callbackURL: "/",
-        newUserCallbackURL: "/signup",
+        callbackURL: "/auth/success",
       },
     });
     url = resp.url;

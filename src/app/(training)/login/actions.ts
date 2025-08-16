@@ -70,8 +70,7 @@ export async function loginSocial(provider: string, redirectUrl: string) {
       headers: await headers(),
       body: {
         provider,
-        callbackURL: redirectUrl,
-        newUserCallbackURL: "/signup",
+        callbackURL: `/auth/success?redirect=${encodeURIComponent(redirectUrl)}`,
       },
     });
     url = resp.url;
@@ -90,8 +89,7 @@ export async function loginOAuth(providerId: string, redirectUrl: string) {
       headers: await headers(),
       body: {
         providerId,
-        callbackURL: redirectUrl,
-        newUserCallbackURL: "/signup",
+        callbackURL: `/auth/success?redirect=${encodeURIComponent(redirectUrl)}`,
       },
     });
     url = resp.url;
