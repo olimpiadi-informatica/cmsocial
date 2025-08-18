@@ -9,9 +9,11 @@ import {
   eq,
   exists,
   gt,
+  gte,
   ilike,
   inArray,
   isNull,
+  lt,
   ne,
   or,
   type SQL,
@@ -32,8 +34,10 @@ import {
 export type TaskListOptions = {
   search: string | null | undefined;
   tags: string[] | null | undefined;
-  order: "hardest" | "easiest" | "trending" | null | undefined;
+  order: string | null | undefined;
   unsolved: boolean | undefined;
+  minDiff: number | null | undefined;
+  maxDiff: number | null | undefined;
 };
 
 const scoreSq = cmsDb
@@ -70,6 +74,12 @@ function getFilter(userId: number | undefined, options: TaskListOptions): SQL | 
   }
   if (userId && options.unsolved) {
     filter.push(or(isNull(scoreSq.score), ne(scoreSq.score, 100)));
+  }
+  if (options.minDiff != null && Number.isFinite(options.minDiff)) {
+    filter.push(gte(socialTasks.scoreMultiplier, options.minDiff));
+  }
+  if (options.maxDiff != null && Number.isFinite(options.maxDiff)) {
+    filter.push(lt(socialTasks.scoreMultiplier, options.maxDiff));
   }
   return and(...filter);
 }
@@ -156,15 +166,19 @@ export const getTaskList = cache(
 
 export const getTaskCount = cache(
   async (options: TaskListOptions, userId: number | undefined): Promise<number> => {
+    const query = cmsDb
+      .select({ count: count() })
+      .from(tasks)
+      .innerJoin(socialTasks, eq(socialTasks.id, tasks.id));
+
     if (userId && options.unsolved) {
-      const [res] = await cmsDb
-        .select({ count: count() })
-        .from(tasks)
+      const [res] = await query
         .leftJoin(scoreSq, and(eq(scoreSq.taskId, tasks.id), eq(scoreSq.userId, userId)))
         .where(getFilter(userId, options));
       return res.count;
     }
 
-    return cmsDb.$count(tasks, getFilter(userId, options));
+    const [res] = await query.where(getFilter(userId, options));
+    return res.count;
   },
 );

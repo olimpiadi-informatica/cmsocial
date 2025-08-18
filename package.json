@@ -10,6 +10,7 @@
     "translate": "lingui extract --clean"
   },
   "dependencies": {
+    "@base-ui-components/react": "^1.0.0-beta.2",
     "@date-fns/tz": "^1.2",
     "@fireworks-js/react": "^2.10",
     "@gravatar-com/quick-editor": "^0.8",
@@ -35,7 +36,7 @@
     "@types/lodash-es": "^4.17",
     "@types/mdx": "^2.0",
     "@types/node": "^24",
-    "@types/nodemailer": "^6.4",
+    "@types/nodemailer": "=6.4.17",
     "@types/pdfobject": "^2.2",
     "@types/pg": "^8.11",
     "@types/react": "^19.0",

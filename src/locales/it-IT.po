@@ -115,7 +115,7 @@ msgid "Aggiungi tag"
 msgstr "Aggiungi tag"
 
 #. placeholder {0}: tag.description
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Aggiungi tag {0}"
 msgstr "Aggiungi tag {0}"
 
@@ -394,13 +394,17 @@ msgstr "Devi inviare i seguenti file:"
 msgid "Devi usare HTTPS per scaricare il file."
 msgstr "Devi usare HTTPS per scaricare il file."
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Di tendenza"
 msgstr "Di tendenza"
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Diamante"
 msgstr "Diamante"
+
+#: src/app/(training)/tasks/[page]/filters/difficulty.tsx
+msgid "Difficoltà"
+msgstr "Difficoltà"
 
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Dimensione nodi"
@@ -838,7 +842,7 @@ msgstr "Modifica scuola"
 msgid "Mostra tag"
 msgstr "Mostra tag"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/unsolved.tsx
 msgid "Nascondi risolti"
 msgstr "Nascondi risolti"
 
@@ -905,13 +909,13 @@ msgstr "Nessuna sottoposizione inviata"
 msgid "Nessuno"
 msgstr "Nessuno"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome"
 msgstr "Nome"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome del problema"
 msgstr "Nome del problema"
 
@@ -980,7 +984,7 @@ msgstr "Olimpiadi Italiane di Informatica"
 msgid "oppure"
 msgstr "oppure"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Ordinamento"
 msgstr "Ordinamento"
 
@@ -1043,15 +1047,15 @@ msgstr "Password troppo lunga"
 msgid "Per continuare, inserisci la frase di conferma:"
 msgstr "Per continuare, inserisci la frase di conferma:"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più difficili"
 msgstr "Più difficili"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più facili"
 msgstr "Più facili"
 
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più recenti"
 msgstr "Più recenti"
 
@@ -1178,7 +1182,7 @@ msgid "Rimanda email"
 msgstr "Rimanda email"
 
 #. placeholder {0}: tag.description
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Rimuovi tag {0}"
 msgstr "Rimuovi tag {0}"
 
@@ -1381,7 +1385,7 @@ msgid "Subtask {0}"
 msgstr "Subtask {0}"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
-#: src/app/(training)/tasks/[page]/filter.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tag"
 msgstr "Tag"
 
