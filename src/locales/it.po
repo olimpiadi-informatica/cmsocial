@@ -507,6 +507,7 @@ msgstr "Errore durante la modifica dell'utente"
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
+#: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
 msgid "Errore sconosciuto"
 msgstr "Errore sconosciuto"
@@ -599,6 +600,10 @@ msgstr "Gare a squadre <0>(OIS)</0>"
 msgid "Gare ufficiali"
 msgstr "Gare ufficiali"
 
+#: src/lib/api/submit-terry.ts
+msgid "Generare nuovo input"
+msgstr "Generare nuovo input"
+
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/tasks/events/page.tsx
 msgid "Giochi di Fibonacci"
@@ -672,6 +677,14 @@ msgstr "Induzione e ricorsione"
 #: src/app/fibonacci/page.tsx
 msgid "Inizia ad allenarti"
 msgstr "Inizia ad allenarti"
+
+#: src/lib/api/submit-terry.ts
+msgid "Input già generato"
+msgstr "Input già generato"
+
+#: src/lib/api/submit-terry.ts
+msgid "Input scaduto"
+msgstr "Input scaduto"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Input/output:"
@@ -1501,6 +1514,7 @@ msgstr "Utente già esistente"
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
+#: src/lib/api/submit-terry.ts
 msgid "Utente non autenticato"
 msgstr "Utente non autenticato"
 
