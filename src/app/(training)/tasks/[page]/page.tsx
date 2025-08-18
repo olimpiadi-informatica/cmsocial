@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { compact, uniq } from "lodash-es";
-
 import { getTechniqueTags } from "~/lib/api/tags";
-import { getTaskCount, getTaskList, type TaskListOptions } from "~/lib/api/tasks";
+import { getTaskCount, getTaskList } from "~/lib/api/tasks";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
 import { PageClient } from "./page-client";
+import { getOptions } from "./utils";
 
 export const metadata: Metadata = {
   title: "Training - Problemi",
@@ -20,16 +19,10 @@ type Params = {
   params: Promise<{
     page: string;
   }>;
-  searchParams: Promise<{
-    search?: string;
-    tag?: string | string[];
-    order?: "hardest" | "easiest";
-    unsolved?: string;
-  }>;
+  searchParams: Promise<Record<string, string | string[]>>;
 };
 
 export default async function Page({ params, searchParams }: Params) {
-  const { search, tag, order, unsolved } = await searchParams;
   const page = Number((await params).page);
   const pageSize = 20;
 
@@ -38,13 +31,7 @@ export default async function Page({ params, searchParams }: Params) {
   const i18n = await loadLocale();
   const user = await getSessionUser();
 
-  const options: TaskListOptions = {
-    search: search,
-    tags: compact(Array.isArray(tag) ? uniq(tag) : [tag]),
-    order: order,
-    unsolved: !!unsolved,
-  };
-
+  const options = getOptions(await searchParams);
   const [taskList, taskCount, allTags] = await Promise.all([
     getTaskList(options, user?.cmsId, page, pageSize),
     getTaskCount(options, user?.cmsId),

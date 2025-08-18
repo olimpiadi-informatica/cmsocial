@@ -6,7 +6,7 @@ import { useDeferredValue, unstable_ViewTransition as ViewTransition } from "rea
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import clsx from "clsx";
-import { compact, range, uniq } from "lodash-es";
+import { range } from "lodash-es";
 import { Search, X } from "lucide-react";
 import useSWR from "swr";
 
@@ -15,11 +15,12 @@ import { Link } from "~/components/link";
 import { OutcomeScore } from "~/components/outcome";
 import { Pagination } from "~/components/pagination";
 import type { Tag } from "~/lib/api/tags";
-import type { TaskItem, TaskListOptions } from "~/lib/api/tasks";
+import type { TaskItem } from "~/lib/api/tasks";
 
 import { getTasks } from "./actions";
-import { Filter } from "./filter";
+import { Filters } from "./filters";
 import style from "./page.module.css";
+import { getOptions } from "./utils";
 
 type Props = {
   taskList: TaskItem[];
@@ -35,12 +36,7 @@ export function PageClient(props: Props) {
   const pageSize = 20;
 
   const searchParams = useSearchParams();
-  const options: TaskListOptions = {
-    search: searchParams.get("search"),
-    tags: compact(uniq(searchParams.getAll("tag"))),
-    order: searchParams.get("order") as "hardest" | "easiest" | "trending",
-    unsolved: !!searchParams.get("unsolved"),
-  };
+  const options = getOptions(searchParams);
 
   const {
     data: { taskList, taskCount },
@@ -83,7 +79,7 @@ export function PageClient(props: Props) {
           </Menu>
         </div>
         <div className={clsx("shrink-0 sm:max-w-xs sm:w-1/3", style.filterContainer)}>
-          <Filter allTags={props.allTags} />
+          <Filters allTags={props.allTags} />
         </div>
       </div>
       <Pagination page={page} pageCount={pageCount} />
