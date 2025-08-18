@@ -1,7 +1,15 @@
+import type { MessageDescriptor } from "@lingui/core";
+import { msg } from "@lingui/core/macro";
+import { logger } from "better-auth";
 import z, { type ZodType } from "zod";
 
 import { createLegacyToken } from "~/lib/auth/legacy-cookie";
 import { getSessionUser } from "~/lib/user";
+
+const errorSchema = z.object({
+  code: z.string(),
+  message: z.string(),
+});
 
 const alertSchema = z.object({
   message: z.string(),
@@ -51,10 +59,16 @@ export async function abandonInput(token: string, id: string) {
   await legacyApi("abandon_input", data);
 }
 
+export class TerryApiError extends Error {
+  constructor(public readonly description: MessageDescriptor) {
+    super(description.id);
+  }
+}
+
 async function legacyApi(endpoint: string, body: FormData): Promise<Response> {
   const user = await getSessionUser();
   if (!user) {
-    throw new Error("Unauthorized");
+    throw new TerryApiError(msg`Utente non autenticato`);
   }
 
   const resp = await fetch(`https://territoriali.olinfo.it/api/${endpoint}`, {
@@ -65,7 +79,8 @@ async function legacyApi(endpoint: string, body: FormData): Promise<Response> {
     body,
   });
   if (!resp.ok) {
-    throw new Error(`Error ${resp.status}: ${resp.statusText}`);
+    const { code, message } = errorSchema.parse(await resp.json());
+    parseError(code, message);
   }
   return resp;
 }
@@ -73,4 +88,18 @@ async function legacyApi(endpoint: string, body: FormData): Promise<Response> {
 async function legacyApiJson<T>(endpoint: string, body: FormData, schema: ZodType<T>): Promise<T> {
   const resp = await legacyApi(endpoint, body);
   return schema.parse(await resp.json());
+}
+
+function parseError(code: string, message: string): never {
+  switch (message) {
+    case "The input file has expired":
+      throw new TerryApiError(msg`Input scaduto`);
+    case "This input has already been submitted":
+      throw new TerryApiError(msg`Generare nuovo input`);
+    case "You already have a ready input!":
+      throw new TerryApiError(msg`Input già generato`);
+    default:
+      logger.error(`Unknown terry error: ${code} ${message}`);
+      throw new TerryApiError(msg`Errore sconosciuto`);
+  }
 }

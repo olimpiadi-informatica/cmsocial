@@ -64,7 +64,7 @@ export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
 
   if (!isCommonError) {
     const headersList = await headers();
-    logger.error(`Auth error (from ${headersList.get("referer")}):\n${err}`);
+    logger.error(`Auth error (from ${headersList.get("referer")}): ${err}`);
   }
 
   if (err instanceof APIError) {

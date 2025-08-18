@@ -11,6 +11,7 @@ import {
   abandonInput,
   generateInput,
   submit,
+  TerryApiError,
   uploadOutput,
   uploadSource,
 } from "~/lib/api/submit-terry";
@@ -25,11 +26,15 @@ export async function requestInput(taskName: string): Promise<MessageDescriptor 
 
   try {
     await generateInput(user.username, taskName);
-  } catch (e) {
-    logger.error("Error generating input:", e);
+  } catch (err) {
+    if (err instanceof TerryApiError) {
+      return err.description;
+    }
+    logger.error("Error generating input:", err);
     return msg`Errore sconosciuto`;
+  } finally {
+    revalidatePath("/", "layout");
   }
-  revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
 }
 
 export async function changeInput(inputId: string): Promise<MessageDescriptor | undefined> {
@@ -41,11 +46,15 @@ export async function changeInput(inputId: string): Promise<MessageDescriptor | 
 
   try {
     await abandonInput(user.username, inputId);
-  } catch (e) {
-    logger.error("Error abandoning input:", e);
+  } catch (err) {
+    if (err instanceof TerryApiError) {
+      return err.description;
+    }
+    logger.error("Error abandoning input:", err);
     return msg`Errore sconosciuto`;
+  } finally {
+    revalidatePath("/", "layout");
   }
-  revalidatePath("/(training)/(terry)/task/terry/[name]", "layout");
 }
 
 export async function uploadAndSubmit(
@@ -71,8 +80,12 @@ export async function uploadAndSubmit(
     }
 
     submissionId = await submit(inputId, source.id, output.id);
-  } catch (e) {
-    logger.error("Error submitting:", e);
+  } catch (err) {
+    if (err instanceof TerryApiError) {
+      return err.description;
+    }
+    logger.error("Error submitting:", err);
+    revalidatePath("/", "layout");
     return msg`Errore sconosciuto`;
   }
   redirect(`/task/terry/${taskName}/submissions/${submissionId}`);
