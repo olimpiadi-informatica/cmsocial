@@ -1,4 +1,4 @@
-import { DE, ES, FR, GB, IT } from "country-flag-icons/react/3x2";
+import { DE, ES, FR, GB, HU, IT, PL, RO } from "country-flag-icons/react/3x2";
 
 export function Flag({ locale }: { locale: string }) {
   switch (locale) {
@@ -13,5 +13,11 @@ export function Flag({ locale }: { locale: string }) {
       return <ES title="Español" className="w-4 inline-block" />;
     case "fr":
       return <FR title="Français" className="w-4 inline-block" />;
+    case "ro":
+      return <RO title="Română" className="w-4 inline-block" />;
+    case "hu":
+      return <HU title="Magyar" className="w-4 inline-block" />;
+    case "pl":
+      return <PL title="Polski" className="w-4 inline-block" />;
   }
 }

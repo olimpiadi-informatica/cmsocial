@@ -11,6 +11,9 @@ const locales = {
   "de-DE": () => import("~/locales/de-DE.po"),
   "es-ES": () => import("~/locales/es-ES.po"),
   "fr-FR": () => import("~/locales/fr-FR.po"),
+  "ro-RO": () => import("~/locales/ro-RO.po"),
+  "hu-HU": () => import("~/locales/hu-HU.po"),
+  "pl-PL": () => import("~/locales/pl-PL.po"),
 };
 
 export const loadLocale = cache(async (): Promise<I18n> => {

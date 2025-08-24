@@ -35,6 +35,15 @@ export function LocaleDropdown() {
         <LocaleItem lang="fr-FR">
           <Flag locale="fr" /> Français (beta)
         </LocaleItem>
+        <LocaleItem lang="ro-RO">
+          <Flag locale="ro" /> Română (beta)
+        </LocaleItem>
+        <LocaleItem lang="hu-HU">
+          <Flag locale="hu" /> Magyar (beta)
+        </LocaleItem>
+        <LocaleItem lang="pl-PL">
+          <Flag locale="pl" /> Polski (beta)
+        </LocaleItem>
       </DropdownMenu>
     </Dropdown>
   );
