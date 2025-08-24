@@ -1,4 +1,4 @@
-FROM node:20 AS builder
+FROM node:24 AS builder
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
@@ -10,7 +10,7 @@ RUN yarn install --frozen-lockfile
 COPY ./ ./
 RUN yarn build
 
-FROM node:20
+FROM node:24
 
 ENV NEXT_TELEMETRY_DISABLED=1
 
