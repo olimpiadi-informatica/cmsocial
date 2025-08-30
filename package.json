@@ -60,7 +60,7 @@
     "lucide-react": ">=0.395 <1",
     "mime": "^4.0",
     "monaco-editor-core": "^0.52",
-    "next": "^15.2",
+    "next": "^15.4",
     "next-mdx-remote-client": "^2.0",
     "nodemailer": "^7.0",
     "parse-entities": "^4.0",
