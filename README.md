@@ -65,23 +65,18 @@ docker system prune
 If you just want to work on the frontend, connecting to the production backend
 which runs on https://training.olinfo.it, you can avoid using docker.
 
-Make sure you can run `yarn` on your system, either by going through the steps
-to [install it](https://yarnpkg.com/) or by simply calling `npx yarn` everytime
-you need yarn (in this case you only need to have a recent version of `npm`
-installed).
-
-Then you can simply run `yarn dev` (or `npx yarn dev`) to start the development
+Make sure you can run `pnpm` on your system, then you can simply run `pnpm dev` to start the development
 server on http://dev.olinfo.it:3000/. Note that the port (3000) is different
 from the one used by the docker instructions above (8000).
 
 ## Contributing
 
-Before committing, make sure to run `yarn lint` (or `npx yarn lint`) to check
+Before committing, make sure to run `pnpm lint` to check
 for linting errors.
 
 If you've added or changed text, you also need to update the translations:
 
-1. Run `yarn translate` (or `npx yarn translate`) to extract the new messages.
+1. Run `pnpm translate` to extract the new messages.
 2. Update `src/locales/en/messages.po` with the new translation.
 
 # Deployment

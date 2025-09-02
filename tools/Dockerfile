@@ -4,11 +4,13 @@ ENV NEXT_TELEMETRY_DISABLED=1
 
 WORKDIR /app
 
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+RUN npm install -g pnpm@latest
+
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
 
 COPY ./ ./
-RUN yarn build
+RUN pnpm build
 
 FROM node:24
 
