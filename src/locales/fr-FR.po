@@ -67,6 +67,10 @@ msgstr "Connectez-vous pour voir vos soumissions"
 msgid "Accesso negato"
 msgstr "Accès refusé"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Compte associé à un autre utilisateur"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Supprimer le compte"
 msgid "Eliminazione account"
 msgstr "Suppression du compte"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "E-mail déjà existante"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Mot de passe trop court"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Mot de passe trop faible"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Mot de passe trop faible. Veuillez le changer"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

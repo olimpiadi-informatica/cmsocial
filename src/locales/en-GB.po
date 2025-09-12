@@ -67,6 +67,10 @@ msgstr "You must be logged in to see your submissions"
 msgid "Accesso negato"
 msgstr "Access denied"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Account associated with another user"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Delete account"
 msgid "Eliminazione account"
 msgstr "Delete account"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Email already exists"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Password too short"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Password too weak"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Password too weak. Please change it"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

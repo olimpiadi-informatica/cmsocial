@@ -67,6 +67,10 @@ msgstr "Inicia sesión para ver tus envíos"
 msgid "Accesso negato"
 msgstr "Acceso denegado"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Cuenta asociada a otro usuario"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Eliminar cuenta"
 msgid "Eliminazione account"
 msgstr "Eliminación de cuenta"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "El correo electrónico ya existe"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Contraseña demasiado corta"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Contraseña demasiado débil"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Contraseña demasiado débil. Por favor, cámbiela"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

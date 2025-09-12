@@ -67,6 +67,10 @@ msgstr "Musisz być zalogowany, aby zobaczyć swoje zgłoszenia"
 msgid "Accesso negato"
 msgstr "Dostęp zabroniony"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Konto powiązane z innym użytkownikiem"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Usuń konto"
 msgid "Eliminazione account"
 msgstr "Usuwanie konta"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Email już istnieje"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Hasło zbyt krótkie"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Hasło zbyt słabe"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Hasło jest zbyt słabe. Zmień je"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

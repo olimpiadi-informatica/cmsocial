@@ -67,6 +67,10 @@ msgstr "Trebuie să fii autentificat pentru a vedea soluțiile tale"
 msgid "Accesso negato"
 msgstr "Acces refuzat"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Cont asociat cu alt utilizator"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Șterge contul"
 msgid "Eliminazione account"
 msgstr "Ștergere cont"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Email deja existentă"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Parolă prea scurtă"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Parolă prea slabă"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Parolă prea slabă. Vă rugăm să o schimbați"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

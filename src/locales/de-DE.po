@@ -67,6 +67,10 @@ msgstr "Melde dich an, um deine Einreichungen zu sehen"
 msgid "Accesso negato"
 msgstr "Zugriff verweigert"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Konto ist mit einem anderen Benutzer verknüpft"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Konto löschen"
 msgid "Eliminazione account"
 msgstr "Konto löschen"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "E-Mail existiert bereits"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Passwort zu kurz"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Passwort zu schwach"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Passwort zu schwach. Bitte ändern Sie es"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

@@ -67,6 +67,10 @@ msgstr "Accedi per vedere le tue sottoposizioni"
 msgid "Accesso negato"
 msgstr "Accesso negato"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "Account associato a un altro utente"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Elimina account"
 msgid "Eliminazione account"
 msgstr "Eliminazione account"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Email già esistente"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Password troppo corta"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Password troppo debole"
+msgid "Password troppo debole. Cambiare password"
+msgstr "Password troppo debole. Cambiare password"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

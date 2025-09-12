@@ -67,6 +67,10 @@ msgstr "Beküldései megtekintéséhez be kell jelentkeznie"
 msgid "Accesso negato"
 msgstr "Hozzáférés megtagadva"
 
+#: src/lib/auth/errors.ts
+msgid "Account associato a un altro utente"
+msgstr "A fiók egy másik felhasználóhoz van társítva"
+
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/social/page.tsx
 msgid "Account collegati"
@@ -434,6 +438,7 @@ msgstr "Fiók törlése"
 msgid "Eliminazione account"
 msgstr "Fiók törlése"
 
+#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Az e-mail cím már létezik"
@@ -1036,8 +1041,8 @@ msgid "Password troppo corta"
 msgstr "Túl rövid jelszó"
 
 #: src/lib/auth/errors.ts
-msgid "Password troppo debole"
-msgstr "Túl gyenge jelszó"
+msgid "Password troppo debole. Cambiare password"
+msgstr "A jelszó túl gyenge. Kérjük, változtassa meg"
 
 #: src/lib/auth/errors.ts
 msgid "Password troppo lunga"

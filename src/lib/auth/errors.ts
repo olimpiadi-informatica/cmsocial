@@ -9,6 +9,7 @@ import type { auth } from "~/lib/auth";
 
 export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, MessageDescriptor> = {
   ACCESS_DENIED: msg`Accesso negato`,
+  ACCOUNT_ALREADY_LINKED_TO_DIFFERENT_USER: msg`Account associato a un altro utente`,
   ACCOUNT_NOT_FOUND: msg`Account non trovato`,
   ACCOUNT_NOT_LINKED: msg`Email già esistente`,
   BACKUP_CODES_NOT_ENABLED: msg`Codici di backup non abilitati`,
@@ -35,7 +36,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   OAUTH_CODE_VERIFICATION_FAILED: msg`Autenticazione fallita`,
   OTP_HAS_EXPIRED: msg`OTP scaduto`,
   OTP_NOT_ENABLED: msg`OTP non abilitato`,
-  PASSWORD_COMPROMISED: msg`Password troppo debole`,
+  PASSWORD_COMPROMISED: msg`Password troppo debole. Cambiare password`,
   PASSWORD_TOO_LONG: msg`Password troppo lunga`,
   PASSWORD_TOO_SHORT: msg`Password troppo corta`,
   PLEASE_RESTART_THE_PROCESS: msg`Ripetere autenticazione`,
@@ -51,6 +52,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   USERNAME_IS_TOO_LONG: msg`Username troppo lungo`,
   USERNAME_IS_TOO_SHORT: msg`Username troppo corto`,
   USER_ALREADY_EXISTS: msg`Utente già esistente`,
+  USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL: msg`Email già esistente`,
   USER_EMAIL_NOT_FOUND: msg`Email non trovata`,
   USER_NOT_FOUND: msg`Utente non trovato`,
   VALIDATION_ERROR: msg`Dati non validi`,
