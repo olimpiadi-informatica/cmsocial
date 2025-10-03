@@ -2,7 +2,7 @@
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
-import { sortBy } from "lodash-es";
+import { sortBy, sumBy } from "lodash-es";
 import { Send } from "lucide-react";
 
 import { H2 } from "~/components/header";
@@ -17,7 +17,10 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
   const validate = (files: Record<string, File>) => {
     for (const output of task.submissionFormat) {
       if (!files[output]) return t`File "${output}" mancante`;
+      if (files[output].size > 50_000_000) return t`File troppo grande`;
     }
+    const totalSize = sumBy(Object.values(files), (f) => f.size);
+    if (totalSize > 75_000_000) return t`File troppo grandi`;
   };
 
   const submit = async ({ outputs }: { outputs: Record<string, File> }) => {

@@ -571,8 +571,13 @@ msgstr "Archivo fuente"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
+#: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File troppo grande"
 msgstr "Archivo demasiado grande"
+
+#: src/app/(training)/task/[name]/submit/output-only.tsx
+msgid "File troppo grandi"
+msgstr "Archivos demasiado grandes"
 
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Finale"
