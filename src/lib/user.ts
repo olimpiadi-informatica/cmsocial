@@ -49,6 +49,6 @@ export const getUserProviders = cache(async function hasPasswordAccount() {
     headers: await headers(),
   });
   return accounts.map(
-    (account) => account.provider as "credential" | "github" | "google" | "olimanager",
+    (account) => account.providerId as "credential" | "github" | "google" | "olimanager",
   );
 });
