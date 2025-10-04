@@ -1,7 +1,7 @@
 import { type BetterAuthOptions, betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { nextCookies } from "better-auth/next-js";
-import { admin, captcha, genericOAuth, haveIBeenPwned, username } from "better-auth/plugins";
+import { admin, captcha, genericOAuth, username } from "better-auth/plugins";
 import { emailHarmony } from "better-auth-harmony";
 
 import { baseUrlHook } from "~/lib/auth/base-url";
@@ -85,7 +85,6 @@ export const auth = betterAuth({
         },
       ],
     }),
-    haveIBeenPwned(),
     nextCookies(),
     username({
       minUsernameLength: 3,
