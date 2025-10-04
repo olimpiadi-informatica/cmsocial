@@ -4,6 +4,9 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  pdfjs-dist: ^5.4.149
+
 importers:
 
   .:
@@ -3016,10 +3019,6 @@ packages:
   path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
     engines: {node: '>=8'}
-
-  pdfjs-dist@5.3.93:
-    resolution: {integrity: sha512-w3fQKVL1oGn8FRyx5JUG5tnbblggDqyx2XzA5brsJ5hSuS+I0NdnJANhmeWKLjotdbPQucLBug5t0MeWr0AAdg==}
-    engines: {node: '>=20.16.0 || >=22.3.0'}
 
   pdfjs-dist@5.4.149:
     resolution: {integrity: sha512-Xe8/1FMJEQPUVSti25AlDpwpUm2QAVmNOpFP0SIahaPIOKBKICaefbzogLdwey3XGGoaP4Lb9wqiw2e9Jqp0LA==}
@@ -7004,10 +7003,6 @@ snapshots:
 
   path-type@4.0.0: {}
 
-  pdfjs-dist@5.3.93:
-    optionalDependencies:
-      '@napi-rs/canvas': 0.1.80
-
   pdfjs-dist@5.4.149:
     optionalDependencies:
       '@napi-rs/canvas': 0.1.80
@@ -7180,7 +7175,7 @@ snapshots:
       make-cancellable-promise: 2.0.0
       make-event-props: 2.0.0
       merge-refs: 2.0.0(@types/react@19.2.0)
-      pdfjs-dist: 5.3.93
+      pdfjs-dist: 5.4.149
       react: 19.2.0
       react-dom: 19.2.0(react@19.2.0)
       tiny-invariant: 1.3.3
