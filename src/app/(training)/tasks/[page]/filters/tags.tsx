@@ -19,7 +19,7 @@ export function TagsFilter({ allTags }: { allTags: Tag[] }) {
     <div className="form-control w-full">
       <label className="label pb-1.5">
         <span className="label-text">
-          <Trans>Tag</Trans>
+          <Trans>Tags</Trans>
         </span>
         <div className="btn btn-neutral btn-circle btn-sm swap swap-rotate">
           <input

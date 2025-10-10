@@ -297,7 +297,7 @@ msgstr "Połącz konto {name}"
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Come funziona l'input e l'output?"
-msgstr "Jak działa wejście i wyjście?"
+msgstr "Jak działa input i output?"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Compilazione"
@@ -562,7 +562,7 @@ msgstr "Brak pliku \"{output}\""
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File di output"
-msgstr "Plik wyjściowy"
+msgstr "Plik output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File sorgente"
@@ -714,7 +714,7 @@ msgstr "Input wygasł"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Input/output:"
-msgstr "Wejście/wyjście:"
+msgstr "Input/output:"
 
 #: src/app/algobadge/bulk/page.tsx
 msgid "Inserisci gli username"
@@ -1088,7 +1088,7 @@ msgstr "Prawdopodobnie źle wybrałeś język. Jeśli nie, sugerujemy zaprzestan
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Problemi"
-msgstr "Problemy"
+msgstr "Zadania"
 
 #: src/lib/algobadge.ts
 msgid "Problemi introduttivi"
@@ -1370,7 +1370,7 @@ msgstr "Standardowy błąd:"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Standard output:"
-msgstr "Standardowe wyjście:"
+msgstr "Standardowy output:"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/user/[username]/page.tsx
@@ -1395,9 +1395,8 @@ msgid "Subtask {0}"
 msgstr "Podzadanie {0}"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
-#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tag"
-msgstr "Tagi"
+msgstr "Tag"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Tag aggiunto con successo"
@@ -1413,6 +1412,7 @@ msgstr "Tag został pomyślnie usunięty"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Tagi"
 

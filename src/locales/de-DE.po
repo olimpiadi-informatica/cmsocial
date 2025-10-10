@@ -1395,7 +1395,6 @@ msgid "Subtask {0}"
 msgstr "Unteraufgabe {0}"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
-#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tag"
 msgstr "Tag"
 
@@ -1413,6 +1412,7 @@ msgstr "Tag erfolgreich entfernt"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Tags"
 
@@ -1456,7 +1456,7 @@ msgstr "Testfälle"
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Testo"
-msgstr "Text"
+msgstr "Aufgabenstellung"
 
 #: src/components/statement/pdf.tsx
 msgid "Testo del problema"

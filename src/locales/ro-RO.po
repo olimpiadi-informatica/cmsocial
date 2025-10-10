@@ -219,7 +219,7 @@ msgstr "Browser nesuportat. Folosește Chrome sau Edge."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cambia input"
-msgstr "Generează intrare nouă"
+msgstr "Schimbă inputul"
 
 #: src/components/navbar/locale-dropdown.tsx
 msgid "Cambia lingua"
@@ -297,7 +297,7 @@ msgstr "Conectează contul {name}"
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Come funziona l'input e l'output?"
-msgstr "Cum funcționează intrarea și ieșirea?"
+msgstr "Cum funcționează inputul și outputul?"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Compilazione"
@@ -562,7 +562,7 @@ msgstr "Fișierul \"{output}\" lipsește"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File di output"
-msgstr "Fișier de ieșire"
+msgstr "Fișier de output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File sorgente"
@@ -624,7 +624,7 @@ msgstr "Concursuri oficiale"
 
 #: src/lib/api/submit-terry.ts
 msgid "Generare nuovo input"
-msgstr "Generează intrare nouă"
+msgstr "Generează input nou"
 
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/tasks/events/page.tsx
@@ -706,15 +706,15 @@ msgstr "Începe antrenamentul"
 
 #: src/lib/api/submit-terry.ts
 msgid "Input già generato"
-msgstr "Intrare deja generată"
+msgstr "Input deja generat"
 
 #: src/lib/api/submit-terry.ts
 msgid "Input scaduto"
-msgstr "Intrare expirată"
+msgstr "Input expirat"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Input/output:"
-msgstr "Intrare/ieșire:"
+msgstr "Input/output:"
 
 #: src/app/algobadge/bulk/page.tsx
 msgid "Inserisci gli username"
@@ -742,7 +742,7 @@ msgstr "Trimite"
 
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Invia output"
-msgstr "Trimite ieșiri"
+msgstr "Trimite output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
@@ -1012,7 +1012,7 @@ msgstr "OTP expirat"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Ottieni input"
-msgstr "Generează intrare"
+msgstr "Generează input"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
@@ -1159,11 +1159,11 @@ msgstr "Această pagină nu a fost găsită 😢"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Questo input è scaduto."
-msgstr "Această intrare a expirat."
+msgstr "Acest input a expirat."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Questo input scade <0/>."
-msgstr "Această intrare expiră <0/>."
+msgstr "Acest input expiră <0/>."
 
 #: src/app/(training)/(email-callback)/reset-password/page.tsx
 #: src/app/(training)/forgot-password/page-client.tsx
@@ -1181,7 +1181,7 @@ msgstr "Înregistrează-te cu {name}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
-msgstr "Generează intrare"
+msgstr "Cere input"
 
 #: src/lib/auth/errors.ts
 msgid "Richiesta non valida"
@@ -1246,11 +1246,11 @@ msgstr "Descarcă date"
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Scarica input"
-msgstr "Descarcă intrarea"
+msgstr "Descarcă inputul"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Scarica output"
-msgstr "Descarcă ieșirea"
+msgstr "Descarcă outputul"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
@@ -1370,7 +1370,7 @@ msgstr "Eroare standard:"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Standard output:"
-msgstr "Ieșire standard:"
+msgstr "Output standard:"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/user/[username]/page.tsx
@@ -1395,7 +1395,6 @@ msgid "Subtask {0}"
 msgstr "Subtask {0}"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
-#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tag"
 msgstr "Etichetă"
 
@@ -1413,6 +1412,7 @@ msgstr "Etichetă eliminată cu succes"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Etichete"
 

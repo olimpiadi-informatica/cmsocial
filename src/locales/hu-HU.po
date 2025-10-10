@@ -1392,10 +1392,9 @@ msgstr "Adatstruktúrák"
 #. placeholder {0}: subtask.idx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Subtask {0}"
-msgstr "{0}. altertask"
+msgstr "{0}. részfeladat"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
-#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tag"
 msgstr "Címke"
 
@@ -1413,6 +1412,7 @@ msgstr "Címke sikeresen eltávolítva"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Címkék"
 

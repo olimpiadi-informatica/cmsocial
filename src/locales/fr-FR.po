@@ -219,7 +219,7 @@ msgstr "Navigateur non supporté. Utilisez Chrome ou Edge."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cambia input"
-msgstr "Changer d'entrée"
+msgstr "Changer d'input"
 
 #: src/components/navbar/locale-dropdown.tsx
 msgid "Cambia lingua"
@@ -297,7 +297,7 @@ msgstr "Lier le compte {name}"
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Come funziona l'input e l'output?"
-msgstr "Comment fonctionnent l'entrée et la sortie ?"
+msgstr "Comment fonctionnent l'input et l'output ?"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Compilazione"
@@ -562,7 +562,7 @@ msgstr "Fichier \"{output}\" manquant"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "File di output"
-msgstr "Fichier de sortie"
+msgstr "Fichier d'output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File sorgente"
@@ -624,7 +624,7 @@ msgstr "Compétitions officielles"
 
 #: src/lib/api/submit-terry.ts
 msgid "Generare nuovo input"
-msgstr "Générer une nouvelle entrée"
+msgstr "Générer un nouvel input"
 
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/tasks/events/page.tsx
@@ -706,15 +706,15 @@ msgstr "Commencer l'entraînement"
 
 #: src/lib/api/submit-terry.ts
 msgid "Input già generato"
-msgstr "Entrée déjà générée"
+msgstr "Input déjà généré"
 
 #: src/lib/api/submit-terry.ts
 msgid "Input scaduto"
-msgstr "Entrée expirée"
+msgstr "Input expiré"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Input/output:"
-msgstr "Entrée/sortie :"
+msgstr "Input/output :"
 
 #: src/app/algobadge/bulk/page.tsx
 msgid "Inserisci gli username"
@@ -742,7 +742,7 @@ msgstr "Envoyer"
 
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Invia output"
-msgstr "Envoyer la sortie"
+msgstr "Envoyer l'output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
@@ -1012,7 +1012,7 @@ msgstr "OTP expiré"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Ottieni input"
-msgstr "Obtenir l'entrée"
+msgstr "Obtenir l'input"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
@@ -1159,11 +1159,11 @@ msgstr "Cette page n'a pas été trouvée 😢"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Questo input è scaduto."
-msgstr "Cette entrée a expiré."
+msgstr "Cet input a expiré."
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Questo input scade <0/>."
-msgstr "Cette entrée expire <0/>."
+msgstr "Cet input expire <0/>."
 
 #: src/app/(training)/(email-callback)/reset-password/page.tsx
 #: src/app/(training)/forgot-password/page-client.tsx
@@ -1181,7 +1181,7 @@ msgstr "S'inscrire avec {name}"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
-msgstr "Demander l'entrée"
+msgstr "Demander l'input"
 
 #: src/lib/auth/errors.ts
 msgid "Richiesta non valida"
@@ -1246,11 +1246,11 @@ msgstr "Télécharger les données"
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Scarica input"
-msgstr "Télécharger l'entrée"
+msgstr "Télécharger l'input"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 msgid "Scarica output"
-msgstr "Télécharger la sortie"
+msgstr "Télécharger l'output"
 
 #: src/app/(training)/settings/school/page.tsx
 #: src/app/signup/_steps/step4.tsx
@@ -1370,7 +1370,7 @@ msgstr "Erreur standard :"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Standard output:"
-msgstr "Sortie standard :"
+msgstr "Output standard :"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/user/[username]/page.tsx
@@ -1395,7 +1395,6 @@ msgid "Subtask {0}"
 msgstr "Sous-tâche {0}"
 
 #: src/app/(training)/task/[name]/tags/page-client.tsx
-#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tag"
 msgstr "Tag"
 
@@ -1413,6 +1412,7 @@ msgstr "Tag supprimé avec succès"
 
 #: src/app/(training)/task/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
+#: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Tags"
 
@@ -1456,7 +1456,7 @@ msgstr "Cas de test"
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Testo"
-msgstr "Texte"
+msgstr "Énoncé"
 
 #: src/components/statement/pdf.tsx
 msgid "Testo del problema"
