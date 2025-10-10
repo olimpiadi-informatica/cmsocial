@@ -17,10 +17,10 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
   const validate = (files: Record<string, File>) => {
     for (const output of task.submissionFormat) {
       if (!files[output]) return t`File "${output}" mancante`;
-      if (files[output].size > 50_000_000) return t`File troppo grande`;
+      if (files[output].size > 75_000_000) return t`File troppo grande`;
     }
     const totalSize = sumBy(Object.values(files), (f) => f.size);
-    if (totalSize > 75_000_000) return t`File troppo grandi`;
+    if (totalSize > 150_000_000) return t`File troppo grandi`;
   };
 
   const submit = async ({ outputs }: { outputs: Record<string, File> }) => {
