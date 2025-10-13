@@ -74,6 +74,11 @@ export default async function Page() {
           </Link>
         </li>
         <li>
+          <Link href="/tasks/1?tag=itacpc">
+            ITACPC
+          </Link>
+        </li>
+        <li>
           <Link href="/tasks/1?tag=abc">
             Algorithm Bergamo Contest <span className="text-base-content/60">(ABC)</span>
           </Link>
