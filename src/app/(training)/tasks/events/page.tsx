@@ -74,9 +74,7 @@ export default async function Page() {
           </Link>
         </li>
         <li>
-          <Link href="/tasks/1?tag=itacpc">
-            ITACPC
-          </Link>
+          <Link href="/tasks/1?tag=itacpc">ITACPC</Link>
         </li>
         <li>
           <Link href="/tasks/1?tag=abc">
