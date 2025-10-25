@@ -16,7 +16,7 @@ self.MonacoEnvironment = {
   getWorker: (_moduleId: string, label: string) => {
     if (label !== "editorWorkerService") throw new Error(`Unknown module: ${label}`);
     return new Worker(
-      new URL("monaco-editor-core/esm/vs/editor/editor.worker.js", import.meta.url),
+      new URL("monaco-editor-core/esm/vs/editor/editor.worker.start.js", import.meta.url),
     );
   },
 };

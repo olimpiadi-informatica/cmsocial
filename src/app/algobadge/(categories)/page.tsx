@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { unstable_ViewTransition as ViewTransition } from "react";
+import { ViewTransition } from "react";
 
 import { Fireworks } from "~/components/fireworks";
 import { algobadge, Badge, type CategoryId, getUserBadges } from "~/lib/algobadge";

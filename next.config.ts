@@ -1,7 +1,7 @@
+import type { NextConfig } from "next";
 import createMDX from "@next/mdx";
 
-/** @type {import("next").NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   output: "standalone",
   pageExtensions: ["js", "jsx", "md", "mdx", "ts", "tsx"],
   productionBrowserSourceMaps: true,
@@ -47,17 +47,6 @@ const nextConfig = {
       },
     ];
   },
-  webpack: (config) => {
-    config.resolve.alias.canvas = false;
-    if (config.target[0] === "web") {
-      config.target[1] = "es2022";
-    }
-    config.module.rules.push({
-      test: /\.po$/,
-      use: ["@lingui/loader"],
-    });
-    return config;
-  },
   turbopack: {
     rules: {
       "*.po": {
@@ -71,6 +60,7 @@ const nextConfig = {
     serverActions: {
       bodySizeLimit: "150mb",
     },
+    turbopackFileSystemCacheForDev: true,
     viewTransition: true,
   },
 };

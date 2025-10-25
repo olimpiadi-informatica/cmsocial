@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { useDeferredValue, unstable_ViewTransition as ViewTransition } from "react";
+import { useDeferredValue, ViewTransition } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";

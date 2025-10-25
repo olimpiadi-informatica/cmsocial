@@ -1,5 +1,6 @@
-/** @type {import('@lingui/conf').LinguiConfig} */
-const config = {
+import type { LinguiConfig } from "@lingui/conf";
+
+const config: LinguiConfig = {
   locales: ["it-IT", "en-GB", "de-DE", "es-ES", "fr-FR", "ro-RO", "hu-HU", "pl-PL"],
   sourceLocale: "it-IT",
   catalogs: [

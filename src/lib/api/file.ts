@@ -1,7 +1,6 @@
-import { createReadStream } from "node:fs";
+import { openAsBlob } from "node:fs";
 import { stat } from "node:fs/promises";
 import path from "node:path";
-import { Readable } from "node:stream";
 
 import { type SQL, sql } from "drizzle-orm";
 import type { PgColumn } from "drizzle-orm/pg-core/columns";
@@ -58,8 +57,8 @@ export async function getTerryFileContent(fileName: string): Promise<Response> {
   if (!(await isFile(filePath))) {
     return new Response(null, { status: 404 });
   }
-  const stream = createReadStream(filePath);
-  return new Response(Readable.toWeb(stream) as ReadableStream, {
+  const blob = await openAsBlob(filePath);
+  return new Response(blob, {
     headers: {
       "Cache-Control": "public, max-age=604800",
       "Content-Type": mime.getType(fileName) ?? "application/octet-stream",

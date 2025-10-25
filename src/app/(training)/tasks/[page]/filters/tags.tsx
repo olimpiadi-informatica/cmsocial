@@ -1,10 +1,5 @@
 import { useSearchParams } from "next/navigation";
-import {
-  startTransition,
-  useDeferredValue,
-  useState,
-  unstable_ViewTransition as ViewTransition,
-} from "react";
+import { startTransition, useDeferredValue, useState, ViewTransition } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
