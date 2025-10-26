@@ -87,8 +87,10 @@ export function PageClient(props: Props) {
   );
 }
 
+const levels = range(10).map((i) => 10 ** ((i + 0.5) / 4.5 - 1));
+
 function Difficulty({ difficulty }: { difficulty: number }) {
-  const level = Math.round((Math.log10(difficulty) + 1) * 4.5);
+  const level = levels.findIndex((l) => difficulty <= l);
 
   const colors = ["bg-green-400", "bg-lime-400", "bg-yellow-400", "bg-orange-400", "bg-red-400"];
 
