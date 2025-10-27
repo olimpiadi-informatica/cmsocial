@@ -122,9 +122,6 @@ importers:
       better-auth:
         specifier: ^1.3.31
         version: 1.3.31(next@16.0.0(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      better-auth-harmony:
-        specifier: ^1.2.5
-        version: 1.2.5(better-auth@1.3.31(next@16.0.0(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0))
       better-call:
         specifier: ^1.0.24
         version: 1.0.24
@@ -1883,11 +1880,6 @@ packages:
     resolution: {integrity: sha512-JMWsdF+O8Orq3EMukbUN1QfbLK9mX2CkUmQBcW2T0s8OmdAUL5LLM/6wFwSrqXzlXB13yhyK9gTKS1rIizOduQ==}
     hasBin: true
 
-  better-auth-harmony@1.2.5:
-    resolution: {integrity: sha512-4YaAK5vrLnB6heImYJB8Pf524BPFrOYmUy1IFTHk6btGDCbgh3xT/hBCM6Ougwv/drURxtfZlB/FPktIjKLMtg==}
-    peerDependencies:
-      better-auth: ^1.0.3
-
   better-auth@1.3.31:
     resolution: {integrity: sha512-wq/RRl2aapbHlzvfmWGMkt+Qeav80dATbEU9hAPalLoZqbR3L7ABb/RvtFD8NshWRcXzwLkwAUoVmT3851+wKA==}
     peerDependencies:
@@ -2672,9 +2664,6 @@ packages:
     resolution: {integrity: sha512-qsda+H8jTaUaN/x5vzW2rzc+8Rw4TAQ/4KjB46IwK5VH+IlVeeeje/EoZRpiXvIqjFgK84QffqPztGI3VBLG1A==}
     engines: {node: '>=6'}
 
-  libphonenumber-js@1.12.25:
-    resolution: {integrity: sha512-u90tUu/SEF8b+RaDKCoW7ZNFDakyBtFlX1ex3J+VH+ElWes/UaitJLt/w4jGu8uAE41lltV/s+kMVtywcMEg7g==}
-
   libsql@0.5.22:
     resolution: {integrity: sha512-NscWthMQt7fpU8lqd7LXMvT9pi+KhhmTHAJWUB/Lj6MWa0MKFv0F2V4C6WKKpjCVZl0VwcDz4nOI3CyaT1DDiA==}
     cpu: [x64, arm64, wasm32, arm]
@@ -2722,10 +2711,6 @@ packages:
     resolution: {integrity: sha512-63b16z63jM9yc1MwxajHeuu0FRZFsDtljtDjYm26Kd86UQ5HQzu9ksEtoUUw4RBuewodw/tGFmvipePvRsKeDA==}
     peerDependencies:
       react: ^16.5.1 || ^17.0.0 || ^18.0.0 || ^19.0.0
-
-  mailchecker@6.0.19:
-    resolution: {integrity: sha512-a7yghUa0IC1n6OkSJIqCSw2HS8ujKJGBJcRkjhHiKvHqPU3JB28Yze9o90L52r6lA/sp/EBveDXOWbozcdmxYg==}
-    engines: {node: '>=0.10'}
 
   make-cancellable-promise@2.0.0:
     resolution: {integrity: sha512-3SEQqTpV9oqVsIWqAcmDuaNeo7yBO3tqPtqGRcKkEo0lrzD3wqbKG9mkxO65KoOgXqj+zH2phJ2LiAsdzlogSw==}
@@ -3656,10 +3641,6 @@ packages:
 
   util-deprecate@1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
-
-  validator@13.15.15:
-    resolution: {integrity: sha512-BgWVbCI72aIQy937xbawcs+hrVaN/CZ2UwutgaJ36hGqRrLNM+f5LUT/YPRbo8IV/ASeFzXszezV+y2+rq3l8A==}
-    engines: {node: '>= 0.10'}
 
   vfile-location@5.0.3:
     resolution: {integrity: sha512-5yXvWDEgqeiYiBe1lbxYF7UMAIm/IcopxMHrMQDq3nvKcjPKIhZklUKL+AE7J7uApI4kwe2snsK+eI6UTj9EHg==}
@@ -5740,13 +5721,6 @@ snapshots:
 
   baseline-browser-mapping@2.8.20: {}
 
-  better-auth-harmony@1.2.5(better-auth@1.3.31(next@16.0.0(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)):
-    dependencies:
-      better-auth: 1.3.31(next@16.0.0(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
-      libphonenumber-js: 1.12.25
-      mailchecker: 6.0.19
-      validator: 13.15.15
-
   better-auth@1.3.31(next@16.0.0(@babel/core@7.28.5)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0):
     dependencies:
       '@better-auth/core': 1.3.31(@better-auth/utils@0.3.0)(@better-fetch/fetch@1.1.18)(better-call@1.0.19)(jose@6.1.0)(kysely@0.28.8)(nanostores@1.0.1)
@@ -6488,8 +6462,6 @@ snapshots:
 
   leven@3.1.0: {}
 
-  libphonenumber-js@1.12.25: {}
-
   libsql@0.5.22:
     dependencies:
       '@neon-rs/load': 0.0.4
@@ -6537,8 +6509,6 @@ snapshots:
   lucide-react@0.548.0(react@19.2.0):
     dependencies:
       react: 19.2.0
-
-  mailchecker@6.0.19: {}
 
   make-cancellable-promise@2.0.0: {}
 
@@ -7763,8 +7733,6 @@ snapshots:
       react: 19.2.0
 
   util-deprecate@1.0.2: {}
-
-  validator@13.15.15: {}
 
   vfile-location@5.0.3:
     dependencies:
