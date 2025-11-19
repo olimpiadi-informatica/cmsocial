@@ -832,6 +832,10 @@ msgstr "Genutzter Speicher während der Kompilierungsphase vor der Ausführung. 
 msgid "Menzione"
 msgstr "Erwähnung"
 
+#: src/lib/auth/errors.ts
+msgid "Metodo di autenticazione temporaneamente non disponibile"
+msgstr "Authentifizierungsmethode vorübergehend nicht verfügbar"
+
 #: src/app/(training)/(home)/footer.tsx
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Ministerium für Bildung und Verdienste"

@@ -832,6 +832,10 @@ msgstr "Memory used during the compilation phase before the execution. It is not
 msgid "Menzione"
 msgstr "HM"
 
+#: src/lib/auth/errors.ts
+msgid "Metodo di autenticazione temporaneamente non disponibile"
+msgstr "Authentication method temporarily unavailable"
+
 #: src/app/(training)/(home)/footer.tsx
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Ministry of Education and Merit"

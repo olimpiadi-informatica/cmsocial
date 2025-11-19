@@ -29,6 +29,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   INVALID_CODE: msg`Autenticazione fallita`,
   INVALID_EMAIL: msg`Email non valida`,
   INVALID_EMAIL_OR_PASSWORD: msg`Email o password non validi`,
+  INVALID_OAUTH_CONFIGURATION: msg`Metodo di autenticazione temporaneamente non disponibile`,
   INVALID_PASSWORD: msg`Password non valida`,
   INVALID_TOKEN: msg`Token non valido`,
   INVALID_USERNAME: msg`Username non valido`,
@@ -61,8 +62,12 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
 export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
   const isCommonError =
     err instanceof APIError &&
-    (err.body?.code === "INVALID_EMAIL_OR_PASSWORD" ||
-      err.body?.code === "INVALID_USERNAME_OR_PASSWORD");
+    [
+      "INVALID_EMAIL_OR_PASSWORD",
+      "INVALID_USERNAME_OR_PASSWORD",
+      "PLEASE_RESTART_THE_PROCESS",
+      "ACCESS_DENIED",
+    ].includes(err.body?.code ?? "");
 
   if (!isCommonError) {
     const headersList = await headers();

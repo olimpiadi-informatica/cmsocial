@@ -832,6 +832,10 @@ msgstr "A végrehajtást megelőző fordítási fázisban felhasznált memória.
 msgid "Menzione"
 msgstr "Dicséret"
 
+#: src/lib/auth/errors.ts
+msgid "Metodo di autenticazione temporaneamente non disponibile"
+msgstr "Az azonosítási módszer átmenetileg nem érhető el"
+
 #: src/app/(training)/(home)/footer.tsx
 msgid "Ministero dell'Istruzione e del Merito"
 msgstr "Oktatási és Érdemi Minisztérium"
