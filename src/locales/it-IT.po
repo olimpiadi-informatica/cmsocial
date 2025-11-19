@@ -29,6 +29,10 @@ msgstr "<0>Memoria utilizzata</0>:"
 msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
 msgstr "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
 
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzione è altamente sconsigliato."
+msgstr "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzione è altamente sconsigliato."
+
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "<0>Tempo di compilazione</0>:"
 msgstr "<0>Tempo di compilazione</0>:"

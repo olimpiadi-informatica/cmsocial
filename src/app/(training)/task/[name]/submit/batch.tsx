@@ -98,11 +98,20 @@ export function SubmitBatch({
         const msg = langMessage(lang);
         if (!msg) return;
         return (
-          <div className="mb-4 flex max-w-sm items-center gap-2 text-sm text-warning">
+          <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-warning">
             <TriangleAlert size={16} className="flex-none" /> {msg}
           </div>
         );
       }}
+      {editorValue?.includes("@check-accepted") && (
+        <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-warning">
+          <TriangleAlert size={16} className="flex-none" />{" "}
+          <Trans>
+            <b>Stai inviando una soluzione ufficiale.</b> Copiare le soluzioni è altamente
+            sconsigliato.
+          </Trans>
+        </div>
+      )}
       <Link href={`/task/${task.name}/submit/help`} className="link link-info mb-4">
         <Trans>Come funziona l'input e l'output?</Trans>
       </Link>
