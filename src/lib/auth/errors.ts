@@ -65,6 +65,8 @@ export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
     [
       "INVALID_EMAIL_OR_PASSWORD",
       "INVALID_USERNAME_OR_PASSWORD",
+      "INVALID_PASSWORD",
+      "USER_NOT_FOUND",
       "PLEASE_RESTART_THE_PROCESS",
       "ACCESS_DENIED",
     ].includes(err.body?.code ?? "");

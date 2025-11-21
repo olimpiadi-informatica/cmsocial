@@ -9,7 +9,6 @@ export const socialUsers = pgTable("social_users", {
   displayUsername: text("display_username"),
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").notNull(),
-  normalizedEmail: text("normalized_email").notNull().unique(),
   image: text("image")
     .notNull()
     .generatedAlwaysAs(
