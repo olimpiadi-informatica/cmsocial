@@ -21,7 +21,7 @@ export async function recoverPassword(
   logger.info(`Request to reset password for user ${email}`);
 
   try {
-    await auth.api.forgetPassword({
+    await auth.api.requestPasswordReset({
       headers: headersWithCaptcha,
       body: { email },
     });

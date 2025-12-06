@@ -3,6 +3,7 @@ import path from "node:path";
 
 // @ts-expect-error
 import { renderToStaticMarkup } from "next/dist/compiled/react-dom/server";
+import { after } from "next/server";
 import type { ReactNode } from "react";
 
 import type { User } from "better-auth";
@@ -28,26 +29,28 @@ const transporter =
         streamTransport: true,
       });
 
-export async function sendEmail(address: string, subject: string, body: ReactNode) {
-  const html: string = renderToStaticMarkup(<Template title={subject}>{body}</Template>);
+export function sendEmail(address: string, subject: string, body: ReactNode) {
+  after(async () => {
+    const html: string = renderToStaticMarkup(<Template title={subject}>{body}</Template>);
 
-  const message: SendMailOptions = {
-    from: {
-      name: process.env.MAIL_FROM_NAME!,
-      address: process.env.MAIL_FROM_ADDRESS!,
-    },
-    to: address,
-    subject: subject,
-    html,
-  };
-  const email = await transporter.sendMail(message);
-  if (process.env.NODE_ENV !== "production") {
-    const message = (email as StreamTransport.SentMessageInfo).message;
+    const message: SendMailOptions = {
+      from: {
+        name: process.env.MAIL_FROM_NAME!,
+        address: process.env.MAIL_FROM_ADDRESS!,
+      },
+      to: address,
+      subject: subject,
+      html,
+    };
+    const email = await transporter.sendMail(message);
+    if (process.env.NODE_ENV !== "production") {
+      const message = (email as StreamTransport.SentMessageInfo).message;
 
-    const dir = path.join("emails", address);
-    await mkdir(dir, { recursive: true });
-    await writeFile(path.join(dir, `${Date.now()}.eml`), message);
-  }
+      const dir = path.join("emails", address);
+      await mkdir(dir, { recursive: true });
+      await writeFile(path.join(dir, `${Date.now()}.eml`), message);
+    }
+  });
 }
 
 type Data = {
@@ -57,27 +60,30 @@ type Data = {
 };
 
 export function sendResetPassword(data: Data) {
-  return sendEmail(
+  sendEmail(
     data.user.email,
     "Reimposta password - training.olinfo.it",
     <ResetPassword origin={origin(data)} user={data.user} token={data.token} />,
   );
+  return Promise.resolve();
 }
 
 export function sendVerificationEmail(data: Data) {
-  return sendEmail(
+  sendEmail(
     data.user.email,
     "Verifica email - training.olinfo.it",
     <SignupEmail origin={origin(data)} token={data.token} />,
   );
+  return Promise.resolve();
 }
 
 export function sendDeleteAccountVerification(data: Data) {
-  return sendEmail(
+  sendEmail(
     data.user.email,
     "Cancella account - training.olinfo.it",
     <DeleteAccount origin={origin(data)} user={data.user} token={data.token} />,
   );
+  return Promise.resolve();
 }
 
 function origin(data: Data) {
