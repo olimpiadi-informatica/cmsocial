@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation";
 import { useRef } from "react";
 
-import { Slider } from "@base-ui-components/react/slider";
+import { Slider } from "@base-ui/react/slider";
 import { Trans } from "@lingui/react/macro";
 import { sortBy } from "lodash-es";
 
