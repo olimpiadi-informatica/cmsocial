@@ -6,7 +6,6 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
 import {
   checkName,
@@ -17,6 +16,7 @@ import {
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 import { RegistrationStep } from "~/lib/auth/types";
+import { logger } from "~/lib/logger";
 import { getSessionUser } from "~/lib/user";
 
 export async function step1Password(
@@ -41,7 +41,7 @@ export async function step1Password(
     return getAuthError(err);
   }
 
-  logger.info(`User ${email} created`);
+  logger.info("User created", { email });
 }
 
 export async function step1Social(provider: string) {
@@ -169,5 +169,5 @@ export async function step4(institute: string | undefined) {
 
   revalidatePath("/", "layout");
 
-  logger.info(`User ${user.email} has completed the registration process.`);
+  logger.info("User has completed the registration process.", { user });
 }

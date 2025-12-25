@@ -1,7 +1,7 @@
 import type { Instrumentation } from "next";
 
+import { logger } from "~/lib/logger";
+
 export const onRequestError: Instrumentation.onRequestError = (_err, request, context) => {
-  console.error(`Error while processing request:
- ‣ request: ${request.method} ${request.path}
- ‣ context: ${context.routeType} ${context.routePath}`);
+  logger.error("Error while processing request", { request, context });
 };

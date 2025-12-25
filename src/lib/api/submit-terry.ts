@@ -1,9 +1,9 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 import z, { type ZodType } from "zod";
 
 import { createLegacyToken } from "~/lib/auth/legacy-cookie";
+import { logger } from "~/lib/logger";
 import { getSessionUser } from "~/lib/user";
 
 const errorSchema = z.object({
@@ -99,7 +99,7 @@ function parseError(code: string, message: string): never {
     case "You already have a ready input!":
       throw new TerryApiError(msg`Input già generato`);
     default:
-      logger.error(`Unknown terry error: ${code} ${message}`);
+      logger.error("Unknown terry error", { code, message });
       throw new TerryApiError(msg`Errore sconosciuto`);
   }
 }

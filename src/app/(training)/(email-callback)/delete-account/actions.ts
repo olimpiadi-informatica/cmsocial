@@ -5,12 +5,12 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
 import { deleteTerryUser, deleteUser } from "~/lib/api/auth";
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
 import { deleteForumUser } from "~/lib/forum/admin";
+import { logger } from "~/lib/logger";
 import { getSessionUser } from "~/lib/user";
 
 export async function deleteAccount(token: string | null): Promise<MessageDescriptor | undefined> {
@@ -19,7 +19,7 @@ export async function deleteAccount(token: string | null): Promise<MessageDescri
   const user = await getSessionUser();
   if (!user) return msg`Utente non autenticato`;
 
-  logger.warn(`Deleting user ${user.username}`);
+  logger.warn("Deleting user", { user });
 
   try {
     await auth.api.deleteUserCallback({

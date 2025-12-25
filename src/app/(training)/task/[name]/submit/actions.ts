@@ -4,9 +4,9 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
 import { submitTask } from "~/lib/api/submit";
+import { logger } from "~/lib/logger";
 import { hasPermission } from "~/lib/user";
 
 export async function submitBatch(
@@ -25,10 +25,10 @@ export async function submitBatch(
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
       case "Unauthorized":
-        logger.error("Error submitting:", err);
+        logger.error("Error submitting", err);
         return msg`Ripetere login`;
       default: {
-        logger.error("Error submitting:", err);
+        logger.error("Error submitting", err);
         return msg`Errore sconosciuto`;
       }
     }
@@ -51,10 +51,10 @@ export async function submitOutputOnly(
       case "Too frequent submissions!":
         return msg`Sottoposizioni troppo frequenti`;
       case "Unauthorized":
-        logger.error("Error submitting:", err);
+        logger.error("Error submitting", err);
         return msg`Ripetere login`;
       default: {
-        logger.error("Error submitting:", err);
+        logger.error("Error submitting", err);
         return msg`Errore sconosciuto`;
       }
     }

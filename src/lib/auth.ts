@@ -4,6 +4,7 @@ import { nextCookies } from "better-auth/next-js";
 import { admin, captcha, genericOAuth, username } from "better-auth/plugins";
 
 import { baseUrlHook } from "~/lib/auth/base-url";
+import { authLogger } from "~/lib/logger";
 
 import { passwordHash, passwordVerify } from "./api/crypto";
 import { userExtraFields } from "./auth/extra-fields";
@@ -15,6 +16,7 @@ import { sendDeleteAccountVerification, sendResetPassword, sendVerificationEmail
 
 export const auth = betterAuth({
   basePath: "/auth",
+  logger: authLogger,
   database: drizzleAdapter(cmsDb, {
     provider: "pg",
     schema: {

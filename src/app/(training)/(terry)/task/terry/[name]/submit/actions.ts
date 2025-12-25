@@ -5,7 +5,6 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
 import {
   abandonInput,
@@ -15,6 +14,7 @@ import {
   uploadOutput,
   uploadSource,
 } from "~/lib/api/submit-terry";
+import { logger } from "~/lib/logger";
 import { getSessionUser, hasPermission } from "~/lib/user";
 
 export async function requestInput(taskName: string): Promise<MessageDescriptor | undefined> {
@@ -30,7 +30,7 @@ export async function requestInput(taskName: string): Promise<MessageDescriptor 
     if (err instanceof TerryApiError) {
       return err.description;
     }
-    logger.error("Error generating input:", err);
+    logger.error("Error generating input", err);
     return msg`Errore sconosciuto`;
   } finally {
     revalidatePath("/", "layout");
@@ -50,7 +50,7 @@ export async function changeInput(inputId: string): Promise<MessageDescriptor | 
     if (err instanceof TerryApiError) {
       return err.description;
     }
-    logger.error("Error abandoning input:", err);
+    logger.error("Error abandoning input", err);
     return msg`Errore sconosciuto`;
   } finally {
     revalidatePath("/", "layout");
@@ -84,7 +84,7 @@ export async function uploadAndSubmit(
     if (err instanceof TerryApiError) {
       return err.description;
     }
-    logger.error("Error submitting:", err);
+    logger.error("Error submitting", err);
     revalidatePath("/", "layout");
     return msg`Errore sconosciuto`;
   }

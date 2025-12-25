@@ -6,17 +6,17 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
+import { logger } from "~/lib/logger";
 import { getSessionUser } from "~/lib/user";
 
 export async function deleteUser(): Promise<MessageDescriptor | undefined> {
   const user = await getSessionUser();
   if (!user) return msg`Utente non autenticato`;
 
-  logger.info(`Request to delete user ${user.username}`);
+  logger.info("Request to delete user", { user });
 
   try {
     await auth.api.deleteUser({ headers: await headers(), body: {} });

@@ -5,10 +5,10 @@ import { redirect } from "next/navigation";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 
 import { auth } from "~/lib/auth";
 import { getAuthError } from "~/lib/auth/errors";
+import { logger } from "~/lib/logger";
 
 export async function resetPassword(
   email: string | null,
@@ -18,7 +18,7 @@ export async function resetPassword(
   if (!email) return msg`Email non valida`;
   if (!token) return msg`Token non valido`;
 
-  logger.info(`Resetting user password ${email}`);
+  logger.info("Resetting user password", { email });
 
   try {
     await auth.api.resetPassword({

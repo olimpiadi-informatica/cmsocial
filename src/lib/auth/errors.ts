@@ -2,10 +2,10 @@ import { headers } from "next/headers";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { logger } from "better-auth";
 import { APIError } from "better-call";
 
 import type { auth } from "~/lib/auth";
+import { logger } from "~/lib/logger";
 
 export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, MessageDescriptor> = {
   ACCESS_DENIED: msg`Accesso negato`,
@@ -73,7 +73,7 @@ export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
 
   if (!isCommonError) {
     const headersList = await headers();
-    logger.error(`Auth error (from ${headersList.get("referer")}): ${err}`);
+    logger.error("Auth error", { referer: headersList.get("referer"), err });
   }
 
   if (err instanceof APIError) {
@@ -81,7 +81,7 @@ export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
     if (code && code in authErrors) {
       return authErrors[code as keyof typeof authErrors];
     }
-    logger.error(`Missing auth code "${code}"`);
+    logger.error("Missing auth code", { code });
   }
   if (process.env.NODE_ENV === "development") {
     throw err;
