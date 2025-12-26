@@ -30,7 +30,7 @@ msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3
 msgstr "<0>Portail d'entraînement des</0> <1><2>Olympiades</2> <3>Italiennes d'</3><4>Informatique</4></1>"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
-msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzione è altamente sconsigliato."
+msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzioni è altamente sconsigliato."
 msgstr "<0>Vous soumettez une solution officielle.</0> Copier des solutions est fortement déconseillé."
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
@@ -505,6 +505,14 @@ msgstr "Erreur lors de la récupération de l'utilisateur"
 msgid "Errore durante il recupero della sessione"
 msgstr "Erreur lors de la récupération de la session"
 
+#: src/lib/api/submit.ts
+msgid "Errore durante il salvataggio del file"
+msgstr "Erreur lors de l'enregistrement du fichier"
+
+#: src/lib/api/submit.ts
+msgid "Errore durante l'invio della sottoposizione"
+msgstr "Erreur lors de l'envoi de la soumission"
+
 #: src/lib/auth/errors.ts
 msgid "Errore durante la creazione dell'utente"
 msgstr "Erreur lors de la création de l'utilisateur"
@@ -521,7 +529,6 @@ msgstr "Erreur lors de la modification de l'utilisateur"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/login/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
 #: src/lib/api/submit-terry.ts
@@ -568,6 +575,10 @@ msgstr "Fichier \"{output}\" manquant"
 msgid "File di output"
 msgstr "Fichier d'output"
 
+#: src/lib/api/submit.ts
+msgid "File mancante"
+msgstr "Fichier manquant"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File sorgente"
 msgstr "Fichier source"
@@ -576,6 +587,7 @@ msgstr "Fichier source"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
+#: src/lib/api/submit.ts
 msgid "File troppo grande"
 msgstr "Fichier trop volumineux"
 
@@ -790,6 +802,14 @@ msgstr "Limite de temps :"
 msgid "Linguaggio"
 msgstr "Langue"
 
+#: src/lib/api/submit.ts
+msgid "Linguaggio mancante"
+msgstr "Langue manquante"
+
+#: src/lib/api/submit.ts
+msgid "Linguaggio non consentito per questo task"
+msgstr "Langue non autorisée pour cette tâche"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Linguaggio:"
@@ -952,10 +972,9 @@ msgstr "Non envoyé"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
+#: src/app/files/submit/route.ts
 #: src/lib/api/task-tags.ts
 #: src/lib/api/task-tags.ts
 msgid "Non sei autorizzato"
@@ -1208,11 +1227,6 @@ msgstr "Supprimer le tag {0}"
 msgid "Ripetere autenticazione"
 msgstr "Réauthentification requise"
 
-#: src/app/(training)/task/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
-msgid "Ripetere login"
-msgstr "Se reconnecter"
-
 #: src/app/(training)/(home)/page.tsx
 msgid "Risolvi tutti i problemi"
 msgstr "Résolvez tous les problèmes"
@@ -1367,8 +1381,7 @@ msgstr "Soumission {0}"
 msgid "Sottoposizioni"
 msgstr "Soumissions"
 
-#: src/app/(training)/task/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/lib/api/submit.ts
 msgid "Sottoposizioni troppo frequenti"
 msgstr "Soumissions trop fréquentes"
 
@@ -1423,6 +1436,11 @@ msgstr "Tag supprimé avec succès"
 #: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Tags"
+
+#: src/app/files/submit/route.ts
+#: src/lib/api/submit.ts
+msgid "Task non trovato"
+msgstr "Tâche introuvable"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Tempo"
@@ -1568,6 +1586,7 @@ msgstr "Utilisateur déjà existant"
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/lib/api/submit-terry.ts
+#: src/lib/api/submit.ts
 msgid "Utente non autenticato"
 msgstr "Utilisateur non authentifié"
 

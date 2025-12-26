@@ -30,8 +30,8 @@ msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3
 msgstr "<1><2>Olimpiadei</2> <3>Italiene de</3> <4>Informatică</4></1> <0>platformă de antrenament</0>"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
-msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzione è altamente sconsigliato."
-msgstr "<0>Trimiți o soluție oficială.</0> Copierea soluțiilor este puternic descurajată."
+msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzioni è altamente sconsigliato."
+msgstr "<0>Trimiteți o soluție oficială.</0> Copierea soluțiilor este strict descurajată."
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "<0>Tempo di compilazione</0>:"
@@ -505,6 +505,14 @@ msgstr "Eroare la recuperarea utilizatorului"
 msgid "Errore durante il recupero della sessione"
 msgstr "Eroare la recuperarea sesiunii"
 
+#: src/lib/api/submit.ts
+msgid "Errore durante il salvataggio del file"
+msgstr "Eroare la salvarea fișierului"
+
+#: src/lib/api/submit.ts
+msgid "Errore durante l'invio della sottoposizione"
+msgstr "Eroare la trimiterea soluției"
+
 #: src/lib/auth/errors.ts
 msgid "Errore durante la creazione dell'utente"
 msgstr "Eroare la crearea utilizatorului"
@@ -521,7 +529,6 @@ msgstr "Eroare la modificarea utilizatorului"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/login/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
 #: src/lib/api/submit-terry.ts
@@ -568,6 +575,10 @@ msgstr "Fișierul \"{output}\" lipsește"
 msgid "File di output"
 msgstr "Fișier de output"
 
+#: src/lib/api/submit.ts
+msgid "File mancante"
+msgstr "Fișier lipsă"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "File sorgente"
 msgstr "Fișier sursă"
@@ -576,6 +587,7 @@ msgstr "Fișier sursă"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
+#: src/lib/api/submit.ts
 msgid "File troppo grande"
 msgstr "Fișier prea mare"
 
@@ -790,6 +802,14 @@ msgstr "Limita de timp:"
 msgid "Linguaggio"
 msgstr "Limbaj"
 
+#: src/lib/api/submit.ts
+msgid "Linguaggio mancante"
+msgstr "Limbaj lipsă"
+
+#: src/lib/api/submit.ts
+msgid "Linguaggio non consentito per questo task"
+msgstr "Limbajul nu este permis pentru acest task"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Linguaggio:"
@@ -952,10 +972,9 @@ msgstr "Netrimis"
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
+#: src/app/files/submit/route.ts
 #: src/lib/api/task-tags.ts
 #: src/lib/api/task-tags.ts
 msgid "Non sei autorizzato"
@@ -1208,11 +1227,6 @@ msgstr "Elimină eticheta {0}"
 msgid "Ripetere autenticazione"
 msgstr "Re-autentifică-te"
 
-#: src/app/(training)/task/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
-msgid "Ripetere login"
-msgstr "Reîncearcă autentificarea"
-
 #: src/app/(training)/(home)/page.tsx
 msgid "Risolvi tutti i problemi"
 msgstr "Rezolvă toate problemele"
@@ -1367,8 +1381,7 @@ msgstr "Trimitere {0}"
 msgid "Sottoposizioni"
 msgstr "Trimiteri"
 
-#: src/app/(training)/task/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/submit/actions.ts
+#: src/lib/api/submit.ts
 msgid "Sottoposizioni troppo frequenti"
 msgstr "Trimiteri prea frecvente"
 
@@ -1423,6 +1436,11 @@ msgstr "Etichetă eliminată cu succes"
 #: src/app/(training)/tasks/[page]/filters/tags.tsx
 msgid "Tags"
 msgstr "Etichete"
+
+#: src/app/files/submit/route.ts
+#: src/lib/api/submit.ts
+msgid "Task non trovato"
+msgstr "Task-ul nu a fost găsit"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Tempo"
@@ -1568,6 +1586,7 @@ msgstr "Utilizator deja existent"
 #: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/lib/api/submit-terry.ts
+#: src/lib/api/submit.ts
 msgid "Utente non autenticato"
 msgstr "Utilizator neautentificat"
 
