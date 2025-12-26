@@ -57,49 +57,53 @@ export async function logRequest(
   await log.write(entry);
 }
 
-function writeLog(
+async function writeLog(
   logName: string,
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
+  trace: string | null,
+  host: string,
   message: string,
   data?: any,
 ) {
   if (!logging) return;
+
+  const metadata: LogEntry = {
+    severity,
+    labels: { service: host },
+    trace,
+  };
+
+  const log = logging.log(`training-${logName}`);
+  const entry = log.entry(
+    metadata,
+    isErrorLike(data) ? { error: serializeError(data), message } : { ...data, message },
+  );
+  await log.write(entry);
+}
+
+function writeLogGeneric(
+  severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
+  message: string,
+  data?: any,
+) {
   after(async () => {
     const headerList = await headers();
     const trace = headerList.get("x-trace");
     const host = headerList.get("x-forwarded-host") ?? "";
-
-    const metadata: LogEntry = {
-      severity,
-      labels: { service: host },
-      trace,
-    };
-
-    const log = logging.log(`training-${logName}`);
-    const entry = log.entry(
-      metadata,
-      isErrorLike(data) ? { error: serializeError(data), message } : { ...data, message },
-    );
-    await log.write(entry);
+    await writeLog("generic", severity, trace, host, message, data);
   });
 }
 
 export const logger = {
-  info: writeLog.bind(null, "generic", "INFO"),
-  warn: writeLog.bind(null, "generic", "WARNING"),
-  error: writeLog.bind(null, "generic", "ERROR"),
+  info: writeLogGeneric.bind(null, "INFO"),
+  warn: writeLogGeneric.bind(null, "WARNING"),
+  error: writeLogGeneric.bind(null, "ERROR"),
 };
 
 export const authLogger: AuthLogger = {
   level: "info",
   log: (level, message, ...params) => {
-    switch (level) {
-      case "debug":
-      case "info":
-      case "error":
-        return writeLog("auth", toUpper(level), message, merge({}, ...params));
-      case "warn":
-        return writeLog("auth", "WARNING", message, merge({}, ...params));
-    }
+    const severity = level === "warn" ? "WARNING" : toUpper(level);
+    void writeLog("auth", severity, null, "auth.training.olinfo.it", message, merge({}, ...params));
   },
 };

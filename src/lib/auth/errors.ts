@@ -1,5 +1,3 @@
-import { headers } from "next/headers";
-
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { APIError } from "better-call";
@@ -59,7 +57,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   VALIDATION_ERROR: msg`Dati non validi`,
 };
 
-export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
+export function getAuthError(err: unknown): MessageDescriptor {
   const isCommonError =
     err instanceof APIError &&
     [
@@ -72,8 +70,7 @@ export async function getAuthError(err: unknown): Promise<MessageDescriptor> {
     ].includes(err.body?.code ?? "");
 
   if (!isCommonError) {
-    const headersList = await headers();
-    logger.error("Auth error", { referer: headersList.get("referer"), err });
+    logger.error("Auth error", err);
   }
 
   if (err instanceof APIError) {
