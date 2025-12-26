@@ -9,6 +9,24 @@ import { merge, toUpper } from "lodash-es";
 import { isErrorLike, serializeError } from "serialize-error";
 
 const logging = process.env.NODE_ENV === "production" ? new Logging() : null;
+const serviceName = process.env.SERVICE_NAME ?? "training";
+
+function buildEntry(entry: LogEntry): LogEntry {
+  return {
+    ...entry,
+    resource: {
+      type: "generic_node",
+      labels: {
+        location: "global",
+        namespace: "training",
+        node_id: serviceName,
+      },
+    },
+    labels: {
+      service: serviceName,
+    },
+  };
+}
 
 export async function logRequest(
   req: NextRequest,
@@ -22,11 +40,13 @@ export async function logRequest(
   const userAgent = req.headers.get("user-agent") ?? undefined;
   const remoteIp = req.headers.get("x-forwarded-for")?.split(",")[0];
   const referer = req.headers.get("referer") ?? undefined;
-  const host = req.headers.get("x-forwarded-host") ?? "";
+  const host = req.headers.get("x-forwarded-host");
 
   const requestUrl = req.nextUrl.clone();
-  requestUrl.port = "";
-  requestUrl.host = host;
+  if (host) {
+    requestUrl.port = "";
+    requestUrl.host = host;
+  }
 
   const httpRequest: CloudLoggingHttpRequest = {
     requestMethod: req.method,
@@ -42,12 +62,11 @@ export async function logRequest(
     },
   };
 
-  const metadata: LogEntry = {
+  const metadata = buildEntry({
     severity: "INFO",
-    labels: { service: host },
     httpRequest,
     trace,
-  };
+  });
   if (userId) {
     metadata.labels!.userId = userId;
   }
@@ -60,28 +79,21 @@ export async function logRequest(
 async function writeLog(
   logName: string,
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
-  trace: string | null,
-  host: string,
+  trace: string | null | undefined,
   message: string,
   data?: any,
 ) {
   if (!logging) return;
 
-  const metadata: LogEntry = {
-    severity,
-    labels: { service: host },
-    trace,
-  };
-
   const log = logging.log(`training-${logName}`);
   const entry = log.entry(
-    metadata,
+    buildEntry({ severity, trace }),
     isErrorLike(data) ? { error: serializeError(data), message } : { ...data, message },
   );
   await log.write(entry);
 }
 
-function writeLogGeneric(
+function logInsideRequest(
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
   message: string,
   data?: any,
@@ -89,21 +101,37 @@ function writeLogGeneric(
   after(async () => {
     const headerList = await headers();
     const trace = headerList.get("x-trace");
-    const host = headerList.get("x-forwarded-host") ?? "";
-    await writeLog("generic", severity, trace, host, message, data);
+    await writeLog("generic", severity, trace, message, data);
   });
 }
 
+function logOutsideRequest(
+  logName: string,
+  severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
+  message: string,
+  data?: any,
+  headerList?: Headers,
+) {
+  const trace = headerList?.get("x-trace");
+  void writeLog(logName, severity, trace, message, data);
+}
+
 export const logger = {
-  info: writeLogGeneric.bind(null, "INFO"),
-  warn: writeLogGeneric.bind(null, "WARNING"),
-  error: writeLogGeneric.bind(null, "ERROR"),
+  info: logInsideRequest.bind(null, "INFO"),
+  warn: logInsideRequest.bind(null, "WARNING"),
+  error: logInsideRequest.bind(null, "ERROR"),
+};
+
+export const outLogger = {
+  info: logOutsideRequest.bind(null, "generic", "INFO"),
+  warn: logOutsideRequest.bind(null, "generic", "WARNING"),
+  error: logOutsideRequest.bind(null, "generic", "ERROR"),
 };
 
 export const authLogger: AuthLogger = {
   level: "info",
   log: (level, message, ...params) => {
     const severity = level === "warn" ? "WARNING" : toUpper(level);
-    void writeLog("auth", severity, null, "auth.training.olinfo.it", message, merge({}, ...params));
+    logOutsideRequest("auth", severity, message, merge({}, ...params));
   },
 };

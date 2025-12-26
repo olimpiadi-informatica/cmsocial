@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { openAsBlob } from "node:fs";
 import { stat } from "node:fs/promises";
 import path from "node:path";
@@ -50,6 +51,31 @@ export async function getFileContent(file: Omit<File, "url">) {
       },
     },
   );
+}
+
+export async function saveFile(content: Buffer, description: string): Promise<string> {
+  const digest = createHash("sha1").update(content).digest("hex");
+
+  await cmsDb.transaction(async (tx) => {
+    const res = await tx.execute(sql`SELECT digest FROM fsobjects WHERE digest = ${digest}`);
+    if (res.rows.length > 0) {
+      return digest;
+    }
+
+    const INV_WRITE = 0x20000;
+    const INV_READ = 0x40000;
+
+    const resOid = await tx.execute(sql`SELECT lo_creat(${INV_WRITE | INV_READ}) AS oid`);
+    const oid = resOid.rows[0].oid;
+
+    await tx.execute(sql`SELECT lo_put(${oid}, 0, ${content})`);
+
+    await tx.execute(
+      sql`INSERT INTO fsobjects (digest, loid, description) VALUES (${digest}, ${oid}, ${description})`,
+    );
+  });
+
+  return digest;
 }
 
 export async function getTerryFileContent(fileName: string): Promise<Response> {

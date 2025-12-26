@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { msg } from "@lingui/core/macro";
@@ -16,7 +16,7 @@ import { Link } from "~/components/link";
 import type { Task } from "~/lib/api/task";
 import { fileLanguage, Language } from "~/lib/language";
 
-import { submitBatch } from "./actions";
+import { submitAction } from "./actions";
 
 const Editor = dynamic(() => import("./editor"), {
   loading: () => <div className="skeleton size-full rounded-none" />,
@@ -31,6 +31,7 @@ export function SubmitBatch({
   languages: Record<string, Language>;
 }) {
   const { t } = useLingui();
+  const router = useRouter();
 
   const langMessage = (lang?: string) => {
     switch (languages[lang ?? ""]) {
@@ -57,8 +58,10 @@ export function SubmitBatch({
     const files = new FormData();
     files.append(task.submissionFormat[0], isSubmitPage ? (editorValue ?? "") : value.src);
 
-    const err = await submitBatch(task.name, value.lang, files);
-    if (err) throw new Error(t(err));
+    const { submissionId, error } = await submitAction(task.name, value.lang, files);
+    if (error) throw new Error(t(error));
+    router.push(`/task/${task.name}/submissions/${submissionId}`);
+
     await new Promise(() => {});
   };
 

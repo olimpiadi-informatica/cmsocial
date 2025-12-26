@@ -24,6 +24,7 @@ import { fileLanguage, type Language, languageByName } from "~/lib/language";
 import type { File } from "./file";
 
 export type Task = {
+  id: number;
   name: string;
   title: string;
   scoreMultiplier: number;
@@ -38,6 +39,7 @@ export type Task = {
 export const getTask = cache(async (name: string): Promise<Task | undefined> => {
   const [task] = await cmsDb
     .select({
+      id: tasks.id,
       name: tasks.name,
       title: tasks.title,
       scoreMultiplier: socialTasks.scoreMultiplier,

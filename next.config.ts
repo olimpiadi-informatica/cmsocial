@@ -57,9 +57,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
-    serverActions: {
-      bodySizeLimit: "150mb",
-    },
     turbopackFileSystemCacheForDev: true,
     viewTransition: true,
   },

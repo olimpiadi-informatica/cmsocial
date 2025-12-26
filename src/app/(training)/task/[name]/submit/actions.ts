@@ -1,63 +1,17 @@
-"use server";
-
-import { redirect } from "next/navigation";
-
-import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 
-import { submitTask } from "~/lib/api/submit";
-import { logger } from "~/lib/logger";
-import { hasPermission } from "~/lib/user";
+import type { submit } from "~/lib/api/submit";
 
-export async function submitBatch(
-  taskName: string,
-  language: string,
-  files: FormData,
-): Promise<MessageDescriptor | undefined> {
-  const canSubmit = await hasPermission("task", "submit");
-  if (!canSubmit) return msg`Non sei autorizzato`;
+export async function submitAction(taskName: string, language: string | null, files: FormData) {
+  const params = new URLSearchParams();
+  params.append("task", taskName);
+  if (language) params.append("language", language);
 
-  let id: number;
-  try {
-    id = await submitTask(taskName, language, files);
-  } catch (err) {
-    switch ((err as Error).message as string) {
-      case "Too frequent submissions!":
-        return msg`Sottoposizioni troppo frequenti`;
-      case "Unauthorized":
-        logger.error("Error submitting", err);
-        return msg`Ripetere login`;
-      default: {
-        logger.error("Error submitting", err);
-        return msg`Errore sconosciuto`;
-      }
-    }
-  }
-  redirect(`/task/${taskName}/submissions/${id}`);
-}
+  const resp = await fetch(`/files/submit?${params}`, {
+    method: "POST",
+    body: files,
+  });
+  if (!resp.ok) throw { error: msg`Errore sconosciuto` };
 
-export async function submitOutputOnly(
-  taskName: string,
-  files: FormData,
-): Promise<MessageDescriptor | undefined> {
-  const canSubmit = await hasPermission("task", "submit");
-  if (!canSubmit) return msg`Non sei autorizzato`;
-
-  let id: number;
-  try {
-    id = await submitTask(taskName, undefined, files);
-  } catch (err) {
-    switch ((err as Error).message as string) {
-      case "Too frequent submissions!":
-        return msg`Sottoposizioni troppo frequenti`;
-      case "Unauthorized":
-        logger.error("Error submitting", err);
-        return msg`Ripetere login`;
-      default: {
-        logger.error("Error submitting", err);
-        return msg`Errore sconosciuto`;
-      }
-    }
-  }
-  redirect(`/task/${taskName}/submissions/${id}`);
+  return resp.json() as ReturnType<typeof submit>;
 }
