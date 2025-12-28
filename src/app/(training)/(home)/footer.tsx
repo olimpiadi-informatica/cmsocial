@@ -78,7 +78,7 @@ export function Footer() {
             <Trans>Altre Risorse</Trans>
           </h3>
           <a
-            href="https://forum.olinfo.it/new-topic?category=Meta"
+            href="https://github.com/olimpiadi-informatica/cmsocial/issues/new"
             className="link-hover link"
             target="_blank"
             rel="noreferrer nofollow">

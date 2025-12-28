@@ -238,6 +238,10 @@ msgstr "Actualizează parola"
 msgid "Cancella account"
 msgstr "Șterge contul"
 
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
+msgid "Cancellazione dell'account non completata. Contatta assistenza."
+msgstr "Ștergerea contului nu a fost finalizată. Contactați asistența."
+
 #: src/app/(training)/forgot-password/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Captcha non valido"

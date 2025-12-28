@@ -238,6 +238,10 @@ msgstr "Jelszó frissítése"
 msgid "Cancella account"
 msgstr "Fiók törlése"
 
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
+msgid "Cancellazione dell'account non completata. Contatta assistenza."
+msgstr "A fiók törlése nem fejeződött be. Lépjen kapcsolatba az ügyfélszolgálattal."
+
 #: src/app/(training)/forgot-password/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Captcha non valido"

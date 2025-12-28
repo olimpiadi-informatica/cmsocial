@@ -26,11 +26,17 @@ export async function deleteAccount(token: string | null): Promise<MessageDescri
       headers: await headers(),
       query: { token },
     });
+  } catch (err) {
+    return getAuthError(err);
+  }
+
+  try {
     await deleteUser(user.cmsId);
     await deleteTerryUser(user.username);
     await deleteForumUser(user.username);
   } catch (err) {
-    return getAuthError(err);
+    logger.error("Error deleting user", err);
+    return msg`Cancellazione dell'account non completata. Contatta assistenza.`;
   }
 
   const messageId = msg`Account eliminato con successo!`.id;

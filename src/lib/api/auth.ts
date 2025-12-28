@@ -1,5 +1,5 @@
 import { msg } from "@lingui/core/macro";
-import { eq, sql } from "drizzle-orm";
+import { eq, inArray, sql } from "drizzle-orm";
 
 import { RegistrationStep } from "~/lib/auth/types";
 import { cmsDb, terryDb } from "~/lib/db";
@@ -7,6 +7,8 @@ import { participations, socialUsers, users } from "~/lib/db/schema";
 import {
   terryInputs,
   terryIps,
+  terryOutputs,
+  terrySources,
   terrySubmissions,
   terryUsers,
   terryUserTasks,
@@ -89,8 +91,16 @@ export async function deleteUser(cmsId: number) {
 export async function deleteTerryUser(username: string) {
   await terryDb.transaction(async (tx) => {
     await tx.delete(terrySubmissions).where(eq(terrySubmissions.token, username));
-    await tx.delete(terryUserTasks).where(eq(terryUserTasks.token, username));
+
+    const userInputs = tx
+      .select({ id: terryInputs.id })
+      .from(terryInputs)
+      .where(eq(terryInputs.token, username));
+    await tx.delete(terrySources).where(inArray(terrySources.input, userInputs));
+    await tx.delete(terryOutputs).where(inArray(terryOutputs.input, userInputs));
+
     await tx.delete(terryInputs).where(eq(terryInputs.token, username));
+    await tx.delete(terryUserTasks).where(eq(terryUserTasks.token, username));
     await tx.delete(terryIps).where(eq(terryIps.token, username));
     await tx.delete(terryUsers).where(eq(terryUsers.token, username));
   });

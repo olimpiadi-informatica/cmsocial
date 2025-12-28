@@ -238,6 +238,10 @@ msgstr "Passwort ändern"
 msgid "Cancella account"
 msgstr "Konto löschen"
 
+#: src/app/(training)/(email-callback)/delete-account/actions.ts
+msgid "Cancellazione dell'account non completata. Contatta assistenza."
+msgstr "Kontolöschung nicht abgeschlossen. Kontaktieren Sie den Support."
+
 #: src/app/(training)/forgot-password/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Captcha non valido"
