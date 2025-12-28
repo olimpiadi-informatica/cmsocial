@@ -57,17 +57,17 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   VALIDATION_ERROR: msg`Dati non validi`,
 };
 
+export const commonErrors: (keyof typeof authErrors)[] = [
+  "INVALID_EMAIL_OR_PASSWORD",
+  "INVALID_USERNAME_OR_PASSWORD",
+  "INVALID_PASSWORD",
+  "USER_NOT_FOUND",
+  "PLEASE_RESTART_THE_PROCESS",
+  "ACCESS_DENIED",
+];
+
 export function getAuthError(err: unknown): MessageDescriptor {
-  const isCommonError =
-    err instanceof APIError &&
-    [
-      "INVALID_EMAIL_OR_PASSWORD",
-      "INVALID_USERNAME_OR_PASSWORD",
-      "INVALID_PASSWORD",
-      "USER_NOT_FOUND",
-      "PLEASE_RESTART_THE_PROCESS",
-      "ACCESS_DENIED",
-    ].includes(err.body?.code ?? "");
+  const isCommonError = err instanceof APIError && commonErrors.includes(err.body?.code ?? "");
 
   if (!isCommonError) {
     logger.error("Auth error", err);

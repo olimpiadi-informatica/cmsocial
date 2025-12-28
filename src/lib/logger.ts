@@ -52,16 +52,18 @@ export async function logRequest(req: NextRequest, userId: string | undefined, t
     referer,
   };
 
-  const labels: Record<string, string> = {};
-  if (userId) {
-    labels.userId = userId;
-  }
-
   const metadata = buildEntry({
     severity: "INFO",
     httpRequest,
-    labels,
     trace,
+  });
+  if (userId) {
+    metadata.labels!.userId = userId;
+  }
+  req.headers.forEach((value, key) => {
+    if (key.startsWith("sec-ch-")) {
+      metadata.labels![key] = value;
+    }
   });
 
   const log = logging.log("training-requests");
@@ -73,6 +75,7 @@ async function writeLog(
   logName: string,
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
   headerList: Headers | null | undefined,
+  stack: string | undefined,
   message: string,
   data?: any,
 ) {
@@ -80,11 +83,14 @@ async function writeLog(
 
   const trace = headerList?.get("x-trace");
 
+  const metadata = buildEntry({ severity, trace });
+
   const log = logging.log(`training-${logName}`);
-  const entry = log.entry(
-    buildEntry({ severity, trace }),
-    isErrorLike(data) ? { error: serializeError(data), message } : { ...data, message },
-  );
+  const entry = log.entry(metadata, {
+    ...serializeError(isErrorLike(data) ? { error: data } : data),
+    message,
+    stack,
+  });
   await log.write(entry);
 }
 
@@ -94,7 +100,9 @@ function logInsideRequest(
   message: string,
   data?: any,
 ) {
-  after(async () => writeLog(logName, severity, await headers(), message, data));
+  const trace: { stack?: string } = {};
+  Error.captureStackTrace(trace, logInsideRequest);
+  after(async () => writeLog(logName, severity, await headers(), trace.stack, message, data));
 }
 
 function logOutsideRequest(
@@ -104,7 +112,9 @@ function logOutsideRequest(
   data?: any,
   headerList?: Headers | null,
 ) {
-  void writeLog(logName, severity, headerList, message, data);
+  const trace: { stack?: string } = {};
+  Error.captureStackTrace(trace, logOutsideRequest);
+  void writeLog(logName, severity, headerList, trace.stack, message, data);
 }
 
 export const logger = {
@@ -125,7 +135,13 @@ function logAuth(
   message: string,
   ...params: any[]
 ) {
-  logOutsideRequest("auth", severity, message, merge({}, ...params), headerList);
+  logOutsideRequest(
+    "auth",
+    severity === "ERROR" ? "WARNING" : severity,
+    message,
+    merge({}, ...params),
+    headerList,
+  );
 }
 
 export const authLogger: AuthLogger = {
