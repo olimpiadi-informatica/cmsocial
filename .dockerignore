@@ -4,4 +4,4 @@ docker-compose*.yml
 /node_modules/
 /.github/
 /.next/
-/.vscode/
+/.git/
