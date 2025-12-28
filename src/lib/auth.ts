@@ -1,9 +1,9 @@
-import { type BetterAuthOptions, betterAuth } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { type BetterAuthOptions, betterAuth } from "better-auth/minimal";
 import { nextCookies } from "better-auth/next-js";
 import { admin, captcha, genericOAuth, username } from "better-auth/plugins";
 
-import { baseUrlHook } from "~/lib/auth/base-url";
+import { beforeHook } from "~/lib/auth/hooks";
 import { authLogger } from "~/lib/logger";
 
 import { passwordHash, passwordVerify } from "./api/crypto";
@@ -59,7 +59,7 @@ export const auth = betterAuth({
     additionalFields: userExtraFields,
   },
   hooks: {
-    before: baseUrlHook,
+    before: beforeHook,
     after: legacyCookieHook,
   },
   plugins: [

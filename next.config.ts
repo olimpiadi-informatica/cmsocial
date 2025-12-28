@@ -57,7 +57,6 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
-    turbopackFileSystemCacheForDev: true,
     viewTransition: true,
   },
 };

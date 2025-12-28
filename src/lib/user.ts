@@ -6,10 +6,13 @@ import type { Statements } from "./auth/permissions";
 import { RegistrationStep, type User } from "./auth/types";
 
 export const getSessionUser = cache(
-  async (allowUnfinishedRegistration?: boolean): Promise<User | undefined> => {
+  async (
+    allowUnfinishedRegistration?: boolean,
+    headerList?: Headers,
+  ): Promise<User | undefined> => {
     const session = await auth.api
       .getSession({
-        headers: await headers(),
+        headers: headerList ?? (await headers()),
       })
       .catch(() => null);
     if (!session) return;

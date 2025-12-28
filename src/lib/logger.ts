@@ -1,10 +1,10 @@
 import { headers } from "next/headers";
-import { after, type NextRequest, type NextResponse } from "next/server";
+import { after, type NextRequest } from "next/server";
 
 import { Logging } from "@google-cloud/logging";
 import type { LogEntry } from "@google-cloud/logging/build/src/entry";
 import type { CloudLoggingHttpRequest } from "@google-cloud/logging/build/src/utils/http-request";
-import type { Logger as AuthLogger } from "better-auth";
+import type { Logger as AuthLogger, InternalLogger } from "better-auth";
 import { merge, toUpper } from "lodash-es";
 import { isErrorLike, serializeError } from "serialize-error";
 
@@ -28,17 +28,11 @@ function buildEntry(entry: LogEntry): LogEntry {
   };
 }
 
-export async function logRequest(
-  req: NextRequest,
-  res: NextResponse,
-  userId: string,
-  trace: string,
-  latency: bigint,
-) {
+export async function logRequest(req: NextRequest, userId: string | undefined, trace?: string) {
   if (!logging) return;
   const requestSize = req.headers.get("content-length");
   const userAgent = req.headers.get("user-agent") ?? undefined;
-  const remoteIp = req.headers.get("x-forwarded-for")?.split(",")[0];
+  const remoteIp = req.headers.get("x-real-ip") ?? undefined;
   const referer = req.headers.get("referer") ?? undefined;
   const host = req.headers.get("x-forwarded-host");
 
@@ -52,24 +46,23 @@ export async function logRequest(
     requestMethod: req.method,
     requestUrl: requestUrl.href,
     requestSize: requestSize ? Number(requestSize) : undefined,
-    status: res.status,
+    status: 200,
     userAgent,
     remoteIp,
     referer,
-    latency: {
-      seconds: Number(latency / 1_000_000_000n),
-      nanos: Number(latency % 1_000_000_000n),
-    },
   };
+
+  const labels: Record<string, string> = {};
+  if (userId) {
+    labels.userId = userId;
+  }
 
   const metadata = buildEntry({
     severity: "INFO",
     httpRequest,
+    labels,
     trace,
   });
-  if (userId) {
-    metadata.labels!.userId = userId;
-  }
 
   const log = logging.log("training-requests");
   const entry = log.entry(metadata);
@@ -79,11 +72,13 @@ export async function logRequest(
 async function writeLog(
   logName: string,
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
-  trace: string | null | undefined,
+  headerList: Headers | null | undefined,
   message: string,
   data?: any,
 ) {
   if (!logging) return;
+
+  const trace = headerList?.get("x-trace");
 
   const log = logging.log(`training-${logName}`);
   const entry = log.entry(
@@ -94,15 +89,12 @@ async function writeLog(
 }
 
 function logInsideRequest(
+  logName: string,
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
   message: string,
   data?: any,
 ) {
-  after(async () => {
-    const headerList = await headers();
-    const trace = headerList.get("x-trace");
-    await writeLog("generic", severity, trace, message, data);
-  });
+  after(async () => writeLog(logName, severity, await headers(), message, data));
 }
 
 function logOutsideRequest(
@@ -110,16 +102,15 @@ function logOutsideRequest(
   severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
   message: string,
   data?: any,
-  headerList?: Headers,
+  headerList?: Headers | null,
 ) {
-  const trace = headerList?.get("x-trace");
-  void writeLog(logName, severity, trace, message, data);
+  void writeLog(logName, severity, headerList, message, data);
 }
 
 export const logger = {
-  info: logInsideRequest.bind(null, "INFO"),
-  warn: logInsideRequest.bind(null, "WARNING"),
-  error: logInsideRequest.bind(null, "ERROR"),
+  info: logInsideRequest.bind(null, "generic", "INFO"),
+  warn: logInsideRequest.bind(null, "generic", "WARNING"),
+  error: logInsideRequest.bind(null, "generic", "ERROR"),
 };
 
 export const outLogger = {
@@ -128,10 +119,30 @@ export const outLogger = {
   error: logOutsideRequest.bind(null, "generic", "ERROR"),
 };
 
+function logAuth(
+  severity: "DEBUG" | "INFO" | "WARNING" | "ERROR",
+  headerList: Headers | null | undefined,
+  message: string,
+  ...params: any[]
+) {
+  logOutsideRequest("auth", severity, message, merge({}, ...params), headerList);
+}
+
 export const authLogger: AuthLogger = {
   level: "info",
   log: (level, message, ...params) => {
     const severity = level === "warn" ? "WARNING" : toUpper(level);
-    logOutsideRequest("auth", severity, message, merge({}, ...params));
+    logAuth(severity, null, message, ...params);
   },
 };
+
+export function authInternalLogger(headerList?: Headers): InternalLogger {
+  return {
+    level: "info",
+    debug: logAuth.bind(null, "DEBUG", headerList),
+    info: logAuth.bind(null, "INFO", headerList),
+    success: logAuth.bind(null, "INFO", headerList),
+    warn: logAuth.bind(null, "WARNING", headerList),
+    error: logAuth.bind(null, "ERROR", headerList),
+  };
+}

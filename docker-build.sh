@@ -41,6 +41,6 @@ if [ -z "$tag" ]; then
     exit 1
 fi
 
-build "cmsocial" "backend" "docker/cmsocial/Dockerfile"
-build "cmsocial-web" "backend" "docker/cmsocial-web/Dockerfile"
+# build "cmsocial" "backend" "docker/cmsocial/Dockerfile"
+# build "cmsocial-web" "backend" "docker/cmsocial-web/Dockerfile"
 build "cmsocial-frontend" "." "tools/Dockerfile"

@@ -1,11 +1,15 @@
-import { type NextRequest, NextResponse } from "next/server";
+import { after, type NextRequest, NextResponse } from "next/server";
 
 import { msg } from "@lingui/core/macro";
 
 import { submit } from "~/lib/api/submit";
-import { hasPermission } from "~/lib/user";
+import { logRequest } from "~/lib/logger";
+import { getSessionUser, hasPermission } from "~/lib/user";
 
 export async function POST(request: NextRequest) {
+  const user = await getSessionUser();
+  after(() => logRequest(request, user?.id));
+
   const canSubmit = await hasPermission("task", "submit");
   if (!canSubmit) {
     return NextResponse.json({ error: msg`Non sei autorizzato` });
