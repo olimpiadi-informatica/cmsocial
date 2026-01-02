@@ -1,5 +1,0 @@
-alembic==0.8.4
-# bcrypt==3.1.1
-pyjwt==2.4.0
-py3dns==3.2.1
--e git+https://github.com/edomora97/cms.git@docker#egg=cms

@@ -1,5 +1,0 @@
-cms
-*-build
-*.egg-info
-node_modules
-tmp
