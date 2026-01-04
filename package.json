@@ -65,6 +65,7 @@
     "monaco-editor-core": "^0.55.1",
     "next": "^16.1.1",
     "next-mdx-remote-client": "^2.1.7",
+    "node-cron": "^4.2.1",
     "nodemailer": "^7.0.12",
     "parse-entities": "^4.0.2",
     "pdfjs-dist": "^5.4.449",
