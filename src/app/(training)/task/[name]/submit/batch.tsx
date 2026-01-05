@@ -108,11 +108,13 @@ export function SubmitBatch({
       }}
       {editorValue?.includes("@check-accepted") && (
         <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-warning">
-          <TriangleAlert size={16} className="flex-none" />{" "}
-          <Trans>
-            <b>Stai inviando una soluzione ufficiale.</b> Copiare le soluzioni è altamente
-            sconsigliato.
-          </Trans>
+          <TriangleAlert size={16} className="flex-none" />
+          <div>
+            <Trans>
+              <b>Stai inviando una soluzione ufficiale.</b> Copiare le soluzioni è altamente
+              sconsigliato.
+            </Trans>
+          </div>
         </div>
       )}
       <Link href={`/task/${task.name}/submit/help`} className="link link-info mb-4">

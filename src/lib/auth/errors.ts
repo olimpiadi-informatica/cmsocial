@@ -58,28 +58,29 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
 };
 
 export const commonErrors: (keyof typeof authErrors)[] = [
-  "INVALID_EMAIL_OR_PASSWORD",
-  "INVALID_USERNAME_OR_PASSWORD",
-  "INVALID_PASSWORD",
-  "USER_NOT_FOUND",
-  "PLEASE_RESTART_THE_PROCESS",
   "ACCESS_DENIED",
+  "INVALID_EMAIL_OR_PASSWORD",
+  "INVALID_PASSWORD",
+  "INVALID_USERNAME_OR_PASSWORD",
+  "PLEASE_RESTART_THE_PROCESS",
+  "USER_ALREADY_EXISTS_USE_ANOTHER_EMAIL",
+  "USER_NOT_FOUND",
 ];
 
 export function getAuthError(err: unknown): MessageDescriptor {
-  const isCommonError = err instanceof APIError && commonErrors.includes(err.body?.code ?? "");
-
-  if (!isCommonError) {
-    logger.error("Auth error", err);
-  }
-
   if (err instanceof APIError) {
     const code = err.body?.code;
     if (code && code in authErrors) {
+      if (!commonErrors.includes(code)) {
+        logger.warn(`Auth error ${code}`, err);
+      }
       return authErrors[code as keyof typeof authErrors];
     }
-    logger.error("Missing auth code", { code });
+    logger.error("Missing auth code", err);
+  } else {
+    logger.error("Auth error", err);
   }
+
   if (process.env.NODE_ENV === "development") {
     throw err;
   }
