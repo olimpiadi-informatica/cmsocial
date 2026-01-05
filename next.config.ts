@@ -67,6 +67,7 @@ const nextConfig: NextConfig = {
       }
     }
   },
+  serverExternalPackages: ["esbuild-wasm"],
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
     viewTransition: true,

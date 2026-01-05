@@ -6,6 +6,7 @@ import { type ReactNode, useCallback, useEffect, useMemo } from "react";
 import { type Messages, setupI18n } from "@lingui/core";
 import { I18nProvider } from "@lingui/react";
 import { useNotifications } from "@olinfo/react-components";
+import { SerwistProvider } from "@serwist/turbopack/react";
 import { SWRConfig } from "swr";
 
 type LayoutProps = {
@@ -50,8 +51,10 @@ export function LayoutClient({ locale, messages, children }: LayoutProps) {
   }, [searchParams, removeSearchParam, notifySuccess, notifyError, i18n]);
 
   return (
-    <I18nProvider i18n={i18n}>
-      <SWRConfig value={{ onError: notifyError }}>{children}</SWRConfig>
-    </I18nProvider>
+    <SerwistProvider swUrl="/sw/sw.js">
+      <I18nProvider i18n={i18n}>
+        <SWRConfig value={{ onError: notifyError }}>{children}</SWRConfig>
+      </I18nProvider>
+    </SerwistProvider>
   );
 }
