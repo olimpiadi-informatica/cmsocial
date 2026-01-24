@@ -41,6 +41,10 @@ msgstr "<0>Temps de compilation</0>:"
 msgid "2FA non abilitato"
 msgstr "2FA non activé"
 
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Abilita le notifiche che desideri ricevere"
+msgstr "Activez les notifications que vous souhaitez recevoir"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/login/page-client.tsx
@@ -196,6 +200,10 @@ msgstr "Activité"
 #: src/lib/auth/errors.ts
 msgid "Autenticazione fallita"
 msgstr "Authentification échouée"
+
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Autorizzazione notifiche negata"
+msgstr "Autorisation de notification refusée"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Badge"
@@ -996,6 +1004,11 @@ msgstr "Note :"
 msgid "Note:"
 msgstr "Notes :"
 
+#: src/app/(training)/settings/layout-client.tsx
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Notifiche"
+msgstr "Notifications"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Novizio"
 msgstr "Novice"
@@ -1172,6 +1185,10 @@ msgstr "Province"
 msgid "Pseudocodice"
 msgstr "Pseudocode"
 
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Pubblicazione di nuovi task"
+msgstr "Publication de nouveaux problèmes"
+
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Punteggio massimo:"
 msgstr "Score maximal :"
@@ -1209,6 +1226,10 @@ msgstr "Région"
 #: src/components/oauth/button.tsx
 msgid "Registrati con {name}"
 msgstr "S'inscrire avec {name}"
+
+#: src/app/(training)/(push)/push-prompt.tsx
+msgid "Ricevi notifiche"
+msgstr "Recevoir des notifications"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
@@ -1345,6 +1366,10 @@ msgstr "Sélections scolaires"
 #: src/lib/auth/errors.ts
 msgid "Sessione scaduta"
 msgstr "Session expirée"
+
+#: src/app/(training)/(push)/push-prompt.tsx
+msgid "Sì"
+msgstr "Oui"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Siti ufficiali"
@@ -1621,6 +1646,10 @@ msgstr "Vérification de l'e-mail"
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"
 msgstr "Je veux supprimer mon compte"
+
+#: src/app/(training)/(push)/push-prompt.tsx
+msgid "Vuoi ricevere notifiche quando vengono pubblicati nuovi problemi?"
+msgstr "Voulez-vous recevoir des notifications lorsque de nouveaux problèmes sont publiés ?"
 
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/(home)/page.tsx

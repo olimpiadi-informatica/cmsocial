@@ -41,6 +41,10 @@ msgstr "<0>Fordítási idő</0>:"
 msgid "2FA non abilitato"
 msgstr "A 2FA nincs engedélyezve"
 
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Abilita le notifiche che desideri ricevere"
+msgstr "Engedélyezd a kapni kívánt értesítéseket"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/login/page-client.tsx
@@ -196,6 +200,10 @@ msgstr "Tevékenységek"
 #: src/lib/auth/errors.ts
 msgid "Autenticazione fallita"
 msgstr "Hitelesítés sikertelen"
+
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Autorizzazione notifiche negata"
+msgstr "Értesítési engedély elutasítva"
 
 #: src/app/algobadge/bulk/summary.tsx
 msgid "Badge"
@@ -996,6 +1004,11 @@ msgstr "Infó:"
 msgid "Note:"
 msgstr "Jegyzetek:"
 
+#: src/app/(training)/settings/layout-client.tsx
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Notifiche"
+msgstr "Értesítések"
+
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Novizio"
 msgstr "Kezdő"
@@ -1172,6 +1185,10 @@ msgstr "Megye"
 msgid "Pseudocodice"
 msgstr "Pszeudokód"
 
+#: src/app/(training)/settings/notifications/page-client.tsx
+msgid "Pubblicazione di nuovi task"
+msgstr "Új feladatok közzététele"
+
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Punteggio massimo:"
 msgstr "Maximum pontszám:"
@@ -1209,6 +1226,10 @@ msgstr "Régió"
 #: src/components/oauth/button.tsx
 msgid "Registrati con {name}"
 msgstr "Regisztráció ezzel: {name}"
+
+#: src/app/(training)/(push)/push-prompt.tsx
+msgid "Ricevi notifiche"
+msgstr "Értesítések kérése"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Richiedi input"
@@ -1345,6 +1366,10 @@ msgstr "Iskolai válogatók"
 #: src/lib/auth/errors.ts
 msgid "Sessione scaduta"
 msgstr "A munkamenet lejárt"
+
+#: src/app/(training)/(push)/push-prompt.tsx
+msgid "Sì"
+msgstr "Igen"
 
 #: src/app/(training)/(home)/footer.tsx
 msgid "Siti ufficiali"
@@ -1621,6 +1646,10 @@ msgstr "E-mail ellenőrzése"
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"
 msgstr "Törölni szeretném a fiókomat"
+
+#: src/app/(training)/(push)/push-prompt.tsx
+msgid "Vuoi ricevere notifiche quando vengono pubblicati nuovi problemi?"
+msgstr "Szeretnél értesítést kapni új feladatok közzétételekor?"
 
 #: src/app/(training)/(home)/footer.tsx
 #: src/app/(training)/(home)/page.tsx
