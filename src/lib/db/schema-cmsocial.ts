@@ -6,8 +6,23 @@ import {
   jsonb,
   pgTable,
   serial,
+  text,
+  timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
+
+export const pushSubscriptions = pgTable("push_subscriptions", {
+  id: serial().primaryKey(),
+  endpoint: text("endpoint").notNull(),
+  p256dh: text("p256dh").notNull(),
+  auth: text("auth").notNull(),
+  userId: text("user_id").notNull(),
+  userAgent: text("user_agent"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  eventTypes: text("event_types").array().notNull(),
+  lastEventIds: jsonb("last_event_ids").$type<Record<string, number>>(),
+  locale: varchar("locale", { length: 5 }).notNull(),
+});
 
 export const socialParticipations = pgTable("social_participations", {
   id: integer().primaryKey(),

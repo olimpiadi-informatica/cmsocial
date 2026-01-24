@@ -9,6 +9,7 @@ import { Avatar } from "@olinfo/react-components";
 import clsx from "clsx";
 import {
   ArrowLeft,
+  Bell,
   ChevronRight,
   GraduationCap,
   LinkIcon,
@@ -60,6 +61,10 @@ export function LayoutClient({ user, hasPasswordAccount, children }: Props) {
             <SettingsLink href="/settings/social">
               <LinkIcon size={16} />
               <Trans>Account collegati</Trans>
+            </SettingsLink>
+            <SettingsLink href="/settings/notifications">
+              <Bell size={16} />
+              <Trans>Notifiche</Trans>
             </SettingsLink>
             <SettingsLink href="/settings/delete">
               <Trash2 size={16} />
