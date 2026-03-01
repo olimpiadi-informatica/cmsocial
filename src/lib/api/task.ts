@@ -108,8 +108,9 @@ export const getTaskStatement = cache(
       .where(eq(tasks.name, name))
       .orderBy(sql`CASE
                        WHEN ${eq(statements.language, locale)} THEN 0
-                       WHEN ${statements.language} = ANY(${tasks.primaryStatements}) THEN 1
-                       ELSE 2
+                       WHEN ${eq(statements.language, "en")} THEN 1
+                       WHEN ${statements.language} = ANY(${tasks.primaryStatements}) THEN 2
+                       ELSE 3
                    END`)
       .limit(1);
     return rows[0];
