@@ -25,9 +25,11 @@ const Editor = dynamic(() => import("./editor"), {
 
 export function SubmitBatch({
   task,
+  cookieLanguage,
   languages,
 }: {
   task: Task;
+  cookieLanguage?: string;
   languages: Record<string, Language>;
 }) {
   const { t } = useLingui();
@@ -67,9 +69,13 @@ export function SubmitBatch({
 
   const isSubmitPage = usePathname().endsWith("/submit");
 
+  const defaultLanguage = Object.entries(languages).find(
+    ([_, lang]) => lang === cookieLanguage,
+  )?.[0];
+
   return (
     <Form
-      defaultValue={{ lang: Object.keys(languages)[0] }}
+      defaultValue={{ lang: defaultLanguage ?? Object.keys(languages)[0] }}
       onSubmit={submit}
       className="!max-w-full grow">
       <H2>

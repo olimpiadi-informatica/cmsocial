@@ -1,6 +1,7 @@
-import { useEffect, useId, useRef } from "react";
+import { useEffect, useEffectEvent, useId, useRef } from "react";
 
 import { shikiToMonaco } from "@shikijs/monaco";
+import { addYears, getTime } from "date-fns";
 import * as monaco from "monaco-editor-core";
 import { createHighlighter } from "shiki";
 
@@ -45,7 +46,7 @@ export default function Editor({ language, languages, file, onChange }: Props) {
   }, [languages]);
 
   const id = useId();
-  const defaultLang = useRef(language);
+  const defaultLang = useEffectEvent(() => language);
 
   const model = useRef<monaco.editor.ITextModel | null>(null);
   useEffect(() => {
@@ -59,7 +60,7 @@ export default function Editor({ language, languages, file, onChange }: Props) {
 
     const editor = monaco.editor.create(container, {
       value: defaultValue,
-      language: defaultLang.current.toLowerCase(),
+      language: defaultLang().toLowerCase(),
       theme: defaultTheme,
       automaticLayout: true,
     });
@@ -78,6 +79,11 @@ export default function Editor({ language, languages, file, onChange }: Props) {
     if (model.current) {
       monaco.editor.setModelLanguage(model.current, language.toLowerCase());
     }
+    window.cookieStore?.set({
+      name: "editor-lang",
+      value: language,
+      expires: getTime(addYears(new Date(), 10)),
+    });
   }, [language]);
 
   const theme = useTheme();

@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
@@ -17,6 +18,7 @@ type Props = {
 
 export default async function Page({ params }: Props) {
   const { name } = await params;
+  const cookieStore = await cookies();
 
   const [_, user, task, languages] = await Promise.all([
     loadLocale(),
@@ -47,6 +49,10 @@ export default async function Page({ params }: Props) {
   return task.io === "output-only" ? (
     <SubmitOutputOnly task={task} />
   ) : (
-    <SubmitBatch task={task} languages={languages} />
+    <SubmitBatch
+      task={task}
+      languages={languages}
+      cookieLanguage={cookieStore.get("editor-lang")?.value}
+    />
   );
 }
