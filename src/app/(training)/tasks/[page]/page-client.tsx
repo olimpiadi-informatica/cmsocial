@@ -44,7 +44,6 @@ export function PageClient(props: Props) {
     fallbackData: props,
     keepPreviousData: true,
     revalidateOnFocus: false,
-    revalidateOnMount: false,
   });
   const pageCount = Math.max(Math.ceil(taskCount / pageSize), 1);
 
