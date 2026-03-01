@@ -15,7 +15,7 @@ import {
 } from "~/lib/db/schema-terry";
 
 const USERNAME_REGEX = /^[\w.]{3,39}$/;
-const NAME_REGEX = /^[\p{L}\s'-]{3,32}$/u;
+const NAME_REGEX = /^[\p{L}\s'-]{2,32}$/u;
 
 export function checkUsername(username: string | undefined) {
   if (!username || !USERNAME_REGEX.test(username)) return msg`Username non valido`;
