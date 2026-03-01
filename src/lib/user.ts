@@ -41,7 +41,7 @@ export const hasPermission = cache(async function hasPermission<Resource extends
     headers: await headers(),
     body: {
       userId: user.id,
-      permission: { [resource]: [action] },
+      permissions: { [resource]: [action] },
     },
   });
   return result.success;

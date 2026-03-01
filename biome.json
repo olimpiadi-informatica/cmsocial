@@ -30,8 +30,7 @@
         "useUniqueElementIds": "off"
       },
       "nursery": {
-        "noFloatingPromises": "error",
-        "noImportCycles": "error"
+        "noFloatingPromises": "error"
       },
       "performance": {
         "noImgElement": "off"
@@ -66,6 +65,7 @@
       "suspicious": {
         "noArrayIndexKey": "off",
         "noExplicitAny": "off",
+        "noImportCycles": "error",
         "useAwait": "error"
       }
     }
