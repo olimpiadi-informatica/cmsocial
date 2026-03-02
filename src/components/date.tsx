@@ -1,23 +1,56 @@
 "use client";
 
-import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 
 import { useLingui } from "@lingui/react/macro";
+import { DateDistance as DateDistanceWithLocale } from "@olinfo/react-components";
+import clsx from "clsx";
+import { intlFormat, intlFormatDistance } from "date-fns";
 
-const DateTimeWithLocale = dynamic(
-  () => import("@olinfo/react-components").then((m) => m.DateTime),
-  { ssr: false },
-);
-
-export const DateTime: typeof DateTimeWithLocale = (props) => {
-  const { i18n } = useLingui();
-  return <DateTimeWithLocale {...props} locale={i18n.locale} />;
+type DateProps = {
+  date: Date;
+  dateStyle?: Intl.DateTimeFormatOptions["dateStyle"] | "hidden";
+  timeStyle?: Intl.DateTimeFormatOptions["timeStyle"] | "hidden";
+  className?: string;
 };
 
-const DateDistanceWithLocale = dynamic(
-  () => import("@olinfo/react-components").then((m) => m.DateDistance),
-  { ssr: false },
-);
+function style(
+  dateStyle: DateProps["dateStyle"],
+  timeStyle: DateProps["timeStyle"],
+  timeZone = "UTC",
+) {
+  return {
+    dateStyle: dateStyle === "hidden" ? undefined : dateStyle,
+    timeStyle: timeStyle === "hidden" ? undefined : timeStyle,
+    timeZone,
+  };
+}
+
+export function DateTime({
+  date,
+  dateStyle = "medium",
+  timeStyle = "short",
+  className,
+}: DateProps) {
+  const { i18n } = useLingui();
+
+  const [timeZone, setTimeZone] = useState<string | undefined>();
+
+  useEffect(() => {
+    setTimeZone(Intl.DateTimeFormat().resolvedOptions().timeZone);
+  }, []);
+
+  const formatted = intlFormat(date, style(dateStyle, timeStyle, timeZone), {
+    locale: i18n.locale,
+  });
+  const duration = intlFormatDistance(date, new Date(), { locale: i18n.locale });
+
+  return (
+    <abbr title={duration} className={clsx(className, !timeZone && "opacity-0")}>
+      {formatted}
+    </abbr>
+  );
+}
 
 export const DateDistance: typeof DateDistanceWithLocale = (props) => {
   const { i18n } = useLingui();
