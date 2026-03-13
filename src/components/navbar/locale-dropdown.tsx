@@ -26,6 +26,9 @@ export function LocaleDropdown() {
         <LocaleItem lang="en-GB">
           <Flag locale="gb" /> English
         </LocaleItem>
+        <LocaleItem lang="pl-PL">
+          <Flag locale="pl" /> Polski
+        </LocaleItem>
         <LocaleItem lang="de-DE">
           <Flag locale="de" /> Deutsch (beta)
         </LocaleItem>
@@ -40,9 +43,6 @@ export function LocaleDropdown() {
         </LocaleItem>
         <LocaleItem lang="hu-HU">
           <Flag locale="hu" /> Magyar (beta)
-        </LocaleItem>
-        <LocaleItem lang="pl-PL">
-          <Flag locale="pl" /> Polski (beta)
         </LocaleItem>
       </DropdownMenu>
     </Dropdown>
