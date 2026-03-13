@@ -95,7 +95,7 @@ msgstr "Konto już połączone"
 #: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Account non trovato"
-msgstr "Konto nie znaleziono"
+msgstr "Konta nie znaleziono"
 
 #: src/app/(training)/settings/social/actions.ts
 msgid "Account scollegato con successo!"
@@ -207,7 +207,7 @@ msgstr "Witamy na oficjalnej platformie treningowej Igrzysk Fibonacciego!"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Benvenuto nella piattaforma ufficiale di allenamento per le OII! Qui avrai accesso a numerosi problemi ai quali potrai inviare delle soluzioni scritte in un linguaggio di programmazione a tua scelta."
-msgstr "Witamy na oficjalnej platformie treningowej Włoskiej Olimpiady Informatycznej! Tutaj będziesz mieć dostęp do wielu problemów, do których możesz przesyłać rozwiązania napisane w wybranym języku programowania."
+msgstr "Witamy na oficjalnej platformie treningowej Włoskiej Olimpiady Informatycznej! Tutaj będziesz miał dostęp do wielu problemów, do których możesz przesyłać rozwiązania napisane w dowolnym języku programowania."
 
 #: src/app/algobadge/bulk/common.ts
 msgid "Bloccato"
@@ -327,7 +327,7 @@ msgstr "Miejscowość"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
-msgstr "Z Algobadge przeprowadzimy Cię przez starannie wyselekcjonowane zadania, ułożone według rosnącej trudności, które pozwolą Ci stopniowo i skutecznie poznawać nowe techniki algorytmiczne."
+msgstr "Z kursem Algobadge przeprowadzimy Cię przez starannie wyselekcjonowane zadania, ułożone według rosnącej trudności, które pozwolą Ci stopniowo i skutecznie poznawać nowe techniki algorytmiczne."
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
@@ -341,7 +341,7 @@ msgstr "Kontynuuj"
 
 #: src/app/(training)/settings/delete/actions.ts
 msgid "Controlla la tua casella di posta per completare l'eliminazione dell'account."
-msgstr "Sprawdź swoją skrzynkę pocztową, aby dokończyć usuwanie konta."
+msgstr "Sprawdź swoją skrzynkę pocztową, aby dokończyć usunięcie konta."
 
 #: src/app/(training)/forgot-password/actions.ts
 msgid "Controlla la tua casella di posta per recuperare la password."
@@ -453,7 +453,7 @@ msgstr "Email już istnieje"
 
 #: src/lib/auth/errors.ts
 msgid "Email non trovata"
-msgstr "Email nie znaleziono"
+msgstr "Emaila nie znaleziono"
 
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
 #: src/lib/auth/errors.ts
@@ -467,7 +467,7 @@ msgstr "Email nie zweryfikowana"
 
 #: src/lib/auth/errors.ts
 msgid "Email o password non validi"
-msgstr "Nieprawidłowy adres e-mail lub hasło"
+msgstr "Nieprawidłowy adres email lub nieprawidłowe hasło"
 
 #: src/lib/auth/errors.ts
 msgid "Email uguale alla precedente"
@@ -475,7 +475,7 @@ msgstr "Email jest taka sama jak poprzednia"
 
 #: src/app/auth/callback/credential/route.ts
 msgid "Email verificata con successo!"
-msgstr "Adres e-mail pomyślnie zweryfikowany!"
+msgstr "Adres email zweryfikowany!"
 
 #: src/app/(training)/login/page-client.tsx
 msgid "Entra"
@@ -620,7 +620,7 @@ msgstr "Zdjęcie profilowe {0}"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Frase di conferma"
-msgstr "Fraza potwierdzająca"
+msgstr "Zdanie potwierdzające"
 
 #: src/lib/algobadge.ts
 msgid "Funzioni di Libreria"
@@ -746,11 +746,11 @@ msgstr "Wprowadź swoje imię i nazwisko oraz wybierz nazwę użytkownika"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Inserisci la frase di conferma"
-msgstr "Wpisz frazę potwierdzającą"
+msgstr "Wpisz zdanie potwierdzające"
 
 #: src/app/signup/_steps/step1.tsx
 msgid "Inserisci la tua email e scegli una nuova password"
-msgstr "Wprowadź swój adres e-mail i wybierz nowe hasło"
+msgstr "Wprowadź swój adres email i wybierz nowe hasło"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
@@ -762,7 +762,7 @@ msgstr "Wyślij"
 
 #: src/app/(training)/task/[name]/submit/output-only.tsx
 msgid "Invia output"
-msgstr "Wyślij wyjścia"
+msgstr "Wyślij output"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
@@ -782,7 +782,7 @@ msgstr "Szkoła"
 
 #: src/lib/auth/errors.ts
 msgid "L'email non può essere modificata"
-msgstr "Nie można zmienić adresu e-mail"
+msgstr "Nie można zmienić adresu email"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "La vasta scelta di problemi presenti nel sito ti permetterà di prepararti al meglio per ogni fase delle Olimpiadi, partendo dalla fase scolastica fino ad arrivare alla finale nazionale."
@@ -1086,7 +1086,7 @@ msgstr "Hasło zbyt długie"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Per continuare, inserisci la frase di conferma:"
-msgstr "Aby kontynuować, wpisz frazę potwierdzającą:"
+msgstr "Aby kontynuować, wpisz zdanie potwierdzającą:"
 
 #: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più difficili"
@@ -1110,7 +1110,7 @@ msgstr "Pre-OII"
 
 #: src/app/(training)/(home)/page.tsx
 msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
-msgstr "Przedstaw się innym aspirującym olimpijczykom na forum platformy, dyskutuj o problemach, rozwiewaj wszelkie wątpliwości dotyczące: podstawowych konstrukcji języka programowania, algorytmów i struktur danych bibliotecznych, technik algorytmicznych i wielu innych!"
+msgstr "Przedstaw się innym aspirującym olimpijczykom na forum platformy, dyskutuj o problemach, rozwiąż wszelkie wątpliwości dotyczące: podstawowych konstrukcji języka programowania, algorytmów i struktur danych bibliotecznych, technik algorytmicznych i wielu innych!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
@@ -1616,7 +1616,7 @@ msgstr "Stare hasło"
 
 #: src/app/signup/page.tsx
 msgid "Verifica email"
-msgstr "Weryfikacja e-mail"
+msgstr "Weryfikacja email"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"
