@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { type ComponentProps, useEffect, useState } from "react";
 
 import { useLingui } from "@lingui/react/macro";
 import { DateDistance as DateDistanceWithLocale } from "@olinfo/react-components";
@@ -52,7 +52,7 @@ export function DateTime({
   );
 }
 
-export const DateDistance: typeof DateDistanceWithLocale = (props) => {
+export function DateDistance(props: ComponentProps<typeof DateDistanceWithLocale>) {
   const { i18n } = useLingui();
   return <DateDistanceWithLocale {...props} locale={i18n.locale} />;
-};
+}

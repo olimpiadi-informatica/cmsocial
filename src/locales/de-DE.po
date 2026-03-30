@@ -26,8 +26,8 @@ msgid "<0>Memoria utilizzata</0>:"
 msgstr "<0>Genutzter Speicher</0>:"
 
 #: src/app/(training)/(home)/page.tsx
-msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
-msgstr "<0>Trainingsportal der</0> <1><2>Italienischen</2> <3>Informatik-</3><4>Olympiade</4></1>"
+msgid "<0>Portale di allenamento delle</0> <1>Olimpiadi Italiane di Informatica</1>"
+msgstr "<0>Trainingsportal der</0> <1>Italienischen Informatik-Olympiade</1>"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzioni è altamente sconsigliato."
@@ -326,8 +326,8 @@ msgid "Comune"
 msgstr "Gemeinde"
 
 #: src/app/(training)/(home)/page.tsx
-msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
-msgstr "Mit Algobadge führen wir dich durch eine sorgfältig ausgewählte Reihe von Aufgaben, die nach steigendem Schwierigkeitsgrad geordnet sind und es dir ermöglichen, neue algorithmische Techniken schrittweise und effektiv zu erkunden."
+msgid "Con Algobadge ti guideremo attraverso una selezione di task, ordinati per difficoltà, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale."
+msgstr "Mit Algobadge führen wir dich durch eine Auswahl von Aufgaben, die nach Schwierigkeit geordnet sind und dir neue algorithmische Techniken schrittweise beibringen."
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
@@ -481,10 +481,6 @@ msgstr "E-Mail erfolgreich verifiziert!"
 msgid "Entra"
 msgstr "Anmelden"
 
-#: src/app/(training)/(home)/page.tsx
-msgid "Entra nella community"
-msgstr "Tritt der Community bei"
-
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Errato"
@@ -566,6 +562,10 @@ msgstr "Kompilierungsergebnis:"
 msgid "Esito:"
 msgstr "Ergebnis:"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Esplora e padroneggia le principali tecniche algoritmiche selezionando i task per categoria. Sviluppa le tue competenze in programmazione dinamica, algoritmi su grafi e strutture dati avanzate."
+msgstr "Erkunde und beherrsche die wichtigsten algorithmischen Techniken, indem du Aufgaben nach Kategorie auswählst. Entwickle deine Fähigkeiten in dynamischer Programmierung, Graphenalgorithmen und fortgeschrittenen Datenstrukturen."
+
 #: src/app/(training)/task/[name]/submissions/[id]/files.tsx
 msgid "File"
 msgstr "Datei"
@@ -607,7 +607,6 @@ msgstr "Finale"
 msgid "Fine"
 msgstr "Ende"
 
-#: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Forum"
@@ -659,6 +658,7 @@ msgstr "Fibonacci-Spiele - Grundschulen"
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Fibonacci-Spiele - Sekundarschulen"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/lib/algobadge.ts
 msgid "Grafi"
 msgstr "Graphen"
@@ -671,6 +671,10 @@ msgstr "Graph"
 #: src/lib/algobadge.ts
 msgid "Greedy, sorting e searching"
 msgstr "Greedy, Sortieren und Suchen"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
+msgstr "Schau dir die besten Programmierer unserer Gemeinschaft an und sieh, wie du in der Rangliste stehst. Stell dich der Herausforderung und steig bis zur Spitze des Podiums auf, indem du die schwierigsten Probleme löst!"
 
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
@@ -720,6 +724,7 @@ msgstr "Zurück"
 msgid "Induzione e ricorsione"
 msgstr "Induktion und Rekursion"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/app/fibonacci/page.tsx
 msgid "Inizia ad allenarti"
 msgstr "Beginne mit dem Training"
@@ -1045,6 +1050,10 @@ msgstr "OTP abgelaufen"
 msgid "Ottieni input"
 msgstr "Eingabe erhalten"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Padroneggia tutte le tecniche"
+msgstr "Beherrsche alle Techniken"
+
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
@@ -1107,10 +1116,6 @@ msgstr "Trainingsportal der Fibonacci-Spiele"
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Pre-OII"
 msgstr "Vor-OII"
-
-#: src/app/(training)/(home)/page.tsx
-msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
-msgstr "Stelle dich anderen angehenden Olympioniken im Forum der Plattform vor, diskutiere Probleme, löse alle deine Zweifel an: grundlegenden Konstrukten deiner Programmiersprache, Algorithmen und Bibliotheksdatenstrukturen, algorithmischen Techniken und vielem mehr!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
@@ -1346,6 +1351,10 @@ msgstr "Schulauswahlen"
 msgid "Sessione scaduta"
 msgstr "Sitzung abgelaufen"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Sfida i nostri campioni"
+msgstr "Fordere unsere Champions heraus"
+
 #: src/app/(training)/(home)/footer.tsx
 msgid "Siti ufficiali"
 msgstr "Offizielle Websites"
@@ -1410,6 +1419,7 @@ msgstr "Allgemeine Statistiken"
 msgid "Stato server"
 msgstr "Serverstatus"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/lib/algobadge.ts
 msgid "Strutture dati"
 msgstr "Datenstrukturen"
@@ -1537,6 +1547,10 @@ msgstr "TOTP nicht aktiviert"
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Traduzioni:"
 msgstr "Übersetzungen:"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Tutte le categorie"
+msgstr "Alle Kategorien"
 
 #: src/app/algobadge/bulk/table.tsx
 msgid "Username"

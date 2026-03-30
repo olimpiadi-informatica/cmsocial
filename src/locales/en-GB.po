@@ -26,8 +26,8 @@ msgid "<0>Memoria utilizzata</0>:"
 msgstr "<0>Memory used</0>:"
 
 #: src/app/(training)/(home)/page.tsx
-msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
-msgstr "<1><2>Italian</2> <3>Olympiads in</3> <4>Informatics</4></1> <0>training website</0>"
+msgid "<0>Portale di allenamento delle</0> <1>Olimpiadi Italiane di Informatica</1>"
+msgstr "<1>Italian Olympiads in Informatics</1> <0>training website</0>"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzioni è altamente sconsigliato."
@@ -326,8 +326,8 @@ msgid "Comune"
 msgstr "City"
 
 #: src/app/(training)/(home)/page.tsx
-msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
-msgstr "With algobadge you will be guided through a curated selection of tasks to solve, ordered by increasing difficulty, while being able to explore new algorithmic techniques in a gradual and effective way."
+msgid "Con Algobadge ti guideremo attraverso una selezione di task, ordinati per difficoltà, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale."
+msgstr "With Algobadge we will guide you through a selection of tasks, ordered by difficulty, that will allow you to explore new algorithmic techniques gradually."
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
@@ -481,10 +481,6 @@ msgstr "Email successfully verified!"
 msgid "Entra"
 msgstr "Log in"
 
-#: src/app/(training)/(home)/page.tsx
-msgid "Entra nella community"
-msgstr "Join the community"
-
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Errato"
@@ -566,6 +562,10 @@ msgstr "Compilation outcome:"
 msgid "Esito:"
 msgstr "Outcome:"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Esplora e padroneggia le principali tecniche algoritmiche selezionando i task per categoria. Sviluppa le tue competenze in programmazione dinamica, algoritmi su grafi e strutture dati avanzate."
+msgstr "Explore and master the main algorithmic techniques by selecting tasks by category. Develop your skills in dynamic programming, graph algorithms and advanced data structures."
+
 #: src/app/(training)/task/[name]/submissions/[id]/files.tsx
 msgid "File"
 msgstr "File"
@@ -607,7 +607,6 @@ msgstr "Final"
 msgid "Fine"
 msgstr "Done"
 
-#: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Forum"
@@ -659,6 +658,7 @@ msgstr "Fibonacci Games - Primary schools"
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Fibonacci Games - Secondary schools"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/lib/algobadge.ts
 msgid "Grafi"
 msgstr "Graphs"
@@ -671,6 +671,10 @@ msgstr "Graph"
 #: src/lib/algobadge.ts
 msgid "Greedy, sorting e searching"
 msgstr "Greedy, sorting and searching"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
+msgstr "Check out the best programmers in our community and see where you rank. Challenge yourself and climb to the top of the podium by solving the hardest problems!"
 
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
@@ -720,6 +724,7 @@ msgstr "Back"
 msgid "Induzione e ricorsione"
 msgstr "Induction and recursion"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/app/fibonacci/page.tsx
 msgid "Inizia ad allenarti"
 msgstr "Start training"
@@ -1045,6 +1050,10 @@ msgstr "OTP expired"
 msgid "Ottieni input"
 msgstr "Generate input"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Padroneggia tutte le tecniche"
+msgstr "Master all techniques"
+
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
@@ -1107,10 +1116,6 @@ msgstr "Training website of the Fibonacci Games"
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Pre-OII"
 msgstr "Pre-OII"
-
-#: src/app/(training)/(home)/page.tsx
-msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
-msgstr "Introduce yourself to other students, discuss the tasks, clear up your doubts on: basic constructs of your programming language, algorithms and data structures, libraries, algorithm techniques, and much more!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
@@ -1346,6 +1351,10 @@ msgstr "School selections"
 msgid "Sessione scaduta"
 msgstr "Session expired"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Sfida i nostri campioni"
+msgstr "Challenge our champions"
+
 #: src/app/(training)/(home)/footer.tsx
 msgid "Siti ufficiali"
 msgstr "Official websites"
@@ -1410,6 +1419,7 @@ msgstr "Stats"
 msgid "Stato server"
 msgstr "Server status"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/lib/algobadge.ts
 msgid "Strutture dati"
 msgstr "Data structures"
@@ -1537,6 +1547,10 @@ msgstr "TOTP not enabled"
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Traduzioni:"
 msgstr "Translations:"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Tutte le categorie"
+msgstr "All categories"
 
 #: src/app/algobadge/bulk/table.tsx
 msgid "Username"

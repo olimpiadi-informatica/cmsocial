@@ -27,9 +27,9 @@ export const getTaskTags = cache(
         isEvent: tags.isEvent,
         canDelete: canRemoveAny
           ? sql<boolean>`true`
-          : userId != null
-            ? sql<boolean>`${eq(taskTags.addedBy, userId)}`
-            : sql<boolean>`false`,
+          : userId == null
+            ? sql<boolean>`false`
+            : sql<boolean>`${eq(taskTags.addedBy, userId)}`,
       })
       .from(tags)
       .innerJoin(taskTags, eq(taskTags.tagId, tags.id))

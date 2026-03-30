@@ -26,8 +26,8 @@ msgid "<0>Memoria utilizzata</0>:"
 msgstr "<0>Felhasznált memória</0>:"
 
 #: src/app/(training)/(home)/page.tsx
-msgid "<0>Portale di allenamento delle</0> <1><2>Olimpiadi</2> <3>Italiane di</3> <4>Informatica</4></1>"
-msgstr "<1><2>Olasz</2> <3>Informatikai</3> <4>Olimpia</4></1> <0>edző webhelye</0>"
+msgid "<0>Portale di allenamento delle</0> <1>Olimpiadi Italiane di Informatica</1>"
+msgstr "<1>Olasz Informatikai Olimpia</1> <0>edző webhelye</0>"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzioni è altamente sconsigliato."
@@ -326,8 +326,8 @@ msgid "Comune"
 msgstr "Város"
 
 #: src/app/(training)/(home)/page.tsx
-msgid "Con Algobadge ti guideremo attraverso una selezione accurata di task da risolvere, ordinati per difficoltà crescente, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale ed efficace."
-msgstr "Az Algobadge-dzsel gondosan válogatott, növekvő nehézségű feladatokon keresztül vezetünk, amelyek lehetővé teszik új algoritmikus technikák fokozatos és hatékony felfedezését."
+msgid "Con Algobadge ti guideremo attraverso una selezione di task, ordinati per difficoltà, che ti permetteranno di esplorare nuove tecniche algoritmiche in modo graduale."
+msgstr "Az Algobadge segítségével végigvezetünk egy kiválasztott feladatokon, amelyek nehézség szerint rendezve vannak, és lehetővé teszik az új algoritmikus technikák fokozatos megismerését."
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 msgid "Conferma"
@@ -481,10 +481,6 @@ msgstr "E-mail cím sikeresen ellenőrizve!"
 msgid "Entra"
 msgstr "Bejelentkezés"
 
-#: src/app/(training)/(home)/page.tsx
-msgid "Entra nella community"
-msgstr "Csatlakozzon a közösséghez"
-
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Errato"
@@ -566,6 +562,10 @@ msgstr "Fordítás eredménye:"
 msgid "Esito:"
 msgstr "Eredmény:"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Esplora e padroneggia le principali tecniche algoritmiche selezionando i task per categoria. Sviluppa le tue competenze in programmazione dinamica, algoritmi su grafi e strutture dati avanzate."
+msgstr "Fedezd fel és sajátítsd el a fő algoritmikus technikákat a feladatok kategória szerinti kiválasztásával. Fejleszd készségeid a dinamikus programozásban, gráf algoritmusokban és fejlett adatszerkezetekben."
+
 #: src/app/(training)/task/[name]/submissions/[id]/files.tsx
 msgid "File"
 msgstr "Fájl"
@@ -607,7 +607,6 @@ msgstr "Döntő"
 msgid "Fine"
 msgstr "Kész"
 
-#: src/app/(training)/(home)/page.tsx
 #: src/app/(training)/navbar.tsx
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Forum"
@@ -659,6 +658,7 @@ msgstr "Fibonacci Játékok - Általános iskolák"
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Fibonacci Játékok - Középiskolák"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/lib/algobadge.ts
 msgid "Grafi"
 msgstr "Gráfok"
@@ -671,6 +671,10 @@ msgstr "Gráf"
 #: src/lib/algobadge.ts
 msgid "Greedy, sorting e searching"
 msgstr "Mohó, rendezés és keresés"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
+msgstr "Nézd meg a közösségünk legjobb programozóit, és lás, hol helyezkedik el a rangsorban. Kihívd magad, és érj fel a dobogó tetejére a legnehezebb problémák megoldásával!"
 
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
@@ -720,6 +724,7 @@ msgstr "Vissza"
 msgid "Induzione e ricorsione"
 msgstr "Indukció és rekurzió"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/app/fibonacci/page.tsx
 msgid "Inizia ad allenarti"
 msgstr "Kezdődjön az edzés"
@@ -1045,6 +1050,10 @@ msgstr "OTP lejárt"
 msgid "Ottieni input"
 msgstr "Bemenet generálása"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Padroneggia tutte le tecniche"
+msgstr "Sajátítsd el az összes technikát"
+
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
@@ -1107,10 +1116,6 @@ msgstr "A Fibonacci Játékok edzőportálja"
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Pre-OII"
 msgstr "Pre-OII"
-
-#: src/app/(training)/(home)/page.tsx
-msgid "Presentati agli altri aspiranti olimpici nel forum della piattaforma, discuti dei problemi, risolvi tutti i tuoi dubbi su: costrutti di base del tuo linguaggio di programmazione, algoritmi e strutture dati di libreria, tecniche algoritmiche, e tanto altro!"
-msgstr "Mutatkozzon be a többi olimpiai aspiránsnak a platform fórumán, vitassa meg a problémákat, tisztázza kétségeit a következőkről: programozási nyelvének alapvető konstruktumai, algoritmusok és könyvtári adatstruktúrák, algoritmikus technikák, és még sok más!"
 
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrario ti suggeriamo di smettere di usare Pascal e imparare un linguaggio più moderno."
@@ -1346,6 +1351,10 @@ msgstr "Iskolai válogatók"
 msgid "Sessione scaduta"
 msgstr "A munkamenet lejárt"
 
+#: src/app/(training)/(home)/page.tsx
+msgid "Sfida i nostri campioni"
+msgstr "Kihívd bajnokainkat"
+
 #: src/app/(training)/(home)/footer.tsx
 msgid "Siti ufficiali"
 msgstr "Hivatalos weboldalak"
@@ -1410,6 +1419,7 @@ msgstr "Statisztikák"
 msgid "Stato server"
 msgstr "Szerver állapot"
 
+#: src/app/(training)/(home)/page.tsx
 #: src/lib/algobadge.ts
 msgid "Strutture dati"
 msgstr "Adatstruktúrák"
@@ -1537,6 +1547,10 @@ msgstr "A TOTP nincs engedélyezve"
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Traduzioni:"
 msgstr "Fordítások:"
+
+#: src/app/(training)/(home)/page.tsx
+msgid "Tutte le categorie"
+msgstr "Összes kategória"
 
 #: src/app/algobadge/bulk/table.tsx
 msgid "Username"

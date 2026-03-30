@@ -1,0 +1,20 @@
+@screen md {
+    @media (prefers-color-scheme: dark) {
+        .title {
+            @apply w-min text-white;
+        }
+
+        .title > span {
+            @apply mt-2 whitespace-nowrap;
+        }
+
+        .titleGradient {
+            background: linear-gradient(to right, #22c55e 0%, #ffffff 50%, #ef4444 100%);
+            @apply px-1 rounded bg-clip-text text-transparent;
+        }
+    }
+}
+
+.avatar img {
+    @apply rounded-lg;
+}

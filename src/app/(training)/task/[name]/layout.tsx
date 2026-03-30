@@ -22,10 +22,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const task = await getTask(name);
   if (!task) return {};
 
-  return {
-    title: `Training - ${task.title}`,
-    description: `Problemi ${task.title} (${task.name}) della piattaforma di allenamento delle Olimpiadi Italiane di Informatica`,
+  const title = `Training - Problema ${task.title} (${task.name})`;
+  const description = `Problema ${task.title} (${task.name}) della piattaforma di allenamento delle Olimpiadi Italiane di Informatica`;
+
+  const image = {
+    url: `/files/task-preview/${name}`,
+    height: 841,
+    width: 595,
   };
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title,
+      type: "website",
+      description,
+      images: image,
+      url: `/task/${task.name}`,
+    },
+    twitter: {
+      card: "summary_large_image",
+      site: "@olimpiadi_info",
+      title,
+      description,
+      images: image,
+    },
+  } satisfies Metadata;
 }
 
 export default async function Layout({ params, children }: Props) {

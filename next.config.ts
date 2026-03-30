@@ -67,6 +67,9 @@ const nextConfig: NextConfig = {
       }
     }
   },
+  outputFileTracingIncludes: {
+    "/files/task-preview/*": ["node_modules/@napi-rs/canvas*/**/*"]
+  },
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
     viewTransition: true,

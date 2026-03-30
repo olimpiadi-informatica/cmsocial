@@ -130,7 +130,7 @@ export function PageClient({ submission, children }: Props) {
           </abbr>{" "}
           <Resource
             value={
-              submission.compilationMemory != null ? submission.compilationMemory >> 20n : null
+              submission.compilationMemory == null ? null : submission.compilationMemory >> 20n
             }
             unit="MB"
           />
@@ -211,7 +211,7 @@ function SubtaskTable({ subtask, timeLimit, memoryLimit }: SubtaskProps) {
           </div>
           <div>
             <Resource
-              value={tc.memory != null ? BigInt(tc.memory) >> 20n : null}
+              value={tc.memory == null ? null : BigInt(tc.memory) >> 20n}
               limit={memoryLimit}
               unit="MB"
             />
