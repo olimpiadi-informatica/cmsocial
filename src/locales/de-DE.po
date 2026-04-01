@@ -1233,6 +1233,7 @@ msgid "Rimuovi tag {0}"
 msgstr "Tag {0} entfernen"
 
 #: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
 msgid "Ripetere autenticazione"
 msgstr "Authentifizierung wiederholen"
 

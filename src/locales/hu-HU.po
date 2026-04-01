@@ -1233,6 +1233,7 @@ msgid "Rimuovi tag {0}"
 msgstr "{0} címke eltávolítása"
 
 #: src/lib/auth/errors.ts
+#: src/lib/auth/errors.ts
 msgid "Ripetere autenticazione"
 msgstr "Újrahitelesítés"
 

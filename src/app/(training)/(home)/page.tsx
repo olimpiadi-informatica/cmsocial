@@ -150,7 +150,7 @@ export default async function Home() {
                   </Trans>
                 </p>
                 <div className="flex flex-wrap gap-3 justify-center">
-                  <Link href="/tasks/1?tag=graph" className="btn btn-accent" prefetch>
+                  <Link href="/tasks/1?tag=graphs" className="btn btn-accent" prefetch>
                     <Trans>Grafi</Trans>
                   </Link>
                   <Link href="/tasks/1?tag=data_structures" className="btn btn-accent" prefetch>
@@ -165,7 +165,7 @@ export default async function Home() {
           </div>
         </div>
         <div className="w-full flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 items-center xl:justify-center">
-          <div className="flex flex-col justify-center xl:w-1/3 max-xl:text-center">
+          <div className="flex flex-col justify-center xl:w-1/3 text-center">
             <h2 className="text-3xl lg:text-4xl font-bold mb-4">
               <Trans>Sfida i nostri campioni</Trans>
             </h2>
@@ -177,7 +177,7 @@ export default async function Home() {
               </Trans>
             </p>
           </div>
-          <div className="flex flex-row justify-center sm:items-end items-start gap-1 sm:gap-2 lg:gap-4 w-full flex-wrap max-sm:max-w-none sm:overflow-x-auto">
+          <div className="flex flex-row justify-center sm:items-end items-start gap-1 sm:gap-2 lg:gap-4 w-full flex-wrap">
             {topUsers.map((user, idx) => {
               const medals = ["🥇", "🥈", "🥉"];
               const stepHeights = ["h-40", "h-24", "h-16"];

@@ -42,6 +42,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   PROVIDER_NOT_FOUND: msg`Provider non trovato`,
   SESSION_EXPIRED: msg`Sessione scaduta`,
   SOCIAL_ACCOUNT_ALREADY_LINKED: msg`Account già collegato`,
+  STATE_MISMATCH: msg`Ripetere autenticazione`,
   STATE_NOT_FOUND: msg`Richiesta non valida`,
   TOKEN_EXPIRED: msg`Token scaduto`,
   TOTP_NOT_ENABLED: msg`TOTP non abilitato`,
@@ -76,9 +77,9 @@ export function getAuthError(err: unknown): MessageDescriptor {
       }
       return authErrors[code as keyof typeof authErrors];
     }
-    logger.error("Missing auth code", err);
+    logger.error(`Missing auth code: ${code}`, err);
   } else {
-    logger.error("Auth error", err);
+    logger.error(`Auth error: ${(err as Error)?.message ?? err}`, err);
   }
 
   if (process.env.NODE_ENV === "development") {
