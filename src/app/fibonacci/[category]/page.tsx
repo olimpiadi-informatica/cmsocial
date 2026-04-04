@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 import { Trans } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
@@ -10,23 +10,31 @@ import { getQuizmsContests } from "~/lib/api/quizms";
 import { loadLocale } from "~/lib/locale";
 import { getSessionUser } from "~/lib/user";
 
-export const metadata: Metadata = {
-  title: "Training - Scolastiche",
-  description:
-    "Lista delle prove delle selezioni scolastiche delle Olimpiadi Italiane di Informatica",
-};
-
-export default async function Page() {
+export default async function Page({ params }: { params: Promise<{ category: string }> }) {
+  const { category } = await params;
   await loadLocale();
   const user = await getSessionUser();
 
-  const contests = (await getQuizmsContests(user?.id, "scolastiche")).toReversed();
+  let contests: Awaited<ReturnType<typeof getQuizmsContests>>;
+  switch (category) {
+    case "primarie":
+    case "secondarie":
+      contests = (await getQuizmsContests(user?.id, `fibonacci-${category}`)).toReversed();
+      break;
+    case "corso":
+      contests = await getQuizmsContests(user?.id, `fibonacci-${category}`);
+      break;
+    default:
+      notFound();
+  }
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-wrap items-center justify-between gap-4">
         <H1 className="px-2">
-          <Trans>Selezioni scolastiche</Trans>
+          {category === "primarie" && <Trans>Giochi di Fibonacci - Scuole primarie</Trans>}
+          {category === "secondarie" && <Trans>Giochi di Fibonacci - Scuole secondarie</Trans>}
+          {category === "corso" && <Trans>Giochi di Fibonacci - Corso di programmazione</Trans>}
         </H1>
       </div>
       <Menu>

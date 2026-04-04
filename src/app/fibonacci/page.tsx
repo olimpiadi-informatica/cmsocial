@@ -56,6 +56,9 @@ export default async function Page() {
               <Link href="/fibonacci/secondarie" className="btn btn-accent">
                 <Trans>Scuole Secondarie</Trans>
               </Link>
+              <Link href="/fibonacci/corso" className="btn btn-accent">
+                <Trans>Corso di programmazione</Trans>
+              </Link>
             </CardActions>
           </CardBody>
         </Card>

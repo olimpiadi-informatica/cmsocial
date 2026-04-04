@@ -65,7 +65,7 @@ export function SummaryCategories({ users }: { users: UserBadge[] }) {
           <Bar
             key={badge}
             type="monotone"
-            dataKey={badge}
+            dataKey={badge as number}
             stackId="1"
             stroke={badgeColor[badge]}
             fill={badgeColor[badge]}>

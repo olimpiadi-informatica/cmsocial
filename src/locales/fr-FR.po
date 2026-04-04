@@ -356,6 +356,11 @@ msgstr "Vérifiez votre boîte de réception pour vérifier votre compte"
 msgid "Corretto"
 msgstr "Correct"
 
+#: src/app/fibonacci/navbar.tsx
+#: src/app/fibonacci/page.tsx
+msgid "Corso di programmazione"
+msgstr "Cours de programmation"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cosa devo inviare?"
 msgstr "Que dois-je envoyer ?"
@@ -430,12 +435,6 @@ msgstr "Discussions du forum"
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Éditeur de graphes"
-
-#: src/app/(training)/scolastiche/page.tsx
-#: src/app/fibonacci/primarie/page.tsx
-#: src/app/fibonacci/secondarie/page.tsx
-msgid "Edizione {edition}"
-msgstr "Édition {edition}"
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 #: src/app/(training)/settings/delete/page.tsx
@@ -531,6 +530,8 @@ msgstr "Erreur lors de la modification de l'utilisateur"
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
+#: src/app/quizms/[contest]/actions.ts
+#: src/app/quizms/[contest]/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
 msgid "Errore sconosciuto"
@@ -650,11 +651,15 @@ msgstr "Générer un nouvel input"
 msgid "Giochi di Fibonacci"
 msgstr "Jeux de Fibonacci"
 
-#: src/app/fibonacci/primarie/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
+msgid "Giochi di Fibonacci - Corso di programmazione"
+msgstr "Jeux de Fibonacci - Cours de programmation"
+
+#: src/app/fibonacci/[category]/page.tsx
 msgid "Giochi di Fibonacci - Scuole primarie"
 msgstr "Jeux de Fibonacci - Écoles primaires"
 
-#: src/app/fibonacci/secondarie/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Jeux de Fibonacci - Écoles secondaires"
 
@@ -715,6 +720,11 @@ msgstr "Impossible de dissocier le compte"
 #: src/components/navbar/user-dropdown.tsx
 msgid "Impostazioni"
 msgstr "Paramètres"
+
+#: src/app/(training)/scolastiche/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
+msgid "in corso..."
+msgstr "en cours..."
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Indietro"

@@ -6,6 +6,8 @@ import {
   jsonb,
   pgTable,
   serial,
+  text,
+  timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -44,4 +46,15 @@ export const taskScores = pgTable("taskscores", {
   score: integer().notNull(),
   time: doublePrecision().notNull(),
   participationId: integer("participation_id").notNull(),
+});
+
+export const quizmsSession = pgTable("quizms_session", {
+  userId: text("user_id").notNull(),
+  quizmsContestId: text("quizms_contest_id").notNull(),
+  quizmsVariantId: text("quizms_variant_id"),
+  answers: jsonb("answers").$type<Record<string, any>>(),
+  score: integer(),
+  maxScore: integer("max_score"),
+  startedAt: timestamp("started_at"),
+  finishedAt: timestamp("finished_at"),
 });

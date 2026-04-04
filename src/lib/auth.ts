@@ -15,6 +15,16 @@ import * as schema from "./db/schema-auth";
 import { sendDeleteAccountVerification, sendResetPassword, sendVerificationEmail } from "./email";
 
 export const auth = betterAuth({
+  baseURL:
+    process.env.NODE_ENV === "development"
+      ? {
+          allowedHosts: ["localhost:3000"],
+          protocol: "http",
+        }
+      : {
+          allowedHosts: ["training.olinfo.it", "training-staging.olinfo.it"],
+          protocol: "https",
+        },
   basePath: "/auth",
   logger: authLogger,
   database: drizzleAdapter(cmsDb, {

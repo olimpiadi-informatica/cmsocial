@@ -1,7 +1,7 @@
-import type { BetterAuthOptions } from "better-auth";
+import type { BetterAuthDBOptions } from "better-auth";
 import z from "zod";
 
-export const userExtraFields: NonNullable<BetterAuthOptions["user"]>["additionalFields"] = {
+export const userExtraFields = {
   cmsId: {
     type: "number",
     required: false,
@@ -14,7 +14,7 @@ export const userExtraFields: NonNullable<BetterAuthOptions["user"]>["additional
     },
   },
   registrationStep: {
-    type: "string",
+    type: "number",
     required: false,
   },
-};
+} as const satisfies BetterAuthDBOptions<"user">["additionalFields"];

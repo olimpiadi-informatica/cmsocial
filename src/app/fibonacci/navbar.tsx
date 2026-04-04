@@ -42,6 +42,11 @@ export function Navbar() {
             <Trans>Scuole Secondarie</Trans>
           </Link>
         </NavbarMenuItem>
+        <NavbarMenuItem>
+          <Link href="/fibonacci/corso">
+            <Trans>Corso di programmazione</Trans>
+          </Link>
+        </NavbarMenuItem>
       </NavbarMenu>
       <NavbarContent>
         <LocaleDropdown />

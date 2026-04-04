@@ -356,6 +356,11 @@ msgstr "Ellenőrizze postaládáját a fiók ellenőrzéséhez"
 msgid "Corretto"
 msgstr "Helyes"
 
+#: src/app/fibonacci/navbar.tsx
+#: src/app/fibonacci/page.tsx
+msgid "Corso di programmazione"
+msgstr "Programozási kurzus"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cosa devo inviare?"
 msgstr "Mit kell beküldenem?"
@@ -430,12 +435,6 @@ msgstr "Fórumbejegyzések"
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Gráf szerkesztő"
-
-#: src/app/(training)/scolastiche/page.tsx
-#: src/app/fibonacci/primarie/page.tsx
-#: src/app/fibonacci/secondarie/page.tsx
-msgid "Edizione {edition}"
-msgstr "{edition} kiadás"
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 #: src/app/(training)/settings/delete/page.tsx
@@ -531,6 +530,8 @@ msgstr "Hiba a felhasználó módosításakor"
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
+#: src/app/quizms/[contest]/actions.ts
+#: src/app/quizms/[contest]/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
 msgid "Errore sconosciuto"
@@ -650,11 +651,15 @@ msgstr "Új bemenet generálása"
 msgid "Giochi di Fibonacci"
 msgstr "Fibonacci Játékok"
 
-#: src/app/fibonacci/primarie/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
+msgid "Giochi di Fibonacci - Corso di programmazione"
+msgstr "Fibonacci Játékok - Programozási kurzus"
+
+#: src/app/fibonacci/[category]/page.tsx
 msgid "Giochi di Fibonacci - Scuole primarie"
 msgstr "Fibonacci Játékok - Általános iskolák"
 
-#: src/app/fibonacci/secondarie/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Fibonacci Játékok - Középiskolák"
 
@@ -715,6 +720,11 @@ msgstr "Nem lehet leválasztani a fiókot"
 #: src/components/navbar/user-dropdown.tsx
 msgid "Impostazioni"
 msgstr "Beállítások"
+
+#: src/app/(training)/scolastiche/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
+msgid "in corso..."
+msgstr "folyamatban..."
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Indietro"

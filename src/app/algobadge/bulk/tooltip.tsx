@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 
-import type { DefaultTooltipContentProps } from "recharts";
+import type { TooltipContentProps } from "recharts";
 
-export function TooltipContent({ payload, formatter }: DefaultTooltipContentProps<number, string>) {
+export function TooltipContent({ payload, formatter }: TooltipContentProps<any, any>) {
   if (!payload?.length) return null;
 
   return (
@@ -19,7 +19,7 @@ export function TooltipContent({ payload, formatter }: DefaultTooltipContentProp
                 className="h-full aspect-square rounded"
                 style={{
                   backgroundColor: item.color ?? item.payload.fill,
-                  opacity: (item as any).fillOpacity,
+                  opacity: item.fillOpacity,
                 }}
               />
             </div>

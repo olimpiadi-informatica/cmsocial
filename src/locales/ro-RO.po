@@ -356,6 +356,11 @@ msgstr "Verifică-ți căsuța poștală pentru a-ți verifica contul"
 msgid "Corretto"
 msgstr "Corect"
 
+#: src/app/fibonacci/navbar.tsx
+#: src/app/fibonacci/page.tsx
+msgid "Corso di programmazione"
+msgstr "Curs de programare"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 msgid "Cosa devo inviare?"
 msgstr "Ce trebuie să trimit?"
@@ -430,12 +435,6 @@ msgstr "Discuții pe forum"
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Editor de grafuri"
-
-#: src/app/(training)/scolastiche/page.tsx
-#: src/app/fibonacci/primarie/page.tsx
-#: src/app/fibonacci/secondarie/page.tsx
-msgid "Edizione {edition}"
-msgstr "Ediția {edition}"
 
 #: src/app/(training)/(email-callback)/delete-account/page-client.tsx
 #: src/app/(training)/settings/delete/page.tsx
@@ -531,6 +530,8 @@ msgstr "Eroare la modificarea utilizatorului"
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
+#: src/app/quizms/[contest]/actions.ts
+#: src/app/quizms/[contest]/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
 msgid "Errore sconosciuto"
@@ -650,11 +651,15 @@ msgstr "Generează input nou"
 msgid "Giochi di Fibonacci"
 msgstr "Jocurile Fibonacci"
 
-#: src/app/fibonacci/primarie/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
+msgid "Giochi di Fibonacci - Corso di programmazione"
+msgstr "Jocurile Fibonacci - Curs de programare"
+
+#: src/app/fibonacci/[category]/page.tsx
 msgid "Giochi di Fibonacci - Scuole primarie"
 msgstr "Jocurile Fibonacci - Școli primare"
 
-#: src/app/fibonacci/secondarie/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
 msgid "Giochi di Fibonacci - Scuole secondarie"
 msgstr "Jocurile Fibonacci - Școli secundare"
 
@@ -715,6 +720,11 @@ msgstr "Nu se poate deconecta contul"
 #: src/components/navbar/user-dropdown.tsx
 msgid "Impostazioni"
 msgstr "Setări"
+
+#: src/app/(training)/scolastiche/page.tsx
+#: src/app/fibonacci/[category]/page.tsx
+msgid "in corso..."
+msgstr "în curs..."
 
 #: src/app/signup/_steps/step2.tsx
 msgid "Indietro"
