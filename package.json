@@ -67,7 +67,7 @@
     "next": "^16.2.1",
     "next-mdx-remote-client": "^2.1.9",
     "node-cron": "^4.2.1",
-    "nodemailer": "^7.0.13",
+    "nodemailer": "^8.0.5",
     "parse-entities": "^4.0.2",
     "pdf-parse": "^2.4.5",
     "pdfjs-dist": "^5.6.205",
