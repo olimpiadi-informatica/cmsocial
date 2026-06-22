@@ -1,0 +1,14 @@
+minimumReleaseAge: 1440
+minimumReleaseAgeExclude:
+  - "@olinfo/*"
+
+overrides:
+  pdfjs-dist: "5.4.296"
+  "@napi-rs/canvas": "^0.1.100"
+
+allowBuilds:
+  "@prisma/engines": false
+  esbuild: false
+  prisma: false
+  protobufjs: false
+  sharp: false

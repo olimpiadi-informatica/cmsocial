@@ -93,7 +93,6 @@ msgid "Account già collegato"
 msgstr "Cont deja conectat"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Account non trovato"
 msgstr "Cont negăsit"
 
@@ -117,7 +116,6 @@ msgstr "Actualizează școala"
 msgid "Aggiungi"
 msgstr "Adaugă"
 
-#: src/app/(training)/task/[name]/tags/page-client.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Aggiungi tag"
 msgstr "Adaugă etichetă"
@@ -192,7 +190,6 @@ msgstr "Atenție! Această acțiune este ireversibilă."
 msgid "Attività"
 msgstr "Activități"
 
-#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Autenticazione fallita"
 msgstr "Autentificare eșuată"
@@ -397,8 +394,6 @@ msgid "Dati non validi"
 msgstr "Date invalide"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
-#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
-#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Dettagli"
 msgstr "Detalii"
@@ -450,7 +445,6 @@ msgid "Eliminazione account"
 msgstr "Ștergere cont"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Email deja existentă"
 
@@ -459,7 +453,6 @@ msgid "Email non trovata"
 msgstr "Email negăsită"
 
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
-#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email non valida"
 msgstr "Email invalidă"
@@ -494,8 +487,6 @@ msgid "Errore del server"
 msgstr "Eroare de server"
 
 #: src/app/(training)/login/actions.ts
-#: src/app/(training)/login/actions.ts
-#: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Errore durante il login"
 msgstr "Eroare la autentificare"
@@ -529,12 +520,9 @@ msgid "Errore durante la modifica dell'utente"
 msgstr "Eroare la modificarea utilizatorului"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
-#: src/app/quizms/[contest]/actions.ts
 #: src/app/quizms/[contest]/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
@@ -592,7 +580,6 @@ msgstr "Fișier lipsă"
 msgid "File sorgente"
 msgstr "Fișier sursă"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
@@ -672,7 +659,6 @@ msgstr "Jocurile Fibonacci - Școli secundare"
 msgid "Grafi"
 msgstr "Grafuri"
 
-#: src/app/(training)/tools/graph/page.tsx
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Grafo"
 msgstr "Graf"
@@ -885,7 +871,6 @@ msgstr "Ministerul Educației și al Meritului"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/password/page.tsx
-#: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
 msgstr "Actualizează parola"
 
@@ -975,7 +960,6 @@ msgid "Nome"
 msgstr "Titlu"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
-#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome del problema"
 msgstr "Numele problemei"
@@ -993,12 +977,8 @@ msgid "Non inviato"
 msgstr "Netrimis"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/files/submit/route.ts
-#: src/lib/api/task-tags.ts
 #: src/lib/api/task-tags.ts
 msgid "Non sei autorizzato"
 msgstr "Nu ești autorizat"
@@ -1247,7 +1227,6 @@ msgid "Rimuovi tag {0}"
 msgstr "Elimină eticheta {0}"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Ripetere autenticazione"
 msgstr "Re-autentifică-te"
 
@@ -1280,7 +1259,6 @@ msgstr "Runda 4"
 msgid "Salta"
 msgstr "Omite"
 
-#: src/components/source-code.tsx
 #: src/components/source-code.tsx
 msgid "Scarica codice"
 msgstr "Descarcă codul"
@@ -1399,7 +1377,6 @@ msgstr "Trimitere"
 msgid "Sottoposizione {0}"
 msgstr "Trimitere {0}"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
@@ -1526,7 +1503,6 @@ msgid "Ti mancano {needed} punti al badge successivo!"
 msgstr "Îți lipsesc {needed} puncte pentru următoarea distincție!"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Tipo di file non valido"
 msgstr "Tip de fișier invalid"
@@ -1586,7 +1562,6 @@ msgstr "Nume de utilizator inexistent"
 
 #: src/lib/api/auth.ts
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Username non valido"
 msgstr "Nume de utilizator invalid"
 
@@ -1615,8 +1590,6 @@ msgstr "Utilizator deja existent"
 #: src/app/(training)/settings/password/actions.ts
 #: src/app/(training)/settings/profile/actions.ts
 #: src/app/(training)/settings/school/actions.ts
-#: src/app/signup/_steps/actions.ts
-#: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/api/submit.ts

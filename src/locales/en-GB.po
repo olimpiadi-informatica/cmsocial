@@ -93,7 +93,6 @@ msgid "Account già collegato"
 msgstr "Account already linked"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Account non trovato"
 msgstr "Account not found"
 
@@ -117,7 +116,6 @@ msgstr "Update school"
 msgid "Aggiungi"
 msgstr "Add"
 
-#: src/app/(training)/task/[name]/tags/page-client.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Aggiungi tag"
 msgstr "Add tag"
@@ -192,7 +190,6 @@ msgstr "Warning! This action is irreversible."
 msgid "Attività"
 msgstr "Activities"
 
-#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Autenticazione fallita"
 msgstr "Authentication failed"
@@ -397,8 +394,6 @@ msgid "Dati non validi"
 msgstr "Invalid data"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
-#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
-#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Dettagli"
 msgstr "Details"
@@ -450,7 +445,6 @@ msgid "Eliminazione account"
 msgstr "Delete account"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Email already exists"
 
@@ -459,7 +453,6 @@ msgid "Email non trovata"
 msgstr "Email not found"
 
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
-#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email non valida"
 msgstr "Invalid email"
@@ -494,8 +487,6 @@ msgid "Errore del server"
 msgstr "Server error"
 
 #: src/app/(training)/login/actions.ts
-#: src/app/(training)/login/actions.ts
-#: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Errore durante il login"
 msgstr "Error during login"
@@ -529,12 +520,9 @@ msgid "Errore durante la modifica dell'utente"
 msgstr "Error while updating user"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
-#: src/app/quizms/[contest]/actions.ts
 #: src/app/quizms/[contest]/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
@@ -592,7 +580,6 @@ msgstr "Missing file"
 msgid "File sorgente"
 msgstr "Source file"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
@@ -672,7 +659,6 @@ msgstr "Fibonacci Games - Secondary schools"
 msgid "Grafi"
 msgstr "Graphs"
 
-#: src/app/(training)/tools/graph/page.tsx
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Grafo"
 msgstr "Graph"
@@ -885,7 +871,6 @@ msgstr "Ministry of Education and Merit"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/password/page.tsx
-#: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
 msgstr "Update password"
 
@@ -975,7 +960,6 @@ msgid "Nome"
 msgstr "Title"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
-#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome del problema"
 msgstr "Problem name"
@@ -993,12 +977,8 @@ msgid "Non inviato"
 msgstr "Not submitted"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/files/submit/route.ts
-#: src/lib/api/task-tags.ts
 #: src/lib/api/task-tags.ts
 msgid "Non sei autorizzato"
 msgstr "You are not authorised"
@@ -1247,7 +1227,6 @@ msgid "Rimuovi tag {0}"
 msgstr "Remove tag {0}"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Ripetere autenticazione"
 msgstr "Re-authenticate"
 
@@ -1280,7 +1259,6 @@ msgstr "4th round"
 msgid "Salta"
 msgstr "Skip"
 
-#: src/components/source-code.tsx
 #: src/components/source-code.tsx
 msgid "Scarica codice"
 msgstr "Download source"
@@ -1399,7 +1377,6 @@ msgstr "Submission"
 msgid "Sottoposizione {0}"
 msgstr "Submission {0}"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
@@ -1526,7 +1503,6 @@ msgid "Ti mancano {needed} punti al badge successivo!"
 msgstr "You need {needed} more points for the next badge!"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Tipo di file non valido"
 msgstr "Invalid file type"
@@ -1586,7 +1562,6 @@ msgstr "Username not found"
 
 #: src/lib/api/auth.ts
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Username non valido"
 msgstr "Invalid username"
 
@@ -1615,8 +1590,6 @@ msgstr "User already exists"
 #: src/app/(training)/settings/password/actions.ts
 #: src/app/(training)/settings/profile/actions.ts
 #: src/app/(training)/settings/school/actions.ts
-#: src/app/signup/_steps/actions.ts
-#: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/api/submit.ts

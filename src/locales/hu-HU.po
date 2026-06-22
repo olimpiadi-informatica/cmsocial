@@ -93,7 +93,6 @@ msgid "Account già collegato"
 msgstr "A fiók már csatolva van"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Account non trovato"
 msgstr "Fiók nem található"
 
@@ -117,7 +116,6 @@ msgstr "Iskola frissítése"
 msgid "Aggiungi"
 msgstr "Hozzáadás"
 
-#: src/app/(training)/task/[name]/tags/page-client.tsx
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Aggiungi tag"
 msgstr "Címke hozzáadása"
@@ -192,7 +190,6 @@ msgstr "Figyelem! Ez a művelet visszavonhatatlan."
 msgid "Attività"
 msgstr "Tevékenységek"
 
-#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Autenticazione fallita"
 msgstr "Hitelesítés sikertelen"
@@ -397,8 +394,6 @@ msgid "Dati non validi"
 msgstr "Érvénytelen adatok"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
-#: src/app/(training)/(terry)/task/terry/[name]/submissions/[id]/page.tsx
-#: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Dettagli"
 msgstr "Részletek"
@@ -450,7 +445,6 @@ msgid "Eliminazione account"
 msgstr "Fiók törlése"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Email già esistente"
 msgstr "Az e-mail cím már létezik"
 
@@ -459,7 +453,6 @@ msgid "Email non trovata"
 msgstr "E-mail cím nem található"
 
 #: src/app/(training)/(email-callback)/reset-password/actions.ts
-#: src/lib/auth/errors.ts
 #: src/lib/auth/errors.ts
 msgid "Email non valida"
 msgstr "Érvénytelen e-mail"
@@ -494,8 +487,6 @@ msgid "Errore del server"
 msgstr "Szerverhiba"
 
 #: src/app/(training)/login/actions.ts
-#: src/app/(training)/login/actions.ts
-#: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 msgid "Errore durante il login"
 msgstr "Hiba a bejelentkezés során"
@@ -529,12 +520,9 @@ msgid "Errore durante la modifica dell'utente"
 msgstr "Hiba a felhasználó módosításakor"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
 #: src/app/(training)/login/actions.ts
 #: src/app/(training)/task/[name]/submit/actions.ts
 #: src/app/auth/error/route.ts
-#: src/app/quizms/[contest]/actions.ts
 #: src/app/quizms/[contest]/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/auth/errors.ts
@@ -592,7 +580,6 @@ msgstr "Hiányzó fájl"
 msgid "File sorgente"
 msgstr "Forrásfájl"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 #: src/app/(training)/task/[name]/submit/output-only.tsx
@@ -672,7 +659,6 @@ msgstr "Fibonacci Játékok - Középiskolák"
 msgid "Grafi"
 msgstr "Gráfok"
 
-#: src/app/(training)/tools/graph/page.tsx
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Grafo"
 msgstr "Gráf"
@@ -885,7 +871,6 @@ msgstr "Oktatási és Érdemi Minisztérium"
 
 #: src/app/(training)/settings/layout-client.tsx
 #: src/app/(training)/settings/password/page.tsx
-#: src/app/(training)/settings/password/page.tsx
 msgid "Modifica password"
 msgstr "Jelszó frissítése"
 
@@ -975,7 +960,6 @@ msgid "Nome"
 msgstr "Cím"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
-#: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome del problema"
 msgstr "Feladat neve"
@@ -993,12 +977,8 @@ msgid "Non inviato"
 msgstr "Nem küldve"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/(terry)/task/terry/[name]/submit/actions.ts
-#: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/(training)/task/[name]/tags/actions.ts
 #: src/app/files/submit/route.ts
-#: src/lib/api/task-tags.ts
 #: src/lib/api/task-tags.ts
 msgid "Non sei autorizzato"
 msgstr "Nincs jogosultsága"
@@ -1247,7 +1227,6 @@ msgid "Rimuovi tag {0}"
 msgstr "{0} címke eltávolítása"
 
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Ripetere autenticazione"
 msgstr "Újrahitelesítés"
 
@@ -1280,7 +1259,6 @@ msgstr "4. forduló"
 msgid "Salta"
 msgstr "Kihagyás"
 
-#: src/components/source-code.tsx
 #: src/components/source-code.tsx
 msgid "Scarica codice"
 msgstr "Kód letöltése"
@@ -1399,7 +1377,6 @@ msgstr "Beküldés"
 msgid "Sottoposizione {0}"
 msgstr "{0} beküldés"
 
-#: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
@@ -1526,7 +1503,6 @@ msgid "Ti mancano {needed} punti al badge successivo!"
 msgstr "{needed} pont hiányzik a következő jelvényig!"
 
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
-#: src/app/(training)/(terry)/task/terry/[name]/submit/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "Tipo di file non valido"
 msgstr "Érvénytelen fájltípus"
@@ -1586,7 +1562,6 @@ msgstr "A felhasználónév nem létezik"
 
 #: src/lib/api/auth.ts
 #: src/lib/auth/errors.ts
-#: src/lib/auth/errors.ts
 msgid "Username non valido"
 msgstr "Érvénytelen felhasználónév"
 
@@ -1615,8 +1590,6 @@ msgstr "A felhasználó már létezik"
 #: src/app/(training)/settings/password/actions.ts
 #: src/app/(training)/settings/profile/actions.ts
 #: src/app/(training)/settings/school/actions.ts
-#: src/app/signup/_steps/actions.ts
-#: src/app/signup/_steps/actions.ts
 #: src/app/signup/_steps/actions.ts
 #: src/lib/api/submit-terry.ts
 #: src/lib/api/submit.ts
