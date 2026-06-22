@@ -432,6 +432,10 @@ msgstr "Dimensione nodi"
 msgid "Discussioni del forum"
 msgstr "Discussioni del forum"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "È necessario ripetere il login"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Editor di grafi"

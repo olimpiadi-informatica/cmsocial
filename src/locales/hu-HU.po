@@ -432,6 +432,10 @@ msgstr "Csomópont mérete"
 msgid "Discussioni del forum"
 msgstr "Fórumbejegyzések"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "Újra be kell jelentkeznie"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Gráf szerkesztő"

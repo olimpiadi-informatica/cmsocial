@@ -432,6 +432,10 @@ msgstr "Taille des nœuds"
 msgid "Discussioni del forum"
 msgstr "Discussions du forum"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "Vous devez vous reconnecter"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Éditeur de graphes"

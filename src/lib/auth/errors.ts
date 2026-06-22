@@ -41,6 +41,7 @@ export const authErrors: Record<keyof typeof auth.$ERROR_CODES | string, Message
   PLEASE_RESTART_THE_PROCESS: msg`Ripetere autenticazione`,
   PROVIDER_NOT_FOUND: msg`Provider non trovato`,
   SESSION_EXPIRED: msg`Sessione scaduta`,
+  SESSION_NOT_FRESH: msg`È necessario ripetere il login`,
   SOCIAL_ACCOUNT_ALREADY_LINKED: msg`Account già collegato`,
   STATE_MISMATCH: msg`Ripetere autenticazione`,
   STATE_NOT_FOUND: msg`Richiesta non valida`,

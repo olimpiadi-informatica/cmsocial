@@ -432,6 +432,10 @@ msgstr "Node size"
 msgid "Discussioni del forum"
 msgstr "Forum posts"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "You need to log in again"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Graph editor"

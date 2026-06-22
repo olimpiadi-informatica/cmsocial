@@ -17,10 +17,10 @@ export async function GET(
 
   const parser = new PDFParse({ data: buffer });
   const result = await parser.getScreenshot({ first: 1 });
-  return new Response(new Uint8Array(result.pages[0].data), {
+  return new Response(result.pages[0].data as Uint8Array<ArrayBuffer>, {
     headers: {
       "Content-Type": "image/png",
-      "Cache-Control": "public, max-age=86400, immutable",
+      "Cache-Control": "public, max-age=1209600, immutable",
     },
   });
 }

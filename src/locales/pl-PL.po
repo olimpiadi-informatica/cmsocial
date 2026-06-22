@@ -432,6 +432,10 @@ msgstr "Rozmiar węzłów"
 msgid "Discussioni del forum"
 msgstr "Dyskusje na forum"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "Musisz zalogować się ponownie"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Edytor grafów"

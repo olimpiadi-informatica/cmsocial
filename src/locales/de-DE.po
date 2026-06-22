@@ -432,6 +432,10 @@ msgstr "Knotengröße"
 msgid "Discussioni del forum"
 msgstr "Forum-Diskussionen"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "Sie müssen sich erneut anmelden"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Graphen-Editor"

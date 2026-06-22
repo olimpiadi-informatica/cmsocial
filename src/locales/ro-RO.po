@@ -432,6 +432,10 @@ msgstr "Dimensiune noduri"
 msgid "Discussioni del forum"
 msgstr "Discuții pe forum"
 
+#: src/lib/auth/errors.ts
+msgid "È necessario ripetere il login"
+msgstr "Trebuie să vă autentificați din nou"
+
 #: src/app/(training)/tools/graph/page.tsx
 msgid "Editor di grafi"
 msgstr "Editor de grafuri"

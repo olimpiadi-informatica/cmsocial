@@ -17,11 +17,11 @@ export function GET(request: NextRequest): Promise<Response> {
   } else if (code in authErrors) {
     messageId = authErrors[code];
   } else {
-    logger.error("Missing auth code", { code });
+    logger.error(`Missing auth code ${code}`);
   }
 
   if (code && !commonErrors.includes(code)) {
-    logger.error("Auth error", { code });
+    logger.error(`Auth error ${code}`);
   }
   redirect(`/?error=${encodeURIComponent(messageId.id)}`);
 }
