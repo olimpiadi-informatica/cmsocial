@@ -47,7 +47,7 @@ export default async function Page() {
               provider={provider}
               type="unlink"
               onClick={unlinkAccount}
-              disabled={providers.length === 1 || provider === "olimanager"}
+              disabled={providers.length === 1}
             />
           ))}
         </div>
