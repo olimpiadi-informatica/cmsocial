@@ -1,6 +1,6 @@
 import { useEffect, useId, useSyncExternalStore } from "react";
 
-import { compact } from "lodash-es";
+import { compact } from "es-toolkit";
 
 import { type AlgobadgeScores, getUserBadges } from "~/lib/algobadge";
 

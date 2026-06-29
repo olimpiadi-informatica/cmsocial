@@ -1,5 +1,5 @@
 import { SelectField } from "@olinfo/react-components";
-import { sortBy } from "lodash-es";
+import { sortBy } from "es-toolkit";
 import useSWR from "swr";
 
 import type { Location } from "~/lib/api/location";
@@ -24,7 +24,7 @@ export function LocationField({ label, field, placeholder, id, fetcher, optional
   );
 
   const options = Object.fromEntries(
-    sortBy(data, "name").map((location) => [`${location.id} `, location.name]),
+    sortBy(data ?? [], ["name"]).map((location) => [`${location.id} `, location.name]),
   );
 
   return (

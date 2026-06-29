@@ -5,7 +5,8 @@ import { Logging } from "@google-cloud/logging";
 import type { LogEntry } from "@google-cloud/logging/build/src/entry";
 import type { CloudLoggingHttpRequest } from "@google-cloud/logging/build/src/utils/http-request";
 import type { Logger as AuthLogger, InternalLogger } from "better-auth";
-import { merge, toUpper } from "lodash-es";
+import { merge } from "es-toolkit";
+import { toUpper } from "es-toolkit/compat";
 import { isErrorLike, serializeError } from "serialize-error";
 
 const logging = process.env.NODE_ENV === "production" ? new Logging() : null;
@@ -139,7 +140,7 @@ function logAuth(
     "auth",
     severity === "ERROR" ? "WARNING" : severity,
     message,
-    merge({}, ...params),
+    params.reduce((acc, p) => merge(acc, p), {}),
     headerList,
   );
 }

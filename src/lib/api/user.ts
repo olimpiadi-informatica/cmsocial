@@ -1,7 +1,7 @@
 import { cache } from "react";
 
 import { and, eq, gt, sql } from "drizzle-orm";
-import { orderBy } from "lodash-es";
+import { orderBy } from "es-toolkit";
 
 import { cmsDb, terryDb } from "~/lib/db";
 import {

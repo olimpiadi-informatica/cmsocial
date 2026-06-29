@@ -1,4 +1,4 @@
-import { range } from "lodash-es";
+import { range } from "es-toolkit";
 
 import { getTags } from "~/lib/api/tags";
 import { getTaskTags } from "~/lib/api/task-tags";

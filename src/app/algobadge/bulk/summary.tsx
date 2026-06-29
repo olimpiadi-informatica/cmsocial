@@ -1,6 +1,6 @@
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Card } from "@olinfo/react-components";
-import { mapValues } from "lodash-es";
+import { mapValues } from "es-toolkit";
 
 import { badgeName, type UserBadge } from "./common";
 import { SummaryBadges } from "./summary-badges";

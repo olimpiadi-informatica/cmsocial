@@ -5,7 +5,7 @@ import { Fragment, type ReactNode, useEffect } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
-import { round } from "lodash-es";
+import { round } from "es-toolkit";
 import { Check, X } from "lucide-react";
 
 import { DateTime } from "~/components/date";

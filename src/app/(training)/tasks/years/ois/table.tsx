@@ -1,7 +1,7 @@
 "use client";
 
 import { Trans } from "@lingui/react/macro";
-import { sumBy } from "lodash-es";
+import { sumBy } from "es-toolkit";
 
 import { Table } from "~/components/table";
 import { TaskBadge } from "~/components/task-badge";

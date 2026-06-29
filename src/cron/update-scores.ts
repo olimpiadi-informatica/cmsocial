@@ -1,5 +1,5 @@
 import { eq, inArray, sql } from "drizzle-orm";
-import { chunk, clamp, sumBy } from "lodash-es";
+import { chunk, clamp, sumBy } from "es-toolkit";
 
 import { cmsDb } from "~/lib/db";
 import { socialParticipations, socialTasks, taskScores } from "~/lib/db/schema-cmsocial";

@@ -30,7 +30,8 @@
         "useUniqueElementIds": "off"
       },
       "nursery": {
-        "noFloatingPromises": "error"
+        "noFloatingPromises": "error",
+        "noRestrictedDependencies": "error"
       },
       "performance": {
         "noImgElement": "off"

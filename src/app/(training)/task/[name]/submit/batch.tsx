@@ -8,7 +8,7 @@ import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, SelectField, SingleFileField, SubmitButton } from "@olinfo/react-components";
 import clsx from "clsx";
-import { mapValues } from "lodash-es";
+import { mapValues } from "es-toolkit";
 import { Send, TriangleAlert } from "lucide-react";
 
 import { H2 } from "~/components/header";

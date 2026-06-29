@@ -1,7 +1,7 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { and, count, eq, gt, sql } from "drizzle-orm";
-import { isString } from "lodash-es";
+import { isString } from "es-toolkit";
 
 import { cmsDb } from "~/lib/db";
 import { files, participations, submissions, tasks } from "~/lib/db/schema-cms";

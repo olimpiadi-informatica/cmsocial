@@ -14,7 +14,7 @@ import {
   subWeeks,
   subYears,
 } from "date-fns";
-import { range } from "lodash-es";
+import { range } from "es-toolkit";
 
 import type { User } from "~/lib/api/user";
 import { getSubmissionCountByDate } from "~/lib/api/user-stats";

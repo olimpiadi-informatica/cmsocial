@@ -1,6 +1,6 @@
 import { addMinutes, isPast, subSeconds } from "date-fns";
 import { and, eq, like } from "drizzle-orm";
-import { keyBy } from "lodash-es";
+import { keyBy } from "es-toolkit";
 import z from "zod";
 
 import { cmsDb } from "~/lib/db";
@@ -119,7 +119,7 @@ export async function getQuizmsContests(
       .where(
         and(eq(quizmsSession.userId, userId), like(quizmsSession.quizmsContestId, `${prefix}%`)),
       ),
-    "quizmsContestId",
+    (s) => s.quizmsContestId,
   );
 
   return contests.map((c) => {

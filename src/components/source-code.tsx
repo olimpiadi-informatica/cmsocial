@@ -2,7 +2,7 @@ import { Suspense } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Code } from "@olinfo/react-components";
-import { truncate } from "lodash-es";
+import { truncate } from "es-toolkit/compat";
 import { Download, FileCode2 } from "lucide-react";
 
 import { Language } from "~/lib/language";

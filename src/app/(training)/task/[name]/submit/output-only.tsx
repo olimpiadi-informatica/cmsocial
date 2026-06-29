@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Form, MultipleFileField, SubmitButton } from "@olinfo/react-components";
-import { sortBy, sumBy } from "lodash-es";
+import { sumBy } from "es-toolkit";
 import { Send } from "lucide-react";
 
 import { H2 } from "~/components/header";
@@ -48,7 +48,7 @@ export function SubmitOutputOnly({ task }: { task: Task }) {
         <Trans>Devi inviare i seguenti file:</Trans>
       </div>
       <div className="columns-2 text-sm">
-        {sortBy(task.submissionFormat).map((file) => (
+        {task.submissionFormat.toSorted().map((file) => (
           <div key={file}>{file}</div>
         ))}
       </div>

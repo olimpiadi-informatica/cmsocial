@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
-import { compact, uniq } from "lodash-es";
+import { compact, uniq } from "es-toolkit";
 
 import { type Link, type Node, setupSimulation } from "./simulation";
 

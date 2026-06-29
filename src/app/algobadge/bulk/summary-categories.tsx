@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { useLingui } from "@lingui/react/macro";
-import { mapValues, omitBy, pull } from "lodash-es";
+import { mapValues, omitBy, pull } from "es-toolkit";
 import {
   Bar,
   BarChart,
@@ -70,7 +70,7 @@ export function SummaryCategories({ users }: { users: UserBadge[] }) {
             stroke={badgeColor[badge]}
             fill={badgeColor[badge]}>
             {data.map((item) => {
-              const itemKeys = pull(Object.keys(item), "name");
+              const itemKeys = pull(Object.keys(item), ["name"]);
               const pos = itemKeys.indexOf(badge.toString());
 
               const radius = [0, 0, 0, 0];

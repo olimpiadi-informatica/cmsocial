@@ -3,7 +3,6 @@ import { useRef } from "react";
 
 import { Slider } from "@base-ui/react/slider";
 import { Trans } from "@lingui/react/macro";
-import { sortBy } from "lodash-es";
 
 import { getParamNumber } from "../utils";
 
@@ -33,7 +32,7 @@ export function DifficultyFilter({ setFilter, setPush }: Props) {
         minStepsBetweenValues={1}
         defaultValue={defaultDifficulty.current}
         onValueChange={(values) => {
-          const [mi, ma] = sortBy(values);
+          const [mi, ma] = values.toSorted((a, b) => a - b);
           setFilter({ minDiff: String(mi), maxDiff: String(ma) });
         }}
         onBlur={() => setPush(false)}>

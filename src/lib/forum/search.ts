@@ -1,7 +1,7 @@
 import { headers } from "next/headers";
 import { userAgent } from "next/server";
 
-import { compact } from "lodash-es";
+import { compact } from "es-toolkit";
 import { parseEntities } from "parse-entities";
 import { z } from "zod";
 

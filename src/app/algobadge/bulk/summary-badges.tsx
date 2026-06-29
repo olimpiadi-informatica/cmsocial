@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { useLingui } from "@lingui/react/macro";
-import { omitBy, pull, range } from "lodash-es";
+import { omitBy, pull, range } from "es-toolkit";
 import {
   Bar,
   BarChart,
@@ -84,7 +84,7 @@ export function SummaryBadges({ users }: { users: UserBadge[] }) {
             stackId="1"
             fillOpacity={i === numCategories ? 1 : (i / numCategories) * 0.6 + 0.2}>
             {data.map((item) => {
-              const itemKeys = pull(Object.keys(item), "name", "fill");
+              const itemKeys = pull(Object.keys(item), ["name", "fill"]);
               const pos = itemKeys.indexOf(i.toString());
 
               const radius = [0, 0, 0, 0];

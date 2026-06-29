@@ -5,7 +5,7 @@ import { useEffect, useReducer } from "react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Button, Form, SingleFileField, SubmitButton, useIsAfter } from "@olinfo/react-components";
 import { addSeconds } from "date-fns";
-import { isString } from "lodash-es";
+import { isString } from "es-toolkit";
 import { ArrowLeftRight, Download, Send, ServerCog, TimerIcon, TriangleAlert } from "lucide-react";
 
 import { DateDistance } from "~/components/date";

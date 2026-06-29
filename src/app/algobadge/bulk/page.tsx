@@ -3,7 +3,7 @@
 import { type CSSProperties, useEffect, useState } from "react";
 
 import { useLingui } from "@lingui/react/macro";
-import { uniq } from "lodash-es";
+import { uniq } from "es-toolkit";
 
 import { algobadge } from "~/lib/algobadge";
 

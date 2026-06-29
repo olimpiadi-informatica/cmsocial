@@ -1,6 +1,6 @@
 import { Trans } from "@lingui/react/macro";
 import clsx from "clsx";
-import { clamp, round } from "lodash-es";
+import { clamp, round } from "es-toolkit";
 
 import type { SubmissionResult } from "~/lib/api/submission";
 import type { Submission } from "~/lib/api/submissions";

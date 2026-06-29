@@ -1,6 +1,6 @@
 import { useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
-import { round } from "lodash-es";
+import { round } from "es-toolkit";
 import {
   BookmarkCheck,
   BookmarkX,

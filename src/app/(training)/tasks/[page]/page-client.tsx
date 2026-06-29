@@ -6,7 +6,7 @@ import { useDeferredValue, ViewTransition } from "react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Menu } from "@olinfo/react-components";
 import clsx from "clsx";
-import { range } from "lodash-es";
+import { range } from "es-toolkit";
 import { Search, X } from "lucide-react";
 import useSWR from "swr";
 

@@ -1,6 +1,6 @@
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
-import { map, mapValues, round } from "lodash-es";
+import { mapValues, round } from "es-toolkit";
 
 export enum CategoryId {
   DP = "dp",
@@ -328,7 +328,7 @@ export const badgeColor: Record<Badge, string> = {
 
 export function getUserBadges(scores: AlgobadgeScores | undefined, unlock?: boolean) {
   const badges = computeCategoryBadges(scores, unlock ?? false);
-  let totalBadge = Math.max(Math.min(...map(badges, "badge")), Badge.Honorable) as Badge;
+  let totalBadge = Math.max(Math.min(...Object.values(badges).map((b) => b.badge)), Badge.Honorable) as Badge;
   for (const [id, category] of Object.entries(algobadge)) {
     if (category.hasHonorable && badges[id as CategoryId].badge === Badge.None) {
       totalBadge = Badge.None;

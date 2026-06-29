@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { clamp } from "lodash-es";
+import { clamp } from "es-toolkit";
 
 import { Link } from "~/components/link";
 import type { UserScore } from "~/lib/api/user";

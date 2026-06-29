@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { type ComponentProps, useCallback } from "react";
 
-import { isString } from "lodash-es";
+import { isString } from "es-toolkit";
 
 export function Link(props: ComponentProps<typeof NextLink>) {
   const router = useRouter();

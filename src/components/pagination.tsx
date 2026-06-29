@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 
 import { useLingui } from "@lingui/react/macro";
 import clsx, { type ClassValue } from "clsx";
-import { clamp, range } from "lodash-es";
+import { clamp, range } from "es-toolkit";
 import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from "lucide-react";
 
 import { Link } from "~/components/link";

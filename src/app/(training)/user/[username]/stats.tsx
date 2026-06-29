@@ -1,5 +1,5 @@
 import { Trans } from "@lingui/react/macro";
-import { round } from "lodash-es";
+import { round } from "es-toolkit";
 
 import type { User } from "~/lib/api/user";
 import { getSolvedCount, getSubmissionCount, getTotalEvaluationTime } from "~/lib/api/user-stats";

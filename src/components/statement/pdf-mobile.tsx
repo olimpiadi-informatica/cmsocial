@@ -1,6 +1,6 @@
 import { type ReactNode, useLayoutEffect, useRef, useState } from "react";
 
-import { range } from "lodash-es";
+import { range } from "es-toolkit";
 import { Document, Page, pdfjs, useDocumentContext } from "react-pdf";
 
 import "react-pdf/dist/Page/AnnotationLayer.css";
