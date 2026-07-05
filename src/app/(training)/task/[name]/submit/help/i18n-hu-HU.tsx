@@ -1,6 +1,6 @@
 import type { Task } from "~/lib/api/task";
 
-export function HelpHu({ io, taskType }: { io: Task["io"]; taskType: Task["taskType"] }) {
+export default function HelpHu({ io, taskType }: { io: Task["io"]; taskType: Task["taskType"] }) {
   return (
     <div className="prose max-w-full prose-a:text-blue-600 dark:prose-a:text-blue-400">
       <h2>Hogyan működik a bemenet és a kimenet</h2>

@@ -1,6 +1,6 @@
 import type { Task } from "~/lib/api/task";
 
-export function HelpDe({ io, taskType }: { io: Task["io"]; taskType: Task["taskType"] }) {
+export default function HelpDe({ io, taskType }: { io: Task["io"]; taskType: Task["taskType"] }) {
   return (
     <div className="prose max-w-full prose-a:text-blue-600 dark:prose-a:text-blue-400">
       <h2>Wie Input und Output funktionieren</h2>

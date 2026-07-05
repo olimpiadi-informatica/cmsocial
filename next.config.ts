@@ -70,8 +70,10 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/files/task-preview/*": ["node_modules/@napi-rs/canvas*/**/*"]
   },
+  reactCompiler: true,
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
+    turbopackRustReactCompiler: true,
     viewTransition: true,
   },
 };
