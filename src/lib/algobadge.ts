@@ -328,7 +328,10 @@ export const badgeColor: Record<Badge, string> = {
 
 export function getUserBadges(scores: AlgobadgeScores | undefined, unlock?: boolean) {
   const badges = computeCategoryBadges(scores, unlock ?? false);
-  let totalBadge = Math.max(Math.min(...Object.values(badges).map((b) => b.badge)), Badge.Honorable) as Badge;
+  let totalBadge = Math.max(
+    Math.min(...Object.values(badges).map((b) => b.badge)),
+    Badge.Honorable,
+  ) as Badge;
   for (const [id, category] of Object.entries(algobadge)) {
     if (category.hasHonorable && badges[id as CategoryId].badge === Badge.None) {
       totalBadge = Badge.None;

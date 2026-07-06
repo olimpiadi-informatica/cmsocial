@@ -3,6 +3,7 @@ minimumReleaseAgeExclude:
   - "@olinfo/*"
 
 overrides:
+  "better-call": "1.3.7"
   pdfjs-dist: "5.4.296"
   "@napi-rs/canvas": "^0.1.100"
 

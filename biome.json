@@ -50,13 +50,6 @@
         "useAsConstAssertion": "error",
         "useConsistentArrayType": { "level": "error", "options": { "syntax": "shorthand" } },
         "useDefaultParameterLast": "error",
-        "useFilenamingConvention": {
-          "level": "error",
-          "options": {
-            "filenameCases": ["kebab-case"],
-            "requireAscii": true
-          }
-        },
         "useFragmentSyntax": "error",
         "useNumberNamespace": "error",
         "useSelfClosingElements": "error",
