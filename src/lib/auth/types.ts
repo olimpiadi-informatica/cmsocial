@@ -17,5 +17,6 @@ export type User = {
   role?: string | null | undefined;
   emailVerified: boolean;
   registrationStep: RegistrationStep;
+  guidelinesAcceptedAt?: Date | null | undefined;
   impersonatedBy?: string | null | undefined;
 };

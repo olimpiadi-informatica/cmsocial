@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { msg } from "@lingui/core/macro";
 import { Trans, useLingui } from "@lingui/react/macro";
@@ -17,6 +17,7 @@ import type { Task } from "~/lib/api/task";
 import { fileLanguage, Language } from "~/lib/language";
 
 import { submitAction } from "./actions";
+import { GuidelinesModal } from "./guidelines-modal";
 
 const Editor = dynamic(() => import("./editor"), {
   loading: () => <div className="skeleton size-full rounded-none" />,
@@ -27,10 +28,12 @@ export function SubmitBatch({
   task,
   cookieLanguage,
   languages,
+  guidelinesAccepted,
 }: {
   task: Task;
   cookieLanguage?: string;
   languages: Record<string, Language>;
+  guidelinesAccepted: boolean;
 }) {
   const { t } = useLingui();
   const router = useRouter();
@@ -56,7 +59,13 @@ export function SubmitBatch({
   };
 
   const [editorValue, setEditorValue] = useState<string>();
+  const modalRef = useRef<HTMLDialogElement>(null);
   const submit = async (value: { lang: string; src: File }) => {
+    if (!guidelinesAccepted) {
+      modalRef.current?.showModal();
+      return;
+    }
+
     const files = new FormData();
     files.append(task.submissionFormat[0], isSubmitPage ? (editorValue ?? "") : value.src);
 
@@ -68,76 +77,90 @@ export function SubmitBatch({
   };
 
   const isSubmitPage = usePathname().endsWith("/submit");
+  const isOfficialSolution = editorValue?.includes("@check-accepted");
 
   const defaultLanguage = Object.entries(languages).find(
     ([_, lang]) => lang === cookieLanguage,
   )?.[0];
 
   return (
-    <Form
-      defaultValue={{ lang: defaultLanguage ?? Object.keys(languages)[0] }}
-      onSubmit={submit}
-      className="!max-w-full grow">
-      <H2>
-        <Trans>Invia soluzione</Trans>
-      </H2>
-      <div
-        className={clsx(
-          "mb-4 flex w-full max-w-sm flex-col items-center",
-          isSubmitPage && "md:max-w-3xl md:flex-row md:items-start md:gap-4",
-        )}>
-        <SelectField
-          field="lang"
-          label={t`Linguaggio`}
-          options={mapValues(languages, (_, lang) => lang)}
-        />
-        <SingleFileField
-          field="src"
-          label={t`Codice sorgente`}
-          validate={validateFile}
-          optional={isSubmitPage}
-        />
-        <div className={clsx("flex-none", isSubmitPage && "md:mt-5")}>
-          <SubmitButton icon={Send}>
-            <Trans>Invia</Trans>
-          </SubmitButton>
-        </div>
-      </div>
-      {({ lang }) => {
-        const msg = langMessage(lang);
-        if (!msg) return;
-        return (
-          <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-warning">
-            <TriangleAlert size={16} className="flex-none" /> {msg}
-          </div>
-        );
-      }}
-      {editorValue?.includes("@check-accepted") && (
-        <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-warning">
-          <TriangleAlert size={16} className="flex-none" />
-          <div>
-            <Trans>
-              <b>Stai inviando una soluzione ufficiale.</b> Copiare le soluzioni è altamente
-              sconsigliato.
-            </Trans>
+    <>
+      <Form
+        defaultValue={{ lang: defaultLanguage ?? Object.keys(languages)[0] }}
+        onSubmit={submit}
+        className="!max-w-full grow">
+        <H2>
+          <Trans>Invia soluzione</Trans>
+        </H2>
+        <div
+          className={clsx(
+            "mb-4 flex w-full max-w-sm flex-col items-center",
+            isSubmitPage && "md:max-w-3xl md:flex-row md:items-start md:gap-4",
+          )}>
+          <SelectField
+            field="lang"
+            label={t`Linguaggio`}
+            options={mapValues(languages, (_, lang) => lang)}
+          />
+          <SingleFileField
+            field="src"
+            label={t`Codice sorgente`}
+            validate={validateFile}
+            optional={isSubmitPage}
+          />
+          <div className={clsx("flex-none", isSubmitPage && "md:mt-5")}>
+            <SubmitButton disabled={isOfficialSolution} icon={Send}>
+              <Trans>Invia</Trans>
+            </SubmitButton>
           </div>
         </div>
-      )}
-      <Link href={`/task/${task.name}/submit/help`} className="link link-info mb-4">
-        <Trans>Come funziona l'input e l'output?</Trans>
-      </Link>
-      {isSubmitPage &&
-        (({ lang, src }) => (
-          <div className="relative min-h-[75vh] w-full grow overflow-hidden rounded border border-base-content/10 *:absolute *:inset-0">
-            <div className="skeleton rounded-none" />
-            <Editor
-              language={languages[lang ?? ""] ?? Language.Plain}
-              languages={Object.values(languages)}
-              file={src}
-              onChange={setEditorValue}
-            />
+        {({ lang }) => {
+          const msg = langMessage(lang);
+          if (!msg) return;
+          return (
+            <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-warning">
+              <TriangleAlert size={16} className="flex-none" /> {msg}
+            </div>
+          );
+        }}
+        {isOfficialSolution && (
+          <div className="mb-4 flex max-md:max-w-sm items-center gap-2 text-sm text-error">
+            <TriangleAlert size={16} className="flex-none" />
+            <div>
+              <Trans>
+                <b>
+                  L'invio di soluzioni ufficiali è proibito dalle{" "}
+                  <Link href="/guidelines" className="link link-info">
+                    linee guida
+                  </Link>
+                  .
+                </b>
+              </Trans>
+            </div>
           </div>
-        ))}
-    </Form>
+        )}
+        <Link href={`/task/${task.name}/submit/help`} className="link link-info mb-4">
+          <Trans>Come funziona l'input e l'output?</Trans>
+        </Link>
+        {isSubmitPage &&
+          (({ lang, src }) => (
+            <div className="relative min-h-[75vh] w-full mb-4 grow overflow-hidden rounded border border-base-content/10 *:absolute *:inset-0">
+              <div className="skeleton rounded-none" />
+              <Editor
+                language={languages[lang ?? ""] ?? Language.Plain}
+                languages={Object.values(languages)}
+                file={src}
+                onChange={setEditorValue}
+              />
+            </div>
+          ))}
+        {isSubmitPage && (
+          <Link href="/guidelines" className="link link-info mb-4">
+            <Trans>Linee guida sul codice sottoposto</Trans>
+          </Link>
+        )}
+      </Form>
+      <GuidelinesModal ref={modalRef} redirectTo={`/task/${task.name}/submit`} />
+    </>
   );
 }

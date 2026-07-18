@@ -21,6 +21,10 @@ msgstr "(nieprawidłowa nazwa użytkownika)"
 msgid "{num} categorie"
 msgstr "{num} kategorii"
 
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "<0>L'invio di soluzioni ufficiali è proibito dalle <1>linee guida</1>.</0>"
+msgstr "<0>Przesyłanie oficjalnych rozwiązań jest zabronione zgodnie z <1>wytycznymi</1>.</0>"
+
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "<0>Memoria utilizzata</0>:"
 msgstr "<0>Wykorzystana pamięć</0>:"
@@ -28,10 +32,6 @@ msgstr "<0>Wykorzystana pamięć</0>:"
 #: src/app/(training)/(home)/page.tsx
 msgid "<0>Portale di allenamento delle</0> <1>Olimpiadi Italiane di Informatica</1>"
 msgstr "<1>Włoska Olimpiada Informatyczna</1> <0>– portal treningowy</0>"
-
-#: src/app/(training)/task/[name]/submit/batch.tsx
-msgid "<0>Stai inviando una soluzione ufficiale.</0> Copiare le soluzioni è altamente sconsigliato."
-msgstr "<0>Przesyłasz oficjalne rozwiązanie.</0> Kopiowanie rozwiązań jest wysoce niewskazane."
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "<0>Tempo di compilazione</0>:"
@@ -70,6 +70,14 @@ msgstr "Musisz być zalogowany, aby zobaczyć swoje zgłoszenia"
 #: src/lib/auth/errors.ts
 msgid "Accesso negato"
 msgstr "Dostęp zabroniony"
+
+#: src/app/(training)/guidelines/accept-button.tsx
+msgid "Accetta le linee guida"
+msgstr "Akceptuj wytyczne"
+
+#: src/app/(training)/guidelines/accept-button.tsx
+msgid "Accettato"
+msgstr "Zaakceptowano"
 
 #: src/lib/auth/errors.ts
 msgid "Account associato a un altro utente"
@@ -805,6 +813,14 @@ msgstr "Limit pamięci:"
 msgid "Limite di tempo:"
 msgstr "Limit czasu:"
 
+#: src/app/(training)/task/[name]/submit/guidelines-modal.tsx
+msgid "Linee guida"
+msgstr "Wytyczne"
+
+#: src/app/(training)/task/[name]/submit/batch.tsx
+msgid "Linee guida sul codice sottoposto"
+msgstr "Wytyczne dotyczące przesłanego kodu"
+
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submissions/page-client.tsx
 #: src/app/(training)/task/[name]/submit/batch.tsx
@@ -1090,6 +1106,10 @@ msgstr "Hasło zbyt długie"
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Per continuare, inserisci la frase di conferma:"
 msgstr "Aby kontynuować, wpisz zdanie potwierdzającą:"
+
+#: src/app/(training)/task/[name]/submit/guidelines-modal.tsx
+msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
+msgstr "Aby przesłać rozwiązania, należy przeczytać <0>wytyczne</0> i zaakceptować warunki."
 
 #: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più difficili"
@@ -1586,6 +1606,7 @@ msgid "Utente già esistente"
 msgstr "Użytkownik już istnieje"
 
 #: src/app/(training)/(email-callback)/delete-account/actions.ts
+#: src/app/(training)/guidelines/actions.ts
 #: src/app/(training)/settings/delete/actions.ts
 #: src/app/(training)/settings/password/actions.ts
 #: src/app/(training)/settings/profile/actions.ts

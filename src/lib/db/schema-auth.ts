@@ -20,6 +20,7 @@ export const socialUsers = pgTable("social_users", {
   banned: boolean("banned"),
   banReason: text("ban_reason"),
   banExpires: timestamp("ban_expires"),
+  guidelinesAcceptedAt: timestamp("guidelines_accepted_at"),
   registrationStep: integer("registration_step").notNull(),
   createdAt: timestamp("registration_time").notNull(),
   updatedAt: timestamp("updated_at").notNull(),

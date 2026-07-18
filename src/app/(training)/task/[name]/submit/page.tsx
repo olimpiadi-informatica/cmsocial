@@ -53,6 +53,7 @@ export default async function Page({ params }: Props) {
       task={task}
       languages={languages}
       cookieLanguage={cookieStore.get("editor-lang")?.value}
+      guidelinesAccepted={!!user.guidelinesAcceptedAt}
     />
   );
 }

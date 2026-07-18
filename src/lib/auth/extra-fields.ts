@@ -17,4 +17,8 @@ export const userExtraFields = {
     type: "number",
     required: false,
   },
+  guidelinesAcceptedAt: {
+    type: "date",
+    required: false,
+  },
 } as const satisfies BetterAuthDBOptions<"user">["additionalFields"];
