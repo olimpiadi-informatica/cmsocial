@@ -24,16 +24,22 @@ export function Pagination({ page, pageCount }: Props) {
   );
 }
 
-function SmallPagination({ page, pageCount }: Props) {
-  const middle = clamp(page, 3, pageCount - 2);
-  const last = clamp(middle + 2, 1, pageCount) + 1;
+function getPageRange(page: number, pageCount: number, maxPages: number) {
+  if (pageCount <= maxPages) {
+    return range(1, pageCount + 1);
+  }
+  const half = Math.floor(maxPages / 2);
+  const start = clamp(page - half, 1, pageCount - maxPages + 1);
+  return range(start, start + maxPages);
+}
 
+function SmallPagination({ page, pageCount }: Props) {
   return (
     <div className="join w-full justify-center *:btn *:no-animation *:w-11 md:hidden">
       <PageButton page={page - 1} disabled={page <= 1} prefetch>
         <ChevronLeft size={20} />
       </PageButton>
-      {range(middle - 2, last).map((i) => (
+      {getPageRange(page, pageCount, 5).map((i) => (
         <PageButton key={i} page={i} className={i === page && "!btn-active"}>
           {i}
         </PageButton>
@@ -46,9 +52,6 @@ function SmallPagination({ page, pageCount }: Props) {
 }
 
 function LargePagination({ page, pageCount }: Props) {
-  const middle = clamp(page, 4, pageCount - 3);
-  const last = clamp(middle + 3, 1, pageCount) + 1;
-
   return (
     <div className="join w-full justify-center *:btn *:no-animation *:w-14 max-md:hidden">
       <PageButton page={1} disabled={page <= 1}>
@@ -57,7 +60,7 @@ function LargePagination({ page, pageCount }: Props) {
       <PageButton page={page - 1} disabled={page <= 1} prefetch>
         <ChevronLeft size={20} />
       </PageButton>
-      {range(middle - 3, last).map((i) => (
+      {getPageRange(page, pageCount, 7).map((i) => (
         <PageButton key={i} page={i} className={i === page && "!btn-active"}>
           {i}
         </PageButton>
