@@ -74,7 +74,6 @@ const nextConfig: NextConfig = {
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],
     turbopackRustReactCompiler: true,
-    viewTransition: true,
   },
 };
 
