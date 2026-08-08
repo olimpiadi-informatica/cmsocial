@@ -86,6 +86,10 @@ function getFilter(userId: number | undefined, options: TaskListOptions): SQL | 
 
 function getOrder(options: TaskListOptions) {
   const order = [];
+  if (options.order === "random") {
+    order.push(sql`RANDOM()`);
+    return order;
+  }
   if (options.order === "hardest") {
     order.push(desc(socialTasks.scoreMultiplier), asc(socialTasks.correctUserCount));
   }

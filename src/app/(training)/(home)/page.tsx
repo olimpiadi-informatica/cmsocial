@@ -16,7 +16,12 @@ import style from "./home.module.css";
 export default async function Home() {
   await loadLocale();
 
-  const topTasks = await getTaskList({} as TaskListOptions, undefined, 1, 3);
+  const topTasks = await getTaskList(
+    { minDiff: 10, order: "random" } as TaskListOptions,
+    undefined,
+    1,
+    3,
+  );
   const topUsers = await getRanking(1, 3);
 
   return (
