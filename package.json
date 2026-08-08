@@ -73,7 +73,7 @@
     "pdfjs-dist": "5.4.296",
     "pdfobject": "^2.3.1",
     "pg": "^8.22.0",
-    "postcss": "^8.5.15",
+    "postcss": "^8.5.23",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-google-recaptcha": "^3.1.0",
