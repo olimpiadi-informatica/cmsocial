@@ -1,12 +1,27 @@
 import { cache } from "react";
 
 import { TZDate } from "@date-fns/tz";
-import { formatISO, fromUnixTime, getUnixTime, parseISO } from "date-fns";
-import { and, count, eq, gte, lt, sql, sum } from "drizzle-orm";
+import {
+  eachMonthOfInterval,
+  endOfMonth,
+  formatISO,
+  fromUnixTime,
+  getUnixTime,
+  parseISO,
+  startOfMonth,
+  subMonths,
+} from "date-fns";
+import { and, asc, count, eq, gte, lt, sql, sum } from "drizzle-orm";
 
 import { cmsDb, terryDb } from "~/lib/db";
-import { evaluations, participations, submissions, tasks } from "~/lib/db/schema-cms";
-import { taskScores } from "~/lib/db/schema-cmsocial";
+import {
+  evaluations,
+  participations,
+  submissionResults,
+  submissions,
+  tasks,
+} from "~/lib/db/schema-cms";
+import { socialTasks, taskScores } from "~/lib/db/schema-cmsocial";
 import { terrySubmissions, terryTasks, terryUserTasks } from "~/lib/db/schema-terry";
 
 export const getSolvedCount = cache(async (userId: number, username: string): Promise<number> => {
@@ -132,3 +147,82 @@ export const getTotalEvaluationTime = cache(async (userId: number): Promise<numb
     .where(eq(participations.userId, userId));
   return Number(time.time) ?? 0;
 });
+
+export type ScoreProgressPoint = {
+  date: string;
+  score: number;
+};
+
+export const getScoreProgress = cache(
+  async (userId: number, registrationTime?: Date): Promise<ScoreProgressPoint[]> => {
+    const userSubmissions = await cmsDb
+      .select({
+        taskId: submissions.taskId,
+        timestamp: submissions.timestamp,
+        score: sql<number>`COALESCE(${submissionResults.score}, 0)`,
+        multiplier: sql<number>`COALESCE(${socialTasks.scoreMultiplier}, 1)`,
+      })
+      .from(submissions)
+      .innerJoin(tasks, eq(tasks.id, submissions.taskId))
+      .innerJoin(participations, eq(participations.id, submissions.participationId))
+      .innerJoin(
+        submissionResults,
+        and(
+          eq(submissionResults.submissionId, submissions.id),
+          eq(submissionResults.datasetId, tasks.activeDatasetId),
+        ),
+      )
+      .leftJoin(socialTasks, eq(socialTasks.id, tasks.id))
+      .where(
+        and(
+          eq(participations.userId, userId),
+          eq(participations.contestId, Number(process.env.CMS_CONTEST_ID)),
+          eq(tasks.contestId, Number(process.env.CMS_CONTEST_ID)),
+        ),
+      )
+      .orderBy(asc(submissions.timestamp));
+
+    if (userSubmissions.length === 0) {
+      return [];
+    }
+
+    const firstDate = userSubmissions[0].timestamp;
+    const now = new Date();
+    const startDate = startOfMonth(
+      registrationTime && registrationTime < firstDate ? registrationTime : subMonths(firstDate, 1),
+    );
+    const endDate = startOfMonth(now);
+    const months = eachMonthOfInterval({
+      start: startDate <= endDate ? startDate : endDate,
+      end: endDate,
+    });
+
+    const taskBestScores = new Map<number, number>();
+    let currentSubIndex = 0;
+    let runningScore = 0;
+
+    const result: ScoreProgressPoint[] = [];
+
+    for (const month of months) {
+      const monthEnd = endOfMonth(month);
+      while (
+        currentSubIndex < userSubmissions.length &&
+        userSubmissions[currentSubIndex].timestamp <= monthEnd
+      ) {
+        const sub = userSubmissions[currentSubIndex];
+        const prevScore = taskBestScores.get(sub.taskId) ?? 0;
+        if (sub.score > prevScore) {
+          runningScore += (sub.score - prevScore) * sub.multiplier;
+          taskBestScores.set(sub.taskId, sub.score);
+        }
+        currentSubIndex++;
+      }
+      result.push({
+        date: formatISO(month, { representation: "date" }),
+        score: Math.round(runningScore),
+      });
+    }
+
+    return result;
+  },
+);

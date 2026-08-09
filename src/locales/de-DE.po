@@ -950,6 +950,10 @@ msgstr "Keine Probleme gelöst"
 msgid "Nessun problema trovato"
 msgstr "Keine Probleme gefunden"
 
+#: src/app/(training)/user/[username]/progress-chart.tsx
+msgid "Nessun progresso registrato"
+msgstr "Kein Fortschritt aufgezeichnet"
+
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Nessun tag"
 msgstr "Keine Tags"
@@ -1177,6 +1181,10 @@ msgstr "Profil von {username}"
 #: src/lib/algobadge.ts
 msgid "Programmazione dinamica"
 msgstr "Dynamische Programmierung"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Progresso"
+msgstr "Fortschritt"
 
 #: src/lib/auth/errors.ts
 msgid "Provider non trovato"

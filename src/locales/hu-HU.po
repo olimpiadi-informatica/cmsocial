@@ -950,6 +950,10 @@ msgstr "Nincsenek megoldott feladatok"
 msgid "Nessun problema trovato"
 msgstr "Nincs feladat"
 
+#: src/app/(training)/user/[username]/progress-chart.tsx
+msgid "Nessun progresso registrato"
+msgstr "Nincs rögzített előrehaladás"
+
 #: src/app/(training)/task/[name]/tags/page-client.tsx
 msgid "Nessun tag"
 msgstr "Nincsenek címkék"
@@ -1177,6 +1181,10 @@ msgstr "{username} profilja"
 #: src/lib/algobadge.ts
 msgid "Programmazione dinamica"
 msgstr "Dinamikus programozás"
+
+#: src/app/(training)/user/[username]/page.tsx
+msgid "Progresso"
+msgstr "Előrehaladás"
 
 #: src/lib/auth/errors.ts
 msgid "Provider non trovato"

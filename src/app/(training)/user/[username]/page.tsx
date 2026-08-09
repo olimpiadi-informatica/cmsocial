@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 
 import { Trans, useLingui } from "@lingui/react/macro";
 import { Avatar, Card, CardBody } from "@olinfo/react-components";
@@ -13,6 +14,7 @@ import { getSessionUser, hasPermission } from "~/lib/user";
 
 import { ActivityGraph } from "./activity-graph";
 import { ImpersonateButton } from "./impersonate";
+import { Progress } from "./progress";
 import { Stats } from "./stats";
 import { TaskScores } from "./task-scores";
 
@@ -117,6 +119,13 @@ export default async function Page({ params }: Props) {
       <Card className="*:w-full">
         <CardBody title={t`Attività`}>
           <ActivityGraph user={user} />
+        </CardBody>
+      </Card>
+      <Card className="*:w-full">
+        <CardBody title={t`Progresso`}>
+          <Suspense fallback={<div className="h-64 w-full" />}>
+            <Progress user={user} me={me} />
+          </Suspense>
         </CardBody>
       </Card>
       <Card>
