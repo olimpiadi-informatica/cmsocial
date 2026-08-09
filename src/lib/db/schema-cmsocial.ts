@@ -4,6 +4,7 @@ import {
   doublePrecision,
   integer,
   jsonb,
+  pgMaterializedView,
   pgTable,
   serial,
   text,
@@ -58,3 +59,10 @@ export const quizmsSession = pgTable("quizms_session", {
   startedAt: timestamp("started_at"),
   finishedAt: timestamp("finished_at"),
 });
+
+export const userMonthlyRanks = pgMaterializedView("user_monthly_ranks", {
+  userId: integer("user_id").notNull(),
+  month: date("month", { mode: "date" }).notNull(),
+  score: integer("score").notNull(),
+  rank: integer("rank").notNull(),
+}).existing();

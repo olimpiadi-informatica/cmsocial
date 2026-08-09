@@ -1131,6 +1131,10 @@ msgstr "Más recientes"
 msgid "Portale di allenamento dei Giochi di Fibonacci"
 msgstr "Portal de entrenamiento de los Juegos de Fibonacci"
 
+#: src/app/(training)/user/[username]/progress-chart.tsx
+msgid "Posizione"
+msgstr "Posición"
+
 #: src/app/(training)/tasks/years/oii/table.tsx
 msgid "Pre-OII"
 msgstr "Pre-OII"
@@ -1198,6 +1202,10 @@ msgstr "Provincia"
 #: src/lib/language.ts
 msgid "Pseudocodice"
 msgstr "Pseudocódigo"
+
+#: src/app/(training)/user/[username]/progress-chart.tsx
+msgid "Punteggio"
+msgstr "Puntuación"
 
 #: src/app/(training)/task/[name]/layout.tsx
 msgid "Punteggio massimo:"

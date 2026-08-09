@@ -2,7 +2,12 @@ import { eq, inArray, sql } from "drizzle-orm";
 import { chunk, clamp, sumBy } from "es-toolkit";
 
 import { cmsDb } from "~/lib/db";
-import { socialParticipations, socialTasks, taskScores } from "~/lib/db/schema-cmsocial";
+import {
+  socialParticipations,
+  socialTasks,
+  taskScores,
+  userMonthlyRanks,
+} from "~/lib/db/schema-cmsocial";
 import { outLogger } from "~/lib/logger";
 
 function getScore(s: number): number {
@@ -132,5 +137,13 @@ export async function updateScores() {
     return;
   }
 
-  outLogger.info("Scores updated!");
+  outLogger.info("Refreshing user monthly ranks materialized view...");
+  try {
+    await cmsDb.refreshMaterializedView(userMonthlyRanks).concurrently();
+  } catch (err) {
+    outLogger.error("Failed to refresh user monthly ranks materialized view", err);
+    return;
+  }
+
+  outLogger.info("Scores and user ranks updated!");
 }

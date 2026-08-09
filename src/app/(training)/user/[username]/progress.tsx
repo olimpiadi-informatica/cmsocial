@@ -7,7 +7,7 @@ import { ProgressChart } from "./progress-chart";
 export async function Progress({ user, me }: { user: User; me?: AuthUser }) {
   const isDifferentUser = me && me.username !== user.username;
   const [userData, meData] = await Promise.all([
-    getScoreProgress(user.cmsId, user.registrationTime),
+    getScoreProgress(user.cmsId),
     isDifferentUser ? getScoreProgress(me.cmsId) : undefined,
   ]);
 

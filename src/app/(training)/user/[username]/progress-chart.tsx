@@ -2,9 +2,9 @@
 
 import { useMemo, useState } from "react";
 
-import { useLingui } from "@lingui/react/macro";
+import { Trans, useLingui } from "@lingui/react/macro";
 import clsx from "clsx";
-import { eachMonthOfInterval, formatISO, intlFormat, parseISO } from "date-fns";
+import { intlFormat } from "date-fns";
 import {
   Area,
   AreaChart,
@@ -26,50 +26,44 @@ type Props = {
 
 export function ProgressChart({ username, meUsername, userData, meData }: Props) {
   const { i18n, t } = useLingui();
+  const [metric, setMetric] = useState<"score" | "rank">("score");
   const [showUser, setShowUser] = useState(true);
   const [showMe, setShowMe] = useState(false);
 
   const data = useMemo(() => {
     if (!showMe || !meData) {
-      return userData;
+      return userData.map((d) => ({
+        date: d.date,
+        score: d.score,
+        rank: d.rank,
+        meScore: undefined,
+        meRank: undefined,
+      }));
     }
     if (!showUser) {
-      return meData.map((d) => ({ date: d.date, score: 0, meScore: d.score }));
+      return meData.map((d) => ({
+        date: d.date,
+        score: undefined,
+        rank: undefined,
+        meScore: d.score,
+        meRank: d.rank,
+      }));
     }
 
-    const mapUser = new Map(userData.map((d) => [d.date, d.score]));
-    const mapMe = new Map(meData.map((d) => [d.date, d.score]));
+    const mapUser = new Map(userData.map((d) => [d.date, d]));
+    const mapMe = new Map(meData.map((d) => [d.date, d]));
 
     const allDates = [...new Set([...mapUser.keys(), ...mapMe.keys()])].sort();
-    if (allDates.length === 0) return [];
 
-    const startDate = parseISO(allDates[0]);
-    const endDate = parseISO(allDates[allDates.length - 1]);
-    const months = eachMonthOfInterval({ start: startDate, end: endDate });
-
-    let lastUserScore = 0;
-    let lastMeScore = 0;
-    const firstUserDate = userData[0]?.date;
-    const firstMeDate = meData[0]?.date;
-
-    return months.map((month) => {
-      const isoDate = formatISO(month, { representation: "date" });
-      if (mapUser.has(isoDate)) {
-        lastUserScore = mapUser.get(isoDate)!;
-      } else if (firstUserDate && isoDate < firstUserDate) {
-        lastUserScore = 0;
-      }
-
-      if (mapMe.has(isoDate)) {
-        lastMeScore = mapMe.get(isoDate)!;
-      } else if (firstMeDate && isoDate < firstMeDate) {
-        lastMeScore = 0;
-      }
-
+    return allDates.map((date) => {
+      const u = mapUser.get(date);
+      const m = mapMe.get(date);
       return {
-        date: isoDate,
-        score: lastUserScore,
-        meScore: lastMeScore,
+        date,
+        score: u?.score,
+        rank: u?.rank,
+        meScore: m?.score,
+        meRank: m?.rank,
       };
     });
   }, [showUser, showMe, userData, meData]);
@@ -82,47 +76,76 @@ export function ProgressChart({ username, meUsername, userData, meData }: Props)
     );
   }
 
+  const isRank = metric === "rank";
+  const userDataKey = isRank ? "rank" : "score";
+  const meDataKey = isRank ? "meRank" : "meScore";
+
   return (
     <div className="flex flex-col gap-2 w-full">
-      {meUsername && (
-        <div className="flex items-center gap-4 text-xs font-medium mb-1">
-          <button
-            type="button"
-            onClick={() => setShowUser((prev) => !prev)}
-            className={clsx(
-              "flex items-center gap-1.5 cursor-pointer select-none transition-opacity",
-              showUser ? "opacity-100" : "opacity-40 hover:opacity-70",
-            )}>
-            <div
+      <div className="flex items-center justify-between gap-2 flex-wrap mb-1">
+        {meUsername ? (
+          <div className="flex items-center gap-4 text-xs font-medium">
+            <button
+              type="button"
+              onClick={() => setShowUser((prev) => !prev)}
               className={clsx(
-                "size-2.5 rounded-full",
-                showUser ? "bg-primary" : "bg-base-content/40",
-              )}
-            />
-            <span className="text-base-content/90">{username}</span>
-          </button>
+                "flex items-center gap-1.5 cursor-pointer select-none transition-opacity",
+                showUser ? "opacity-100" : "opacity-40 hover:opacity-70",
+              )}>
+              <div
+                className={clsx(
+                  "size-2.5 rounded-full",
+                  showUser ? "bg-primary" : "bg-base-content/40",
+                )}
+              />
+              <span className="text-base-content/90">{username}</span>
+            </button>
 
+            <button
+              type="button"
+              onClick={() => setShowMe((prev) => !prev)}
+              className={clsx(
+                "flex items-center gap-1.5 cursor-pointer select-none transition-opacity",
+                showMe ? "opacity-100" : "opacity-40 hover:opacity-70",
+              )}>
+              <div
+                className={clsx(
+                  "size-2.5 rounded-full",
+                  showMe ? "bg-secondary" : "bg-base-content/40",
+                )}
+              />
+              <span className="text-base-content/90">{meUsername}</span>
+            </button>
+          </div>
+        ) : (
+          <div />
+        )}
+
+        <div className="join">
           <button
             type="button"
-            onClick={() => setShowMe((prev) => !prev)}
             className={clsx(
-              "flex items-center gap-1.5 cursor-pointer select-none transition-opacity",
-              showMe ? "opacity-100" : "opacity-40 hover:opacity-70",
-            )}>
-            <div
-              className={clsx(
-                "size-2.5 rounded-full",
-                showMe ? "bg-secondary" : "bg-base-content/40",
-              )}
-            />
-            <span className="text-base-content/90">{meUsername}</span>
+              "btn btn-xs join-item",
+              metric === "score" ? "btn-active btn-neutral" : "btn-ghost text-base-content/70",
+            )}
+            onClick={() => setMetric("score")}>
+            <Trans>Punteggio</Trans>
+          </button>
+          <button
+            type="button"
+            className={clsx(
+              "btn btn-xs join-item",
+              metric === "rank" ? "btn-active btn-neutral" : "btn-ghost text-base-content/70",
+            )}
+            onClick={() => setMetric("rank")}>
+            <Trans>Posizione</Trans>
           </button>
         </div>
-      )}
+      </div>
 
       <div className="h-64 w-full">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data} margin={{ top: 10, right: 16, left: 16, bottom: 0 }}>
+          <AreaChart key={metric} data={data} margin={{ top: 10, right: 16, left: 16, bottom: 0 }}>
             <defs>
               <linearGradient id="scoreProgressGrad" x1="0" y1="0" x2="0" y2="1">
                 <stop offset="5%" stopColor="oklch(var(--p))" stopOpacity={0.3} />
@@ -150,10 +173,15 @@ export function ProgressChart({ username, meUsername, userData, meData }: Props)
               }}
             />
             <YAxis
+              scale={isRank ? "log" : "auto"}
+              domain={isRank ? [1, "dataMax"] : ["auto", "auto"]}
+              reversed={isRank}
+              allowDataOverflow={true}
               axisLine={false}
               tickLine={false}
               width={56}
               tick={{ fill: "oklch(var(--bc) / 0.7)", fontSize: 12 }}
+              tickFormatter={(value: number) => (isRank ? `#${value}` : `${value}`)}
             />
             <Tooltip
               content={({ active, payload, label }) => {
@@ -165,31 +193,38 @@ export function ProgressChart({ username, meUsername, userData, meData }: Props)
                 );
 
                 const userPayload = showUser
-                  ? payload.find((p) => p.dataKey === "score")
+                  ? payload.find((p) => p.dataKey === userDataKey)
                   : undefined;
-                const mePayload = showMe ? payload.find((p) => p.dataKey === "meScore") : undefined;
+                const mePayload = showMe ? payload.find((p) => p.dataKey === meDataKey) : undefined;
 
                 if (!userPayload && !mePayload) return null;
+
+                const userVal = userPayload?.value;
+                const meVal = mePayload?.value;
 
                 return (
                   <div className="rounded-lg bg-base-200 border border-base-content/10 shadow-xl px-3 py-2 text-xs flex flex-col gap-1.5">
                     <div className="font-semibold capitalize">{formattedDate}</div>
                     <div className="flex flex-col gap-1">
-                      {userPayload && (
+                      {userPayload && userVal !== undefined && userVal !== null && (
                         <div className="flex items-center gap-2 text-base-content/80">
                           <div className="size-2 rounded-full bg-primary" />
                           <span>
                             {username}:{" "}
-                            <span className="font-bold text-base-content">{userPayload.value}</span>
+                            <span className="font-bold text-base-content">
+                              {isRank ? `#${userVal}` : userVal}
+                            </span>
                           </span>
                         </div>
                       )}
-                      {mePayload && (
+                      {mePayload && meVal !== undefined && meVal !== null && (
                         <div className="flex items-center gap-2 text-base-content/80">
                           <div className="size-2 rounded-full bg-secondary" />
                           <span>
                             {meUsername}:{" "}
-                            <span className="font-bold text-base-content">{mePayload.value}</span>
+                            <span className="font-bold text-base-content">
+                              {isRank ? `#${meVal}` : meVal}
+                            </span>
                           </span>
                         </div>
                       )}
@@ -201,7 +236,7 @@ export function ProgressChart({ username, meUsername, userData, meData }: Props)
             {showUser && (
               <Area
                 type="monotone"
-                dataKey="score"
+                dataKey={userDataKey}
                 name={username}
                 stroke="oklch(var(--p))"
                 strokeWidth={2}
@@ -218,7 +253,7 @@ export function ProgressChart({ username, meUsername, userData, meData }: Props)
             {showMe && (
               <Area
                 type="monotone"
-                dataKey="meScore"
+                dataKey={meDataKey}
                 name={meUsername}
                 stroke="oklch(var(--s))"
                 strokeWidth={2}
