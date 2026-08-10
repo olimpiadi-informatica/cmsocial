@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 import { logout, processQuizmsMessage } from "./actions";
 import { quizmsInMessageSchema } from "./utils";
@@ -8,10 +8,7 @@ import { quizmsInMessageSchema } from "./utils";
 export function PageClient({ contest, quizmsUrl }: { contest: string; quizmsUrl: string }) {
   const ref = useRef<HTMLIFrameElement>(null);
 
-  const title = useMemo(
-    () => (contest.startsWith("fibonacci") ? "Giochi di Fibonacci" : "Scolastiche"),
-    [contest],
-  );
+  const title = contest.startsWith("fibonacci") ? "Giochi di Fibonacci" : "Scolastiche";
 
   useEffect(() => {
     const controller = new AbortController();

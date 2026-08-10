@@ -55,18 +55,22 @@ export function PageClient({ task, input }: Props) {
   };
 
   const onChangeInput = async () => {
-    const err = await changeInput(input!.id);
+    if (!input) return;
+
+    const err = await changeInput(input.id);
     if (err) throw new Error(t(err));
     await new Promise(() => {});
   };
 
   const onSubmit = async (data: { source: File; output: File }) => {
+    if (!input) return;
+
     const source = new FormData();
     source.append("file", data.source);
     const output = new FormData();
     output.append("file", data.output);
 
-    const err = await uploadAndSubmit(task.name, input!.id, source, output);
+    const err = await uploadAndSubmit(task.name, input.id, source, output);
     if (err) throw new Error(isString(err) ? err : t(err));
     await new Promise(() => {});
   };

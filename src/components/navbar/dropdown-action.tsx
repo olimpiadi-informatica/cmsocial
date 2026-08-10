@@ -1,6 +1,6 @@
 "use client";
 
-import { type ReactNode, useCallback } from "react";
+import type { ReactNode } from "react";
 
 import type { MessageDescriptor } from "@lingui/core";
 import { useLingui } from "@lingui/react/macro";
@@ -17,10 +17,10 @@ type Props = {
 export function DropdownAction({ action, className, active, children }: Props) {
   const { t } = useLingui();
 
-  const onClick = useCallback(async () => {
+  const onClick = async () => {
     const err = await action();
     if (err) throw new Error(t(err));
-  }, [action, t]);
+  };
 
   return (
     <DropdownItem>
