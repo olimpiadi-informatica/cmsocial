@@ -4,11 +4,13 @@ import {
   doublePrecision,
   integer,
   jsonb,
+  pgEnum,
   pgMaterializedView,
   pgTable,
   serial,
   text,
   timestamp,
+  uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
 
@@ -66,3 +68,36 @@ export const userMonthlyRanks = pgMaterializedView("user_monthly_ranks", {
   score: integer("score").notNull(),
   rank: integer("rank").notNull(),
 }).existing();
+
+export const editorialType = pgEnum("editorial_type", ["markdown", "pdf_url", "pdf_file"]);
+
+export const editorials = pgTable("editorials", {
+  id: serial().primaryKey(),
+  type: editorialType("type").notNull(),
+  title: varchar("title", { length: 255 }),
+  content: text("content"),
+  url: varchar("url", { length: 1024 }),
+  digest: varchar("digest", { length: 64 }),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+  updatedAt: timestamp("updated_at").defaultNow().notNull(),
+});
+
+export const taskEditorials = pgTable(
+  "task_editorials",
+  {
+    id: serial().primaryKey(),
+    editorialId: integer("editorial_id")
+      .notNull()
+      .references(() => editorials.id, { onDelete: "cascade" }),
+    taskName: varchar("task_name", { length: 128 }).notNull(),
+    isTerry: boolean("is_terry").default(false).notNull(),
+    page: integer("page"),
+  },
+  (table) => [
+    uniqueIndex("task_editorials_task_name_is_terry_editorial_id_idx").on(
+      table.taskName,
+      table.isTerry,
+      table.editorialId,
+    ),
+  ],
+);

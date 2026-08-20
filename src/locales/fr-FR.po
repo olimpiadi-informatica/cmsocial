@@ -41,9 +41,11 @@ msgstr "<0>Temps de compilation</0>:"
 msgid "2FA non abilitato"
 msgstr "2FA non activé"
 
+#: src/app/(training)/(terry)/task/terry/[name]/editorial/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/login/page-client.tsx
+#: src/app/(training)/task/[name]/editorial/page.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi"
@@ -57,7 +59,9 @@ msgstr "Se connecter / S'inscrire"
 msgid "Accedi con {name}"
 msgstr "Se connecter avec {name}"
 
+#: src/app/(training)/(terry)/task/terry/[name]/editorial/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
+#: src/app/(training)/task/[name]/editorial/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi per inviare soluzioni"
 msgstr "Connectez-vous pour soumettre des solutions"
@@ -164,6 +168,11 @@ msgstr "Autres Ressources"
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Anno"
 msgstr "Année"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Annulla"
+msgstr "Annuler"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Anziano"
@@ -1115,6 +1124,11 @@ msgstr "Pour continuer, entrez la phrase de confirmation :"
 msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 msgstr "Pour soumettre des solutions, il est nécessaire de lire les <0>directives</0> et d'accepter les conditions."
 
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Per poter consultare la soluzione devi aver ottenuto un punteggio maggiore di zero e non devi aver inviato soluzioni negli ultimi 7 giorni."
+msgstr "Pour pouvoir consulter la solution, vous devez avoir obtenu un score supérieur à zéro et ne pas avoir soumis de solutions au cours des 7 derniers jours."
+
 #: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più difficili"
 msgstr "Plus difficiles"
@@ -1360,6 +1374,11 @@ msgstr "Écoles secondaires"
 msgid "Segnalazioni bug"
 msgstr "Rapports de bogues"
 
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Sei sicuro di voler consultare la soluzione del problema? Ti consigliamo di continuare a provare a risolverlo autonomamente prima di consultarla."
+msgstr "Êtes-vous sûr de vouloir consulter la solution du problème ? Nous vous conseillons de continuer à essayer de le résoudre par vous-même avant de la consulter."
+
 #: src/app/(training)/settings/page.tsx
 msgid "Seleziona le impostazioni da modificare"
 msgstr "Sélectionnez les paramètres à modifier"
@@ -1391,6 +1410,18 @@ msgstr "Sites officiels"
 #: src/app/fibonacci/page.tsx
 msgid "Sito ufficiale"
 msgstr "Site officiel"
+
+#: src/app/(training)/(terry)/task/terry/[name]/editorial/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/editorial/page.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Soluzione"
+msgstr "Solution"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Soluzione non disponibile"
+msgstr "Solution non disponible"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni corrette:"
@@ -1656,6 +1687,11 @@ msgstr "Ancien mot de passe"
 #: src/app/signup/page.tsx
 msgid "Verifica email"
 msgstr "Vérification de l'e-mail"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Visualizza soluzione"
+msgstr "Afficher la solution"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"

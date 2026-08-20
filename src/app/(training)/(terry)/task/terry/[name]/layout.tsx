@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import type { ReactNode } from "react";
 
 import { getTerryTask } from "~/lib/api/task-terry";
+import { checkCanViewTerryEditorial } from "~/lib/editorials";
+import { getSessionUser } from "~/lib/user";
 
 import { TaskTabs } from "./tabs";
 
@@ -29,12 +31,15 @@ export default async function Layout({ params, children }: Props) {
   const task = await getTerryTask(taskName);
   if (!task) notFound();
 
+  const user = await getSessionUser();
+  const editorialAccess = await checkCanViewTerryEditorial(taskName, user?.username);
+
   return (
     <div className="flex grow flex-col gap-4">
       <header>
         <h1 className="text-center text-3xl font-bold">{task.title}</h1>
       </header>
-      <TaskTabs />
+      <TaskTabs editorialAccess={editorialAccess} />
       {children}
     </div>
   );

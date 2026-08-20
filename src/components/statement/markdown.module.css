@@ -3,4 +3,40 @@
     @apply prose-blockquote:rounded prose-blockquote:bg-warning/10 *:prose-blockquote:py-1 *:prose-blockquote:pr-4 before:*:prose-blockquote:content-none;
     @apply prose-img:mx-auto prose-img:rounded-box prose-img:bg-white prose-img:p-4;
     @apply prose-hr:my-4;
+    @apply prose-pre:border prose-pre:border-base-content/10 prose-pre:rounded-box;
 }
+
+.statement details {
+    @apply rounded-box border border-base-content/10 bg-base-200/50 p-4 my-4;
+}
+
+.statement summary {
+    @apply cursor-pointer font-semibold select-none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .statement :global(.shiki),
+    .statement :global(.shiki span) {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+        font-style: var(--shiki-dark-font-style) !important;
+        font-weight: var(--shiki-dark-font-weight) !important;
+        text-decoration: var(--shiki-dark-text-decoration) !important;
+    }
+}
+
+:global(html[data-theme="dark"]) .statement :global(.shiki),
+:global(html[data-theme="dark"]) .statement :global(.shiki span) {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+:global(html[data-theme="light"]) .statement :global(.shiki),
+:global(html[data-theme="light"]) .statement :global(.shiki span) {
+    color: var(--shiki-light, #24292e) !important;
+    background-color: var(--shiki-light-bg, #fff) !important;
+}
+

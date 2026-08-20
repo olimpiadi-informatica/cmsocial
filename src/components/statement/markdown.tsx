@@ -1,4 +1,5 @@
 import type { CompileOptions } from "@mdx-js/mdx";
+import rehypeShiki from "@shikijs/rehype";
 import type { MDXComponents } from "mdx/types";
 import { MDXRemote } from "next-mdx-remote-client/rsc";
 import rehypeKatex from "rehype-katex";
@@ -13,7 +14,18 @@ import style from "./markdown.module.css";
 export function MarkdownStatement({ source, basePath }: { source: string; basePath: string }) {
   const mdxOptions: CompileOptions = {
     remarkPlugins: [remarkMath],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [
+      rehypeKatex,
+      [
+        rehypeShiki,
+        {
+          themes: {
+            light: "github-light",
+            dark: "github-dark",
+          },
+        },
+      ],
+    ],
   };
 
   const mapUrl = (url?: string) => {

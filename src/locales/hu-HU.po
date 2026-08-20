@@ -41,9 +41,11 @@ msgstr "<0>Fordítási idő</0>:"
 msgid "2FA non abilitato"
 msgstr "A 2FA nincs engedélyezve"
 
+#: src/app/(training)/(terry)/task/terry/[name]/editorial/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submissions/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
 #: src/app/(training)/login/page-client.tsx
+#: src/app/(training)/task/[name]/editorial/page.tsx
 #: src/app/(training)/task/[name]/submissions/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi"
@@ -57,7 +59,9 @@ msgstr "Bejelentkezés / Regisztráció"
 msgid "Accedi con {name}"
 msgstr "Bejelentkezés ezzel: {name}"
 
+#: src/app/(training)/(terry)/task/terry/[name]/editorial/page.tsx
 #: src/app/(training)/(terry)/task/terry/[name]/submit/page.tsx
+#: src/app/(training)/task/[name]/editorial/page.tsx
 #: src/app/(training)/task/[name]/submit/page.tsx
 msgid "Accedi per inviare soluzioni"
 msgstr "Megoldások beküldéséhez be kell jelentkeznie"
@@ -164,6 +168,11 @@ msgstr "Egyéb weboldalak"
 #: src/app/(training)/tasks/years/ois/table.tsx
 msgid "Anno"
 msgstr "Év"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Annulla"
+msgstr "Mégse"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Anziano"
@@ -1115,6 +1124,11 @@ msgstr "A folytatáshoz írja be a megerősítő mondatot:"
 msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 msgstr "A megoldások beküldéséhez el kell olvasni az <0>irányelveket</0>, és el kell fogadni a feltételeket."
 
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Per poter consultare la soluzione devi aver ottenuto un punteggio maggiore di zero e non devi aver inviato soluzioni negli ultimi 7 giorni."
+msgstr "A megoldás megtekintéséhez nullánál nagyobb pontszámot kell elérned, és az elmúlt 7 napban nem küldhetsz be újabb beküldést."
+
 #: src/app/(training)/tasks/[page]/filters/sorting.tsx
 msgid "Più difficili"
 msgstr "Legnehezebb"
@@ -1360,6 +1374,11 @@ msgstr "Középiskolák"
 msgid "Segnalazioni bug"
 msgstr "Hibajelentések"
 
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Sei sicuro di voler consultare la soluzione del problema? Ti consigliamo di continuare a provare a risolverlo autonomamente prima di consultarla."
+msgstr "Biztosan meg akarod tekinteni a feladat megoldását? Javasoljuk, hogy a megoldás megtekintése előtt próbáld meg önállóan megoldani."
+
 #: src/app/(training)/settings/page.tsx
 msgid "Seleziona le impostazioni da modificare"
 msgstr "Válassza ki a módosítandó beállításokat"
@@ -1391,6 +1410,18 @@ msgstr "Hivatalos weboldalak"
 #: src/app/fibonacci/page.tsx
 msgid "Sito ufficiale"
 msgstr "Hivatalos weboldal"
+
+#: src/app/(training)/(terry)/task/terry/[name]/editorial/page.tsx
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/editorial/page.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Soluzione"
+msgstr "Megoldás"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Soluzione non disponibile"
+msgstr "Megoldás nem érhető el"
 
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni corrette:"
@@ -1656,6 +1687,11 @@ msgstr "Régi jelszó"
 #: src/app/signup/page.tsx
 msgid "Verifica email"
 msgstr "E-mail ellenőrzése"
+
+#: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
+#: src/app/(training)/task/[name]/tabs.tsx
+msgid "Visualizza soluzione"
+msgstr "Megoldás megtekintése"
 
 #: src/app/(training)/settings/delete/page.tsx
 msgid "Voglio cancellare il mio account"

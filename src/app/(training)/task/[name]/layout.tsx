@@ -7,7 +7,9 @@ import { Trans } from "@lingui/react/macro";
 import { DateTime } from "~/components/date";
 import { Flag } from "~/components/flags";
 import { getTask, getTaskLocales } from "~/lib/api/task";
+import { checkCanViewEditorial } from "~/lib/editorials";
 import { loadLocale } from "~/lib/locale";
+import { getSessionUser } from "~/lib/user";
 
 import { TaskTabs } from "./tabs";
 
@@ -58,6 +60,9 @@ export default async function Layout({ params, children }: Props) {
   const task = await getTask(name);
   if (!task) notFound();
 
+  const user = await getSessionUser();
+  const editorialAccess = await checkCanViewEditorial(name, user?.cmsId);
+
   const taskLocales = await getTaskLocales(name);
 
   return (
@@ -107,7 +112,7 @@ export default async function Layout({ params, children }: Props) {
           </div>
         </div>
       </header>
-      <TaskTabs />
+      <TaskTabs editorialAccess={editorialAccess} />
       {children}
     </div>
   );
