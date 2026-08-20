@@ -87,7 +87,7 @@ function getFilter(userId: number | undefined, options: TaskListOptions): SQL | 
 function getOrder(options: TaskListOptions) {
   const order = [];
   if (options.order === "random") {
-    order.push(sql`RANDOM()`);
+    order.push(sql`md5(concat(${tasks.id}, CURRENT_DATE))`);
     return order;
   }
   if (options.order === "hardest") {
