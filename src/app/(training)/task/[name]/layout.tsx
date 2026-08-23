@@ -61,7 +61,7 @@ export default async function Layout({ params, children }: Props) {
   if (!task) notFound();
 
   const user = await getSessionUser();
-  const editorialAccess = await checkCanViewEditorial(name, user?.cmsId);
+  const editorialAccess = await checkCanViewEditorial(name, user?.cmsId, user?.role === "admin");
 
   const taskLocales = await getTaskLocales(name);
 

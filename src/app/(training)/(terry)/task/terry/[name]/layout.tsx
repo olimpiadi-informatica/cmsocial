@@ -32,7 +32,11 @@ export default async function Layout({ params, children }: Props) {
   if (!task) notFound();
 
   const user = await getSessionUser();
-  const editorialAccess = await checkCanViewTerryEditorial(taskName, user?.username);
+  const editorialAccess = await checkCanViewTerryEditorial(
+    taskName,
+    user?.username,
+    user?.role === "admin",
+  );
 
   return (
     <div className="flex grow flex-col gap-4">

@@ -21,7 +21,7 @@ export default async function Page({ params }: Props) {
   const { name } = await params;
   const user = await getSessionUser();
 
-  const access = await checkCanViewTerryEditorial(name, user?.username);
+  const access = await checkCanViewTerryEditorial(name, user?.username, user?.role === "admin");
   if (!access.hasEditorial) {
     notFound();
   }

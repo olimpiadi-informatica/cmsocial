@@ -109,9 +109,13 @@ export type EditorialAccess =
     };
 
 export const checkCanViewEditorial = cache(
-  async (taskName: string, cmsId?: number | null): Promise<EditorialAccess> => {
+  async (taskName: string, cmsId?: number | null, isAdmin = false): Promise<EditorialAccess> => {
     const editorial = await getTaskEditorial(taskName);
     if (!editorial) return { hasEditorial: false };
+
+    if (isAdmin) {
+      return { hasEditorial: true, canView: true, isFullySolved: true, editorial };
+    }
 
     if (!cmsId) {
       return { hasEditorial: true, canView: false, reason: "not_logged_in" };
@@ -148,9 +152,13 @@ export const checkCanViewEditorial = cache(
 );
 
 export const checkCanViewTerryEditorial = cache(
-  async (taskName: string, username?: string | null): Promise<EditorialAccess> => {
+  async (taskName: string, username?: string | null, isAdmin = false): Promise<EditorialAccess> => {
     const editorial = await getTerryTaskEditorial(taskName);
     if (!editorial) return { hasEditorial: false };
+
+    if (isAdmin) {
+      return { hasEditorial: true, canView: true, isFullySolved: true, editorial };
+    }
 
     if (!username) {
       return { hasEditorial: true, canView: false, reason: "not_logged_in" };

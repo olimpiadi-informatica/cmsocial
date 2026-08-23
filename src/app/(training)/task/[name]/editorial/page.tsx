@@ -23,7 +23,7 @@ export default async function Page({ params }: Props) {
   const { name } = await params;
   const user = await getSessionUser();
 
-  const access = await checkCanViewEditorial(name, user?.cmsId);
+  const access = await checkCanViewEditorial(name, user?.cmsId, user?.role === "admin");
   if (!access.hasEditorial) {
     notFound();
   }
