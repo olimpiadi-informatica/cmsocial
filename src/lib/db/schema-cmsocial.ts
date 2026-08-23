@@ -69,14 +69,13 @@ export const userMonthlyRanks = pgMaterializedView("user_monthly_ranks", {
   rank: integer("rank").notNull(),
 }).existing();
 
-export const editorialType = pgEnum("editorial_type", ["markdown", "pdf_url", "pdf_file"]);
+export const editorialType = pgEnum("editorial_type", ["markdown", "pdf_file"]);
 
 export const editorials = pgTable("editorials", {
   id: serial().primaryKey(),
   type: editorialType("type").notNull(),
   title: varchar("title", { length: 255 }),
   content: text("content"),
-  url: varchar("url", { length: 1024 }),
   digest: varchar("digest", { length: 64 }),
   createdAt: timestamp("created_at").defaultNow().notNull(),
   updatedAt: timestamp("updated_at").defaultNow().notNull(),

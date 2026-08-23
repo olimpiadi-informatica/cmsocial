@@ -24,7 +24,6 @@ export const getTaskEditorial = cache(async (taskName: string): Promise<Editoria
     .select({
       id: editorials.id,
       type: editorials.type,
-      url: editorials.url,
       digest: editorials.digest,
       page: taskEditorials.page,
     })
@@ -38,12 +37,6 @@ export const getTaskEditorial = cache(async (taskName: string): Promise<Editoria
 
   if (row.type === "markdown") {
     return { type: "markdown" };
-  }
-  if (row.type === "pdf_url") {
-    return {
-      type: "pdf",
-      url: `/files/editorial-pdf/${taskName}${row.page ? `#page=${row.page}` : ""}`,
-    };
   }
   if (row.type === "pdf_file") {
     return {
@@ -60,7 +53,6 @@ export const getTerryTaskEditorial = cache(
       .select({
         id: editorials.id,
         type: editorials.type,
-        url: editorials.url,
         digest: editorials.digest,
         page: taskEditorials.page,
       })
@@ -74,12 +66,6 @@ export const getTerryTaskEditorial = cache(
 
     if (row.type === "markdown") {
       return { type: "markdown" };
-    }
-    if (row.type === "pdf_url") {
-      return {
-        type: "pdf",
-        url: `/files/editorial-pdf/terry/${taskName}${row.page ? `#page=${row.page}` : ""}`,
-      };
     }
     if (row.type === "pdf_file") {
       return {
@@ -212,26 +198,5 @@ export const getEditorialMarkdown = cache(
       .limit(1);
 
     return res[0]?.content ?? undefined;
-  },
-);
-
-export const getEditorialPdfUrl = cache(
-  async (taskName: string, isTerry = false): Promise<string | undefined> => {
-    const res = await cmsDb
-      .select({
-        url: editorials.url,
-      })
-      .from(taskEditorials)
-      .innerJoin(editorials, eq(editorials.id, taskEditorials.editorialId))
-      .where(
-        and(
-          eq(taskEditorials.taskName, taskName),
-          eq(taskEditorials.isTerry, isTerry),
-          eq(editorials.type, "pdf_url"),
-        ),
-      )
-      .limit(1);
-
-    return res[0]?.url ?? undefined;
   },
 );
