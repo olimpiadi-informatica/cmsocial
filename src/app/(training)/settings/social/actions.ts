@@ -14,25 +14,14 @@ export async function linkAccount(provider: string) {
   try {
     const messageId = msg`Account collegato con successo!`.id;
 
-    if (provider === "olimanager") {
-      const resp = await auth.api.oAuth2LinkAccount({
-        headers: await headers(),
-        body: {
-          providerId: provider,
-          callbackURL: `/?notify=${encodeURIComponent(messageId)}`,
-        },
-      });
-      url = resp.url;
-    } else {
-      const resp = await auth.api.linkSocialAccount({
-        headers: await headers(),
-        body: {
-          provider,
-          callbackURL: `/?notify=${encodeURIComponent(messageId)}`,
-        },
-      });
-      url = resp.url;
-    }
+    const resp = await auth.api.linkSocialAccount({
+      headers: await headers(),
+      body: {
+        provider,
+        callbackURL: `/?notify=${encodeURIComponent(messageId)}`,
+      },
+    });
+    url = resp.url;
   } catch (err) {
     return getAuthError(err);
   }
@@ -42,9 +31,16 @@ export async function linkAccount(provider: string) {
 
 export async function unlinkAccount(providerId: string) {
   try {
+    const accounts = await auth.api.listUserAccounts({
+      headers: await headers(),
+    });
+    const account = accounts.find((a) => a.providerId === providerId);
+    if (!account) {
+      throw new Error("Account non trovato");
+    }
     await auth.api.unlinkAccount({
       headers: await headers(),
-      body: { providerId },
+      body: { accountId: account.id },
     });
   } catch (err) {
     return getAuthError(err);

@@ -15,7 +15,6 @@ import { RegistrationStep } from "~/lib/auth/types";
 export async function loginPassword(
   usernameOrEmail: string,
   password: string,
-  redirectUrl: string,
 ): Promise<MessageDescriptor | undefined> {
   let userId: string;
 
@@ -60,7 +59,6 @@ export async function loginPassword(
   if (registrationStep !== RegistrationStep.Completed) {
     redirect("/signup");
   }
-  redirect(redirectUrl);
 }
 
 export async function loginSocial(provider: string, redirectUrl: string) {
@@ -70,25 +68,6 @@ export async function loginSocial(provider: string, redirectUrl: string) {
       headers: await headers(),
       body: {
         provider,
-        callbackURL: `/auth/success?redirect=${encodeURIComponent(redirectUrl)}`,
-      },
-    });
-    url = resp.url;
-  } catch (err) {
-    return getAuthError(err);
-  }
-
-  if (!url) return msg`Errore durante il login`;
-  redirect(url);
-}
-
-export async function loginOAuth(providerId: string, redirectUrl: string) {
-  let url: string | undefined;
-  try {
-    const resp = await auth.api.signInWithOAuth2({
-      headers: await headers(),
-      body: {
-        providerId,
         callbackURL: `/auth/success?redirect=${encodeURIComponent(redirectUrl)}`,
       },
     });

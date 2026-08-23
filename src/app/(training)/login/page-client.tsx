@@ -1,24 +1,31 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { Trans, useLingui } from "@lingui/react/macro";
 import { CurrentPasswordField, Form, SubmitButton, UsernameField } from "@olinfo/react-components";
+import { useSWRConfig } from "swr";
 
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
 import { OauthButton } from "~/components/oauth/button";
 
-import { loginOAuth, loginPassword, loginSocial } from "./actions";
+import { loginPassword, loginSocial } from "./actions";
 
 export function PageClient({ redirectUrl }: { redirectUrl: string }) {
   const { t } = useLingui();
+  const router = useRouter();
+  const { mutate } = useSWRConfig();
 
   const submit = async (credential: { username: string; password: string }) => {
-    const err = await loginPassword(credential.username, credential.password, redirectUrl);
+    const err = await loginPassword(credential.username, credential.password);
     if (err) throw new Error(t(err));
+    router.push(redirectUrl);
+    router.refresh();
+    await mutate(() => true, undefined, { revalidate: true });
     await new Promise(() => {});
   };
 
-  const loginOAuthRedirect = (provider: string) => loginOAuth(provider, redirectUrl);
   const loginSocialRedirect = (provider: string) => loginSocial(provider, redirectUrl);
 
   return (
@@ -50,7 +57,7 @@ export function PageClient({ redirectUrl }: { redirectUrl: string }) {
         <Trans>oppure</Trans>
       </div>
       <div className="flex flex-col gap-2">
-        <OauthButton provider="olimanager" type="login" onClick={loginOAuthRedirect} />
+        <OauthButton provider="olimanager" type="login" onClick={loginSocialRedirect} />
         <OauthButton provider="google" type="login" onClick={loginSocialRedirect} />
         <OauthButton provider="github" type="login" onClick={loginSocialRedirect} />
       </div>

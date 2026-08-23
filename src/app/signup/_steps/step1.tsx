@@ -6,21 +6,24 @@ import { useRef } from "react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { EmailField, Form, NewPasswordField, SubmitButton } from "@olinfo/react-components";
 import { ArrowRight } from "lucide-react";
+import { useSWRConfig } from "swr";
 
 import { OauthButton } from "~/components/oauth/button";
 import { ReCaptcha, type ReCaptchaInner } from "~/components/recaptcha";
 
-import { step1OAuth, step1Password, step1Social } from "./actions";
+import { step1Password, step1Social } from "./actions";
 
 export function Step1({ captchaKey }: { captchaKey: string }) {
   const { t } = useLingui();
   const router = useRouter();
+  const { mutate } = useSWRConfig();
   const captchaRef = useRef<ReCaptchaInner>(null);
 
   const submit = async (user: { email: string; password: string }) => {
     const err = await step1Password(user.email, user.password, captchaRef.current?.getValue());
     if (err) throw new Error(t(err));
     router.refresh();
+    await mutate(() => true, undefined, { revalidate: true });
     await new Promise(() => {});
   };
 
@@ -44,7 +47,7 @@ export function Step1({ captchaKey }: { captchaKey: string }) {
         <Trans>oppure</Trans>
       </div>
       <div className="flex flex-col gap-2">
-        <OauthButton provider="olimanager" type="signup" onClick={step1OAuth} />
+        <OauthButton provider="olimanager" type="signup" onClick={step1Social} />
         <OauthButton provider="google" type="signup" onClick={step1Social} />
         <OauthButton provider="github" type="signup" onClick={step1Social} />
       </div>

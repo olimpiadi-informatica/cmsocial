@@ -63,25 +63,6 @@ export async function step1Social(provider: string) {
   redirect(url);
 }
 
-export async function step1OAuth(providerId: string) {
-  let url: string | undefined;
-  try {
-    const resp = await auth.api.signInWithOAuth2({
-      headers: await headers(),
-      body: {
-        providerId,
-        callbackURL: "/auth/success",
-      },
-    });
-    url = resp.url;
-  } catch (err) {
-    return getAuthError(err);
-  }
-
-  if (!url) return msg`Errore durante il login`;
-  redirect(url);
-}
-
 export async function step2Back() {
   try {
     await auth.api.signOut({ headers: await headers() });

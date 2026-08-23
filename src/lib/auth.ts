@@ -81,7 +81,7 @@ export const auth = betterAuth({
     captcha({
       provider: "google-recaptcha",
       secretKey: process.env.CAPTCHA_SECRET_KEY!,
-      endpoints: ["/sign-up/email", "/forget-password"],
+      endpoints: ["/sign-up/email", "/request-password-reset", "/forget-password"],
     }),
     genericOAuth({
       config: [
@@ -95,11 +95,11 @@ export const auth = betterAuth({
         },
       ],
     }),
-    nextCookies(),
     username({
       minUsernameLength: 3,
       maxUsernameLength: 39,
       usernameNormalization: false,
     }),
+    nextCookies(),
   ],
 } satisfies BetterAuthOptions);

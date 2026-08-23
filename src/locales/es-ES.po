@@ -466,6 +466,10 @@ msgid "Email già esistente"
 msgstr "El correo electrónico ya existe"
 
 #: src/lib/auth/errors.ts
+msgid "Email già verificata"
+msgstr "Correo electrónico ya verificado"
+
+#: src/lib/auth/errors.ts
 msgid "Email non trovata"
 msgstr "Correo electrónico no encontrado"
 
@@ -801,6 +805,14 @@ msgstr "Inscríbete"
 #: src/app/signup/_steps/step4.tsx
 msgid "Istituto"
 msgstr "Instituto"
+
+#: src/lib/auth/errors.ts
+msgid "L'email non corrisponde"
+msgstr "El correo electrónico no coincide"
+
+#: src/lib/auth/errors.ts
+msgid "L'email non corrisponde a quella dell'account"
+msgstr "El correo electrónico no coincide con el de la cuenta"
 
 #: src/lib/auth/errors.ts
 msgid "L'email non può essere modificata"
@@ -1627,6 +1639,10 @@ msgstr "Nombre de usuario no disponible"
 msgid "Username non esistente"
 msgstr "Nombre de usuario no existente"
 
+#: src/lib/auth/errors.ts
+msgid "Username non modificabile"
+msgstr "El nombre de usuario no se puede cambiar"
+
 #: src/lib/api/auth.ts
 #: src/lib/auth/errors.ts
 msgid "Username non valido"
@@ -1643,6 +1659,10 @@ msgstr "Nombre de usuario demasiado corto"
 #: src/lib/auth/errors.ts
 msgid "Username troppo lungo"
 msgstr "Nombre de usuario demasiado largo"
+
+#: src/lib/auth/errors.ts
+msgid "Utente bloccato"
+msgstr "Usuario bloqueado"
 
 #: src/app/(training)/user/[username]/page.tsx
 msgid "Utente dal <0/>"
