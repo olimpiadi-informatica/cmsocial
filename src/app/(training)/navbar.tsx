@@ -76,6 +76,11 @@ export function Navbar() {
           </Link>
         </NavbarMenuItem>
         <NavbarMenuItem>
+          <Link href="/diari/1">
+            <Trans>Diari</Trans>
+          </Link>
+        </NavbarMenuItem>
+        <NavbarMenuItem>
           <Link href="https://forum.olinfo.it">
             <Trans>Forum</Trans>
           </Link>

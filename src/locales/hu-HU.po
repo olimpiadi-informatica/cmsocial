@@ -431,6 +431,10 @@ msgstr "Felkapott"
 msgid "Diamante"
 msgstr "Gyémánt"
 
+#: src/app/(training)/navbar.tsx
+msgid "Diari"
+msgstr "Naplók"
+
 #: src/app/(training)/tasks/[page]/filters/difficulty.tsx
 msgid "Difficoltà"
 msgstr "Nehézség"
@@ -958,6 +962,10 @@ msgstr "A hivatalos wikiben részletes magyarázatokat és korábbi problémák 
 msgid "Nessun allegato"
 msgstr "Nincs melléklet"
 
+#: src/app/(training)/diari/[page]/page-client.tsx
+msgid "Nessun diario trovato"
+msgstr "Nem található napló"
+
 #: src/components/forum-posts.tsx
 msgid "Nessun post trovato."
 msgstr "Nincs bejegyzés."
@@ -999,6 +1007,10 @@ msgstr "Nincs"
 #: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome"
 msgstr "Cím"
+
+#: src/app/(training)/diari/[page]/page-client.tsx
+msgid "Nome del diario"
+msgstr "Napló neve"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filters/search.tsx
@@ -1090,6 +1102,7 @@ msgid "Padroneggia tutte le tecniche"
 msgstr "Sajátítsd el az összes technikát"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/diari/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
 #: src/components/pagination.tsx

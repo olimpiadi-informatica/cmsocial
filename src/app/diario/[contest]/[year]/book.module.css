@@ -1,0 +1,124 @@
+.perspectiveContainer {
+  --book-width: min(60lvh, 85vw);
+  perspective: 2000px;
+  perspective-origin: center center;
+}
+
+.preserve3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.bookCover {
+  position: absolute;
+  inset: 0;
+  transform-origin: left center;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  z-index: 30;
+  will-change: transform;
+}
+
+.coverTitle {
+  width: calc(var(--book-width) - 5rem);
+  max-width: 100%;
+}
+
+@media (min-width: 640px) {
+  .coverTitle {
+    width: calc(var(--book-width) - 6rem);
+  }
+}
+
+.bookSize {
+  --book-width: min(60lvh, 85vw);
+  width: var(--book-width);
+  height: calc(var(--book-width) * 5 / 4);
+  box-shadow:
+    0 25px 60px -15px rgba(0, 0, 0, 0.7),
+    0 0 35px rgba(0, 0, 0, 0.4);
+}
+
+.coverFront {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(0deg) translateZ(2px);
+  -webkit-transform: rotateY(0deg) translateZ(2px);
+  background: #141210 linear-gradient(145deg, #221e1a 0%, #161411 50%, #0a0908 100%);
+  border-radius: 0 1.25rem 1.25rem 0;
+  overflow: hidden;
+}
+
+.coverBack {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: rotateY(180deg) translateZ(2px);
+  -webkit-transform: rotateY(180deg) translateZ(2px);
+  background-color: #1a1715;
+  border-radius: 1.25rem 0 0 1.25rem;
+  overflow: hidden;
+}
+
+.spineShadow {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.25) 3%,
+    rgba(255, 255, 255, 0.06) 5%,
+    rgba(0, 0, 0, 0.1) 8%,
+    transparent 15%
+  );
+}
+
+.paperInnerSpine {
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.12) 0%,
+    rgba(0, 0, 0, 0.05) 3%,
+    rgba(0, 0, 0, 0.01) 8%,
+    transparent 14%
+  );
+}
+
+.goldEmboss {
+  background: linear-gradient(
+    135deg,
+    #aa820a 0%,
+    #ffd700 25%,
+    #fff5c0 50%,
+    #d4af37 75%,
+    #aa820a 100%
+  );
+  background-size: 250% 100%;
+  background-position: 0% center;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.paperBg {
+  background-color: #fbf9f5;
+  border-radius: inherit;
+}
+
+.blueprintContainer {
+  background-color: #0b4578;
+  background-image:
+    linear-gradient(to right, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.22) 1px, transparent 1px),
+    linear-gradient(to right, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    radial-gradient(ellipse 85% 85% at 50% 50%, #165c9e 0%, #0c4477 60%, #072e52 100%);
+  background-size:
+    64px 64px,
+    64px 64px,
+    16px 16px,
+    16px 16px,
+    100% 100%;
+  background-position: center center;
+}

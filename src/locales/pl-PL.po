@@ -431,6 +431,10 @@ msgstr "Popularne"
 msgid "Diamante"
 msgstr "Diament"
 
+#: src/app/(training)/navbar.tsx
+msgid "Diari"
+msgstr "Dzienniki"
+
 #: src/app/(training)/tasks/[page]/filters/difficulty.tsx
 msgid "Difficoltà"
 msgstr "Poziom trudności"
@@ -958,6 +962,10 @@ msgstr "Na oficjalnym wiki znajdziesz szczegółowe wyjaśnienia i rozwiązania 
 msgid "Nessun allegato"
 msgstr "Brak załączników"
 
+#: src/app/(training)/diari/[page]/page-client.tsx
+msgid "Nessun diario trovato"
+msgstr "Nie znaleziono dzienników"
+
 #: src/components/forum-posts.tsx
 msgid "Nessun post trovato."
 msgstr "Nie znaleziono żadnych postów."
@@ -999,6 +1007,10 @@ msgstr "Brak"
 #: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome"
 msgstr "Tytuł"
+
+#: src/app/(training)/diari/[page]/page-client.tsx
+msgid "Nome del diario"
+msgstr "Nazwa dziennika"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filters/search.tsx
@@ -1090,6 +1102,7 @@ msgid "Padroneggia tutte le tecniche"
 msgstr "Opanuj wszystkie techniki"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/diari/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
 #: src/components/pagination.tsx

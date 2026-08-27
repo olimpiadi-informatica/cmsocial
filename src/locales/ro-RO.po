@@ -431,6 +431,10 @@ msgstr "În tendințe"
 msgid "Diamante"
 msgstr "Diamant"
 
+#: src/app/(training)/navbar.tsx
+msgid "Diari"
+msgstr "Jurnale"
+
 #: src/app/(training)/tasks/[page]/filters/difficulty.tsx
 msgid "Difficoltà"
 msgstr "Dificultate"
@@ -958,6 +962,10 @@ msgstr "În wiki-ul oficial vei găsi explicații detaliate și soluții la prob
 msgid "Nessun allegato"
 msgstr "Niciun atașament"
 
+#: src/app/(training)/diari/[page]/page-client.tsx
+msgid "Nessun diario trovato"
+msgstr "Niciun jurnal găsit"
+
 #: src/components/forum-posts.tsx
 msgid "Nessun post trovato."
 msgstr "Nicio postare găsită."
@@ -999,6 +1007,10 @@ msgstr "Niciunul"
 #: src/app/(training)/tasks/[page]/filters/search.tsx
 msgid "Nome"
 msgstr "Titlu"
+
+#: src/app/(training)/diari/[page]/page-client.tsx
+msgid "Nome del diario"
+msgstr "Numele jurnalului"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
 #: src/app/(training)/tasks/[page]/filters/search.tsx
@@ -1090,6 +1102,7 @@ msgid "Padroneggia tutte le tecniche"
 msgstr "Stăpânește toate tehnicile"
 
 #: src/app/(training)/(terry)/tasks/terry/[page]/page-client.tsx
+#: src/app/(training)/diari/[page]/page-client.tsx
 #: src/app/(training)/ranking/[page]/page.tsx
 #: src/app/(training)/tasks/[page]/page-client.tsx
 #: src/components/pagination.tsx
