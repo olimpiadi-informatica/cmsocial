@@ -48,7 +48,12 @@
         "noUnusedTemplateLiteral": "error",
         "noUselessElse": "error",
         "useAsConstAssertion": "error",
-        "useConsistentArrayType": { "level": "error", "options": { "syntax": "shorthand" } },
+        "useConsistentArrayType": {
+          "level": "error",
+          "options": {
+            "syntax": "shorthand"
+          }
+        },
         "useDefaultParameterLast": "error",
         "useFragmentSyntax": "error",
         "useNumberNamespace": "error",
@@ -70,11 +75,8 @@
     }
   },
   "css": {
-    "assist": {
-      "enabled": false
-    },
-    "formatter": {
-      "enabled": false
+    "parser": {
+      "tailwindDirectives": true
     },
     "linter": {
       "enabled": false

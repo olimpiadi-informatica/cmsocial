@@ -34,7 +34,7 @@ components.Scroller (div)
   @apply gap-y-2;
 }
 
-.scroller > div > div:first-child, /* header */
+.scroller > div > div:first-child /* header */,
 .list,
 .item {
   @apply col-span-full grid grid-cols-subgrid items-center text-center;

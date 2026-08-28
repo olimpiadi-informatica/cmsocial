@@ -3,5 +3,5 @@
 @tailwind utilities;
 
 html {
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
 }
