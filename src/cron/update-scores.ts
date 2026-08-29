@@ -1,7 +1,8 @@
-import { eq, inArray, sql } from "drizzle-orm";
+import { and, eq, gt, inArray, sql } from "drizzle-orm";
 import { chunk, clamp, sumBy } from "es-toolkit";
 
 import { cmsDb } from "~/lib/db";
+import { participations } from "~/lib/db/schema-cms";
 import {
   socialParticipations,
   socialTasks,
@@ -137,11 +138,39 @@ export async function updateScores() {
     return;
   }
 
-  outLogger.info("Refreshing user monthly ranks materialized view...");
+  outLogger.info("Updating user monthly ranks...");
   try {
-    await cmsDb.refreshMaterializedView(userMonthlyRanks).concurrently();
+    const userRanks = cmsDb
+      .select({
+        userId: participations.userId,
+        month: sql<Date>`DATE_TRUNC('month', CURRENT_DATE)::date`.as("month"),
+        score: socialParticipations.score,
+        rank: sql<number>`RANK() OVER (ORDER BY ${socialParticipations.score} DESC, ${participations.userId} ASC)::integer`.as(
+          "rank",
+        ),
+      })
+      .from(participations)
+      .innerJoin(socialParticipations, eq(socialParticipations.id, participations.id))
+      .where(
+        and(
+          eq(participations.contestId, Number(process.env.CMS_CONTEST_ID ?? 1)),
+          eq(participations.hidden, false),
+          gt(socialParticipations.score, 0),
+        ),
+      );
+
+    await cmsDb
+      .insert(userMonthlyRanks)
+      .select(userRanks)
+      .onConflictDoUpdate({
+        target: [userMonthlyRanks.userId, userMonthlyRanks.month],
+        set: {
+          score: sql.raw(`excluded.${userMonthlyRanks.score.name}`),
+          rank: sql.raw(`excluded.${userMonthlyRanks.rank.name}`),
+        },
+      });
   } catch (err) {
-    outLogger.error("Failed to refresh user monthly ranks materialized view", err);
+    outLogger.error("Failed to update user monthly ranks", err);
     return;
   }
 

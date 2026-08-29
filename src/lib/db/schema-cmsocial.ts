@@ -5,7 +5,6 @@ import {
   integer,
   jsonb,
   pgEnum,
-  pgMaterializedView,
   pgTable,
   serial,
   text,
@@ -62,12 +61,12 @@ export const quizmsSession = pgTable("quizms_session", {
   finishedAt: timestamp("finished_at"),
 });
 
-export const userMonthlyRanks = pgMaterializedView("user_monthly_ranks", {
+export const userMonthlyRanks = pgTable("user_monthly_ranks", {
   userId: integer("user_id").notNull(),
   month: date("month", { mode: "date" }).notNull(),
   score: integer("score").notNull(),
   rank: integer("rank").notNull(),
-}).existing();
+});
 
 export const editorialType = pgEnum("editorial_type", ["markdown", "pdf_file"]);
 
