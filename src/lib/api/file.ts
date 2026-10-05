@@ -5,7 +5,7 @@ import path from "node:path";
 
 import { type SQL, sql } from "drizzle-orm";
 import type { PgColumn } from "drizzle-orm/pg-core/columns";
-import mime from "mime";
+import { lookup } from "mrmime";
 
 import { cmsDb } from "~/lib/db";
 
@@ -47,7 +47,7 @@ export async function getFileContent(file: Omit<File, "url">) {
     {
       headers: {
         "Cache-Control": "public, max-age=31536000, immutable",
-        "Content-Type": mime.getType(file.name) ?? "application/octet-stream",
+        "Content-Type": lookup(file.name) ?? "application/octet-stream",
       },
     },
   );
@@ -87,7 +87,7 @@ export async function getTerryFileContent(fileName: string): Promise<Response> {
   return new Response(blob, {
     headers: {
       "Cache-Control": "public, max-age=604800",
-      "Content-Type": mime.getType(fileName) ?? "application/octet-stream",
+      "Content-Type": lookup(fileName) ?? "application/octet-stream",
     },
   });
 }
