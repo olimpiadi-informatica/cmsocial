@@ -696,6 +696,10 @@ msgstr "Glouton, tri et recherche"
 msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
 msgstr "Regardez les meilleurs programmeurs de notre communauté et voyez où vous vous classez. Testez vos compétences et montez en haut du podium en résolvant les problèmes les plus difficiles!"
 
+#: src/app/(training)/navbar.tsx
+msgid "Guida alle OII"
+msgstr "Guide des OII"
+
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 msgstr "Vous avez terminé votre inscription ! Vous pouvez commencer à résoudre les problèmes"
@@ -889,6 +893,10 @@ msgstr "Longueur des arcs"
 #: src/lib/algobadge.ts
 msgid "Matematica"
 msgstr "Mathématiques"
+
+#: src/app/(training)/navbar.tsx
+msgid "Materiale didattico"
+msgstr "Matériel pédagogique"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria"

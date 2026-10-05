@@ -70,19 +70,26 @@ export function Navbar() {
             <Trans>Classifica</Trans>
           </Link>
         </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="/algobadge">
-            <Trans>Algobadge</Trans>
-          </Link>
-        </NavbarMenuItem>
+        <NavbarSubmenu title={t`Materiale didattico`}>
+          <NavbarMenuItem>
+            <Link href="/guida">
+              <Trans>Guida alle OII</Trans>
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link href="/algobadge">
+              <Trans>Algobadge</Trans>
+            </Link>
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            <Link href="https://forum.olinfo.it">
+              <Trans>Forum</Trans>
+            </Link>
+          </NavbarMenuItem>
+        </NavbarSubmenu>
         <NavbarMenuItem>
           <Link href="/diari/1">
             <Trans>Diari</Trans>
-          </Link>
-        </NavbarMenuItem>
-        <NavbarMenuItem>
-          <Link href="https://forum.olinfo.it">
-            <Trans>Forum</Trans>
           </Link>
         </NavbarMenuItem>
       </NavbarMenu>

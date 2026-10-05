@@ -696,6 +696,10 @@ msgstr "Greedy, sortare și căutare"
 msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
 msgstr "Uită-te la cei mai buni programatori din comunitatea noastră și vezi unde te clasezi. Provoacă-te pe tine și urcă în vârf pe podium rezolvând cele mai grele probleme!"
 
+#: src/app/(training)/navbar.tsx
+msgid "Guida alle OII"
+msgstr "Ghidul OII"
+
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 msgstr "Ai finalizat înregistrarea! Poți începe să rezolvi problemele"
@@ -889,6 +893,10 @@ msgstr "Lungime arce"
 #: src/lib/algobadge.ts
 msgid "Matematica"
 msgstr "Matematică"
+
+#: src/app/(training)/navbar.tsx
+msgid "Materiale didattico"
+msgstr "Materiale didactice"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria"

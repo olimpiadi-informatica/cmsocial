@@ -696,6 +696,10 @@ msgstr "Algorytmy zachłanne, sortowanie i wyszukiwanie"
 msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
 msgstr "Zobacz najlepszych programistów w naszej społeczności i sprawdź, jak się klasyfikujesz. Wyzwij się i wspinaj się na szczyt podium, rozwiązując najtrudniejsze problemy!"
 
+#: src/app/(training)/navbar.tsx
+msgid "Guida alle OII"
+msgstr "Przewodnik po OII"
+
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 msgstr "Ukończyłeś rejestrację! Możesz zacząć rozwiązywać problemy"
@@ -889,6 +893,10 @@ msgstr "Długość krawędzi"
 #: src/lib/algobadge.ts
 msgid "Matematica"
 msgstr "Matematyka"
+
+#: src/app/(training)/navbar.tsx
+msgid "Materiale didattico"
+msgstr "Materiały dydaktyczne"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria"

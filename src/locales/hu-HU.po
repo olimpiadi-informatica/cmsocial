@@ -696,6 +696,10 @@ msgstr "Mohó, rendezés és keresés"
 msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
 msgstr "Nézd meg a közösségünk legjobb programozóit, és lás, hol helyezkedik el a rangsorban. Kihívd magad, és érj fel a dobogó tetejére a legnehezebb problémák megoldásával!"
 
+#: src/app/(training)/navbar.tsx
+msgid "Guida alle OII"
+msgstr "OII útmutató"
+
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 msgstr "Sikeresen regisztrált! Kezdheti a feladatok megoldását"
@@ -889,6 +893,10 @@ msgstr "Élhossz"
 #: src/lib/algobadge.ts
 msgid "Matematica"
 msgstr "Matematika"
+
+#: src/app/(training)/navbar.tsx
+msgid "Materiale didattico"
+msgstr "Tananyagok"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria"

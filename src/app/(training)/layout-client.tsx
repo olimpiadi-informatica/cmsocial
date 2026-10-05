@@ -12,7 +12,7 @@ export function LayoutClient({ children }: { children: ReactNode }) {
     <div
       className={clsx(
         "flex grow w-full flex-col",
-        segment !== "(home)" && "mx-auto max-w-screen-xl p-4 pb-8",
+        segment !== "(home)" && segment !== "guida" && "mx-auto max-w-screen-xl p-4 pb-8",
       )}>
       {children}
     </div>

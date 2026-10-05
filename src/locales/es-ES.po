@@ -696,6 +696,10 @@ msgstr "Greedy, ordenamiento y búsqueda"
 msgid "Guarda i migliori programmatori della nostra comunità e vedi come ti posizioni nella classifica. Mettiti alla prova e sali fino in cima al podio risolvendo i problemi più difficili!"
 msgstr "Mira a los mejores programadores de nuestra comunidad y ve dónde te posicionas en la clasificación. Desafíate a ti mismo y sube hasta la cima del podio resolviendo los problemas más difíciles!"
 
+#: src/app/(training)/navbar.tsx
+msgid "Guida alle OII"
+msgstr "Guía de las OII"
+
 #: src/app/signup/_steps/step5.tsx
 msgid "Hai completato la registrazione! Puoi iniziare a risolvere i problemi"
 msgstr "¡Has completado el registro! Puedes empezar a resolver problemas"
@@ -889,6 +893,10 @@ msgstr "Longitud de los arcos"
 #: src/lib/algobadge.ts
 msgid "Matematica"
 msgstr "Matemáticas"
+
+#: src/app/(training)/navbar.tsx
+msgid "Materiale didattico"
+msgstr "Material didáctico"
 
 #: src/app/(training)/task/[name]/submissions/[id]/page-client.tsx
 msgid "Memoria"
