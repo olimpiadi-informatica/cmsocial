@@ -6,7 +6,7 @@ A megoldás beküldéséhez két fájlt kell leadnod: a forrásfájlt és a kime
 
 A forrásfájl az a fájl, amely a megírt program kódját tartalmazza. Például, ha C++-t használsz, a forrásfájl kiterjesztése `.cpp` lesz, ha pedig Pythont, akkor `.py`.
 
-Egyetlen fájlt kell beküldened, amely az összes kódot tartalmazza, nem küldhetsz konfigurációs fájlokat, nem küldhetsz több fájlt, és nem küldhetsz ZIP archívumot. 
+Egyetlen fájlt kell beküldened, amely az összes kódot tartalmazza, nem küldhetsz konfigurációs fájlokat, nem küldhetsz több fájlt, és nem küldhetsz ZIP archívumot.
 
 Bármilyen programozási nyelvet használhatsz a feladat megoldásához.
 

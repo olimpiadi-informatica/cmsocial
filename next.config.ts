@@ -69,7 +69,10 @@ const nextConfig: NextConfig = {
   },
   outputFileTracingIncludes: {
     "/**": ["node_modules/@swc/helpers/**/*"],
-    "/files/task-preview/*": ["node_modules/@napi-rs/canvas*/**/*"]
+    "/files/task-preview/*": [
+      "node_modules/@napi-rs/canvas*/**/*",
+      "node_modules/.pnpm/@napi-rs+canvas*/**/*",
+    ],
   },
   reactCompiler: true,
   experimental: {

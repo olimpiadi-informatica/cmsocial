@@ -40,4 +40,5 @@ next-env.d.ts
 # IDE
 .vscode
 .idea
+.zed
 AGENTS.md
