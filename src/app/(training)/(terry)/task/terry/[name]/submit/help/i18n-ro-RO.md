@@ -6,7 +6,7 @@ Pentru a trimite o soluție, trebuie să predai două fișiere: fișierul sursă
 
 Fișierul sursă este fișierul care conține codul programului pe care l-ai scris. De exemplu, dacă folosești C++, fișierul sursă va avea extensia `.cpp`, iar dacă folosești Python, extensia va fi `.py`.
 
-Trebuie să trimiți un singur fișier care să conțină tot codul, nu trebuie să trimiți fișiere de configurare, nu poți trimite mai multe fișiere și nu poți trimite o arhivă ZIP. 
+Trebuie să trimiți un singur fișier care să conțină tot codul, nu trebuie să trimiți fișiere de configurare, nu poți trimite mai multe fișiere și nu poți trimite o arhivă ZIP.
 
 Poți folosi orice limbaj de programare pentru a rezolva problema.
 

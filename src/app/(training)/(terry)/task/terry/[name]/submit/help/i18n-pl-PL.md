@@ -6,7 +6,7 @@ Aby przesłać rozwiązanie, musisz dostarczyć dwa pliki: plik źródłowy i pl
 
 Plik źródłowy to plik zawierający kod programu, który napisałeś. Na przykład, jeśli używasz C++, plik źródłowy będzie miał rozszerzenie `.cpp`, a jeśli używasz Pythona, rozszerzenie będzie `.py`.
 
-Musisz przesłać jeden plik zawierający cały kod, nie możesz przesyłać plików konfiguracyjnych, wielu plików ani archiwum ZIP. 
+Musisz przesłać jeden plik zawierający cały kod, nie możesz przesyłać plików konfiguracyjnych, wielu plików ani archiwum ZIP.
 
 Możesz użyć dowolnego języka programowania, aby rozwiązać zadanie.
 
