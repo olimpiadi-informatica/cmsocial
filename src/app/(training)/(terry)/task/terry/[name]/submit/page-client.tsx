@@ -12,7 +12,7 @@ import { DateDistance } from "~/components/date";
 import { H2 } from "~/components/header";
 import { Link } from "~/components/link";
 import type { TerryTask, TerryTaskInput } from "~/lib/api/task-terry";
-import { fileLanguage, Language } from "~/lib/language";
+import { fileLanguage, isBinaryLanguage, Language } from "~/lib/language";
 
 import { changeInput, requestInput, uploadAndSubmit } from "./actions";
 
@@ -33,7 +33,7 @@ export function PageClient({ task, input }: Props) {
     if (!lang || lang === Language.Plain) {
       return t`Tipo di file non valido`;
     }
-    const sizeLimit = lang === Language.Scratch ? 1_000_000 : 100_000;
+    const sizeLimit = isBinaryLanguage(lang) ? 1_000_000 : 100_000;
     if (file.size > sizeLimit) {
       return t`File troppo grande`;
     }

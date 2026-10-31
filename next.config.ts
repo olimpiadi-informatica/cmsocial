@@ -72,8 +72,11 @@ const nextConfig: NextConfig = {
     "/files/task-preview/*": [
       "node_modules/@napi-rs/canvas*/**/*",
       "node_modules/.pnpm/@napi-rs+canvas*/**/*",
+      "node_modules/pdfjs-dist/**/*",
+      "node_modules/.pnpm/pdfjs-dist*/**/*",
     ],
   },
+  serverExternalPackages: ["@napi-rs/canvas", "unpdf"],
   reactCompiler: true,
   experimental: {
     swcPlugins: [["@lingui/swc-plugin", {}]],

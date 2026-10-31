@@ -1,6 +1,9 @@
 # syntax=docker.io/docker/dockerfile:1
 
-FROM node:24-alpine AS base
+FROM node:26-alpine AS base
+
+# Corepack is no longer bundled with Node.js starting from v25.
+RUN npm install -g pnpm@12.15.0
 
 # Install dependencies only when needed
 FROM base AS deps
@@ -8,7 +11,6 @@ FROM base AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-RUN corepack enable pnpm
 COPY package.json pnpm-*.yaml* ./
 RUN pnpm i --frozen-lockfile
 
@@ -24,7 +26,6 @@ COPY . .
 # Uncomment the following line in case you want to disable telemetry during the build.
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN corepack enable pnpm
 RUN pnpm run build
 
 # Production image, copy all the files and run next

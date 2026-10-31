@@ -11,6 +11,18 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url,
 ).href;
 
+// pdf.js starts a full `fetch` of the whole document when streaming is enabled.
+// That download saturates the connection and starves the range requests needed to
+// render the first pages, so on slow connections pages stay blank until the whole
+// file has been downloaded. Disabling streaming forces pdf.js to fetch only the
+// ranges it needs, and disabling auto-fetch avoids downloading the rest in the
+// background.
+const pdfOptions = {
+  rangeChunkSize: 1 << 20,
+  disableStream: true,
+  disableAutoFetch: true,
+};
+
 export default function PdfMobileStatement({
   url,
   fallback,
@@ -39,6 +51,7 @@ export default function PdfMobileStatement({
         file={url}
         noData={fallback}
         loading={fallback}
+        options={pdfOptions}
         className="grid gap-4 bg-zinc-500 p-2">
         <Pages width={width} />
       </Document>

@@ -5,7 +5,7 @@ import { Code } from "@olinfo/react-components";
 import { truncate } from "es-toolkit/compat";
 import { Download, FileCode2 } from "lucide-react";
 
-import { Language } from "~/lib/language";
+import { isBinaryLanguage, type Language } from "~/lib/language";
 
 type Props = {
   url: string;
@@ -16,7 +16,7 @@ type Props = {
 export function SourceCode({ url, getFile, lang }: Props) {
   const { t } = useLingui();
 
-  if (lang === Language.Scratch) {
+  if (isBinaryLanguage(lang)) {
     return (
       <div className="grid justify-center">
         <a href={url} className="btn btn-primary" download>

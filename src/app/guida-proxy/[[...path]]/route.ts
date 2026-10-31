@@ -192,5 +192,8 @@ export async function GET(
     .use(rehypeStringify)
     .process(await response.bytes());
 
-  return new Response(html.toString(), { headers });
+  const body = Buffer.from(html.value);
+  headers.set("Content-Length", String(body.length));
+
+  return new Response(body, { headers });
 }

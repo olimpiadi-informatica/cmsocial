@@ -43,14 +43,13 @@ export function languageExtension(language: Language): string {
 }
 
 export function fileLanguage(fileName: string) {
-  const extension = fileName.match(/\.(\w+)$/)?.[1];
+  const extension = fileName.toLowerCase().match(/\.(\w+)$/)?.[1];
   switch (extension) {
     case "c":
       return Language.C;
     case "cpp":
     case "cc":
     case "cxx":
-    case "c++":
       return Language.Cpp;
     case "cs":
       return Language.CSharp;
@@ -58,11 +57,14 @@ export function fileLanguage(fileName: string) {
       return Language.Dart;
     case "go":
       return Language.Go;
+    case "htm":
     case "html":
       return Language.HTML;
     case "java":
       return Language.Java;
     case "js":
+    case "cjs":
+    case "mjs":
       return Language.JavaScript;
     case "kt":
       return Language.Kotlin;
@@ -136,4 +138,8 @@ export function fileLanguageName(fileName: string, _: (descriptor: MessageDescri
     default:
       return "N/A";
   }
+}
+
+export function isBinaryLanguage(language: Language | undefined) {
+  return language === Language.Scratch;
 }
