@@ -3,7 +3,7 @@ import { eq, inArray, sql } from "drizzle-orm";
 
 import { RegistrationStep } from "~/lib/auth/types";
 import { cmsDb, terryDb } from "~/lib/db";
-import { participations, socialUsers, users } from "~/lib/db/schema";
+import { contests, participations, socialUsers, users } from "~/lib/db/schema";
 import {
   terryInputs,
   terryIps,
@@ -41,6 +41,16 @@ export async function finalizeRegistration(
   lastName: string,
 ) {
   await cmsDb.transaction(async (tx) => {
+    const contestId = Number(process.env.CMS_CONTEST_ID);
+    const [contest] = await tx
+      .select({ mainGroupId: contests.mainGroupId })
+      .from(contests)
+      .where(eq(contests.id, contestId))
+      .limit(1);
+    if (!contest?.mainGroupId) {
+      throw new Error(`Contest ${contestId} has no main_group_id`);
+    }
+
     const [cmsUser] = await tx
       .insert(users)
       .values({
@@ -48,13 +58,19 @@ export async function finalizeRegistration(
         firstName,
         lastName,
         password: "",
+        preferredLanguages: [],
       })
       .returning({ id: users.id });
     const cmsId = cmsUser.id;
 
     await tx.insert(participations).values({
-      contestId: Number(process.env.CMS_CONTEST_ID),
+      contestId,
       userId: cmsId,
+      groupId: contest.mainGroupId,
+      delayTime: "00:00:00",
+      extraTime: "00:00:00",
+      hidden: false,
+      unrestricted: false,
     });
 
     await tx

@@ -1,6 +1,7 @@
 import {
   bigint,
   boolean,
+  customType,
   doublePrecision,
   integer,
   interval,
@@ -8,14 +9,19 @@ import {
   pgEnum,
   pgTable,
   serial,
-  text,
   timestamp,
   varchar,
 } from "drizzle-orm/pg-core";
 
+const cidrArray = customType<{ data: string[] }>({
+  dataType() {
+    return "cidr[]";
+  },
+});
+
 export const compilationOutcome = pgEnum("compilation_outcome", ["ok", "fail"]);
 export const evaluationOutcome = pgEnum("evaluation_outcome", ["ok"]);
-export const feedbackLevel = pgEnum("feedback_level", ["full", "restricted"]);
+export const feedbackLevel = pgEnum("feedback_level", ["full", "restricted", "oi_restricted"]);
 export const scoreMode = pgEnum("score_mode", ["max", "max_subtask", "max_tokened_last"]);
 export const tokenMode = pgEnum("token_mode", ["disabled", "finite", "infinite"]);
 
@@ -56,8 +62,10 @@ export const evaluations = pgTable("evaluations", {
   executionWallClockTime: doublePrecision("execution_wall_clock_time"),
   executionMemory: bigint("execution_memory", { mode: "bigint" }),
   evaluationShard: integer("evaluation_shard"),
-  evaluationSandbox: varchar("evaluation_sandbox"),
+  evaluationSandboxPaths: varchar("evaluation_sandbox_paths").array(),
+  evaluationSandboxDigests: varchar("evaluation_sandbox_digests").array(),
   text: varchar().array().notNull(),
+  adminText: varchar("admin_text"),
 });
 
 export const files = pgTable("files", {
@@ -67,41 +75,52 @@ export const files = pgTable("files", {
   digest: varchar().notNull(),
 });
 
+export const groups = pgTable("groups", {
+  id: serial().primaryKey(),
+  name: varchar().notNull(),
+  start: timestamp().notNull(),
+  stop: timestamp().notNull(),
+  analysisEnabled: boolean("analysis_enabled").notNull(),
+  analysisStart: timestamp("analysis_start").notNull(),
+  analysisStop: timestamp("analysis_stop").notNull(),
+  perUserTime: interval("per_user_time"),
+  contestId: integer("contest_id").notNull(),
+});
+
 export const contests = pgTable("contests", {
   id: serial().primaryKey(),
   name: varchar().notNull(),
   description: varchar().notNull(),
+  allowedLocalizations: varchar("allowed_localizations").array().default([""]).notNull(),
+  languages: varchar().array().notNull(),
+  submissionsDownloadAllowed: boolean("submissions_download_allowed").default(true).notNull(),
+  allowQuestions: boolean("allow_questions").default(true).notNull(),
+  allowUserTests: boolean("allow_user_tests").default(true).notNull(),
+  allowUnofficialSubmissionBeforeAnalysisMode: boolean(
+    "allow_unofficial_submission_before_analysis_mode",
+  )
+    .default(false)
+    .notNull(),
+  blockHiddenParticipations: boolean("block_hidden_participations").default(false).notNull(),
+  allowPasswordAuthentication: boolean("allow_password_authentication").default(true).notNull(),
+  allowRegistration: boolean("allow_registration").default(false).notNull(),
+  ipRestriction: boolean("ip_restriction").default(false).notNull(),
+  ipAutologin: boolean("ip_autologin").default(false).notNull(),
+  tokenMode: tokenMode("token_mode").notNull(),
+  tokenMaxNumber: integer("token_max_number"),
   tokenMinInterval: interval("token_min_interval").notNull(),
+  tokenGenInitial: integer("token_gen_initial").notNull(),
   tokenGenNumber: integer("token_gen_number").notNull(),
-  start: timestamp(),
-  stop: timestamp(),
+  tokenGenInterval: interval("token_gen_interval").notNull(),
+  tokenGenMax: integer("token_gen_max"),
   timezone: varchar(),
-  perUserTime: interval("per_user_time"),
   maxSubmissionNumber: integer("max_submission_number"),
   maxUserTestNumber: integer("max_user_test_number"),
   minSubmissionInterval: interval("min_submission_interval"),
+  minSubmissionIntervalGracePeriod: interval("min_submission_interval_grace_period"),
   minUserTestInterval: interval("min_user_test_interval"),
   scorePrecision: integer("score_precision").notNull(),
-  tokenGenMax: integer("token_gen_max"),
-  tokenGenInterval: interval("token_gen_interval"),
-  tokenGenInitial: integer("token_gen_initial"),
-  tokenMaxNumber: integer("token_max_number"),
-  tokenMode: tokenMode("token_mode"),
-  languages: varchar().array(),
-  submissionsDownloadAllowed: boolean("submissions_download_allowed").default(true).notNull(),
-  ipAutologin: boolean("ip_autologin").default(false).notNull(),
-  blockHiddenParticipations: boolean("block_hidden_participations").default(false).notNull(),
-  ipRestriction: boolean("ip_restriction").default(false).notNull(),
-  allowUserTests: boolean("allow_user_tests").default(true).notNull(),
-  allowQuestions: boolean("allow_questions").default(true).notNull(),
-  allowPasswordAuthentication: boolean("allow_password_authentication").default(true).notNull(),
-  openParticipation: boolean("open_participation").default(false).notNull(),
-  hidden: boolean().default(false).notNull(),
-  analysisEnabled: boolean("analysis_enabled").default(false).notNull(),
-  analysisStart: timestamp("analysis_start"),
-  analysisStop: timestamp("analysis_stop"),
-  allowedLocalizations: varchar("allowed_localizations").array().default([""]).notNull(),
-  allowRegistration: boolean("allow_registration").default(false).notNull(),
+  mainGroupId: integer("main_group_id"),
 });
 
 export const managers = pgTable("managers", {
@@ -113,16 +132,17 @@ export const managers = pgTable("managers", {
 
 export const participations = pgTable("participations", {
   id: serial().primaryKey(),
-  ip: varchar(),
+  ip: cidrArray("ip"),
   startingTime: timestamp("starting_time"),
   delayTime: interval("delay_time").default("00:00:00").notNull(),
   extraTime: interval("extra_time").default("00:00:00").notNull(),
   password: varchar(),
   hidden: boolean().default(false).notNull(),
+  unrestricted: boolean().default(false).notNull(),
   contestId: integer("contest_id").notNull(),
   userId: integer("user_id").notNull(),
+  groupId: integer("group_id").notNull(),
   teamId: integer("team_id"),
-  unrestricted: boolean().default(false).notNull(),
 });
 
 export const users = pgTable("users", {
@@ -138,13 +158,15 @@ export const users = pgTable("users", {
 
 export const submissions = pgTable("submissions", {
   id: serial().primaryKey(),
+  opaqueId: bigint("opaque_id", { mode: "bigint" }).notNull(),
   participationId: integer("participation_id").notNull(),
   taskId: integer("task_id").notNull(),
   timestamp: timestamp().notNull(),
   language: varchar(),
   comment: varchar().default("").notNull(),
   official: boolean().default(true).notNull(),
-  eventstream: text(),
+  overrideTimeLimit: doublePrecision("override_time_limit"),
+  overrideMemLimit: bigint("override_mem_limit", { mode: "bigint" }),
 });
 
 export const tasks = pgTable("tasks", {
@@ -153,23 +175,24 @@ export const tasks = pgTable("tasks", {
   contestId: integer("contest_id"),
   name: varchar().notNull(),
   title: varchar().notNull(),
+  submissionFormat: varchar("submission_format").array().default([""]).notNull(),
+  primaryStatements: varchar("primary_statements").array().notNull(),
+  allowedLanguages: varchar("allowed_languages").array(),
+  tokenMode: tokenMode("token_mode").notNull(),
+  tokenMaxNumber: integer("token_max_number"),
   tokenMinInterval: interval("token_min_interval").notNull(),
+  tokenGenInitial: integer("token_gen_initial").notNull(),
   tokenGenNumber: integer("token_gen_number").notNull(),
+  tokenGenInterval: interval("token_gen_interval").notNull(),
+  tokenGenMax: integer("token_gen_max"),
   maxSubmissionNumber: integer("max_submission_number"),
   maxUserTestNumber: integer("max_user_test_number"),
   minSubmissionInterval: interval("min_submission_interval"),
   minUserTestInterval: interval("min_user_test_interval"),
-  scorePrecision: integer("score_precision").notNull(),
-  activeDatasetId: integer("active_dataset_id"),
-  tokenMode: tokenMode("token_mode"),
-  tokenMaxNumber: integer("token_max_number"),
-  tokenGenInitial: integer("token_gen_initial"),
-  tokenGenInterval: interval("token_gen_interval"),
-  tokenGenMax: integer("token_gen_max"),
-  scoreMode: scoreMode("score_mode").default("max_tokened_last").notNull(),
-  submissionFormat: varchar("submission_format").array().default([""]).notNull(),
-  primaryStatements: varchar("primary_statements").array(),
   feedbackLevel: feedbackLevel("feedback_level").default("full").notNull(),
+  scorePrecision: integer("score_precision").notNull(),
+  scoreMode: scoreMode("score_mode").default("max_tokened_last").notNull(),
+  activeDatasetId: integer("active_dataset_id"),
 });
 
 export const testcases = pgTable("testcases", {
@@ -179,7 +202,6 @@ export const testcases = pgTable("testcases", {
   public: boolean().notNull(),
   input: varchar().notNull(),
   output: varchar().notNull(),
-  explained: boolean().default(false).notNull(),
 });
 
 export const statements = pgTable("statements", {
@@ -223,13 +245,15 @@ export const submissionResults = pgTable("submission_results", {
   compilationWallClockTime: doublePrecision("compilation_wall_clock_time"),
   compilationMemory: bigint("compilation_memory", { mode: "bigint" }),
   compilationShard: integer("compilation_shard"),
-  compilationSandbox: varchar("compilation_sandbox"),
+  compilationSandboxPaths: varchar("compilation_sandbox_paths").array(),
+  compilationSandboxDigests: varchar("compilation_sandbox_digests").array(),
   evaluationOutcome: evaluationOutcome("evaluation_outcome"),
   evaluationTries: integer("evaluation_tries").notNull(),
   score: doublePrecision(),
   scoreDetails: jsonb("score_details").$type<
     RawSubmissionResultSubtask[] | RawSubmissionResultTestcase[]
   >(),
+  scoredAt: timestamp("scored_at"),
   publicScore: doublePrecision("public_score"),
   publicScoreDetails: jsonb("public_score_details"),
   compilationText: varchar("compilation_text").array().notNull(),

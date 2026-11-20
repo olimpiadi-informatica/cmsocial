@@ -127,11 +127,17 @@ export const getTaskLocales = cache(async (name: string): Promise<string[]> => {
 });
 
 export const getTaskLanguages = cache(async (name: string): Promise<Record<string, Language>> => {
+  const [task] = await cmsDb
+    .select({ allowedLanguages: tasks.allowedLanguages })
+    .from(tasks)
+    .where(eq(tasks.name, name))
+    .limit(1);
   const [contest] = await cmsDb
     .select({ languages: contests.languages })
     .from(contests)
     .where(eq(contests.id, Number(process.env.CMS_CONTEST_ID)));
-  const languages: [string, Language][] = contest.languages!.map((lang) => [
+  const rawLanguages = task?.allowedLanguages ?? contest.languages;
+  const languages: [string, Language][] = rawLanguages.map((lang) => [
     lang,
     languageByName(lang)!,
   ]);

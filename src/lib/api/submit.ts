@@ -1,3 +1,5 @@
+import { randomBytes } from "node:crypto";
+
 import type { MessageDescriptor } from "@lingui/core";
 import { msg } from "@lingui/core/macro";
 import { and, count, eq, gt, sql } from "drizzle-orm";
@@ -75,13 +77,18 @@ export async function submit(
           ),
         );
 
+      const opaqueId = BigInt(`0x${randomBytes(8).toString("hex")}`) & ((1n << 63n) - 1n);
+
       const [submission] = await tx
         .insert(submissions)
         .values({
+          opaqueId,
           participationId: sql`${participationId}`,
           taskId: task.id,
           timestamp: sql`NOW()`,
           language,
+          comment: "",
+          official: true,
         })
         .returning();
 
