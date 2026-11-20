@@ -5,6 +5,7 @@ minimumReleaseAgeExclude:
 overrides:
   "better-call": "1.4.4"
   "@napi-rs/canvas": "^1.1.0"
+  "pdfjs-dist": "6.5.438"
 
 allowBuilds:
   "@prisma/engines": false

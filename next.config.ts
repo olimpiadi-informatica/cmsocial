@@ -60,6 +60,12 @@ const nextConfig: NextConfig = {
     ];
   },
   turbopack: {
+    resolveAlias: {
+      // Use the legacy build of pdf.js: it is transpiled and ships polyfills for
+      // the newer JS APIs used by the default build, which are missing on older
+      // mobile browsers.
+      "pdfjs-dist": "pdfjs-dist/legacy/build/pdf.mjs",
+    },
     rules: {
       "*.po": {
         loaders: ["@lingui/loader"],
