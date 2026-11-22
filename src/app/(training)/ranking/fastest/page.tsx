@@ -26,12 +26,6 @@ export default async function Page() {
       <H1 className="px-2">
         <Trans>Soluzioni più veloci</Trans>
       </H1>
-      <p className="px-2 text-base-content/80">
-        <Trans>
-          Per ogni utente, il numero di problemi in cui detiene da solo il tempo di esecuzione
-          migliore tra tutte le soluzioni da 100 punti.
-        </Trans>
-      </p>
       <Menu fallback={t`Nessun utente trovato`}>
         {users.map((user, i) => {
           if (i === 0 || users[i - 1].tasks.length !== user.tasks.length) rank = i + 1;

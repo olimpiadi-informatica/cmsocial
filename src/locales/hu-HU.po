@@ -1162,10 +1162,6 @@ msgstr "A folytatáshoz írja be a megerősítő mondatot:"
 msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 msgstr "A megoldások beküldéséhez el kell olvasni az <0>irányelveket</0>, és el kell fogadni a feltételeket."
 
-#: src/app/(training)/ranking/fastest/page.tsx
-msgid "Per ogni utente, il numero di problemi in cui detiene da solo il tempo di esecuzione migliore tra tutte le soluzioni da 100 punti."
-msgstr "Minden felhasználónál azon feladatok száma, amelyekben egyedül övé a legjobb futási idő az összes 100 pontos megoldás közül."
-
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Per poter consultare la soluzione devi aver ottenuto un punteggio maggiore di zero e non devi aver inviato soluzioni negli ultimi 7 giorni."

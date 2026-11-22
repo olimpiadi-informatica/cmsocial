@@ -1162,10 +1162,6 @@ msgstr "Para continuar, introduce la frase de confirmación:"
 msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 msgstr "Para enviar soluciones es necesario leer las <0>directrices</0> y aceptar las condiciones."
 
-#: src/app/(training)/ranking/fastest/page.tsx
-msgid "Per ogni utente, il numero di problemi in cui detiene da solo il tempo di esecuzione migliore tra tutte le soluzioni da 100 punti."
-msgstr "Para cada usuario, el número de problemas en los que tiene en exclusiva el mejor tiempo de ejecución entre todas las soluciones de 100 puntos."
-
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Per poter consultare la soluzione devi aver ottenuto un punteggio maggiore di zero e non devi aver inviato soluzioni negli ultimi 7 giorni."
