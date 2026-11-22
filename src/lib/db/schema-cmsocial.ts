@@ -2,6 +2,7 @@ import {
   boolean,
   date,
   doublePrecision,
+  index,
   integer,
   jsonb,
   pgEnum,
@@ -12,6 +13,8 @@ import {
   uniqueIndex,
   varchar,
 } from "drizzle-orm/pg-core";
+
+import { tasks, users } from "./schema-cms";
 
 export const socialParticipations = pgTable("social_participations", {
   id: integer().primaryKey(),
@@ -49,6 +52,25 @@ export const taskScores = pgTable("taskscores", {
   time: doublePrecision().notNull(),
   participationId: integer("participation_id").notNull(),
 });
+
+// Best time among 100-point solutions of each task, kept up to date by triggers on
+// `taskscores` and `participations` (see sql/2026-11-22-task-best-times.sql).
+export const taskBestTimes = pgTable(
+  "task_best_times",
+  {
+    taskId: integer("task_id")
+      .primaryKey()
+      .references(() => tasks.id, { onUpdate: "cascade", onDelete: "cascade" }),
+    // One of the fastest users (the one with the lowest id in case of a tie)
+    userId: integer("user_id")
+      .notNull()
+      .references(() => users.id, { onUpdate: "cascade", onDelete: "cascade" }),
+    time: doublePrecision().notNull(),
+    // Number of users that achieved the best time (1 = unique record)
+    tiedCount: integer("tied_count").notNull(),
+  },
+  (table) => [index("task_best_times_user_id_idx").on(table.userId)],
+);
 
 export const quizmsSession = pgTable("quizms_session", {
   userId: text("user_id").notNull(),

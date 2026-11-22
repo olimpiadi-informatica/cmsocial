@@ -21,6 +21,10 @@ msgstr "(username non valido)"
 msgid "{num} categorie"
 msgstr "{num} categorie"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "{tiedCount} utenti"
+msgstr "{tiedCount} utenti"
+
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "<0>L'invio di soluzioni ufficiali è proibito dalle <1>linee guida</1>.</0>"
 msgstr "<0>L'invio di soluzioni ufficiali è proibito dalle <1>linee guida</1>.</0>"
@@ -996,6 +1000,7 @@ msgid "Nessun tag"
 msgstr "Nessun tag"
 
 #: src/app/(training)/ranking/[page]/page.tsx
+#: src/app/(training)/ranking/fastest/page.tsx
 msgid "Nessun utente trovato"
 msgstr "Nessun utente trovato"
 
@@ -1157,6 +1162,10 @@ msgstr "Per continuare, inserisci la frase di conferma:"
 msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 msgstr "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "Per ogni utente, il numero di problemi in cui detiene da solo il tempo di esecuzione migliore tra tutte le soluzioni da 100 punti."
+msgstr "Per ogni utente, il numero di problemi in cui detiene da solo il tempo di esecuzione migliore tra tutte le soluzioni da 100 punti."
+
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Per poter consultare la soluzione devi aver ottenuto un punteggio maggiore di zero e non devi aver inviato soluzioni negli ultimi 7 giorni."
@@ -1194,6 +1203,10 @@ msgstr "Probabilmente hai sbagliato a selezionare il linguaggio, in caso contrar
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Problemi"
 msgstr "Problemi"
+
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "Problemi con tempo migliore a pari merito"
+msgstr "Problemi con tempo migliore a pari merito"
 
 #: src/lib/algobadge.ts
 msgid "Problemi introduttivi"
@@ -1250,6 +1263,7 @@ msgstr "Provincia"
 msgid "Pseudocodice"
 msgstr "Pseudocodice"
 
+#: src/app/(training)/ranking/tabs.tsx
 #: src/app/(training)/user/[username]/progress-chart.tsx
 msgid "Punteggio"
 msgstr "Punteggio"
@@ -1464,6 +1478,8 @@ msgstr "Soluzioni corrette:"
 msgid "Soluzioni inviate:"
 msgstr "Soluzioni inviate:"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+#: src/app/(training)/ranking/tabs.tsx
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni più veloci"
 msgstr "Soluzioni più veloci"

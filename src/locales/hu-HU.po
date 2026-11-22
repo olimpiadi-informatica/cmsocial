@@ -21,6 +21,10 @@ msgstr "(érvénytelen felhasználónév)"
 msgid "{num} categorie"
 msgstr "{num} kategória"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "{tiedCount} utenti"
+msgstr "{tiedCount} felhasználó"
+
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "<0>L'invio di soluzioni ufficiali è proibito dalle <1>linee guida</1>.</0>"
 msgstr "<0>A hivatalos megoldások beküldését az <1>irányelvek</1> tiltják.</0>"
@@ -996,6 +1000,7 @@ msgid "Nessun tag"
 msgstr "Nincsenek címkék"
 
 #: src/app/(training)/ranking/[page]/page.tsx
+#: src/app/(training)/ranking/fastest/page.tsx
 msgid "Nessun utente trovato"
 msgstr "Nincs felhasználó"
 
@@ -1157,6 +1162,10 @@ msgstr "A folytatáshoz írja be a megerősítő mondatot:"
 msgid "Per inviare le soluzioni è necessario leggere le <0>linee guida</0> e accettare le condizioni."
 msgstr "A megoldások beküldéséhez el kell olvasni az <0>irányelveket</0>, és el kell fogadni a feltételeket."
 
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "Per ogni utente, il numero di problemi in cui detiene da solo il tempo di esecuzione migliore tra tutte le soluzioni da 100 punti."
+msgstr "Minden felhasználónál azon feladatok száma, amelyekben egyedül övé a legjobb futási idő az összes 100 pontos megoldás közül."
+
 #: src/app/(training)/(terry)/task/terry/[name]/tabs.tsx
 #: src/app/(training)/task/[name]/tabs.tsx
 msgid "Per poter consultare la soluzione devi aver ottenuto un punteggio maggiore di zero e non devi aver inviato soluzioni negli ultimi 7 giorni."
@@ -1194,6 +1203,10 @@ msgstr "Valószínűleg rossz nyelvet választott, ellenkező esetben javasoljuk
 #: src/app/algobadge/(categories)/navbar.tsx
 msgid "Problemi"
 msgstr "Feladatok"
+
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "Problemi con tempo migliore a pari merito"
+msgstr "Holtversenyes legjobb idejű feladatok"
 
 #: src/lib/algobadge.ts
 msgid "Problemi introduttivi"
@@ -1250,6 +1263,7 @@ msgstr "Megye"
 msgid "Pseudocodice"
 msgstr "Pszeudokód"
 
+#: src/app/(training)/ranking/tabs.tsx
 #: src/app/(training)/user/[username]/progress-chart.tsx
 msgid "Punteggio"
 msgstr "Pontszám"
@@ -1464,6 +1478,8 @@ msgstr "Helyes megoldások:"
 msgid "Soluzioni inviate:"
 msgstr "Beküldött megoldások:"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+#: src/app/(training)/ranking/tabs.tsx
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni più veloci"
 msgstr "Leggyorsabb megoldások"
