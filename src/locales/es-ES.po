@@ -21,6 +21,10 @@ msgstr "(nombre de usuario inválido)"
 msgid "{num} categorie"
 msgstr "{num} categorías"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "{tiedCount} utenti"
+msgstr "{tiedCount} usuarios"
+
 #: src/app/(training)/task/[name]/submit/batch.tsx
 msgid "<0>L'invio di soluzioni ufficiali è proibito dalle <1>linee guida</1>.</0>"
 msgstr "<0>El envío de soluciones oficiales está prohibido por las <1>directrices</1>.</0>"
@@ -996,6 +1000,7 @@ msgid "Nessun tag"
 msgstr "Ninguna etiqueta"
 
 #: src/app/(training)/ranking/[page]/page.tsx
+#: src/app/(training)/ranking/fastest/page.tsx
 msgid "Nessun utente trovato"
 msgstr "Ningún usuario encontrado"
 
@@ -1195,6 +1200,10 @@ msgstr "Probablemente te equivocaste al seleccionar el lenguaje, de lo contrario
 msgid "Problemi"
 msgstr "Problemas"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+msgid "Problemi con tempo migliore a pari merito"
+msgstr "Problemas con mejor tiempo empatado"
+
 #: src/lib/algobadge.ts
 msgid "Problemi introduttivi"
 msgstr "Problemas introductorios"
@@ -1250,6 +1259,7 @@ msgstr "Provincia"
 msgid "Pseudocodice"
 msgstr "Pseudocódigo"
 
+#: src/app/(training)/ranking/tabs.tsx
 #: src/app/(training)/user/[username]/progress-chart.tsx
 msgid "Punteggio"
 msgstr "Puntuación"
@@ -1464,6 +1474,8 @@ msgstr "Soluciones correctas:"
 msgid "Soluzioni inviate:"
 msgstr "Soluciones enviadas:"
 
+#: src/app/(training)/ranking/fastest/page.tsx
+#: src/app/(training)/ranking/tabs.tsx
 #: src/app/(training)/task/[name]/stats/page.tsx
 msgid "Soluzioni più veloci"
 msgstr "Soluciones más rápidas"
